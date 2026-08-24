@@ -1,0 +1,15 @@
+severity:
+  - HIGH
+  - CRITICAL
+
+scan:
+  scanners:
+    - vuln
+    - misconfig
+    - secret
+
+misconfiguration:
+  include-non-failures: false
+
+vulnerability:
+  ignore-unfixed: true

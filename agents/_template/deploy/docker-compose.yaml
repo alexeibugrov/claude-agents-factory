@@ -1,0 +1,36 @@
+# TEMPLATE agent stack. CI ships this file to /app/<agent>/docker-compose.yaml on the VM and
+# runs `docker compose pull && up -d` there. Every agent gets its own directory and its own
+# state, so one agent can never disturb another.
+services:
+  agent:
+    image: ghcr.io/alexeibugrov/AGENT_NAME:${IMAGE_TAG:-latest}
+    restart: unless-stopped
+    # journald, not the default json-file driver: json-file logs live in the container's writable
+    # layer and are destroyed by the `docker rm` that every redeploy performs. The agent's decision
+    # trace is the main debugging artefact, so it goes to the host journal, where it survives both
+    # a recreate and a reboot. Requires persistent journald on the VM (/var/log/journal must exist,
+    # the Ubuntu default) — Docker refuses to start the container otherwise, with no fallback.
+    # Read it with: journalctl CONTAINER_TAG=AGENT_NAME --since '1 hour ago'
+    logging:
+      driver: journald
+      options:
+        tag: AGENT_NAME
+    # Operator-provisioned on the VM, gitignored, never read by Claude. See agent.env.template.
+    env_file:
+      - ./.env.AGENT_NAME
+    environment:
+      - PYTHONUNBUFFERED=1
+      - HOME=/home/appuser
+    # This container holds credentials and talks to the internet, so it runs with the tightest
+    # posture the workload allows.
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    mem_limit: 1g
+    volumes:
+      # Shipped by CI on every deploy (not baked into the image); the agent loads this path.
+      - ./agent_config.yaml:/app/agent_config.yaml:ro
+      # Writable HOME for the bundled claude CLI's session/cache scratch. Auth comes from the
+      # env_file, so nothing sensitive is pre-seeded here.
+      - ./claude-config:/home/appuser/.claude

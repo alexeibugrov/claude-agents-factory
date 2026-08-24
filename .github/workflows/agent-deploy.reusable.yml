@@ -1,0 +1,192 @@
+name: Agent — build/deploy (reusable)
+
+# One pipeline for every agent in agents/. A caller passes the agent's directory name and gets
+# convention-derived defaults: image ghcr.io/<owner>/<agent>, build context agents/<agent>/,
+# VM directory /app/<agent>. Only a deliberate variant (a prod stack, a second config) needs to
+# override anything. Adding an agent is therefore a caller file, not a new pipeline.
+#
+# Two modes:
+#   build: true   — build and push the image, then deploy it (the normal push-triggered path).
+#   build: false  — deploy an image tag that already exists (promotion; pair with workflow_dispatch).
+on:
+  workflow_call:
+    inputs:
+      agent:
+        description: Agent directory name under agents/ — also the image name and the VM directory.
+        type: string
+        required: true
+      build:
+        description: Build and push the image before deploying. False deploys an existing tag.
+        type: boolean
+        default: true
+      image_tag:
+        description: Existing image tag to deploy. Required when build=false; ignored when build=true.
+        type: string
+        default: ''
+      deploy_dir:
+        description: Target directory on the VM. Defaults to /app/<agent>.
+        type: string
+        default: ''
+      compose_file:
+        description: Compose file shipped to the VM as docker-compose.yaml. Defaults to the agent's.
+        type: string
+        default: ''
+      config_file:
+        description: Secret-free agent config bind-mounted on the VM (not baked). Defaults to the agent's.
+        type: string
+        default: ''
+    secrets:
+      SSH_PRIVATE_KEY:
+        required: true
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository_owner }}/${{ inputs.agent }}
+
+jobs:
+  build-and-push:
+    if: ${{ inputs.build }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      image_version: ${{ steps.meta.outputs.version }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5  # v4
+        with:
+          persist-credentials: false
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@c7c53464625b32c7a7e944ae62b3e17d2b600130  # v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f  # v3
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9  # v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@c299e40c65443455700f0fdfc63efafe5b349051  # v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          # type=sha is what makes rollback possible: every build keeps an immutable handle even
+          # when the mutable `latest` moves on. Without it the deploy's `docker image prune` reaps
+          # the previous revision and there is no tag left to redeploy.
+          tags: |
+            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
+            type=sha,format=long
+            type=semver,pattern={{version}},enable=${{ startsWith(github.ref, 'refs/tags/v') }}
+            type=semver,pattern={{major}}.{{minor}},enable=${{ startsWith(github.ref, 'refs/tags/v') }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@ca052bb54ab0790a636c9b5f226502c73d547a25  # v5
+        with:
+          # Context is the agent's own directory: agents are self-contained, so an unrelated
+          # agent's files can never enter this image or invalidate its build cache.
+          context: agents/${{ inputs.agent }}
+          file: agents/${{ inputs.agent }}/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          platforms: linux/amd64,linux/arm64
+
+  deploy:
+    needs: [build-and-push]
+    # Run after a successful build, OR directly when deploying an existing tag (build skipped).
+    if: ${{ always() && (inputs.build == false || needs.build-and-push.result == 'success') }}
+    runs-on: ubuntu-latest
+    # One VM deploy at a time, ACROSS callers. Two agents whose path filters both match a push
+    # would otherwise deploy concurrently and share root's ~/.docker/config.json on the VM, where
+    # one run's `docker logout` breaks the other's in-flight `pull`. A constant group serializes
+    # only the deploy job, so builds still run in parallel.
+    concurrency:
+      group: vm-deploy
+      cancel-in-progress: false
+    permissions:
+      contents: read
+      packages: read
+    env:
+      DEPLOY_HOST: app.pulse-ai.live
+      DEPLOY_USER: root
+      DEPLOY_DIR: ${{ inputs.deploy_dir || format('/app/{0}', inputs.agent) }}
+      COMPOSE_FILE: ${{ inputs.compose_file || format('agents/{0}/deploy/docker-compose.yaml', inputs.agent) }}
+      CONFIG_FILE: ${{ inputs.config_file || format('agents/{0}/agent_config.yaml', inputs.agent) }}
+      # Build mode uses the freshly resolved tag; deploy-only mode uses the caller-supplied tag.
+      IMAGE_TAG: ${{ inputs.build && needs.build-and-push.outputs.image_version || inputs.image_tag }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5  # v4
+        with:
+          persist-credentials: false
+
+      - name: Validate deploy inputs
+        run: |
+          if [ -z "$IMAGE_TAG" ]; then
+            echo "::error::No image tag resolved (build=${{ inputs.build }}); set image_tag when build=false." >&2
+            exit 1
+          fi
+          for f in "$COMPOSE_FILE" "$CONFIG_FILE"; do
+            if [ ! -f "$f" ]; then
+              echo "::error::Missing $f — every agent needs its compose file and a secret-free config." >&2
+              exit 1
+            fi
+          done
+
+      - name: Configure SSH key and host key
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/id_deploy
+          chmod 600 ~/.ssh/id_deploy
+          # Host keys are scanned per run rather than pinned from a committed known_hosts. That
+          # keeps StrictHostKeyChecking=yes meaningful within the run (a key that changes mid-deploy
+          # aborts it) but gives no protection against a MITM at scan time — whatever answers is
+          # trusted. To restore real pinning: commit `ssh-keyscan app.pulse-ai.live > deploy/known_hosts`
+          # after verifying the fingerprint out of band, and install that file here instead.
+          ssh-keyscan -T 15 "$DEPLOY_HOST" > ~/.ssh/known_hosts
+          test -s ~/.ssh/known_hosts
+
+      - name: Ensure agent directory exists on VM
+        run: |
+          # shellcheck disable=SC2029  # DEPLOY_DIR is intentionally expanded by the runner, not the VM.
+          ssh -i ~/.ssh/id_deploy -o StrictHostKeyChecking=yes "$DEPLOY_USER@$DEPLOY_HOST" "mkdir -p $DEPLOY_DIR"
+
+      - name: Upload compose file
+        run: scp -i ~/.ssh/id_deploy -o StrictHostKeyChecking=yes "$COMPOSE_FILE" "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_DIR/docker-compose.yaml"
+
+      - name: Upload agent config
+        # The config is shipped here rather than baked into the image, so a config-only change
+        # (a prompt, a model, a flag) redeploys without a rebuild — and can be reverted on the VM
+        # in seconds. It must land before `up -d`, or Docker creates a directory at the mount path.
+        run: scp -i ~/.ssh/id_deploy -o StrictHostKeyChecking=yes "$CONFIG_FILE" "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_DIR/$(basename "$CONFIG_FILE")"
+
+      - name: Pull image and restart stack
+        env:
+          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GHCR_USER: ${{ github.repository_owner }}
+        run: |
+          # Token reaches `docker login` only via stdin (herestring), never in argv or logs.
+          # shellcheck disable=SC2029  # GHCR_USER/DEPLOY_DIR/IMAGE_TAG expand on the runner, by design.
+          ssh -i ~/.ssh/id_deploy -o StrictHostKeyChecking=yes "$DEPLOY_USER@$DEPLOY_HOST" \
+            "docker login ghcr.io -u '$GHCR_USER' --password-stdin \
+             && cd '$DEPLOY_DIR' && export IMAGE_TAG='$IMAGE_TAG' \
+             && docker compose pull && docker compose up -d \
+             && docker image prune -f && docker logout ghcr.io" <<< "$GHCR_TOKEN"
+
+      - name: Verify the stack is running
+        # A deploy that silently crash-loops looked identical to a good one before this gate.
+        run: |
+          # shellcheck disable=SC2029  # DEPLOY_DIR expands on the runner, by design.
+          ssh -i ~/.ssh/id_deploy -o StrictHostKeyChecking=yes "$DEPLOY_USER@$DEPLOY_HOST" \
+            "sleep 15 && cd '$DEPLOY_DIR' && docker compose ps --status running --quiet | grep -q . \
+             || { echo '::error::No running container after deploy'; docker compose ps; docker compose logs --tail 50; exit 1; }"

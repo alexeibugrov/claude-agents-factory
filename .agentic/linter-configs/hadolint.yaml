@@ -1,0 +1,11 @@
+ignored:
+  - DL3008
+  - DL3013
+  - DL3018
+
+trustedRegistries:
+  - docker.io
+  - ghcr.io
+  - registry.k8s.io
+  - gcr.io
+  - quay.io

@@ -1,0 +1,7 @@
+self-hosted-runner:
+  labels:
+    - self-hosted
+
+config-variables: null
+
+paths: {}

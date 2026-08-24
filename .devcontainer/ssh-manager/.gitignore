@@ -1,0 +1,6 @@
+# Only the configs we bind-mount are tracked. Everything mcp-ssh-manager
+# writes at runtime (history, backups, profiles, aliases) stays untracked.
+*
+!.gitignore
+!.env
+!tools-config.json

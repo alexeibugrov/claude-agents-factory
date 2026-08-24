@@ -1,0 +1,19 @@
+.idea/
+.DS_Store
+
+# Real secrets. Every `.env*` file at any depth is operator-provisioned and never committed
+# (the harness also denies reading them — see .claude/settings.json). Committed, secret-free
+# scaffolds use the `*.env.template` name instead, which this pattern deliberately does not match.
+.env
+.env.*
+
+# Python / uv build + venv artefacts from agents/<name>/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Agent runtime state that only ever exists on the VM or a local run.
+*.db
+*.session

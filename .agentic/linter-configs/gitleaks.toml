@@ -1,0 +1,22 @@
+title = "gitleaks config"
+
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "committed env templates carry variable NAMES only — the values are filled in on the VM"
+paths = [
+  '''.*\.env\.template$''',
+]
+
+[[allowlists]]
+description = "task notes/reports may quote example values without real secrets"
+paths = [
+  '''kb/tasks/.*''',
+]
+
+[[allowlists]]
+description = "operator runbooks include command examples with placeholder credentials"
+paths = [
+  '''kb/runbooks/.*\.md$''',
+]

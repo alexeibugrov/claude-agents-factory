@@ -1,0 +1,75 @@
+{
+  "name": "Claude Agents Factory",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": {
+      "TZ": "${localEnv:TZ:Europe/Berlin}",
+      "CLAUDE_CODE_VERSION": "latest",
+      "GIT_DELTA_VERSION": "0.18.2",
+      "ZSH_IN_DOCKER_VERSION": "1.2.0",
+      "GH_VERSION": "2.93.0",
+      "UV_VERSION": "0.11.17",
+      "TELEGRAM_MCP_VERSION": "3.1.13"
+    }
+  },
+  "runArgs": [
+    "--cap-add=NET_ADMIN",
+    "--cap-add=NET_RAW"
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "anthropic.claude-code",
+        "ms-python.python",
+        "charliermarsh.ruff",
+        "eamodio.gitlens"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.profiles.linux": {
+          "bash": {
+            "path": "bash",
+            "icon": "terminal-bash"
+          },
+          "zsh": {
+            "path": "zsh"
+          }
+        }
+      }
+    }
+  },
+  "remoteUser": "node",
+  // devcontainer.json is JSONC — comments and trailing commas are allowed.
+  // This is a monorepo: agent code lives in-tree under agents/, so nothing is cloned and
+  // the mount list never changes when an agent is added.
+  "mounts": [
+    // Per-task bash history (keyed per opened checkout, so each task container gets its own).
+    "source=claude-code-bashhistory-${devcontainerId},target=/commandhistory,type=volume",
+    // gh auth state — FIXED-name volume so one `gh auth login` persists across rebuilds AND task containers.
+    "source=claude-agents-factory-gh-config,target=/home/node/.config/gh,type=volume",
+    // Claude config/history on the host, shared across task containers. Deliberately factory-specific
+    // so it never collides with another project's devcontainer Claude state.
+    "source=${localEnv:HOME}/.claude-agents-factory-devcontainer,target=/home/node/.claude,type=bind,consistency=delegated",
+
+    // ssh-manager server definitions + tool toggles (read-only; in-repo, secret-free).
+    "source=${localWorkspaceFolder}/.devcontainer/ssh-manager/.env,target=/home/node/.ssh-manager/.env,type=bind,readonly",
+    "source=${localWorkspaceFolder}/.devcontainer/ssh-manager/tools-config.json,target=/home/node/.ssh-manager/tools-config.json,type=bind,readonly",
+
+    // Private key for the runtime VM, mounted read-only from the host. Never committed.
+    // Create it on the host first and put its public half in the VM user's authorized_keys —
+    // see kb/architecture/ssh-mcp.md.
+    "source=${localEnv:HOME}/.ssh/pulse-vm-agent,target=/home/node/.ssh/pulse-vm-agent,type=bind,readonly"
+  ],
+  "containerEnv": {
+    "NODE_OPTIONS": "--max-old-space-size=4096",
+    "CLAUDE_CONFIG_DIR": "/home/node/.claude",
+    "POWERLEVEL9K_DISABLE_GITSTATUS": "true"
+  },
+  // ${localWorkspaceFolder} substitutes to whichever checkout is opened — the main one or a task clone
+  // under <parent>/tasks/ — so one config serves every task container.
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/claude-agents-factory,type=bind,consistency=delegated",
+  "workspaceFolder": "/workspaces/claude-agents-factory",
+  "postStartCommand": "sudo /usr/local/bin/init-firewall.sh",
+  "waitFor": "postStartCommand"
+}

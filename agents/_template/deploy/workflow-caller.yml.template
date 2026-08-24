@@ -1,0 +1,34 @@
+# TEMPLATE CI caller. `/new-agent` copies this to .github/workflows/AGENT_NAME.yml and replaces
+# AGENT_NAME. Callers exist only to say WHICH agent and WHEN — all build/deploy logic is in the
+# shared reusable workflow, so a pipeline fix reaches every agent at once.
+name: AGENT_NAME
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'v*'
+    # Path-filtered to this agent's own inputs, so an unrelated agent's change never rebuilds it.
+    paths:
+      - 'agents/AGENT_NAME/**'
+      - '.github/workflows/AGENT_NAME.yml'
+      - '.github/workflows/agent-deploy.reusable.yml'
+
+# Serialize per ref so a queued run never interrupts an in-flight deploy.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+# The caller sets the GITHUB_TOKEN ceiling for the reusable workflow: its build job needs
+# packages: write (the repo default is read-only), or the nested job is rejected at validation.
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  deploy:
+    uses: ./.github/workflows/agent-deploy.reusable.yml
+    with:
+      agent: AGENT_NAME
+    secrets: inherit

@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "mode": "custom",
+  "groups": {
+    "core": { "enabled": true },
+    "sessions": { "enabled": true },
+    "monitoring": { "enabled": true },
+    "backup": { "enabled": false },
+    "database": { "enabled": false },
+    "advanced": { "enabled": true }
+  },
+  "tools": {},
+  "_comment": "Bind-mounted from .devcontainer/ssh-manager/tools-config.json. Disable a group here to drop its tools from the MCP advert; restart the Claude Code session for changes to take effect."
+}

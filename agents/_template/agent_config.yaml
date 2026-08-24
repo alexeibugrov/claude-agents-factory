@@ -1,0 +1,29 @@
+# TEMPLATE agent config — COMMITTED and SECRET-FREE (gitleaks-gated).
+#
+# This file is NOT baked into the image. CI ships it to the VM on every deploy and the compose
+# file bind-mounts it read-only, so changing a prompt, a model, or a flag redeploys in seconds
+# without an image rebuild — and can be reverted on the VM just as fast. Git stays the source of
+# truth because every deploy re-ships this file: a hand-edit on the VM is overwritten by the next
+# deploy, so any hotfix must also land here.
+#
+# Secrets never appear here. They reach the container as environment variables from the
+# gitignored `.env.<agent>` file — see agent.env.template.
+
+agent:
+  model: claude-opus-5
+  fallback_model: claude-sonnet-5   # used when the primary is rate-limited or errors
+  max_turns: 15                     # circuit breaker: caps one run's tool-calling loop
+  max_budget_usd: null              # optional hard per-run spend cap
+  allow_writes: false               # gate in agent/guards.py; true makes the write veto inert
+
+# The agent's instructions. Keep it here, in git, so a prompt change is a reviewable diff.
+system_prompt: |
+  You are a TEMPLATE agent. Replace these instructions with the agent's real job.
+
+  Rules:
+  - Use only the tools provided to you.
+  - If a tool fails, report the failure; do not invent a result.
+  - End your turn with a short summary of what you did.
+
+# Agent-specific knobs, available as cfg.settings. Anything secret belongs in .env instead.
+settings: {}

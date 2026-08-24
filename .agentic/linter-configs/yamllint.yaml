@@ -1,0 +1,23 @@
+extends: default
+
+rules:
+  line-length:
+    max: 200
+    level: warning
+  document-start: disable
+  truthy:
+    allowed-values: ['true', 'false', 'yes', 'no']
+    # GitHub Actions workflows use `on:` as a top-level key; YAML 1.1 treats it
+    # as a boolean. Only check values, not keys.
+    check-keys: false
+  comments:
+    require-starting-space: false
+  comments-indentation: disable
+  indentation:
+    spaces: 2
+    indent-sequences: consistent
+
+ignore: |
+  **/node_modules/
+  **/vendor/
+  **/.venv/

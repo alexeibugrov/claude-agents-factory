@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "ssh-manager": {
+      "type": "stdio",
+      "command": "mcp-ssh-manager",
+      "args": [],
+      "env": {}
+    },
+    "telegram": {
+      "type": "stdio",
+      "command": "bash",
+      "args": [
+        "-lc",
+        "set -a; . /workspaces/claude-agents-factory/.env.telegram.mcp; set +a; mkdir -p /tmp/telegram-mcp-media; exec uv --directory /opt/telegram-mcp run --no-sync main.py /tmp/telegram-mcp-media"
+      ],
+      "env": {}
+    }
+  }
+}
