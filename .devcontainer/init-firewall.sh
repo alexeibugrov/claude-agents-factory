@@ -68,7 +68,12 @@ done < <(echo "$gh_ranges" | jq -r '(.web + .api + .git)[]' | aggregate -q)
 #   pypi.org / files.pythonhosted.org  — uv resolving each agent's dependencies (claude-agent-sdk & co).
 #   ghcr.io / *.githubusercontent.com  — GHCR image pulls and the trivy vulnerability DB.
 #   semgrep.dev                        — the semgrep rule registry.
-#   app.pulse-ai.live                  — the runtime VM (HTTPS; SSH :22 is already allowed above).
+#
+# Every entry here is REQUIRED: an unresolvable name aborts container startup by design, so a typo
+# or a dead host fails loudly instead of silently losing egress. That also means a host must not be
+# listed unless the agent genuinely needs it — the runtime VM, for instance, is reached over SSH,
+# and outbound :22 is already permitted above, so it needs no entry. Hosts reached by IP rather
+# than by name go in the static-IP block further down.
 for domain in \
     "registry.npmjs.org" \
     "api.anthropic.com" \
@@ -81,8 +86,7 @@ for domain in \
     "files.pythonhosted.org" \
     "ghcr.io" \
     "pkg-containers.githubusercontent.com" \
-    "semgrep.dev" \
-    "app.pulse-ai.live"; do
+    "semgrep.dev"; do
     echo "Resolving $domain..."
     ips=$(dig +noall +answer A "$domain" | awk '$4 == "A" {print $5}')
     if [ -z "$ips" ]; then

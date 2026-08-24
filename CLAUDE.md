@@ -175,6 +175,12 @@ VS Code, semgrep, the runtime VM, and Telegram's data-centre ranges).
 `/usr/local/bin/init-firewall.sh`, not the working-tree copy. MCP config changes need a Claude Code
 session restart.
 
+**Before adding a domain to the firewall allowlist, check that it resolves** (`dig +short A <host>`).
+The resolve loop aborts on a name it cannot resolve, and because it runs as `postStartCommand`, that
+takes the whole container down with `postStartCommand failed with exit code 1` — the container will
+not open until the entry is removed. Add only hosts the agent genuinely needs, and only ones that
+resolve today; hosts reached by IP go in the static-IP block instead.
+
 The security model — devcontainer isolation, egress firewall, and the harness `allow`/`ask`/`deny`
 gating in `auto` mode — is [.agentic/docs/security-strategy.md](.agentic/docs/security-strategy.md).
 Read it before widening any permission or adding a tool.
