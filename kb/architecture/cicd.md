@@ -42,7 +42,7 @@ agent somewhere consequential is always a deliberate act, never a side effect of
   it. It does **not** protect against a MITM at scan time — whatever answers the scan is trusted.
   This is a deliberate downgrade from a committed `known_hosts`, taken because the pinned file went
   stale. To restore real pinning: verify the VM's fingerprint out of band, commit
-  `ssh-keyscan app.pulse-ai.live > deploy/known_hosts`, and install that file in the workflow
+  `ssh-keyscan 157.90.18.149 > deploy/known_hosts`, and install that file in the workflow
   instead of scanning.
 - **A constant `vm-deploy` concurrency group on the deploy job.** Two agents whose path filters both
   match a push would otherwise deploy at the same time and share root's `~/.docker/config.json`,
@@ -63,7 +63,7 @@ A deploy against a missing env file fails at `docker compose up`, which is the i
 
 ## Repository secret
 
-`SSH_PRIVATE_KEY` — the deploy identity for `root@app.pulse-ai.live`. It must be a repository
+`SSH_PRIVATE_KEY` — the deploy identity for `root@157.90.18.149`. It must be a repository
 **secret** (encrypted), never an Actions *variable*. It is a different key from the one Claude uses
 over SSH MCP ([ssh-mcp.md](ssh-mcp.md)), so revoking one does not disturb the other.
 

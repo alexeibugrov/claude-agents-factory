@@ -142,14 +142,16 @@ for cidr in \
     ipset add allowed-domains "$cidr" -exist
 done
 
-# Static IP allowlist — hosts the agent reaches directly by IP rather than by a
-# resolvable name. Everything else stays denied. Add an entry per such host:
-#   for ip in \
-#       "203.0.113.10" \
-#       ; do
-#       echo "Adding static IP $ip"
-#       ipset add allowed-domains "$ip" -exist
-#   done
+# Static IP allowlist — hosts reached directly by IP rather than by a resolvable name.
+# The runtime VM is here rather than in the resolve list above because its DNS name is dead;
+# it is addressed by IP everywhere (ssh-manager servers.conf, the deploy workflow, the runbooks).
+# Note SSH itself does not depend on this entry — outbound :22 is already permitted near the
+# top of this script — but any other traffic to the VM does.
+for ip in \
+    "157.90.18.149"; do
+  echo "Adding static IP $ip"
+  ipset add allowed-domains "$ip" -exist
+done
 
 # Get host IP from default route
 HOST_IP=$(ip route | grep default | cut -d" " -f3)

@@ -53,7 +53,7 @@
     "source=${localEnv:HOME}/.claude-agents-factory-devcontainer,target=/home/node/.claude,type=bind,consistency=delegated",
 
     // ssh-manager server definitions + tool toggles (read-only; in-repo, secret-free).
-    "source=${localWorkspaceFolder}/.devcontainer/ssh-manager/.env,target=/home/node/.ssh-manager/.env,type=bind,readonly",
+    "source=${localWorkspaceFolder}/.devcontainer/ssh-manager/servers.conf,target=/home/node/.ssh-manager/.env,type=bind,readonly",
     "source=${localWorkspaceFolder}/.devcontainer/ssh-manager/tools-config.json,target=/home/node/.ssh-manager/tools-config.json,type=bind,readonly",
 
     // Private key for the runtime VM, mounted read-only from the host. Never committed.

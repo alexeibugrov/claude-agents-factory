@@ -45,7 +45,7 @@ Runs are stateless: one `query()`, a fresh tool server, nothing carried over. Se
 
 ## Runtime
 
-All agents run as separate docker-compose stacks on one VM, `app.pulse-ai.live`, each in `/app/<name>`
+All agents run as separate docker-compose stacks on one VM, `157.90.18.149`, each in `/app/<name>`
 with its own image, config, secrets file, and state. They share the host and its journald, nothing
 else. Claude reaches the VM over SSH MCP for inspection ([ssh-mcp.md](ssh-mcp.md)); CI reaches it
 with a separate deploy identity ([cicd.md](cicd.md)).

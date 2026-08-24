@@ -114,7 +114,8 @@ jobs:
       contents: read
       packages: read
     env:
-      DEPLOY_HOST: app.pulse-ai.live
+      # Addressed by IP: the old app.pulse-ai.live DNS record no longer resolves.
+      DEPLOY_HOST: 157.90.18.149
       DEPLOY_USER: root
       DEPLOY_DIR: ${{ inputs.deploy_dir || format('/app/{0}', inputs.agent) }}
       COMPOSE_FILE: ${{ inputs.compose_file || format('agents/{0}/deploy/docker-compose.yaml', inputs.agent) }}
@@ -151,7 +152,7 @@ jobs:
           # Host keys are scanned per run rather than pinned from a committed known_hosts. That
           # keeps StrictHostKeyChecking=yes meaningful within the run (a key that changes mid-deploy
           # aborts it) but gives no protection against a MITM at scan time — whatever answers is
-          # trusted. To restore real pinning: commit `ssh-keyscan app.pulse-ai.live > deploy/known_hosts`
+          # trusted. To restore real pinning: commit `ssh-keyscan 157.90.18.149 > deploy/known_hosts`
           # after verifying the fingerprint out of band, and install that file here instead.
           ssh-keyscan -T 15 "$DEPLOY_HOST" > ~/.ssh/known_hosts
           test -s ~/.ssh/known_hosts

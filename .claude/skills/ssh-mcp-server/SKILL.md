@@ -1,6 +1,6 @@
 ---
 name: ssh-mcp-server
-description: Use when the user asks about SSH access, the runtime VM, mcp-ssh-manager, ssh_list_servers, ssh_execute, inspecting a deployed agent stack, or any remote-shell action against app.pulse-ai.live. The mcp__ssh-manager__* tools are deferred — their schemas must be loaded with ToolSearch before any call, otherwise calls fail with InputValidationError.
+description: Use when the user asks about SSH access, the runtime VM, mcp-ssh-manager, ssh_list_servers, ssh_execute, inspecting a deployed agent stack, or any remote-shell action against the runtime VM. The mcp__ssh-manager__* tools are deferred — their schemas must be loaded with ToolSearch before any call, otherwise calls fail with InputValidationError.
 ---
 
 # ssh-mcp-server
@@ -8,8 +8,10 @@ description: Use when the user asks about SSH access, the runtime VM, mcp-ssh-ma
 SSH from this devcontainer goes through the `mcp-ssh-manager` MCP server registered in
 [.mcp.json](../../../.mcp.json). The binary is installed by
 [.devcontainer/Dockerfile](../../../.devcontainer/Dockerfile) and reads server definitions from
-[.devcontainer/ssh-manager/.env](../../../.devcontainer/ssh-manager/.env), bind-mounted read-only to
-`/home/node/.ssh-manager/.env`. Architecture and security rationale:
+[.devcontainer/ssh-manager/servers.conf](../../../.devcontainer/ssh-manager/servers.conf),
+bind-mounted read-only to `/home/node/.ssh-manager/.env` (the filename the binary expects; the
+repo-side file is not named `.env` so it stays editable under the never-open-a-`.env` rule).
+Architecture and security rationale:
 [kb/architecture/ssh-mcp.md](../../../kb/architecture/ssh-mcp.md).
 
 ## Critical: load schemas before calling
@@ -34,8 +36,8 @@ from memory.
 
 ## The one server, and what it is
 
-Read the live list with `ssh_list_servers`; values live in the `.env`, not here. Today there is one
-entry: **`pulse`** — `root@app.pulse-ai.live`, the VM every agent stack runs on, one directory per
+Read the live list with `ssh_list_servers`; values live in `servers.conf`, not here. Today there is one
+entry: **`pulse`** — `root@157.90.18.149`, the VM every agent stack runs on, one directory per
 agent under `/app/<name>`. Key auth via `/home/node/.ssh/pulse-vm-agent`, bind-mounted read-only from
 the host.
 
@@ -95,8 +97,8 @@ Treat it as destructive: ask first.
 
 ## Caveats
 
-- The MCP child loads `.env` and `tools-config.json` **once at startup**. Edits don't take effect
-  until the Claude Code session restarts. Mount changes need a container **rebuild**.
+- The MCP child loads `servers.conf` and `tools-config.json` **once at startup**. Edits don't take
+  effect until the Claude Code session restarts. Mount changes need a container **rebuild**.
 - The bind-mounts are read-only — edit those files via the workspace path, not
   `/home/node/.ssh-manager/`.
 - Tool surface is gated by

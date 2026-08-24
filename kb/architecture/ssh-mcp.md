@@ -1,6 +1,6 @@
 # SSH MCP — Claude's access to the runtime VM
 
-Gives Claude, inside the devcontainer, a shell on `app.pulse-ai.live` so it can inspect and operate
+Gives Claude, inside the devcontainer, a shell on `157.90.18.149` so it can inspect and operate
 the agent stacks under `/app`. Deployment itself is CI's job ([cicd.md](cicd.md)); this is for
 looking at what is actually running.
 
@@ -9,8 +9,10 @@ looking at what is actually running.
 - **Server:** [`mcp-ssh-manager`](https://www.npmjs.com/package/mcp-ssh-manager), pinned by
   `MCP_SSH_MANAGER_VERSION` in [.devcontainer/Dockerfile](../../.devcontainer/Dockerfile) and
   declared in [.mcp.json](../../.mcp.json).
-- **Server definition:** [.devcontainer/ssh-manager/.env](../../.devcontainer/ssh-manager/.env) —
-  committed, and secret-free: host, user, port, keypath, default dir only.
+- **Server definition:** [.devcontainer/ssh-manager/servers.conf](../../.devcontainer/ssh-manager/servers.conf)
+  — committed, and secret-free: host, user, port, keypath, default dir only. Bind-mounted to
+  `/home/node/.ssh-manager/.env`, which is the filename the binary expects; the repo-side file is
+  deliberately *not* named `.env` so it does not fall under the never-open-a-`.env` rule.
 - **Tool surface:** [.devcontainer/ssh-manager/tools-config.json](../../.devcontainer/ssh-manager/tools-config.json)
   drops the `backup` and `database` groups from the advert. Read once at startup.
 - **Key:** `~/.ssh/pulse-vm-agent` on the host, bind-mounted read-only into the container. Its public
@@ -18,8 +20,8 @@ looking at what is actually running.
 - **Egress:** outbound `:22` is already permitted by
   [init-firewall.sh](../../.devcontainer/init-firewall.sh); no firewall change was needed.
 
-Changes to the `.env`, the key, or the mounts need a **container rebuild**; changes to the tool
-config need a **Claude Code session restart** (the MCP child reads it once).
+Changes to `servers.conf` or the tool config need a **Claude Code session restart** (the MCP child
+reads both once at startup); changes to the key or the mounts need a **container rebuild**.
 
 ## Security posture — root, auto-approved
 

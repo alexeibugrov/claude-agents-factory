@@ -22,7 +22,9 @@ factory's own. Rationale for most of them is in
   including commands that only count or list keys. The rule is "do not open the file", because the
   safe-looking variants are how it erodes.
 - **Committed scaffolds are named `*.env.template`**, never `.env.something`, so the gitignore and
-  the harness deny rules can be blunt without blocking the template.
+  the harness deny rules can be blunt without blocking the template. Same reasoning for any
+  committed config that a tool wants to see as `.env`: keep the repo-side name distinct and let the
+  bind mount rename it (as `.devcontainer/ssh-manager/servers.conf` does).
 - **The prompt lives in `agent_config.yaml` and nowhere else.** If a prompt appears in two places,
   say which is live — a prompt directory nobody reads at runtime is worse than none.
 

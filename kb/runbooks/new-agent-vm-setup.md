@@ -7,6 +7,10 @@ an unprepared directory fails at `docker compose up`, which is the intended beha
 Claude can prepare the exact lines to paste. Claude does **not** apply them and never reads the
 resulting file.
 
+The VM is addressed by **IP (157.90.18.149)** — the old `app.pulse-ai.live` DNS record no longer
+resolves. If the host ever moves, it is named in four places: the ssh-manager `.env`, the deploy
+workflow's `DEPLOY_HOST`, the firewall's static-IP block, and this runbook.
+
 ## Prerequisites
 
 - The agent exists under `agents/<name>/` and its caller workflow is merged to `main`.
@@ -19,7 +23,7 @@ resulting file.
 1. **Create the directory.**
 
    ```bash
-   ssh root@app.pulse-ai.live 'mkdir -p /app/<name>/claude-config && chown -R 10001:10001 /app/<name>/claude-config'
+   ssh root@157.90.18.149 'mkdir -p /app/<name>/claude-config && chown -R 10001:10001 /app/<name>/claude-config'
    ```
 
    The `10001` uid matches the container's non-root `appuser`, so the CLI can write its session
@@ -28,7 +32,7 @@ resulting file.
 2. **Create the secrets file** from `agents/<name>/<name>.env.template`:
 
    ```bash
-   ssh root@app.pulse-ai.live 'cat > /app/<name>/.env.<name>'   # paste, then Ctrl-D
+   ssh root@157.90.18.149 'cat > /app/<name>/.env.<name>'   # paste, then Ctrl-D
    chmod 600 /app/<name>/.env.<name>
    ```
 
@@ -48,8 +52,8 @@ resulting file.
 5. **Verify.**
 
    ```bash
-   ssh root@app.pulse-ai.live 'cd /app/<name> && docker compose ps'
-   ssh root@app.pulse-ai.live 'journalctl CONTAINER_TAG=<name> --since "10 minutes ago"'
+   ssh root@157.90.18.149 'cd /app/<name> && docker compose ps'
+   ssh root@157.90.18.149 'journalctl CONTAINER_TAG=<name> --since "10 minutes ago"'
    ```
 
    A healthy first start logs `agent starting: model=… allow_writes=…`. A startup refusal about
@@ -64,7 +68,7 @@ Every agent has its own copy, so rotate them all when the token changes.
 ## Removing an agent
 
 ```bash
-ssh root@app.pulse-ai.live 'cd /app/<name> && docker compose down'
+ssh root@157.90.18.149 'cd /app/<name> && docker compose down'
 ```
 
 Then delete `agents/<name>/` and `.github/workflows/<name>.yml`, and remove `/app/<name>` on the VM

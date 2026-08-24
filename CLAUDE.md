@@ -34,7 +34,7 @@ Parallel work uses one container per task via
 
 **Python 3.12** with **uv** (per-agent `pyproject.toml` + committed `uv.lock`) ·
 **claude-agent-sdk**, pinned · **Docker / docker-compose** as the execution unit ·
-**GitHub Actions → GHCR → one VM** (`app.pulse-ai.live`, one stack per agent under `/app/<name>`) ·
+**GitHub Actions → GHCR → one VM** (`157.90.18.149`, one stack per agent under `/app/<name>`) ·
 auth is the owner's **Claude subscription**, never an API key.
 
 ## Entry points

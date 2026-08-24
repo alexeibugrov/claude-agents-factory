@@ -87,7 +87,7 @@ Push to `main` with a change under this directory. The caller at
 `.github/workflows/<name>.yml` invokes the shared
 [reusable pipeline](../../.github/workflows/agent-deploy.reusable.yml), which builds
 `ghcr.io/alexeibugrov/<name>`, ships the compose file and `agent_config.yaml` to `/app/<name>` on
-`app.pulse-ai.live`, restarts the stack, and verifies a container is running.
+`157.90.18.149`, restarts the stack, and verifies a container is running.
 
 One-time VM setup, and the rationale for the pipeline's design choices, are in
 [kb/architecture/cicd.md](../../kb/architecture/cicd.md) and

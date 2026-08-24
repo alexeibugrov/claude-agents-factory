@@ -2,5 +2,5 @@
 # writes at runtime (history, backups, profiles, aliases) stays untracked.
 *
 !.gitignore
-!.env
+!servers.conf
 !tools-config.json
