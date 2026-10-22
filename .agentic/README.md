@@ -12,7 +12,7 @@ knowledge base, and the agents themselves under `agents/`.
 |---|---|
 | [docs/workspace-setup.md](docs/workspace-setup.md) | How the single-mount + per-task-clone wiring works, and a meta-prompt to replicate it elsewhere. |
 | [docs/security-strategy.md](docs/security-strategy.md) | The autonomy/security posture: defense-in-depth layers, the read-only-credential golden rule, and the harness `allow`/`ask` gating model. Read before widening any permission. |
-| [tasks/create_task.sh](tasks/create_task.sh) · [tasks/delete_task.sh](tasks/delete_task.sh) | Create/remove a per-task clone of this repo under `<parent>/tasks/`, one devcontainer per task branch. Edit the `config` block if you rename the repo or its workspace file. |
+| [tasks/create_task.sh](tasks/create_task.sh) · [tasks/delete_task.sh](tasks/delete_task.sh) | Create/remove a per-task clone of this repo under the sibling `<repo>-tasks/` folder, one devcontainer per task branch. Edit the `config` block if you rename the repo or its workspace file. |
 | [linter-configs/](linter-configs/) | One config per linter, referenced from the tool skills via the `LINT_CONFIGS` env var (set in the Dockerfile). The indirection keeps skills transferable across projects. Index: [linter-configs/README.md](linter-configs/README.md). |
 
 ## Why these are here and not at the repo root

@@ -9,9 +9,9 @@ This is a monorepo, so the devcontainer needs exactly one bind mount: the opened
 
 ```text
 <host-parent>/
-├── claude-agents-factory/     # the main checkout — mounted at /workspaces/claude-agents-factory
-└── tasks/
-    └── <task-dir>/            # a per-task clone, same mount target, its own container
+├── claude-agents-factory/         # the main checkout — mounted at /workspaces/claude-agents-factory
+└── claude-agents-factory-tasks/
+    └── <task-dir>/                # a per-task clone, same mount target, its own container
 ```
 
 `${localWorkspaceFolder}` in [devcontainer.json](../../.devcontainer/devcontainer.json) substitutes
@@ -58,11 +58,12 @@ One container per task branch, each a full clone:
 
 ```bash
 .agentic/tasks/create_task.sh feat/my-task     # from the MAIN checkout
-.agentic/tasks/delete_task.sh <task-dir>       # -f to override the dirty-work guard
+.agentic/tasks/delete_task.sh feat/my-task     # -f overrides the dirty-work guard, -b deletes the remote branch
 ```
 
 `create_task.sh` clones **fresh from the remote** (the URL comes from the main checkout's `origin`;
-the local checkout may be behind and is never the clone source), branches from `origin/main`, and
+the local checkout may be behind and is never the clone source), rewrites the clone's `origin` to
+HTTPS so pushes from the container go through `gh`, branches from `origin/main`, and
 opens VS Code on a `vscode-remote://dev-container+<hex>/...` URI so the container is built and
 attached automatically. `delete_task.sh` refuses to remove a dir with uncommitted or unpushed work
 unless forced.

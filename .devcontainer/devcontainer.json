@@ -67,7 +67,7 @@
     "POWERLEVEL9K_DISABLE_GITSTATUS": "true"
   },
   // ${localWorkspaceFolder} substitutes to whichever checkout is opened — the main one or a task clone
-  // under <parent>/tasks/ — so one config serves every task container.
+  // under claude-agents-factory-tasks/ — so one config serves every task container.
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/claude-agents-factory,type=bind,consistency=delegated",
   "workspaceFolder": "/workspaces/claude-agents-factory",
   "postStartCommand": "sudo /usr/local/bin/init-firewall.sh",
