@@ -1,21 +1,20 @@
 #!/usr/bin/env bash
 # Remove a task dir created by create_task.sh.
 #
-# Refuses to delete while the task clone — or any product-repo clone under its
-# has uncommitted changes or unpushed commits; -f overrides.
-# Local branches need no bookkeeping (they die with the clone); -b also deletes
-# the task branch on each repo's remote.
+# Refuses to delete while the task clone has uncommitted changes or unpushed
+# commits; -f overrides. Local branches die with the clone; -b also deletes the
+# task branch on origin.
 #
 #   $0 <branch>         remove the task dir (safety checks on)
 #   $0 <branch> -f      remove even with uncommitted/unpushed work
-#   $0 <branch> -b      also delete the remote branch in every repo of the task dir
+#   $0 <branch> -b      also delete the remote branch on origin
 #
 # Example: .agentic/tasks/delete_task.sh feat/foo-bar
 
 set -euo pipefail
 
-# --- TEMPLATE config -------------------------------------------------------
-# The agentic repo's default branch — never a valid target for -b.
+# --- config ----------------------------------------------------------------
+# This repo's default branch — never a valid target for -b.
 BASE_BRANCH="main"
 # ---------------------------------------------------------------------------
 
@@ -48,7 +47,7 @@ done
 if [[ -z "$BRANCH" ]]; then
   echo "Usage: $0 <branch> [-f] [-b]" >&2
   echo "  -f  delete even with uncommitted changes / unpushed commits" >&2
-  echo "  -b  also delete the remote branch in every repo of the task dir" >&2
+  echo "  -b  also delete the remote branch on origin" >&2
   exit 1
 fi
 
@@ -56,10 +55,9 @@ fi
 TASK_DIR_NAME="${BRANCH//\//-}"
 
 # Self-locate: this script lives at <main>/.agentic/tasks/, so the main checkout
-# is two levels up and the task dirs sit beside it.
+# is two levels up and the task dirs sit in its <main>-tasks/ sibling.
 MAIN_DIR="$(cd "$(dirname "$0")/../.." && pwd)"
-ROOT="$(dirname "$MAIN_DIR")"
-TASK_DIR="$ROOT/tasks/$TASK_DIR_NAME"
+TASK_DIR="${MAIN_DIR}-tasks/$TASK_DIR_NAME"
 
 if [[ ! -d "$TASK_DIR" ]]; then
   echo "ERROR: $TASK_DIR does not exist" >&2
@@ -107,10 +105,9 @@ if ((DELETE_REMOTE_BRANCH)); then
     echo "ERROR: refusing -b for base branch '$BRANCH'" >&2
     exit 1
   fi
-  for repo in "${REPOS[@]}"; do
-    echo "==> Deleting remote branch $BRANCH in ${repo#"$ROOT"/}"
-    git -C "$repo" push origin --delete "$BRANCH" || echo "(no remote branch $BRANCH — skipped)"
-  done
+  # Via the main checkout: this runs on the host, where its origin's credentials work.
+  echo "==> Deleting remote branch $BRANCH on origin"
+  git -C "$MAIN_DIR" push origin --delete "$BRANCH" || echo "(no remote branch $BRANCH — skipped)"
 fi
 
 echo "==> Removing $TASK_DIR"

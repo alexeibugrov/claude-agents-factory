@@ -3,7 +3,8 @@
 #
 # The task dir IS a plain clone (self-contained .git — no worktree pointers,
 # no extra bind mounts):
-#   <parent>/tasks/<dir>    branch <branch> from origin/<BASE_BRANCH>
+#   <main>-tasks/<dir>    branch <branch> from origin/<BASE_BRANCH>
+#   e.g. ~/Documents/projects/claude-agents-factory-tasks/feat-foo-bar
 #
 # This is a monorepo, so the clone carries everything the task needs — the agents,
 # the knowledge base, and the harness config. Nothing else is provisioned.
@@ -41,20 +42,19 @@ if [[ "$BRANCH" == "$BASE_BRANCH" ]]; then
 fi
 
 # Flatten slashes in the directory name (feat/test2 → feat-test2) while keeping
-# the original form for the branch name. Avoids nested tasks/feat/test2/ trees.
+# the original form for the branch name. Avoids nested feat/test2/ trees.
 TASK_DIR_NAME="${BRANCH//\//-}"
 
 # Self-locate: this script lives at <main>/.agentic/tasks/, so the checkout
 # containing it — the clone source — is two levels up.
 MAIN_DIR="$(cd "$(dirname "$0")/../.." && pwd)"
-ROOT="$(dirname "$MAIN_DIR")"
 
-if [[ "$(basename "$ROOT")" == "tasks" ]]; then
+if [[ "$(dirname "$MAIN_DIR")" == *-tasks ]]; then
   echo "ERROR: running from a task clone ($MAIN_DIR). Run from the main checkout." >&2
   exit 1
 fi
 
-TASK_DIR="$ROOT/tasks/$TASK_DIR_NAME"
+TASK_DIR="${MAIN_DIR}-tasks/$TASK_DIR_NAME"
 
 if [[ -e "$TASK_DIR" ]]; then
   echo "ERROR: $TASK_DIR already exists" >&2
@@ -66,7 +66,12 @@ fi
 ORIGIN_URL="$(git -C "$MAIN_DIR" remote get-url origin)"
 
 echo "==> Cloning $ORIGIN_URL -> $TASK_DIR"
+mkdir -p "$(dirname "$TASK_DIR")"
 git clone "$ORIGIN_URL" "$TASK_DIR"
+
+# The container pushes over HTTPS via gh's credential helper; it has no GitHub SSH key.
+HTTPS_URL="$(sed -E 's#^(ssh://)?git@github\.com[:/]#https://github.com/#' <<<"$ORIGIN_URL")"
+git -C "$TASK_DIR" remote set-url origin "$HTTPS_URL"
 
 echo "==> Branching $BRANCH from origin/$BASE_BRANCH"
 git -C "$TASK_DIR" checkout -b "$BRANCH" "origin/$BASE_BRANCH"
