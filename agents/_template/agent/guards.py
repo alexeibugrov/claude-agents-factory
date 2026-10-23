@@ -14,7 +14,7 @@ from __future__ import annotations
 
 import logging
 
-from claude_agent_sdk import HookMatcher
+from claude_agent_sdk import HookJSONOutput, HookMatcher
 
 logger = logging.getLogger(__name__)
 
@@ -31,7 +31,7 @@ _DENY_REASON = (
 def build_write_gate(*, allow_writes: bool) -> HookMatcher:
     """A ``PreToolUse`` matcher that denies write tools unless ``allow_writes`` (else a no-op)."""
 
-    async def gate(input_data, tool_use_id, context):  # HookCallback signature
+    async def gate(input_data, tool_use_id, context) -> HookJSONOutput:  # HookCallback signature
         if allow_writes:
             return {}
         tool_name = (input_data.get("tool_name") or "") if isinstance(input_data, dict) else ""

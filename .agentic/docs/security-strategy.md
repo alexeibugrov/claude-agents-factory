@@ -42,6 +42,13 @@ Four concentric layers. Each contains the blast radius of the one inside it.
 
 The agent runs inside the devcontainer, so host-OS damage is contained. **Caveat — the container is not a full blast-radius boundary:** the opened checkout is bind-mounted **read-write**, so `rm -rf /workspaces/claude-agents-factory` deletes *host* files (including any unpushed work), and the firewall still permits Git/registry egress. So the container protects the host *beyond the mounts* — it does **not** by itself protect the mounted repos or any remote state. Those need the credential layer. (`bypassPermissions` mode keeps a hardcoded circuit-breaker for `rm -rf /` and `~`; OS-level [sandboxing](https://code.claude.com/docs/en/sandboxing) is available if we ever want true in-container filesystem/network enforcement.)
 
+**Docker-in-Docker (since 2026-10-23).** The devcontainer runs `--privileged` with its own dockerd, so agents can be built and composed locally. Two consequences:
+
+- Containers started there stay behind the egress allowlist. `init-firewall.sh` applies the same ipset in Docker's `DOCKER-USER` chain and fails container start if dockerd removes it.
+- `node` is in the `docker` group, which is root inside the devcontainer. A `--privileged` or `--network host` container could rewrite the firewall, and a privileged devcontainer is a weaker wall around the host VM.
+
+The gate for both is `Bash(docker:*)` in `ask`: every docker command is a human prompt. Keep it there. Don't move docker commands to `allow`.
+
 ### Egress firewall
 
 `init-firewall.sh` runs at container start and sets **default-deny egress**, then allowlists only: GitHub API/Git ranges (`api.github.com/meta`), npm, PyPI, GHCR, `api.anthropic.com`, Sentry, VSCode/Azure-blob (incl. the `productionresultssa<N>.blob.core.windows.net` hosts that serve `gh` Actions logs), `semgrep.dev`, the runtime VM, Telegram's data-centre CIDRs, and any static IPs you add. Effect: the agent **physically cannot reach** an un-allowlisted host. New external systems require an explicit allowlist edit — that is the gate working as designed, not a bug. The `gh`-Actions-logs-over-Azure-blob caveat (those `productionresultssa<N>` hosts must be reachable or log fetches return empty *silently*) is the canonical example of why this layer needs deliberate widening rather than silent failure.

@@ -2,6 +2,14 @@
 set -euo pipefail  # Exit on error, undefined vars, and pipeline failures
 IFS=$'\n\t'       # Stricter word splitting
 
+# 0. Stop the inner dockerd (Docker-in-Docker) if it runs: the flush below wipes its iptables
+# chains, so it is restarted at the end of this script, after the rules are in place.
+if pgrep -x dockerd >/dev/null; then
+    echo "Stopping inner dockerd..."
+    pkill -x dockerd
+    for _ in $(seq 1 30); do pgrep -x dockerd >/dev/null || break; sleep 1; done
+fi
+
 # 1. Extract Docker DNS info BEFORE any flushing
 DOCKER_DNS_RULES=$(iptables-save -t nat | grep "127\.0\.0\.11" || true)
 
@@ -68,6 +76,11 @@ done < <(echo "$gh_ranges" | jq -r '(.web + .api + .git)[]' | aggregate -q)
 #   pypi.org / files.pythonhosted.org  — uv resolving each agent's dependencies (claude-agent-sdk & co).
 #   ghcr.io / *.githubusercontent.com  — GHCR image pulls and the trivy vulnerability DB.
 #   semgrep.dev                        — the semgrep rule registry.
+#   apify.com / api.apify.com          — the upwork agent's Apify scraper (actor docs + run/dataset API).
+#   registry-1.docker.io / auth.docker.io / production.cloudflare.docker.com /
+#   production.cloudfront.docker.com   — Docker Hub pulls for the inner dockerd (agent base images);
+#                                        layer blobs redirect to either CDN.
+#   deb.debian.org                     — apt-get inside agent image builds.
 #
 # Every entry here is REQUIRED: an unresolvable name aborts container startup by design, so a typo
 # or a dead host fails loudly instead of silently losing egress. That also means a host must not be
@@ -86,7 +99,14 @@ for domain in \
     "files.pythonhosted.org" \
     "ghcr.io" \
     "pkg-containers.githubusercontent.com" \
-    "semgrep.dev"; do
+    "semgrep.dev" \
+    "apify.com" \
+    "api.apify.com" \
+    "registry-1.docker.io" \
+    "auth.docker.io" \
+    "production.cloudflare.docker.com" \
+    "production.cloudfront.docker.com" \
+    "deb.debian.org"; do
     echo "Resolving $domain..."
     ips=$(dig +noall +answer A "$domain" | awk '$4 == "A" {print $5}')
     if [ -z "$ips" ]; then
@@ -182,6 +202,16 @@ iptables -A OUTPUT -m set --match-set allowed-domains dst -j ACCEPT
 # Explicitly REJECT all other outbound traffic for immediate feedback
 iptables -A OUTPUT -j REJECT --reject-with icmp-admin-prohibited
 
+# Inner containers are FORWARDed, not OUTPUT: repeat the allowlist in DOCKER-USER (Docker never rewrites it).
+EXT_IF=$(ip route | awk '/^default/ {print $5; exit}')
+iptables -N DOCKER-USER
+iptables -A DOCKER-USER ! -o "$EXT_IF" -j RETURN
+iptables -A DOCKER-USER -m state --state ESTABLISHED,RELATED -j RETURN
+iptables -A DOCKER-USER -p udp --dport 53 -j RETURN
+iptables -A DOCKER-USER -d "$HOST_NETWORK" -j RETURN
+iptables -A DOCKER-USER -m set --match-set allowed-domains dst -j RETURN
+iptables -A DOCKER-USER -j REJECT --reject-with icmp-admin-prohibited
+
 echo "Firewall configuration complete"
 echo "Verifying firewall rules..."
 if curl --connect-timeout 5 https://example.com >/dev/null 2>&1; then
@@ -197,4 +227,31 @@ if ! curl --connect-timeout 5 https://api.github.com/zen >/dev/null 2>&1; then
     exit 1
 else
     echo "Firewall verification passed - able to reach https://api.github.com as expected"
+fi
+
+# Start the inner dockerd now that the rules exist. A failure is reported but does not abort
+# container start: everything except `docker` still works.
+if command -v dockerd >/dev/null; then
+    # cgroup v2 nesting as in docker:dind: free the root cgroup, or `docker run` fails in "threaded mode".
+    if [ -f /sys/fs/cgroup/cgroup.controllers ]; then
+        mkdir -p /sys/fs/cgroup/init
+        while read -r pid; do
+            echo "$pid" >/sys/fs/cgroup/init/cgroup.procs 2>/dev/null || true
+        done </sys/fs/cgroup/cgroup.procs
+        # A docker cgroup left threaded by an earlier dockerd cannot be converted back; drop it.
+        rmdir /sys/fs/cgroup/docker 2>/dev/null || true
+        sed -e 's/ / +/g' -e 's/^/+/' /sys/fs/cgroup/cgroup.controllers >/sys/fs/cgroup/cgroup.subtree_control ||
+            echo "WARNING: could not enable cgroup controllers; docker run may fail"
+    fi
+    echo "Starting inner dockerd..."
+    setsid nohup dockerd >/var/log/dockerd.log 2>&1 < /dev/null &
+    for _ in $(seq 1 30); do docker info >/dev/null 2>&1 && break; sleep 1; done
+    if ! docker info >/dev/null 2>&1; then
+        echo "WARNING: inner dockerd did not start; see /var/log/dockerd.log"
+    elif ! iptables -C DOCKER-USER -j REJECT --reject-with icmp-admin-prohibited 2>/dev/null; then
+        echo "ERROR: dockerd removed the DOCKER-USER egress filter"
+        exit 1
+    else
+        echo "Inner dockerd running; its containers are behind the same allowlist"
+    fi
 fi

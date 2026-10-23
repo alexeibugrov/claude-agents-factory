@@ -1,0 +1,6 @@
+scripts/out/
+# Local run (deploy/docker-compose.local.yaml): its config copy and bind-mounted state.
+deploy/agent_config.local.yaml
+deploy/claude-config/
+deploy/telegram-session/
+deploy/backups/

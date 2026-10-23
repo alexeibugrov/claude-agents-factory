@@ -1,0 +1,12 @@
+# Keep the image to what it runs. Never ship a Telegram session or a local env file.
+.venv/
+**/__pycache__/
+.pytest_cache/
+.ruff_cache/
+tests/
+scripts/
+evals/
+deploy/
+telegram-session/
+*.session
+.env*

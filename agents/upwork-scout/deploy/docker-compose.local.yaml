@@ -1,0 +1,32 @@
+# Local run in the devcontainer, layered over docker-compose.yaml. Why each difference: README § Develop.
+services:
+  agent:
+    image: upwork-scout:local
+    build: ..
+    user: "1000:1000"
+    logging: !reset {}
+    mem_limit: !reset null
+    environment:
+      # /home/appuser belongs to the image's uid 10001; the devcontainer user needs its own HOME.
+      - HOME=/claude-home
+      - APIFY_STATE_SUFFIX=local
+      - DATABASE_URL=postgresql://upwork_scout@db:5432/upwork_scout
+    volumes: !override
+      - ./agent_config.local.yaml:/app/agent_config.yaml:ro
+      - ../prompts:/app/prompts:ro
+      - ./claude-config:/claude-home/.claude
+      - ./telegram-session:/app/telegram-session
+
+  db:
+    logging: !reset {}
+    mem_limit: !reset null
+    env_file: !reset []
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+
+  backup:
+    profiles: ["backup"]
+
+volumes:
+  pgdata:
+    name: upwork-scout-local-pgdata

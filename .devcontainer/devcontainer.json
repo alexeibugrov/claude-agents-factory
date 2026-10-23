@@ -12,9 +12,10 @@
       "TELEGRAM_MCP_VERSION": "3.1.13"
     }
   },
+  // --privileged for the inner dockerd (Docker-in-Docker); it also covers NET_ADMIN/NET_RAW for
+  // the firewall. See .agentic/docs/security-strategy.md for what that changes.
   "runArgs": [
-    "--cap-add=NET_ADMIN",
-    "--cap-add=NET_RAW"
+    "--privileged"
   ],
   "customizations": {
     "vscode": {
@@ -46,6 +47,9 @@
   "mounts": [
     // Per-task bash history (keyed per opened checkout, so each task container gets its own).
     "source=claude-code-bashhistory-${devcontainerId},target=/commandhistory,type=volume",
+    // Inner dockerd's storage, per task container: overlay-on-overlay does not work, and the volume
+    // keeps images and build cache across rebuilds.
+    "source=claude-agents-factory-docker-${devcontainerId},target=/var/lib/docker,type=volume",
     // gh auth state — FIXED-name volume so one `gh auth login` persists across rebuilds AND task containers.
     "source=claude-agents-factory-gh-config,target=/home/node/.config/gh,type=volume",
     // Claude config/history on the host, shared across task containers. Deliberately factory-specific

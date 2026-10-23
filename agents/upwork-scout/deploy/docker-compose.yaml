@@ -1,0 +1,112 @@
+# upwork-scout stack on the VM, shipped by CI. NEVER `docker compose down -v`: pgdata is the corpus.
+services:
+  agent:
+    image: ghcr.io/alexeibugrov/upwork-scout:${IMAGE_TAG:-latest}
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    # Let an in-flight cycle finish (a scrape plus a few agent runs) before SIGKILL.
+    stop_grace_period: 5m
+    # journald, not the default json-file driver: json-file logs live in the container's writable
+    # layer and are destroyed by the `docker rm` that every redeploy performs. The agent's decision
+    # trace is the main debugging artefact, so it goes to the host journal, where it survives both
+    # a recreate and a reboot. Requires persistent journald on the VM (/var/log/journal must exist,
+    # the Ubuntu default) — Docker refuses to start the container otherwise, with no fallback.
+    # Read it with: journalctl CONTAINER_TAG=upwork-scout --since '1 hour ago'
+    logging:
+      driver: journald
+      options:
+        tag: upwork-scout
+    # Operator-provisioned on the VM, gitignored, never read by Claude. See upwork-scout.env.template.
+    env_file:
+      - ./.env.upwork-scout
+    environment:
+      - PYTHONUNBUFFERED=1
+      - HOME=/home/appuser
+    # This container holds credentials and talks to the internet, so it runs with the tightest
+    # posture the workload allows.
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    mem_limit: 1g
+    volumes:
+      # Shipped by CI on every deploy (not baked into the image); the agent loads this path.
+      - ./agent_config.yaml:/app/agent_config.yaml:ro
+      # Role prompts the config points to (system_prompt_file), shipped by CI the same way.
+      - ./prompts:/app/prompts:ro
+      # Writable HOME for the bundled claude CLI's session/cache scratch. Auth comes from the
+      # env_file, so nothing sensitive is pre-seeded here.
+      - ./claude-config:/home/appuser/.claude
+      # Telethon session (full account access). A directory, so Docker never creates a dir at a file path.
+      - ./telegram-session:/app/telegram-session
+
+  db:
+    image: postgres:16.15
+    restart: unless-stopped
+    logging:
+      driver: journald
+      options:
+        tag: upwork-scout-db
+    # Only POSTGRES_PASSWORD; the db never sees the Claude, Apify or Telegram credentials.
+    env_file:
+      - ./.env.upwork-scout-db
+    environment:
+      - POSTGRES_USER=upwork_scout
+      - POSTGRES_DB=upwork_scout
+    command: ["postgres", "-c", "shared_buffers=128MB"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U upwork_scout -d upwork_scout"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 512m
+    # No published ports: reachable only by service name on the stack's network.
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backup:
+    image: postgres:16.15
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    logging:
+      driver: journald
+      options:
+        tag: upwork-scout-backup
+    env_file:
+      - ./.env.upwork-scout-db
+    environment:
+      - PGHOST=db
+      - PGUSER=upwork_scout
+      - PGDATABASE=upwork_scout
+      - RETENTION_DAYS=14
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 256m
+    # Nightly dump into ./backups, 14-day retention; deployed by CI, so there is no host cron.
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        export PGPASSWORD="$$POSTGRES_PASSWORD"
+        while true; do
+          f="/backups/upwork_scout-$$(date -u +%Y%m%dT%H%M%SZ).dump"
+          if pg_dump -Fc -f "$$f.tmp" && mv "$$f.tmp" "$$f"; then
+            echo "backup ok: $$f ($$(du -h "$$f" | cut -f1))"
+          else
+            echo "AGENT ALERT backup failed"; rm -f "$$f.tmp"
+          fi
+          find /backups -name 'upwork_scout-*.dump' -mtime +$$RETENTION_DAYS -delete
+          sleep 86400
+        done
+    volumes:
+      - ./backups:/backups
+
+volumes:
+  pgdata:
+    # Explicit name: survives a compose project rename. `docker image prune` never touches volumes.
+    name: upwork-scout-pgdata

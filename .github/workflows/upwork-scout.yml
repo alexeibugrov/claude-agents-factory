@@ -1,0 +1,39 @@
+# CI caller for agents/upwork-scout. Callers exist only to say WHICH agent and WHEN — all
+# build/deploy logic is in the shared reusable workflow, so a pipeline fix reaches every agent at once.
+name: upwork-scout
+
+on:
+  push:
+    branches:
+      - main
+      # TEMPORARY: first-deploy test from the PR branch. Remove before merge.
+      - feat/upwork-agent
+    tags:
+      - 'v*'
+    # Path-filtered to this agent's own inputs, so an unrelated agent's change never rebuilds it.
+    paths:
+      - 'agents/upwork-scout/**'
+      - '.github/workflows/upwork-scout.yml'
+      - '.github/workflows/agent-deploy.reusable.yml'
+  # Redeploy without a commit, e.g. after the operator prepares the VM. Dispatchable only once
+  # this file is on main.
+  workflow_dispatch:
+
+# Serialize per ref so a queued run never interrupts an in-flight deploy.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+# The caller sets the GITHUB_TOKEN ceiling for the reusable workflow: its build job needs
+# packages: write (the repo default is read-only), or the nested job is rejected at validation.
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  deploy:
+    uses: ./.github/workflows/agent-deploy.reusable.yml
+    with:
+      agent: upwork-scout
+    secrets:
+      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}

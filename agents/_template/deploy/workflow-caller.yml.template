@@ -31,4 +31,5 @@ jobs:
     uses: ./.github/workflows/agent-deploy.reusable.yml
     with:
       agent: AGENT_NAME
-    secrets: inherit
+    secrets:
+      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}

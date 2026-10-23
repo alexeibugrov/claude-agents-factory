@@ -1,0 +1,118 @@
+# upwork-scout config — COMMITTED and SECRET-FREE (gitleaks-gated).
+#
+# Not baked into the image: CI ships this file and prompts/ on every deploy, so a config change
+# needs no rebuild and a hand-edit on the VM is overwritten by the next deploy.
+#
+# Secrets never appear here. They reach the container as environment variables from the
+# gitignored `.env.upwork-scout` file — see upwork-scout.env.template.
+
+agent:
+  allow_writes: false   # gates every Telegram post and reply (agent/guards.py); flip only after observing
+
+# Agent 1: decides whether a new job is worth applying to. PARKED while
+# settings.pipeline.screening_enabled is false: every prefiltered job is offered instead.
+screener:
+  model: claude-sonnet-5
+  fallback_model: null
+  max_turns: 4          # one submit call; the slack absorbs a rejected argument and a retry
+  max_budget_usd: null
+  system_prompt_file: prompts/screener.txt   # own file for a readable git history
+
+# Agent 2: drafts the proposal for an offer someone replied to with a trigger word.
+writer:
+  model: claude-opus-5-5
+  fallback_model: claude-sonnet-5-5
+  effort: medium        # low | medium | high | xhigh | max; max measured ~10 min per proposal
+  timeout_s: 1200       # a run past this fails and is retried (max_attempts)
+  max_turns: 4
+  max_budget_usd: null
+  system_prompt_file: prompts/writer.txt   # own file for a readable git history
+
+# Agent-specific knobs, available as typed config (agent/config.py). Anything secret belongs in .env.
+settings:
+  schedule:
+    interval_minutes: 30
+
+  apify:
+    actor_id: FlbDgNCfA8bOdFQWT        # blackfalcondata/upwork-scraper
+    timeout_secs: 600
+    memory_mbytes: 1024                # actor start is charged per GB; keep <= 1 GB
+    max_charge_per_run_usd: 0.05       # Apify-enforced hard cap per run
+    # Merged under every search's run_input. maxResults may never exceed 10 (validated).
+    defaults_input:
+      sort: recency
+      maxResults: 10
+      maxAgeMinutes: 120               # recovery margin for ~3 missed cycles; see README
+      incrementalMode: true            # cost lever only; dedup is the DB's jobId constraint
+      descriptionMaxLength: 0          # full descriptions
+      descriptionFormat: all
+      compact: false
+      excludeEmptyFields: false
+      skipReposts: false               # reposts are stored; whether they are screened is ours
+      enrichDetails: false
+      includeRunMetadata: true
+      emitUnchanged: false
+      emitExpired: false
+      proxyConfiguration:
+        useApifyProxy: true
+    # Renaming a search resets its incremental state (stateKey = upwork-scout-<name>). Query rules: README.
+    searches:
+      - name: ai-agents-automation
+        run_input:
+          searchUrl: >-
+            https://www.upwork.com/nx/search/jobs/?q=%22ai%20agent%22%20OR%20%22ai%20agents%22%20OR%20%22agentic%20ai%22%20OR%20%22agentic%20workflow%22%20OR%20%22agentic%20workflows%22%20OR%20%22agentic%20system%22%20OR%20%22agentic%20systems%22%20OR%20%22agentic%20automation%22%20OR%20%22multi-agent%22%20OR%20%22multi%20agent%22%20OR%20%22autonomous%20agent%22%20OR%20%22autonomous%20agents%22%20OR%20%22agent%20sdk%22%20OR%20%22agents%20sdk%22%20OR%20%22crewai%22%20OR%20%22autogen%22%20OR%20%22langgraph%22%20OR%20%22langchain%22%20OR%20%22model%20context%20protocol%22%20OR%20%22voice%20agent%22%20OR%20%22voice%20agents%22%20OR%20%22agent%20development%22%20OR%20%22agent%20developer%22%20OR%20%22ai%20automation%22%20OR%20%22ai%20automations%22%20OR%20%22ai%20developer%22%20OR%20%22ai%20developers%22%20OR%20%22workflow%20automation%22%20OR%20%22workflow%20automations%22%20OR%20%22n8n%22%20OR%20%22openai%20api%22%20OR%20%22codex%22&t=0,1&amount=1000-&sort=recency
+      - name: ai-llm-claude
+        run_input:
+          searchUrl: >-
+            https://www.upwork.com/nx/search/jobs/?q=%22claude%20code%22%20OR%20%22claude%20api%22%20OR%20%22claude%20expert%22%20OR%20%22claude%20developer%22%20OR%20%22claude%20agent%22%20OR%20%22claude%20agents%22%20OR%20%22claude-based%22%20OR%20%22anthropic%22%20OR%20%22llm%22%20OR%20%22llms%22%20OR%20%22large%20language%20model%22%20OR%20%22large%20language%20models%22%20OR%20%22rag%22%20OR%20%22retrieval%20augmented%22%20OR%20%22retrieval-augmented%22%20OR%20%22vector%20database%22%20OR%20%22ai%20engineer%22%20OR%20%22ai%20engineering%22%20OR%20%22ai%20architect%22%20OR%20%22ai%20integration%22%20OR%20%22ai%20implementation%22%20OR%20%22ai%20adoption%22%20OR%20%22ai%20transformation%22%20OR%20%22forward%20deployed%22%20OR%20%22ai%20coding%22%20OR%20%22ai-assisted%20development%22%20OR%20%22bedrock%22%20OR%20%22azure%20openai%22%20OR%20%22vertex%20ai%22%20OR%20%22llm%20evaluation%22%20OR%20%22prompt%20injection%22%20OR%20%22fractional%20cto%22%20OR%20%22technical%20advisor%22%20OR%20%22architecture%20review%22%20OR%20%22production%20readiness%22&t=0,1&amount=1000-&sort=recency
+      - name: devops-cloud
+        run_input:
+          searchUrl: >-
+            https://www.upwork.com/nx/search/jobs/?q=%22devops%22%20OR%20%22site%20reliability%22%20OR%20%22platform%20engineer%22%20OR%20%22platform%20engineering%22%20OR%20%22kubernetes%22%20OR%20%22terraform%22%20OR%20%22infrastructure%20as%20code%22%20OR%20%22pulumi%22%20OR%20%22github%20actions%22%20OR%20%22gitlab%20ci%22%20OR%20%22cloud%20architect%22%20OR%20%22cloud%20engineer%22%20OR%20%22solutions%20architect%22%20OR%20%22cloud%20infrastructure%22%20OR%20%22devsecops%22%20OR%20%22mlops%22%20OR%20%22llmops%22%20OR%20%22ai%20infrastructure%22%20OR%20%22finops%22%20OR%20%22cloud%20migration%22%20OR%20%22aws%22%20OR%20%22azure%22%20OR%20%22gcp%22%20OR%20%22google%20cloud%22%20OR%20%22docker%22&t=0,1&amount=1000-&sort=recency
+
+  pipeline:
+    screening_enabled: false           # off: offer every job past the prefilters; on: only suitable ones
+    max_screen_per_cycle: 10
+    max_offers_per_cycle: 50           # one Telegram message each; the rest wait for the next cycle
+    max_draft_per_cycle: 5             # per poll: proposals written on request
+    max_attempts: 3
+    max_age_hours_to_screen: 6         # in-code backstop for a flood after state loss
+    skip_known_reposts: true
+
+  # Code prefilters on structured fields, applied before the screener. null = rule off.
+  # Ship permissive; harden from real data with a config-only redeploy.
+  prefilter:
+    require_payment_verified: null
+    min_client_total_spent: null
+    min_client_rating: null
+    min_client_review_count: null
+    max_total_applicants: null
+    job_types: null                    # e.g. [HOURLY, FIXED]
+    min_hourly_rate: 70                # drops hourly ranges topping out below $70; no-rate hourly passes
+    min_fixed_budget: 1000             # backstop; the URLs already carry amount=1000-
+    exclude_client_country_codes: null  # e.g. [IND, PAK]
+    # Europe, Northern America, Western Asia (Middle East), Australia and New Zealand: UN M49, ISO3.
+    # Matched on the actor's clientCountryCode; a job with no code passes.
+    include_client_country_codes: [
+      ALA, ALB, AND, AUT, BEL, BGR, BIH, BLR, CHE, CZE, DEU, DNK, ESP, EST, FIN, FRA, FRO, GBR, GGY, GIB,
+      GRC, HRV, HUN, IMN, IRL, ISL, ITA, JEY, LIE, LTU, LUX, LVA, MCO, MDA, MKD, MLT, MNE, NLD, NOR, POL,
+      PRT, ROU, RUS, SJM, SMR, SRB, SVK, SVN, SWE, UKR, VAT, XKX,
+      BMU, CAN, GRL, SPM, USA,
+      ARE, ARM, AZE, BHR, CYP, GEO, IRQ, ISR, JOR, KWT, LBN, OMN, PSE, QAT, SAU, SYR, TUR, YEM,
+      AUS, NZL, NFK]
+
+  telegram:
+    # The private group: the agent account (its own Telethon session) posts one message per offer;
+    # any member replying to an offer with a trigger gets a proposal back as a reply.
+    chat_id: null                      # TODO(operator): group id (-100… for a supergroup); required when allow_writes
+    topic_id: null                     # optional forum topic (sent as reply_to)
+    session_path: /app/telegram-session/upwork_scout
+    send_interval_s: 1.0
+    triggers: ["+", "go"]              # whole word or sign in the reply, case-insensitive
+    poll_interval_s: 60                # safety net only: a reply event wakes the poll at once
+
+  db:
+    host: db
+    port: 5432
+    name: upwork_scout
+    user: upwork_scout

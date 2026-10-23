@@ -74,7 +74,24 @@ RUN apt-get update && apt-get upgrade -y --no-install-recommends && apt-get inst
   python3 \
   python3-pip \
   xz-utils \
+  postgresql \
+  postgresql-client \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Docker-in-Docker; dockerd is started by init-firewall.sh after the rules (the flush wipes its chains).
+ARG DOCKER_MAJOR=29
+RUN install -m 0755 -d /etc/apt/keyrings && \
+  curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc && \
+  echo "deb [arch=${TARGETARCH} signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian bookworm stable" \
+    > /etc/apt/sources.list.d/docker.list && \
+  apt-get update && apt-get install -y --no-install-recommends \
+    "docker-ce=5:${DOCKER_MAJOR}.*" \
+    "docker-ce-cli=5:${DOCKER_MAJOR}.*" \
+    containerd.io \
+    docker-buildx-plugin \
+    docker-compose-plugin \
+  && apt-get clean && rm -rf /var/lib/apt/lists/* && \
+  usermod -aG docker node
 
 # Ensure default node user has access to /usr/local/share
 RUN mkdir -p /usr/local/share/npm-global && \
