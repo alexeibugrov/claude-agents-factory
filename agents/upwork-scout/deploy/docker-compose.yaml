@@ -23,6 +23,7 @@ services:
       - ./.env.upwork-scout
     environment:
       - PYTHONUNBUFFERED=1
+      - TZ=Europe/Berlin   # log lines and times in Telegram offers; the DB stays UTC
       - HOME=/home/appuser
     # This container holds credentials and talks to the internet, so it runs with the tightest
     # posture the workload allows.

@@ -2,6 +2,8 @@
 
 import json
 import logging
+import time
+from datetime import datetime, timezone
 from decimal import Decimal
 from pathlib import Path
 
@@ -92,6 +94,17 @@ def test_writer_prompt_without_a_screening():
     prompt = render.writer_prompt(_job())
     assert "<job>" in prompt and "Screening verdict" not in prompt
     assert "score 70/100" in render.writer_prompt(_job(), {"score": 70, "reasons": "ok"})
+
+
+def test_times_render_in_the_container_zone_across_dst(monkeypatch):
+    monkeypatch.setenv("TZ", "Europe/Berlin")
+    time.tzset()
+    try:
+        assert render._when(datetime(2026, 10, 24, 7, 12, tzinfo=timezone.utc)) == "2026-10-24 09:12 CEST"
+        assert render._when(datetime(2026, 10, 26, 7, 12, tzinfo=timezone.utc)) == "2026-10-26 08:12 CET"
+    finally:
+        monkeypatch.undo()
+        time.tzset()
 
 
 def test_split_text_hard_cuts_unbroken_text():

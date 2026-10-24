@@ -248,7 +248,7 @@ pushes. Before the first merge, or after a branch deploy, prefix them with the d
 
 ```bash
 docker compose ps                                   # agent, db (healthy), backup
-journalctl CONTAINER_TAG=upwork-scout --since '1 hour ago' | grep -E 'cycle summary|AGENT ALERT'
+TZ=Europe/Berlin journalctl CONTAINER_TAG=upwork-scout --since '1 hour ago' | grep -E 'cycle summary|AGENT ALERT'   # TZ: the VM clock is UTC
 ```
 
 Restore: `docker compose exec -T db pg_restore -U upwork_scout -d <scratch_db> < backups/<file>.dump`.

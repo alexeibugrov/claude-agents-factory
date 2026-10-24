@@ -47,7 +47,7 @@ def client_line(job: dict[str, Any]) -> str:
 
 def _when(value: Any) -> str:
     if isinstance(value, datetime):
-        return value.strftime("%Y-%m-%d %H:%M UTC")
+        return value.astimezone().strftime("%Y-%m-%d %H:%M %Z")  # container TZ (compose)
     return str(value or "?")
 
 
