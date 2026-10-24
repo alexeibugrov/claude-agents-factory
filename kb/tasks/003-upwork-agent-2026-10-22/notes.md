@@ -200,3 +200,10 @@ error.
 Deferred doc update: `kb/conventions/agents.md` § Config and secrets says the prompt lives in
 `agent_config.yaml` only; sanction `system_prompt_file` + `prompts/` (shipped by the reusable's
 optional step) as the pattern.
+
+Go-live (2026-10-24): Telegram login on the VM (session chmod 600/700); `allow_writes: true` and
+`chat_id: -5363412068` committed; the 10 offers queued while writes were off were posted, by
+operator choice. Operator asked for CET: the agent runs with `TZ=Europe/Berlin` (DST-aware) for
+log lines and offer times; the DB and the VM clock stay UTC. The temporary branch trigger is
+removed; deploys happen only on merge to `main`. Manual `docker compose` on the VM needs
+`IMAGE_TAG=sha-<commit>` until a `main` build pushes `latest`.
