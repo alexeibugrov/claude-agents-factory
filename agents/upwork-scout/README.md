@@ -235,9 +235,14 @@ Before Telegram is switched on (after the first deploy has shipped the compose f
 
 ```bash
 docker compose run --rm -it agent python -m agent.telegram_login   # once, interactive, as the AGENT account
+chmod 700 telegram-session && chmod 600 telegram-session/*.session  # the session is full account access
 # add the agent account to the private group, put the group id in settings.telegram.chat_id,
 # then set agent.allow_writes: true and merge
 ```
+
+Manual `docker compose` commands on the VM default to the `latest` tag, which only a `main` build
+pushes. Before the first merge, or after a branch deploy, prefix them with the deployed tag:
+`IMAGE_TAG=sha-<commit> docker compose …` (`docker compose ps` shows it).
 
 **CI's post-deploy check passes if any container runs**, so after a deploy confirm all three:
 

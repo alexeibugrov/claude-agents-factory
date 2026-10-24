@@ -40,10 +40,6 @@ def test_loads_the_committed_config():
     assert all(int(s.run_input["maxResults"]) <= 10 for s in cfg.apify.searches)
 
 
-def test_committed_config_keeps_writes_off():
-    assert AgentConfig.load().allow_writes is False
-
-
 def test_missing_file_is_rejected(tmp_path):
     with pytest.raises(AgentConfigError, match="not found"):
         AgentConfig.load(tmp_path / "nope.yaml")

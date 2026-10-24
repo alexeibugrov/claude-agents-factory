@@ -7,7 +7,7 @@
 # gitignored `.env.upwork-scout` file — see upwork-scout.env.template.
 
 agent:
-  allow_writes: false   # gates every Telegram post and reply (agent/guards.py); flip only after observing
+  allow_writes: true    # gates every Telegram post and reply (agent/guards.py)
 
 # Agent 1: decides whether a new job is worth applying to. PARKED while
 # settings.pipeline.screening_enabled is false: every prefiltered job is offered instead.
@@ -104,7 +104,7 @@ settings:
   telegram:
     # The private group: the agent account (its own Telethon session) posts one message per offer;
     # any member replying to an offer with a trigger gets a proposal back as a reply.
-    chat_id: null                      # TODO(operator): group id (-100… for a supergroup); required when allow_writes
+    chat_id: -5363412068               # the "Upwork Scout" basic group; required when allow_writes
     topic_id: null                     # optional forum topic (sent as reply_to)
     session_path: /app/telegram-session/upwork_scout
     send_interval_s: 1.0
