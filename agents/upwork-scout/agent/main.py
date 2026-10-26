@@ -93,8 +93,8 @@ async def main(argv: list[str] | None = None) -> int:
     await store.reset_in_flight(conn)
     logger.info(
         "agent starting: screening=%s writer=%s searches=%s interval=%smin allow_writes=%s migrations_applied=%s",
-        cfg.screener.model if cfg.pipeline.screening_enabled else "off",
-        cfg.writer.model,
+        f"{cfg.screener.model} {cfg.screener.prompt_ref}" if cfg.pipeline.screening_enabled else "off",
+        f"{cfg.writer.model} {cfg.writer.prompt_ref}",
         [s.name for s in cfg.apify.searches],
         cfg.interval_minutes,
         cfg.allow_writes,

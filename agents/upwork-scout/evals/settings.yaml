@@ -1,0 +1,14 @@
+# Eval tooling settings — committed, secret-free. The writer under test is configured by
+# ../agent_config.yaml (model, effort, limits); only its prompt is varied by an eval run.
+
+provider:
+  concurrency: 2          # writer runs in parallel; each is a full SDK session on the subscription
+  timeout_ms: 1500000     # per case; above agent_config's writer.timeout_s (1200 s) on purpose
+
+# The prompt editor (`python -m evals propose`): a separate model that reads a reviewed batch and
+# proposes one candidate prompt. --model / --effort override these per call.
+editor:
+  model: claude-opus-5-5
+  effort: high            # low | medium | high | xhigh | max
+  max_turns: 6            # one submit; the slack absorbs a rejected submission and a retry
+  timeout_s: 1800

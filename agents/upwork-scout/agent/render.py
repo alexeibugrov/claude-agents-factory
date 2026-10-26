@@ -128,9 +128,6 @@ def offer_message(job: dict[str, Any]) -> str:
 
 
 def proposal_messages(job: dict[str, Any], proposal: dict[str, Any]) -> list[str]:
-    """Plain text, ready to copy: the vacancy link, then the proposal; operator notes go separately."""
+    """One plain-text message: the vacancy link, then the proposal; operator notes are stored, not sent."""
     text = f"{job.get('url') or ''}\n\n{proposal.get('proposal') or ''}".strip()
-    messages = split_text(text, TELEGRAM_LIMIT)
-    if proposal.get("notes_for_operator"):
-        messages += split_text(f"Check before sending: {proposal['notes_for_operator']}", TELEGRAM_LIMIT)
-    return messages
+    return split_text(text, TELEGRAM_LIMIT)

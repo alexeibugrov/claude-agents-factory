@@ -1,6 +1,7 @@
 """The config contract: it must fail loudly at startup rather than half-load."""
 
 import copy
+import re
 
 import pytest
 import yaml
@@ -60,13 +61,23 @@ def test_each_role_is_required(role):
 
 
 def test_prompt_file_is_relative_to_the_config(tmp_path):
-    (tmp_path / "prompts").mkdir()
-    (tmp_path / "prompts" / "writer.txt").write_text("Write well.\n")
+    (tmp_path / "prompts" / "writer").mkdir(parents=True)
+    (tmp_path / "prompts" / "writer" / "v3.md").write_text("Write well.\n")
     data = _cfg()
-    data["writer"] = {"model": "m", "system_prompt_file": "prompts/writer.txt"}
+    data["writer"] = {"model": "m", "system_prompt_file": "prompts/writer/v3.md"}
     path = tmp_path / "agent_config.yaml"
     path.write_text(yaml.safe_dump(data))
-    assert AgentConfig.load(path).writer.system_prompt == "Write well."
+    writer = AgentConfig.load(path).writer
+    assert writer.system_prompt == "Write well."
+    assert writer.prompt_ref == f"prompts/writer/v3.md@{writer.prompt_sha}"
+    assert AgentConfig.from_dict(_cfg()).writer.prompt_ref.startswith("inline@")
+
+
+def test_committed_prompts_are_versioned_files():
+    """Each role runs one version file, prompts/<role>/v<N>.md: a change is a new file, rollback a pointer."""
+    cfg = AgentConfig.load()
+    for role in (cfg.screener, cfg.writer):
+        assert re.fullmatch(rf"prompts/{role.name}/v\d+\.md", role.system_prompt_file or ""), role.prompt_ref
 
 
 def test_missing_prompt_file_fails_at_load(tmp_path):

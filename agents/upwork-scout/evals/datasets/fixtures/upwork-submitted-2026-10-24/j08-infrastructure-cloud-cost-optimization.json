@@ -1,0 +1,24 @@
+{
+  "jobId": "2111008462693390709",
+  "title": "Infrastructure Cloud Cost Optimization",
+  "url": "https://www.upwork.com/jobs/~022111008462693390709",
+  "description": "We're looking for a GCP cost optimization expert for a one-off sprint to reduce cloud spend across our SaaS infrastructure. The work centers on Cloud Run, Cloud Logging, Cloud SQL, and ClickHouse, including a Cloud Run cost regression and longer-term cost governance.\n\nThe objective of the mission is to define the actions to take in order to globally reduce GCP costs, both acting on infrastructure and code logic if necessary; and to apply those changes, while keeping/improving the current quality of service.\n\nTechnical stack:\nCore product: a REST API platform (Node.js/TypeScript) serving real-time traffic for e-commerce websites, plus Python ML/recommendation services — all deployed as containerized autoscaling services on Cloud Run, behind a global HTTPS load balancer with CDN\n\nData & ingestion pipeline: 30+ containerized batch jobs (Cloud Run jobs) handling product catalog imports, image processing, ML embeddings, and analytics aggregation — some scheduled, some event-driven - Databases: PostgreSQL (Cloud SQL, HA) as the main transactional store; a self-hosted ClickHouse cluster on 2× n2-highmem-16 VMs powering analytics dashboards and observability - Supporting infra: Elasticsearch-backed search, BigQuery for analytics/exports, GCS for catalog files and assets, a small fleet of utility VMs (outbound IP-whitelisted proxy, observability stack), VPC connectors for private networking - Traffic profile: steady daytime API load (B2C end-users via retailer websites) + heavy nightly batch processing",
+  "descriptionMarkdown": "We're looking for a GCP cost optimization expert for a one-off sprint to reduce cloud spend across our SaaS infrastructure. The work centers on Cloud Run, Cloud Logging, Cloud SQL, and ClickHouse, including a Cloud Run cost regression and longer-term cost governance.\n\nThe objective of the mission is to define the actions to take in order to globally reduce GCP costs, both acting on infrastructure and code logic if necessary; and to apply those changes, while keeping/improving the current quality of service.\n\nTechnical stack:\nCore product: a REST API platform (Node.js/TypeScript) serving real-time traffic for e-commerce websites, plus Python ML/recommendation services — all deployed as containerized autoscaling services on Cloud Run, behind a global HTTPS load balancer with CDN\n\nData & ingestion pipeline: 30+ containerized batch jobs (Cloud Run jobs) handling product catalog imports, image processing, ML embeddings, and analytics aggregation — some scheduled, some event-driven - Databases: PostgreSQL (Cloud SQL, HA) as the main transactional store; a self-hosted ClickHouse cluster on 2× n2-highmem-16 VMs powering analytics dashboards and observability - Supporting infra: Elasticsearch-backed search, BigQuery for analytics/exports, GCS for catalog files and assets, a small fleet of utility VMs (outbound IP-whitelisted proxy, observability stack), VPC connectors for private networking - Traffic profile: steady daytime API load (B2C end-users via retailer websites) + heavy nightly batch processing",
+  "jobType": "HOURLY",
+  "experienceLevel": "IntermediateLevel",
+  "skills": [
+    "Node.js",
+    "Google Cloud Platform",
+    "Linux",
+    "Cloud Computing",
+    "System Administration",
+    "Python",
+    "DevOps",
+    "Software Architecture"
+  ],
+  "source": "upwork-text-import",
+  "engagementType": "PART_TIME",
+  "engagementDuration": "Less than 1 month",
+  "hourlyBudgetMin": 20.0,
+  "hourlyBudgetMax": 60.0
+}

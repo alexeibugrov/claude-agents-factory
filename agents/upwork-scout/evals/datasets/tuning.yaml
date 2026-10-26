@@ -1,0 +1,126 @@
+# REAL postings the operator applied to (Upwork > Submitted proposals, 2026-10-24). The prompt is
+# tuned on these. Source text: source/upwork-submitted-2026-10-24.txt (import-text).
+dataset:
+  id: tuning
+  version: 1
+  split: tuning
+  description: 15 of the 20 submitted-proposal postings; the other 5 are held out in validation.yaml.
+cases:
+- id: j01-need-help-upgrading-node-js-version-on
+  job_file: fixtures/upwork-submitted-2026-10-24/j01-need-help-upgrading-node-js-version-on.json
+  metadata:
+    title: Need Help Upgrading Node.js Version on AWS Elastic Beanstalk
+    questions: none
+    submitted: Oct 23, 2026
+    project_type: One-time project
+    preferred_qualifications: 'Location: United States, Canada'
+- id: j02-fractional-cto
+  job_file: fixtures/upwork-submitted-2026-10-24/j02-fractional-cto.json
+  operator_instructions: 1. Describe your recent experience with similar projects
+  metadata:
+    title: Fractional CTO
+    questions: formal
+    submitted: Oct 22, 2026
+    project_type: Complex project
+- id: j03-claude-code-coach-for-a-5-person-dev
+  job_file: fixtures/upwork-submitted-2026-10-24/j03-claude-code-coach-for-a-5-person-dev.json
+  metadata:
+    title: Claude Code coach for a 5-person dev team (hands-on, about 8 hrs/week, 3 months)
+    questions: in_description
+    submitted: Oct 20, 2026
+    project_type: Complex project
+- id: j04-senior-ai-technical-advisor
+  job_file: fixtures/upwork-submitted-2026-10-24/j04-senior-ai-technical-advisor.json
+  metadata:
+    title: Senior AI Technical Advisor
+    questions: none
+    submitted: Oct 20, 2026
+    project_type: Ongoing project
+- id: j06-senior-devops-engineer
+  job_file: fixtures/upwork-submitted-2026-10-24/j06-senior-devops-engineer.json
+  metadata:
+    title: Senior DevOps Engineer
+    questions: none
+    submitted: Oct 19, 2026
+    project_type: One-time project
+    contract_to_hire: true
+- id: j08-infrastructure-cloud-cost-optimization
+  job_file: fixtures/upwork-submitted-2026-10-24/j08-infrastructure-cloud-cost-optimization.json
+  metadata:
+    title: Infrastructure Cloud Cost Optimization
+    questions: none
+    submitted: Oct 16, 2026
+    project_type: One-time project
+- id: j09-senior-devops-engineer-for-aws-invite
+  job_file: fixtures/upwork-submitted-2026-10-24/j09-senior-devops-engineer-for-aws-invite.json
+  metadata:
+    title: Senior DevOps Engineer for AWS (Invite-Only)
+    questions: none
+    submitted: Oct 13, 2026
+    project_type: Complex project
+    preferred_qualifications: 'Rising Talent: Yes; English level: Fluent; Location: Canada, United States'
+- id: j10-ai-developer-needed-for-ai-powered
+  job_file: fixtures/upwork-submitted-2026-10-24/j10-ai-developer-needed-for-ai-powered.json
+  metadata:
+    title: AI Developer Needed for AI-Powered Candidate Matching Platform
+    questions: in_description
+    submitted: Oct 13, 2026
+    project_type: Complex project
+    attachment: Project AI-Powered Candidate Matching Platform for IT Recruitment.pdf (96 KB)
+- id: j13-looking-for-senior-devops-engineer-linux
+  job_file: fixtures/upwork-submitted-2026-10-24/j13-looking-for-senior-devops-engineer-linux.json
+  metadata:
+    title: Looking for Senior DevOps Engineer (Linux / On-Premises Infrastructure)
+    questions: none
+    submitted: Oct 2026 (page 2 of submitted list)
+    project_type: Ongoing project
+    contract_to_hire: true
+- id: j14-microsoft-azure-expert
+  job_file: fixtures/upwork-submitted-2026-10-24/j14-microsoft-azure-expert.json
+  metadata:
+    title: Microsoft Azure Expert
+    questions: none
+    submitted: Oct 2026 (page 2 of submitted list)
+    project_type: One-time project
+    preferred_qualifications: 'Talent Type: Independent; Job Success Score: At least 90%; English level:
+      Native or Bilingual'
+- id: j15-contract-senior-devops-gcp-cloud
+  job_file: fixtures/upwork-submitted-2026-10-24/j15-contract-senior-devops-gcp-cloud.json
+  metadata:
+    title: Contract Senior DevOps & GCP Cloud Architect
+    questions: none
+    submitted: Oct 2026 (page 2 of submitted list)
+    project_type: One-time project
+- id: j16-senior-infrastructure-operations
+  job_file: fixtures/upwork-submitted-2026-10-24/j16-senior-infrastructure-operations.json
+  metadata:
+    title: Senior Infrastructure Operations Engineer
+    questions: none
+    submitted: Oct 2026 (page 2 of submitted list)
+    project_type: Ongoing project
+- id: j18-deploy-xray-proxy-on-aws
+  job_file: fixtures/upwork-submitted-2026-10-24/j18-deploy-xray-proxy-on-aws.json
+  metadata:
+    title: Deploy Xray Proxy on AWS
+    questions: none
+    submitted: Oct 2026 (page 2 of submitted list)
+    project_type: One-time project
+- id: j19-aws-cost-optimization
+  job_file: fixtures/upwork-submitted-2026-10-24/j19-aws-cost-optimization.json
+  operator_instructions: '1. Describe your recent experience with similar projects
+
+    2. Please list any certifications related to this project'
+  metadata:
+    title: AWS Cost Optimization
+    questions: formal
+    submitted: Oct 2026 (page 2 of submitted list)
+    project_type: One-time project
+    preferred_qualifications: 'Rising Talent: Yes; English level: Fluent'
+- id: j20-devops-infrastructure-engineer-part-time
+  job_file: fixtures/upwork-submitted-2026-10-24/j20-devops-infrastructure-engineer-part-time.json
+  metadata:
+    title: DevOps / Infrastructure Engineer, part time, ongoing
+    questions: none
+    submitted: Sep/Oct 2026 (oldest in submitted list)
+    project_type: Ongoing project
+    contract_to_hire: true

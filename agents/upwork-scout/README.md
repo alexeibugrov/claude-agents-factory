@@ -46,7 +46,7 @@ attempts and last reason. Nothing re-queues a job automatically.
 | File | Role |
 | --- | --- |
 | [agent_config.yaml](agent_config.yaml) | **Committed, secret-free.** Models, prompt file pointers, searches, Apify caps, pipeline caps, prefilters, Telegram target. Bind-mounted at deploy. |
-| [prompts/](prompts/) | The role prompts, one Markdown file each (`writer.md`: wrapper + the operator's proposal metaprompt + About me; the sample proposals stay plain text in `text` fences, because the writer must output plain text). Shipped and bind-mounted like the config. |
+| [prompts/](prompts/) | The role prompts, one directory per role with one Markdown file per version (`writer/v2.md`, live: wrapper + the operator's proposal metaprompt + About me; the sample proposals stay plain text in `text` fences, because the writer must output plain text). Shipped and bind-mounted like the config. |
 | [agent/config.py](agent/config.py) | Typed load + fail-fast validation (`maxResults` ≤ 10, query ≤ 80 words, unique search slugs, `chat_id` when `allow_writes`). |
 | [agent/scrape.py](agent/scrape.py) | One actor run per search; cost from charged events; Upwork's total from the run log; failures returned, never raised. |
 | [agent/store.py](agent/store.py) | Ingest + dedup, the pipeline ledger, claims, the Telegram outbox. |
@@ -98,9 +98,11 @@ attempts and last reason. Nothing re-queues a job automatically.
     Australia and New Zealand; ISO3) on the actor's `clientCountryCode`.
 
   Changing a threshold is a config-only redeploy.
-- **Prompts:** each role's prompt is its own file, `system_prompt_file: prompts/<role>.md`
-  (relative to the config; an inline `system_prompt` also works), so every prompt change is a
-  readable diff. The operator owns the screener prompt from `## Criteria` down, and the metaprompt and
+- **Prompts:** each role's prompt is versioned as `prompts/<role>/v<N>.md`. The live version
+  is the role's `system_prompt_file` in `agent_config.yaml` (relative to the config). A change is
+  a new `v<N+1>.md` plus a one-line pointer change, and a rollback moves the pointer back. Old
+  versions stay for comparison and evals. The startup log names each live version as
+  `<file>@<prompt_sha>`. The operator owns the screener prompt from `## Criteria` down, and the metaprompt and
   ABOUT ME in the writer prompt. ABOUT ME holds no contact details or employer and client names,
   and the writer is told never to put them in a proposal. Every verdict and draft records the
   `prompt_sha` of the prompt that produced it.
@@ -130,9 +132,9 @@ posts. Its API id and hash are in the env file, and its login is in a per-stack 
   `<operator_instructions>`: the metaprompt's "Additional instructions", answered in order. The
   actor's default output has no questions field; only `enrichDetails`, which needs the operator's
   Upwork session token, returns them.
-- **Proposal:** plain text, ready to copy, as a reply to the trigger message. The first message
-  holds the vacancy link and then the proposal. A separate "Check before sending" message follows
-  when the writer left notes.
+- **Proposal:** one plain-text message, ready to send as is, as a reply to the trigger message:
+  the vacancy link, then the proposal. Writer notes are not delivered. `submit_proposal` still
+  accepts `notes_for_operator` and stores it, until the live prompt no longer asks for notes.
 - **Repeats and failures:**
   - A second bare trigger gets "Already writing it." or "Already sent above." instead of a second
     draft. A trigger with instructions on a delivered offer writes a new version.
@@ -216,6 +218,118 @@ docker compose up --build                                   # Ctrl-C stops; `doc
 docker compose exec db psql -U upwork_scout -c 'SELECT status, count(*) FROM pipeline GROUP BY 1'
 ```
 
+## Prompt evals
+
+The writer prompt is improved from the operator's own reviews. Each batch runs one fixed prompt
+version over a dataset through the real writer. The operator rates every draft in Promptfoo's
+viewer. A separate editor model then turns the reviewed batch into one candidate prompt, which is
+rerun on the same cases. Only the operator adopts a prompt. There is no LLM judge and no automatic
+optimisation.
+
+```text
+run (prompt P, dataset D) → view: 👍/👎 + comment per draft → export → propose → candidate P'
+      ↑                                                                             │
+      └──────── run (P', D) → view/review → compare P vs P' → operator adopts or not ─┘
+```
+
+| Piece | Role |
+| --- | --- |
+| [evals/provider.py](evals/provider.py) | Promptfoo Python provider: actor record → `map_record` → `writer_prompt` → `run_once`, with the writer role from `agent_config.yaml` and only `system_prompt` swapped in. A fresh SDK session per case, `allow_writes=False`. |
+| [evals/datasets/](evals/datasets/) | Datasets (format in [evals/dataset.py](evals/dataset.py)): `dataset: {id, version, split}`, then `cases` with a stable `id`, `job_file` (an Apify actor record, as in `jobs.raw`) or inline `job`, optional `operator_instructions`, `reference` and `metadata`. `split` is `smoke`, `tuning` or `validation`. |
+| [evals/datasets/smoke.yaml](evals/datasets/smoke.yaml) | Three **synthetic** postings, for checking the plumbing only. Never tune on them. |
+| [evals/settings.yaml](evals/settings.yaml) | Concurrency, per-case timeout, and the editor's model and effort. |
+| [evals/editor_prompt.txt](evals/editor_prompt.txt) | The editor's instructions: one candidate, preserve approved behaviour, generalise comments, cite cases, flag conflicts and non-prompt problems. |
+| `evals/feedback/`, `evals/candidates/` | Committed: reviewed batches and the candidates made from them. |
+| `evals/runs/`, `evals/.promptfoo/` | Gitignored: per-run records, and Promptfoo's database (evals and ratings) and cache. |
+
+**Setup**, once per devcontainer build (Node ≥ 22.22; the devcontainer ships Node 24). Auth is the
+subscription login the devcontainer already has, or `CLAUDE_CODE_OAUTH_TOKEN` exported in your
+shell. `ANTHROPIC_API_KEY` must be unset, and every command refuses to run with it.
+
+```bash
+cd agents/upwork-scout
+uv sync && npm ci --prefix evals          # Promptfoo is pinned in evals/package.json + lockfile
+```
+
+**One iteration**:
+
+```bash
+uv run python -m evals run --dataset evals/datasets/tuning.yaml        # baseline: the live version (agent_config.yaml)
+uv run python -m evals view                                            # http://localhost:15500
+uv run python -m evals status                                          # what is still unreviewed
+uv run python -m evals export                                          # → evals/feedback/<run_id>.json
+uv run python -m evals propose evals/feedback/<run_id>.json            # → evals/candidates/<id>/
+uv run python -m evals run --dataset evals/datasets/tuning.yaml --prompt evals/candidates/<id>/prompt.md
+uv run python -m evals view                                            # review the candidate's batch too
+uv run python -m evals compare <baseline eval id> <candidate eval id>
+uv run python -m evals run --dataset evals/datasets/validation.yaml --prompt …   # before adopting
+```
+
+- **Reviewing:** open the eval in the viewer and, for every output, press 👍 or 👎 and write a
+  comment (✏️). Say what to keep as well as what to fix. Comments on approved drafts are what stop
+  the editor from losing good behaviour. Only 👍/👎 records a verdict: a comment or a score alone
+  leaves the output unreviewed. Every output starts as a red **"Awaiting human review"** marker, so
+  the viewer's *Passes* filter shows only what you approved, and *Failures* shows rejected and
+  unrated outputs. The marker is not a grade. **Rate in the normal eval view: the viewer's Compare
+  mode does not save ratings.** Ratings are saved as you click. `export` reads them back from
+  Promptfoo's database, so it always sees the latest ones.
+- **Export** refuses while any output is unrated (`status` lists them). `--partial` exports anyway,
+  and the editor is told to ignore unrated outputs. The package holds the prompt text and the run
+  manifest. For each case it holds the exact user message the writer got, the proposal and notes,
+  and your verdict and comment, approvals included.
+- **propose** sends the package to the editor model (`settings.yaml`, or `--model`/`--effort`)
+  through the Agent SDK on the subscription. The editor must return the full prompt, a change list
+  that cites reviewed case IDs, the behaviour it preserved, conflicting comments, and problems a
+  prompt cannot fix. It writes `candidates/<id>/prompt.md`, `CHANGES.md` (with a diff) and
+  `proposal.json`, and it never touches `prompts/`. It refuses feedback from the `validation`
+  split unless `--allow-validation` is passed.
+- **Adopting** is a manual commit. Copy the candidate to the next version,
+  `cp evals/candidates/<id>/prompt.md prompts/writer/v<N+1>.md` (the candidate's `CHANGES.md`
+  names the file), point `writer.system_prompt_file` at it, then open a PR. Merging deploys it.
+  `--prompt prompts/writer/v<N>.md` reruns any older version for comparison. Every
+  draft in production records the `prompt_sha` it was written with, the same 16-character ID the
+  eval runs show.
+- **What a run records:** `evals/runs/<run_id>/manifest.json` is also stored in the eval's
+  metadata, so it travels with exports. It holds the prompt path and `prompt_sha`, the dataset's
+  ID, version, split and content sha256 (fixtures included), the writer's model, effort and limits,
+  the `agent_config.yaml` sha256, the git commit and uncommitted paths, and the Promptfoo version.
+  `promptfooconfig.yaml` in the same directory is the batch's exact Promptfoo config, with the
+  prompt inline.
+- **Datasets:** [tuning.yaml](evals/datasets/tuning.yaml) (15) and
+  [validation.yaml](evals/datasets/validation.yaml) (5) hold the 20 postings from Submitted
+  proposals, 2026-10-24, kept verbatim in `evals/datasets/source/`. Keep the two sets disjoint, and
+  bump `dataset.version` on every edit. To add a batch copied from Upwork in the same text format
+  (`JOB NN / M`, `Title:`, `URL:`, posting, Upwork's fields, `SCREENING QUESTIONS`), save it under
+  `source/` and run
+  `uv run python -m evals import-text evals/datasets/source/<file>.txt --dataset evals/datasets/tuning.yaml --jobs 1,2,3`.
+  Formal screening questions become `operator_instructions`, the way you paste them after `+`.
+  Questions written inside the description stay there. The format (paths relative to the file):
+
+  ```yaml
+  dataset: {id: tuning, version: 1, split: tuning}    # split: smoke | tuning | validation
+  cases:
+    - id: aws-eks-migration                           # stable: feedback and candidates cite it
+      job_file: fixtures/tuning/aws-eks-migration.json  # an Apify actor record; or inline `job:`
+      operator_instructions: "1. Which clouds?"       # optional: what you'd type after "+"
+      reference: "…"                                  # optional: a proposal you consider good
+      metadata: {questions: formal}                   # optional: shown in the viewer and export
+  ```
+
+  `uv run python -m evals add-jobs jobs.json --dataset evals/datasets/tuning.yaml` appends
+  actor records (a `scripts/try_scrape.py --out` file, or `raw` from the jobs table) as cases, one
+  fixture each, without the contact and extracted personal-data fields.
+- **Caching and fresh runs:** `run` passes `--no-cache` by default, so every batch makes new
+  writer calls. Promptfoo's cache key covers the provider file, the prompt, the provider config
+  and the case vars, but not `agent/*.py` or the writer settings in `agent_config.yaml`. A cached
+  rerun after a code or model change would silently replay old drafts. `--reuse-cache` replays
+  cached outputs, for example to rebuild an eval without spending calls. `promptfoo cache clear`
+  (with `PROMPTFOO_CONFIG_DIR=evals/.promptfoo`) empties it. Errors are never cached. To redo
+  failed cases, rerun them as a new batch with `--case ID`.
+- **Variance:** a single draft per case is noisy. `--repeat N` writes N drafts per case, and
+  `--case ID` (repeatable) reruns selected cases.
+- **Cost:** each case is one full writer run on the subscription, about 40 s at `effort: medium`.
+  The `cost` Promptfoo shows is the SDK's notional API price, not a charge.
+
 ## Deploy
 
 Merging to `main` with a change under this directory runs
@@ -270,5 +384,24 @@ Restore: `docker compose exec -T db pg_restore -U upwork_scout -d <scratch_db> <
   operator's feed, mostly posts restricted to US freelancers, and its record has no field for the
   restriction. The screener drops them only when the description says so.
 - Search volumes were measured on one day; re-check them in `scrape_runs` after 1–2 weeks.
-- There are no screener or writer evals yet (Phase 3).
+- The writer has human-reviewed prompt evals (see Prompt evals). Its real tuning and validation
+  datasets are still being collected. The screener has no evals.
+- The writer often lands near the 350-word cap and resubmits. Each rejected submit costs a turn,
+  so `writer.max_turns` is 8 (it was 4, which failed postings with several required questions). A
+  run that still fails is retried as a fresh run, up to `max_attempts`, in production and in the
+  evals alike. Every retry is a paid generation, so watch it. If it becomes frequent, fix the cause
+  (prompt length guidance or the cap), not the retry budget. In evals, `status` and `compare` flag
+  drafts with 3+ submits or a failed run. In production, `num_turns` is 2 for one submit, plus one
+  per resubmit:
+
+  ```bash
+  docker compose exec db psql -U upwork_scout -c "SELECT prompt_sha, count(*) AS drafts,
+    round(avg(num_turns), 1) AS avg_turns, count(*) FILTER (WHERE num_turns >= 4) AS three_plus_submits
+    FROM proposals WHERE created_at > now() - interval '14 days' GROUP BY 1 ORDER BY max(created_at) DESC"
+  ```
+
 - The poll handles one writer run at a time, so it pauses while a draft is being written.
+- Improvement (requested 2026-10-26): revise a delivered draft by replying to it with
+  corrections. Today, only a new trigger with instructions on the offer writes a new version.
+  A reply to the draft itself is ignored.
+- Once a writer prompt without notes is live, remove `notes_for_operator` from `submit_proposal`.

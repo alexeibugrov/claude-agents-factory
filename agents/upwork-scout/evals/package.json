@@ -1,0 +1,11 @@
+{
+  "name": "upwork-scout-evals",
+  "private": true,
+  "description": "Pinned Promptfoo for the writer prompt evals; run through `uv run python -m evals`.",
+  "engines": {
+    "node": ">=22.22.0"
+  },
+  "devDependencies": {
+    "promptfoo": "0.124.1"
+  }
+}

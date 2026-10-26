@@ -1,0 +1,21 @@
+# SMOKE FIXTURES: three SYNTHETIC postings that check the eval plumbing end to end. They are not
+# evaluation data. Never tune the prompt on them and never quote their results as quality.
+# Real batches go in tuning.yaml and validation.yaml (same format; see evals/dataset.py).
+dataset:
+  id: smoke
+  version: 1
+  split: smoke
+  description: Synthetic postings covering hourly with a rate, fixed price, and hourly with no rate plus questions.
+cases:
+  - id: smoke-ai-agent-hourly
+    job_file: fixtures/smoke/ai-agent-hourly.json
+    metadata: {contract: hourly}
+  - id: smoke-terraform-fixed
+    job_file: fixtures/smoke/terraform-fixed.json
+    metadata: {contract: fixed}
+  - id: smoke-rag-questions
+    job_file: fixtures/smoke/rag-questions.json
+    operator_instructions: |
+      1. Which Azure services would you use, and why?
+      2. How would you enforce Confluence page permissions in the answers?
+    metadata: {contract: hourly, has_questions: true}

@@ -1,0 +1,20 @@
+{
+  "jobId": "2107176692664235261",
+  "title": "Deploy Xray Proxy on AWS",
+  "url": "https://www.upwork.com/jobs/~022107176692664235261",
+  "description": "I need a freelancer to deploy and configure an Xray proxy server on my AWS account. The work includes provisioning and setting up an Ubuntu EC2 instance, configuring AWS Security Groups for inbound and outbound traffic, installing the latest 3X-UI panel using Docker or a bash script, and creating a VLESS-Reality inbound configuration masked under a reliable, unblocked SNI. You should also test the final vless:// configuration to confirm traffic routes correctly through the server and provide the final setup details. Experience with V2Ray, Xray, 3X-UI, and AWS networking is important for this project.",
+  "descriptionMarkdown": "I need a freelancer to deploy and configure an Xray proxy server on my AWS account. The work includes provisioning and setting up an Ubuntu EC2 instance, configuring AWS Security Groups for inbound and outbound traffic, installing the latest 3X-UI panel using Docker or a bash script, and creating a VLESS-Reality inbound configuration masked under a reliable, unblocked SNI. You should also test the final vless:// configuration to confirm traffic routes correctly through the server and provide the final setup details. Experience with V2Ray, Xray, 3X-UI, and AWS networking is important for this project.",
+  "jobType": "HOURLY",
+  "experienceLevel": "IntermediateLevel",
+  "skills": [
+    "Amazon Web Services",
+    "Amazon EC2",
+    "Amazon S3",
+    "Amazon RDS"
+  ],
+  "source": "upwork-text-import",
+  "engagementType": "PART_TIME",
+  "engagementDuration": "Less than 1 month",
+  "hourlyBudgetMin": 20.0,
+  "hourlyBudgetMax": 45.0
+}

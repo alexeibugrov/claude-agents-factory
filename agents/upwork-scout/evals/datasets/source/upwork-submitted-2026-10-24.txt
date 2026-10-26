@@ -1,0 +1,859 @@
+UPWORK JOB POSTINGS — SUBMITTED PROPOSALS DATASET
+Collected: 2026-10-24 | Source: Upwork > Proposals and offers > Submitted proposals (20)
+Format: each job = header, full posting text, then a SCREENING QUESTIONS block when the posting has the
+"You will be asked to answer the following questions when submitting a proposal" section.
+
+==================================================================================================
+JOB 01 / 20
+Title: Need Help Upgrading Node.js Version on AWS Elastic Beanstalk
+URL: https://www.upwork.com/jobs/~022113716324058689948
+Proposal submitted: Oct 23, 2026
+--------------------------------------------------------------------------------------------------
+We have a production Node.js application running on AWS Elastic Beanstalk, and I need help upgrading to the latest version. I'm looking for a certified AWS expert to walk me through the process to ensure that there are no mistakes or unnecessary downtime. Given the known security vulnerabilities that are addressed by this latest version, I'd like to get this taken care of today if possible.
+
+I'm also looking to find a go-to sysadmin for tasks of this sort, so a successful engagement on this project could likely lead to additional work.
+
+Workload: Less than 30 hrs/week | Hourly | Duration: Less than 1 month
+Experience level: Expert
+Rate: $50.00 - $150.00 Hourly
+Project Type: One-time project
+Skills and Expertise: System Administration, Amazon Web Services, Node.js, Amazon EC2
+Preferred qualifications: Location: United States, Canada
+
+SCREENING QUESTIONS: none
+
+==================================================================================================
+JOB 02 / 20
+Title: Fractional CTO
+URL: https://www.upwork.com/jobs/~022113312502777803164
+Proposal submitted: Oct 22, 2026
+--------------------------------------------------------------------------------------------------
+Looking to hire a fractional CTO to help maintain current infrastructure and help with  build out AI tech solutions. Looking for someone to work 10hrs a week.
+
+Workload: Less than 30 hrs/week | Hourly | Duration: More than 6 months
+Experience level: Intermediate
+Project Type: Complex project
+Skills and Expertise: Business Development, Sales Development, B2B Marketing, Lead Generation, Lead Management, Sales, Proposal Writing, Cold Calling, Outbound Sales, Apollo.io, Business Plan, Copywriting, Inbound Marketing, Email Marketing, Cold Email, LinkedIn Lead Generation, LinkedIn Sales Navigator, CRM Development, Business Proposal Writing, Market Research
+
+=== SCREENING QUESTIONS ===
+You will be asked to answer the following questions when submitting a proposal:
+1. Describe your recent experience with similar projects
+
+==================================================================================================
+JOB 03 / 20
+Title: Claude Code coach for a 5-person dev team (hands-on, about 8 hrs/week, 3 months)
+URL: https://www.upwork.com/jobs/~022112569628814312909
+Proposal submitted: Oct 20, 2026
+--------------------------------------------------------------------------------------------------
+We need a hands-on Claude Code practitioner to take a five-person software team from individual Claude use to a shared, systematised setup: about 8 hours a week for three months, delivered online.
+
+THE TEAM
+An architect/lead developer, two senior developers, a developer/QA and a part-time PM who also covers QA. .NET on Azure, Android apps, legacy ASP.NET web services, Jira. The developers use Claude Code; the PM uses the Claude desktop app. A rebuild of a legacy certification platform is under way.
+
+WHERE WE ARE
+A previous consultant interviewed everyone, scored each person on six dimensions (configuration, skills, context, workflow, integration, governance) and wrote a sequenced adoption plan.
+
+WHAT GOOD LOOKS LIKE AFTER 12 WEEKS
+• Committed CLAUDE.md and knowledge files in the main repos; permissions as configuration, not vigilance
+• A reusable skill per person for their most repeated workflow, including a one-command sprint report for the PM
+• Jira connected to Claude sessions
+• An AI first-pass PR review pilot on one repo, with the human reviewer still approving
+• A test-generation standard for the rebuild with a CI gate
+• The six-dimension assessment re-run, showing movement per person
+
+HOW IT WORKS
+• About 8 hours a week: roughly half in live screen-shared working sessions with one or two people on their own machines and repos, half offline preparation (building skills and configuration, reviewing repos).
+• At least two fixed weekly session slots in Irish business hours (09:00-17:30 Dublin), booked four weeks ahead and held for 12 weeks. This is the hard requirement; the previous engagement failed on availability. State your real capacity and known gaps in your proposal.
+• Replies within one working day on Teams between sessions.
+• I am the external product owner and your single contact; the lead developer is your technical counterpart.
+• A two-week paid trial comes before the full engagement.
+
+YOU
+• Run Claude Code on real codebases today: CLAUDE.md structure, permissions, custom skills, hooks, MCP servers (Jira especially)
+• Have built at least one of these with a human approval gate: an AI first-pass code review, a ticket-to-session integration, or an AI test-generation standard with CI gates
+• Comfortable pairing in a .NET/Azure codebase
+• Teach by doing, with a non-developer as well as with senior engineers
+• Fluent English and a reliable setup for online pairing
+
+TO APPLY
+Answer the screening questions specifically and link to anything public that shows your Claude Code setup. Generic AI-consultant proposals and agency pitches will not be shortlisted.
+
+Screening questions (in the description)
+All four required; a vague answer to any of them ends the review.
+1. Describe the Claude Code setup you run on a production codebase today: CLAUDE.md and knowledge files, permissions configuration, and the custom skills, hooks or MCP servers you have built. Link to anything public.
+2. Describe one of these you have built, including the human approval gate: an AI first-pass PR review, a Jira-to-session integration, or an AI test-generation standard with a CI gate.
+3. How many hours a week can you commit for the next 12 weeks, which two recurring slots can you hold in Irish business hours, and what known gaps do you have?
+4. A part-time PM exports Jira to CSV and pastes it into the Claude desktop app with written instructions to produce a sprint report. How do you get them to a one-command skill in one working session?
+
+Workload: Less than 30 hrs/week | Hourly | Duration: 1 to 3 months
+Experience level: Expert
+Rate: $80.00 - $130.00 Hourly
+Project Type: Complex project
+Skills and Expertise: AI Agent Development, Claude Code, Model Context Protocol (MCP)
+
+SCREENING QUESTIONS: no formal "You will be asked..." section (questions are inside the description above)
+
+==================================================================================================
+JOB 04 / 20
+Title: Senior AI Technical Advisor
+URL: https://www.upwork.com/jobs/~022112376836174240039
+Proposal submitted: Oct 20, 2026
+--------------------------------------------------------------------------------------------------
+We need an experienced engineer to guide the direction, design the approach, and review key milestones for our AI agent project. The work includes planning the program, improving data extraction, and helping build a knowledge base to support the system. You will help ensure the solution is well-structured, efficient, and aligned with our goals from the start.
+
+We are two consultancies building a free AI agent that helps nonprofits plan their programs and how they will measure them. It walks users through a three-step planning framework: a theory of change, a logic model, and a logframe (the results table that lists goals, outputs, outcomes, indicators, and assumptions). The pilot focuses on family planning, a field with well-established global indicators and strong professional networks for sourcing and testing.
+
+The questions we need help with
+1. Extraction from PDFs. What is the best way to use AI to pull usable content out of messy PDFs? Logframes are usually multi-page tables, theories of change are often diagrams, some files are scanned, and terminology varies a lot between organizations. We want a process our analysts can run and repeat.
+2. Whole documents vs. extracted pieces. Our current leaning is to keep whole documents with rich tags, because breaking them apart can lose the logic linking one level to the next. We also need structured data, such as each outcome and the indicators that measure it. How should we balance the two?
+3. Data structure. How should we represent the results chain (impact → outcome → output → activity → indicator) and our tags so the data works for the agent? What should our metadata and rules files look like?
+4. Vector database. We plan to use a vector database (one that lets the agent search by meaning, not just exact words). We need advice on which one, how to structure it, and hands-on help setting it up.
+5. Models, hosting, and cost. Our preference is to build on an existing commercial AI model rather than train our own, likely hosted in Microsoft Azure. We want a sanity check on that and a rough estimate of running costs.
+
+Workload: Less than 30 hrs/week | Hourly | Duration: 1 to 3 months
+Experience level: Expert
+Rate: $30.00 - $55.00 Hourly
+Project Type: Ongoing project
+Skills and Expertise: C#, JavaScript, Artificial Intelligence
+
+SCREENING QUESTIONS: none
+
+==================================================================================================
+JOB 05 / 20
+Title: GCP / Fabric Fast Project
+URL: https://www.upwork.com/jobs/~022111987230666627663
+Proposal submitted: Oct 19, 2026
+--------------------------------------------------------------------------------------------------
+The technical lead should hold a current Google Cloud Professional Cloud Architect certification, with Professional Cloud Security Engineer certification strongly preferred. The delivery team must demonstrate production experience with Fabric FAST, Terraform state imports, Shared VPC, GKE, Cloud Build, IAM remediation and service-account credential rotation
+
+For this engagement, practical experience should be a firm requirement alongside certification.
+- Building GCP foundations using Cloud Foundation Fabric FAST and Terraform.
+- Relocating existing projects while managing inherited IAM and organisation policies.
+- Deploying VPC-native GKE in Shared VPC and redeploying existing workloads.
+- Rotating service-account keys and remediating GCP IAM for Domain-Wide Delegation integrations.
+- Importing existing GCS, Cloud SQL and BigQuery resources into Terraform without unintended changes.
+
+Budget: $10,000.00 Fixed-price
+Experience level: Intermediate
+Project Type: Ongoing project
+Skills and Expertise: Cloud Architecture, Google Cloud Platform, GCP, Terraform, cloud foundation, Fabric fast
+Preferred qualifications: English level: Fluent; Location: Australia, New Zealand, United States
+
+SCREENING QUESTIONS: none
+
+==================================================================================================
+JOB 06 / 20
+Title: Senior DevOps Engineer
+URL: https://www.upwork.com/jobs/~022112063204376983883
+Proposal submitted: Oct 19, 2026
+--------------------------------------------------------------------------------------------------
+Job Description:
+We are seeking a highly skilled and proactive Senior DevOps Engineer to join our team. You will be responsible for designing, implementing, and maintaining robust CI/CD pipelines, managing cloud infrastructure across multiple providers, and ensuring high availability and security.
+The ideal candidate is a automation-first mindset engineer who is comfortable working with containerized microservices and has experience deploying AI models in serverless environments.
+
+Key Responsibilities:
+1. CI/CD Management: Design, build, and maintain efficient CI/CD pipelines using Jenkins, GitLab CI, CircleCI, or GitHub Actions.
+2. Containerization & Orchestration: Manage containerized applications using Docker and orchestrate them using Kubernetes (EKS, AKS, GKE) .
+3. Infrastructure as Code (IaC): Implement and manage infrastructure using Terraform, AWS CloudFormation, and Ansible.
+4. Cloud Operations: Architect and maintain solutions across AWS, Azure, and Google Cloud Platform.
+5. Monitoring & Observability: Set up comprehensive monitoring and logging using Prometheus, Grafana, ELK Stack, or Datadog.
+6. Monitoring & Observability: Set up comprehensive monitoring and logging using Prometheus, Grafana, ELK Stack, or Datadog.
+7. Security (DevSecOps): Integrate security into the DevOps lifecycle, including vulnerability scanning and secrets management.
+8. Scripting & Automation: Develop automation scripts using Bash, Python, and PowerShell to eliminate repetitive tasks.
+9. Deployment Strategies: Implement Blue/Green and Canary deployments to ensure zero-downtime releases.
+10. AI/ML Deployment: Deploy AI models and utilize cloud-provided models within serverless cloud infrastructure.
+11. Collaboration: Work closely with Development and QA teams within Agile/Scrum frameworks to ensure smooth releases.
+
+Required Skills & Qualifications:
+1. Experience: 5+ years of experience in DevOps, SRE, or Cloud Engineering roles.
+2. Cloud Mastery: Deep hands-on experience with at least two of the major cloud providers (AWS, Azure, GCP).
+3. Orchestration: Strong expertise in Kubernetes cluster management and service mesh technologies like Istio or Linkerd.
+4. Configuration Management: Proficiency in Ansible, Puppet, or Chef.
+5. Version Control: Expert knowledge of Git, GitHub, GitLab, and Bitbucket.
+6. Architecture: Experience in Disaster Recovery planning and designing High Availability architectures.
+7. Soft Skills: Excellent communication skills and the ability to work independently in a fast-paced environment.
+
+Budget: $2,100.00 Fixed-price
+Experience level: Expert
+Contract-to-hire opportunity
+Project Type: One-time project
+Skills and Expertise: AI Infrastructure, CentOS, Linux, Deployment Automation, DevOps, Kubernetes, Amazon Web Services, CI/CD Platform, Jenkins, Docker
+
+SCREENING QUESTIONS: none
+
+==================================================================================================
+JOB 07 / 20
+Title: Fractional CTO using AI to integrate and build (Invite-Only)
+URL: https://www.upwork.com/jobs/~022111864668796197455
+Proposal submitted: Oct 18, 2026
+--------------------------------------------------------------------------------------------------
+We are a regulated B2B SaaS platform for service-based businesses. It covers staff onboarding, e-signatures, training, client intake, scheduling and time verification, billing, and compliance tracking. We're in production on AWS with customers onboarding now. Much of our development is done by AI coding agents under a defined process. We need an experienced technical leader to oversee architecture, security and releases, and to be our accountable human engineering lead.
+
+What you'll do (about 5–10 hours a week to start, flexible)
+- Review and approve architecture, pull requests and releases, and set engineering standards and guardrails for AI-assisted development.
+- Own security and data-protection safeguards: access control, encryption, audit logging, incident response, backup and restore testing, and vendor security and data processing agreements.
+- Lead SOC 2 readiness: choose a compliance platform and auditor, and coordinate a third-party penetration test.
+- Oversee AWS infrastructure in Terraform (ECS Fargate, CloudFront and WAF, DocumentDB, S3, Secrets Manager, KMS, Bedrock) and approve infrastructure changes.
+- Guide third-party integrations: billing and payment processors, government or industry data exchanges, external reporting systems, and partner onboarding.
+- Own monitoring, on-call escalation and uptime. Join a monthly roadmap review with the founder.
+
+Must have
+- 8+ years in software engineering, including 3+ in a CTO, VP Engineering or principal role.
+- Hands-on experience running a production system that handles sensitive or regulated data (privacy compliance, data processing agreements, audits).
+- AWS production experience; Terraform.
+- Python (FastAPI or similar) and React; MongoDB or DocumentDB.
+- Experience leading a SOC 2 Type II, ISO 27001 or similar certification effort.
+
+Strong plus
+- Experience with EDI or other standardized B2B data exchange formats and clearinghouse-style integrations.
+- Experience integrating with government or state-run systems.
+- Overseeing AI-assisted or agent-based development workflows.
+- Mobile (React Native / Expo).
+
+How we work
+- Remote based. You'll sign an NDA and a data protection agreement before access.
+- Least-privilege access; no customer data outside our systems.
+- Start with a paid 2-week assessment: an architecture and security review with a prioritized plan. Then ongoing monthly.
+
+Workload: Less than 30 hrs/week | Hourly | Duration: 3 to 6 months
+Experience level: Intermediate
+Rate: $35.00 - $100.00 Hourly
+Project Type: Ongoing project
+Skills and Expertise: AI Consulting, AI Agent Development, AI Strategy, AI Implementation, AI Integration Deliverables, AI SaaS knowledge
+
+=== SCREENING QUESTIONS ===
+You will be asked to answer the following questions when submitting a proposal:
+1. What city are you in?
+2. Would you be able to screenshare with camera on using discord when collaborating with us?
+
+==================================================================================================
+JOB 08 / 20
+Title: Infrastructure Cloud Cost Optimization
+URL: https://www.upwork.com/jobs/~022111008462693390709
+Proposal submitted: Oct 16, 2026
+--------------------------------------------------------------------------------------------------
+We're looking for a GCP cost optimization expert for a one-off sprint to reduce cloud spend across our SaaS infrastructure. The work centers on Cloud Run, Cloud Logging, Cloud SQL, and ClickHouse, including a Cloud Run cost regression and longer-term cost governance.
+
+The objective of the mission is to define the actions to take in order to globally reduce GCP costs, both acting on infrastructure and code logic if necessary; and to apply those changes, while keeping/improving the current quality of service.
+
+Technical stack:
+Core product: a REST API platform (Node.js/TypeScript) serving real-time traffic for e-commerce websites, plus Python ML/recommendation services — all deployed as containerized autoscaling services on Cloud Run, behind a global HTTPS load balancer with CDN
+
+Data & ingestion pipeline: 30+ containerized batch jobs (Cloud Run jobs) handling product catalog imports, image processing, ML embeddings, and analytics aggregation — some scheduled, some event-driven - Databases: PostgreSQL (Cloud SQL, HA) as the main transactional store; a self-hosted ClickHouse cluster on 2× n2-highmem-16 VMs powering analytics dashboards and observability - Supporting infra: Elasticsearch-backed search, BigQuery for analytics/exports, GCS for catalog files and assets, a small fleet of utility VMs (outbound IP-whitelisted proxy, observability stack), VPC connectors for private networking - Traffic profile: steady daytime API load (B2C end-users via retailer websites) + heavy nightly batch processing
+
+Workload: Less than 30 hrs/week | Hourly | Duration: Less than 1 month
+Experience level: Intermediate
+Rate: $20.00 - $60.00 Hourly
+Project Type: One-time project
+Skills and Expertise: Node.js, Google Cloud Platform, Linux, Cloud Computing, System Administration, Python, DevOps, Software Architecture
+
+SCREENING QUESTIONS: none
+
+==================================================================================================
+JOB 09 / 20
+Title: Senior DevOps Engineer for AWS (Invite-Only)
+URL: https://www.upwork.com/jobs/~022110038136843185429
+Proposal submitted: Oct 13, 2026
+--------------------------------------------------------------------------------------------------
+We need a senior DevOps engineer to support our AWS environment and help improve infrastructure reliability, security, and compliance. The role includes working with Terraform, CI/CD pipelines, and SOC2 readiness, with optional support for SQL Server and Snowflake. You will help design, implement, and maintain scalable cloud infrastructure, automate deployment workflows, and strengthen operational processes. Experience with production environments and security-focused infrastructure is important. This is a long-term engagement for someone who can contribute to ongoing infrastructure improvements and support stable, secure operations.
+
+Workload: More than 30 hrs/week | Hourly | Duration: More than 6 months
+Experience level: Expert
+Rate: $50.00 - $130.00 Hourly
+Project Type: Complex project
+Skills and Expertise: Amazon Web Services, Amazon ECS, DevOps, Amazon EC2, Amazon S3
+Preferred qualifications: Rising Talent: Yes; English level: Fluent; Location: Canada, United States
+
+SCREENING QUESTIONS: none
+
+==================================================================================================
+JOB 10 / 20
+Title: AI Developer Needed for AI-Powered Candidate Matching Platform
+URL: https://www.upwork.com/jobs/~022109947024754192878
+Proposal submitted: Oct 13, 2026
+--------------------------------------------------------------------------------------------------
+Project: AI-Powered Candidate Matching Platform for IT Recruitment
+
+Background
+I am an IT Recruitment Consultant with approximately four years of experience and a personal database of around 1,500 IT candidates I have interviewed.
+For each candidate, I have a CV and an interview report containing information about their technical skills, professional experience, career preferences, motivations, salary expectations, and other relevant details.
+I want to build a private AI-powered application that allows me to find the best candidates from my existing network whenever I receive a new vacancy from a client.
+Instead of manually searching through folders and documents, I want to upload a vacancy and automatically receive a ranked shortlist of the most relevant candidates from my database.
+
+What I Want to Build
+1. Candidate Database and Document Processing
+• Upload CVs in PDF and Word formats.
+• Upload interview reports and link them to the correct candidate.
+• Automatically extract relevant information from both documents.
+• Identify technical skills, work experience, seniority, certifications, salary expectations, location, availability, and career preferences.
+• Store the extracted information in a structured and searchable database.
+• Support adding new candidates and updating existing profiles.
+
+2. AI-Powered Vacancy Analysis
+I want to upload a vacancy as a PDF, Word document, or text.
+The AI should understand the vacancy and identify mandatory requirements, preferred qualifications, technical skills, experience requirements, seniority, location, and other relevant criteria.
+
+3. Intelligent Candidate Matching
+This is the most important part of the project.
+After uploading a vacancy, the application should search my entire candidate database and generate a ranked shortlist of the top 5, 10, or 20 candidates.
+The matching process should consider:
+• Technical skills and relevant experience.
+• Similar roles and transferable skills.
+• Mandatory requirements versus preferred qualifications.
+• Seniority and industry experience.
+• Salary expectations, availability, and location, where relevant.
+I do not want simple keyword matching. The system should understand the context of the vacancy and the information in the candidates' CVs and interview reports.
+For every recommended candidate, I want to see:
+• A match score.
+• Relevant experience and skills.
+• The reasons why the candidate matches the vacancy.
+• Missing requirements or potential concerns.
+• Supporting information from the original documents.
+The results should be based on actual candidate information, not assumptions generated by the AI.
+
+4. Natural-Language Search
+I would also like to search my database using natural language.
+For example:
+• Find experienced Azure engineers who have worked for IT service providers.
+• Find IT Support Engineers with Microsoft 365 and Active Directory experience.
+• Find ERP consultants with implementation experience.
+The system should identify relevant candidates even when the exact words used in the search do not appear in their documents.
+
+5. User Interface and Export
+I want a clean, intuitive web application that I can use independently.
+The basic workflow should be:
+1. Upload candidate documents.
+2. Upload a new vacancy.
+3. Generate a ranked shortlist.
+4. Review candidate profiles and match explanations.
+5. Export the shortlist to Excel or CSV.
+The application should be easy to maintain and allow me to add new candidates without requiring a developer for routine tasks.
+
+Technical Skills Required
+I am looking for a developer with demonstrable experience in:
+• Artificial Intelligence and Large Language Models (LLMs).
+• Semantic Search and Information Retrieval.
+• Natural Language Processing (NLP).
+• Document Parsing and Data Extraction.
+• Vector Databases and Embeddings.
+• Retrieval-Augmented Generation (RAG), where appropriate.
+• Hybrid Search and Ranking Systems.
+• Backend and Web Application Development.
+• Database Design and Data Security.
+I am open to your recommendations regarding the technology stack. Possible technologies include Python, FastAPI, PostgreSQL, pgvector, and suitable LLM services.
+Please explain your proposed architecture and why you believe it is appropriate for this project.
+
+Privacy and Data Security
+The application will eventually process real candidate information, so privacy and security are essential.
+I want to start with fictitious candidate data for development and testing.
+Before introducing real candidate data, the data processing arrangements, security measures, and applicable legal requirements must be reviewed.
+Please explain how you would protect candidate data, manage external AI services, and support GDPR compliance.
+
+How I Prefer to Work
+I value clear communication, realistic expectations, and transparent pricing.
+I would prefer to develop this project in stages rather than commit to a large implementation immediately.
+The first step should be a working prototype using fictitious candidate profiles and vacancies. This will allow us to evaluate the matching quality before proceeding with the complete application.
+Please distinguish between the cost of the prototype and the estimated cost of the full application.
+I would also like regular progress updates and demonstrations of working functionality throughout development.
+
+Expected Deliverables
+• A working web application.
+• Candidate database and document processing.
+• AI-powered vacancy analysis.
+• Ranked candidate matching with supporting explanations.
+• Natural-language search and filtering.
+• Excel or CSV export.
+• Secure authentication and appropriate access controls.
+• Complete source code and technical documentation.
+• Deployment instructions and a handover session.
+I expect to own the custom-developed application and receive the source code, subject to the applicable terms of any third-party software and services.
+
+Questions for Applicants (in the description)
+Please answer the following questions in your proposal:
+1. Have you built a semantic search, document intelligence, or AI-powered matching application before? Please share relevant examples.
+2. How would you approach matching approximately 1,500 candidates, each with a CV and an interview report, against new vacancies?
+3. How would you ensure that mandatory requirements and actual qualifications influence the ranking, rather than relying solely on semantic similarity?
+4. What technology stack would you recommend, and why?
+5. How would you test the quality of the matching results?
+6. How would you protect candidate information when using external AI services?
+7. What would your proposed timeline and estimated cost be for the prototype and the complete application?
+
+I am looking for a developer who can help turn this idea into a practical, reliable tool that improves how I use my existing candidate network.
+
+Workload: Less than 30 hrs/week | Hourly | Duration: 1 to 3 months
+Experience level: Expert
+Attachment: Project AI-Powered Candidate Matching Platform for IT Recruitment.pdf (96 KB)
+Project Type: Complex project
+Skills and Expertise: Artificial Intelligence, Python, Natural Language Processing, Machine Learning, Vector Database
+
+SCREENING QUESTIONS: no formal "You will be asked..." section (questions are inside the description above)
+
+==================================================================================================
+JOB 11 / 20
+Title: AI Engineering Expert (Advisory Role)
+URL: https://www.upwork.com/jobs/~022108495194247825659
+Proposal submitted: Oct 2026 (page 2 of submitted list)
+--------------------------------------------------------------------------------------------------
+GlenFlow is a US-based venture studio and technology company with a strong Upwork track record and consistent 5-star reviews.
+
+We're looking for senior engineering professionals who help software teams improve how they develop with AI.
+
+This is not simply a training role — you'll assess how a team works today, identify where AI can help or create challenges, and recommend practical improvements.
+
+What You'll Do
+* Assess SDLC, AI usage, and bottlenecks with Engineering Managers, Leads, and CTOs
+* Design AI-driven workflows for development, testing, code review, and documentation
+* Set up AI coding tools, agents, MCP, shared prompts, and repository context
+* Move teams from individual AI use to repeatable team-level practices
+* Measure impact and recommend next steps
+* Present findings to engineering leadership and help shape follow-up work
+
+Who We're Looking For
+* 7+ years in software engineering or engineering leadership (Engineering Manager, Lead, Staff/Principal, Director/Head of Engineering)
+* Professional experience applying AI tools (Cursor, Claude Code, Copilot, Codex, or similar) to engineering teams
+* Strong client-facing skills and excellent English - you lead the technical conversation
+* Coding experience is a plus; this is not a development role
+
+Experience with every tool is not required - we value understanding of AI-driven workflows over any specific tool.
+
+Engagement
+Part-time, project-based, variable hours.
+Some months may involve only a few hours; active projects may require 20+ hours.
+Meetings are mostly during North American business hours. We pay competitive rates and have a strong history of 5-star freelancer relationships on Upwork.
+
+To Apply
+Attach your CV with contact details removed (email, phone, address, LinkedIn, other links) and briefly describe:
+* How you've applied AI to software engineering and developer productivity
+* The AI tools and workflows you've worked with
+* One or two examples of improving a team's AI adoption or productivity
+
+Workload: More than 30 hrs/week | Hourly | Duration: More than 6 months
+Experience level: Expert
+Project Type: Ongoing project
+Skills and Expertise: AI Development, AI Agent Development, Engineering Management, Artificial Intelligence, Generative AI
+
+SCREENING QUESTIONS: none
+
+==================================================================================================
+JOB 12 / 20
+Title: Kubernetes DevOps Engineer (Claude Code) for Infrastructure Takeover
+URL: https://www.upwork.com/jobs/~022108518301397683580
+Proposal submitted: Oct 2026 (page 2 of submitted list)
+--------------------------------------------------------------------------------------------------
+Title:
+DevOps / Kubernetes Engineer (Claude Code) – Secure Takeover of Production Infrastructure (1 Month Full-Time, then Ongoing)
+
+Description:
+We run an AI SaaS platform with live paying customers, and we're taking over the infrastructure from the previous technical team. We need an experienced DevOps engineer to take full control of the setup, secure it, and keep it running reliably. Speed matters to us: we want someone who uses Claude Code day to day to investigate and fix problems fast.
+
+PHASE 1: FIRST MONTH (FULL-TIME)
+• Take over the existing infrastructure using the handover documentation from the previous team
+• Run a full security audit: find and remove every user account, SSH key, API key, token and remote access route that isn't ours
+• Change all passwords, secrets and credentials across servers, Kubernetes, GitHub, hosting and third-party services
+• Review the Kubernetes cluster setup, deployments and configuration
+• Set up reliable, tested backups, and confirm we can restore from them
+• Set up monitoring and alerts so we know when something breaks
+• Move one instance from a third party's servers onto our own infrastructure
+• Write clear documentation and runbooks, so we're never dependent on one person again
+
+PHASE 2: ONGOING (PART-TIME)
+• Keep the lights on: monitoring, restarts, updates and security patches
+• Diagnose and fix issues quickly as they come up
+• Help with small infrastructure tasks
+• Be available for urgent issues
+
+CURRENT STACK
+• Kubernetes
+• Linode (Akamai)
+• GitHub
+• Claude Code and AI agents used for parts of day-to-day operations
+• Backups with backblaze
+
+REQUIREMENTS
+• Strong production Kubernetes experience
+• Hands-on experience using Claude Code to investigate, debug and fix infrastructure issues, and the judgment to check its work before applying changes to production
+• A track record of fixing production problems fast
+• Proven experience with security hardening, access audits and credential rotation
+• Experience taking over infrastructure built by someone else
+• Backup and disaster recovery setup
+• Linux server administration
+• Clear communication in English, and good documentation habits
+• Willing to sign an NDA
+
+NICE TO HAVE
+• Experience with Linode and OVH
+• Experience supporting AI or LLM-based products
+
+TO APPLY, PLEASE ANSWER (in the description)
+1. Describe how you use Claude Code to investigate and fix a production issue. Give a real example, and explain how you check its changes before they go live.
+2. Describe a time you took over infrastructure from another team. How did you make sure all previous access was removed?
+3. How would you approach the first 48 hours on a Kubernetes setup you've never seen before?
+4. What's your availability for full-time work in the first month, and your hourly rate for the ongoing part-time work?
+5. What time zone are you in?
+
+Workload: More than 30 hrs/week | Hourly | Duration: More than 6 months
+Experience level: Expert
+Contract-to-hire opportunity
+Project Type: Ongoing project
+Skills and Expertise: Ubuntu, Docker, AI Infrastructure, Kubernetes, Deployment Automation, CI/CD, DevOps, Git
+
+SCREENING QUESTIONS: no formal "You will be asked..." section (questions are inside the description above)
+
+==================================================================================================
+JOB 13 / 20
+Title: Looking for Senior DevOps Engineer (Linux / On-Premises Infrastructure)
+URL: https://www.upwork.com/jobs/~022108058032119544346
+Proposal submitted: Oct 2026 (page 2 of submitted list)
+--------------------------------------------------------------------------------------------------
+Job Title: Senior DevOps Engineer (Linux / On-Premises Infrastructure)
+Job type: Full-time
+Location: Remote (Operating in the UTC+3 time zone)
+Eligibility: Global candidates welcome (Please note: Due to international compliance and payment regulations, we are currently unable to accept applications from candidates based in RF/RB).
+
+About the Role
+We are seeking a highly experienced Senior DevOps & Infrastructure Engineer to join our distributed engineering team. Unlike strictly cloud-native roles, this position requires deep, hands-on expertise in Linux administration, on-premises infrastructure, and virtualization technologies. You will be responsible for automating OS deployments, securing environments, and building robust CI/CD pipelines to support our mission-critical enterprise applications.
+
+Key Responsibilities
+Infrastructure & OS Automation: Architect, deploy, and manage Linux-based infrastructure (specifically Rocky Linux / Red Hat). Automate OS installations and provisioning using Kickstart.
+Packaging & Deployment: Take full ownership of RPM packaging and deployment processes across our enterprise environments.
+CI/CD Pipeline Management: Design, build, and maintain robust Continuous Integration and Continuous Deployment pipelines utilizing Jenkins.
+Security & Hardening: Enforce strict security protocols, including Linux OS hardening, regular security patching, and secure system configuration.
+Virtualization & On-Premises Management: Manage and optimize on-premises infrastructure and virtualization layers using VMware, KVM, Hyper-V, or Nutanix.
+Database Operations Support: Oversee PostgreSQL deployments, executing reliable backup, replication, and disaster recovery (restore) procedures.
+
+Requirements
+Senior-Level Expertise: 5+ years of proven, senior-level experience in DevOps, Linux System Administration, or Infrastructure Engineering.
+Linux Mastery: Deep, practical knowledge of Linux Operating Systems, with a strong preference for Red Hat Enterprise Linux (RHEL) or Rocky Linux.
+Advanced Scripting: Strong programming and scripting skills for automation using Bash, coupled with Python, Perl, or Ruby.
+CI/CD & Automation: Solid, hands-on experience with Jenkins for CI/CD workflows and Kickstart for automated installations.
+Virtualization Fluency: Proven track record of managing on-premises infrastructure and hypervisors (VMware, KVM, Nutanix, etc.).
+Database Knowledge: Hands-on experience with PostgreSQL administration (specifically backups and restores).
+Communication & Availability: Upper-Intermediate (B2+) English proficiency. Ability to communicate technical concepts clearly and collaborate effectively during UTC+3 core working hours.
+
+Nice-to-Have
+Experience with containerization and orchestration (Docker / Kubernetes).
+Strong understanding of enterprise networking, LDAP, and Active Directory (AD).
+
+Workload: More than 30 hrs/week | Hourly | Duration: 3 to 6 months
+Experience level: Intermediate
+Rate: $10.00 - $30.00 Hourly
+Contract-to-hire opportunity
+Project Type: Ongoing project
+Skills and Expertise: DevOps, Linux System Administration, Virtualization, Continuous Integration
+
+SCREENING QUESTIONS: none
+
+==================================================================================================
+JOB 14 / 20
+Title: Microsoft Azure Expert
+URL: https://www.upwork.com/jobs/~022107695428805951833
+Proposal submitted: Oct 2026 (page 2 of submitted list)
+--------------------------------------------------------------------------------------------------
+We're looking for a consultant with deep hands-on experience in Microsoft Azure, Azure Networking, Terraform, Cloudflare, Azure SQL, Infrastructure as Code, and Cloud Security. You should have built production environments across multiple Azure subscriptions, not just read about them. Experience securing and managing Azure networking, identity, databases, and application platforms is essential. You should also be comfortable working with Cloudflare in front of Azure origins and have enough .NET familiarity to understand how an App Service is configured. Clear spoken English is important, as this role involves conversation and collaboration, not written reports.
+*I prefer 1-2min loom video.
+
+Workload: Less than 30 hrs/week | Hourly | Duration: Less than 1 month
+Experience level: Expert
+Rate: $20.00 - $40.00 Hourly
+Project Type: One-time project
+Skills and Expertise: Microsoft Azure, Azure DevOps, Terraform, Deployment Automation, Microsoft Azure SQL Database, Azure App Service, CI/CD Platform, DevOps, Cloudfare
+Preferred qualifications: Talent Type: Independent; Job Success Score: At least 90%; English level: Native or Bilingual
+
+SCREENING QUESTIONS: none
+
+==================================================================================================
+JOB 15 / 20
+Title: Contract Senior DevOps & GCP Cloud Architect
+URL: https://www.upwork.com/jobs/~022107435915384054418
+Proposal submitted: Oct 2026 (page 2 of submitted list)
+--------------------------------------------------------------------------------------------------
+We are seeking a highly experienced Senior DevOps & Cloud Architect for a contract engagement to design, build, automate, and optimize cloud-native infrastructure on Google Cloud Platform (GCP).
+The ideal consultant will bring 12+ years of hands-on experience across the complete DevOps lifecycle, including cloud architecture, infrastructure automation, Kubernetes, CI/CD, Site Reliability Engineering (SRE), security, observability, and production operations. You will work closely with startups, growing businesses, and enterprise organizations to deliver scalable, secure, highly available, and cost-efficient cloud solutions.
+
+This contract role is best suited for a results-driven cloud professional who can independently lead infrastructure initiatives, modernize platforms, implement automation, and drive operational excellence in production environments.
+
+Key Responsibilities
+Design and implement scalable, secure, and highly available cloud infrastructure on GCP.
+Lead cloud migration, modernization, and transformation initiatives.
+Architect and implement production-grade Kubernetes platforms using GKE.
+Build and maintain Infrastructure as Code (IaC) solutions using Terraform.
+Design, develop, and optimize CI/CD pipelines to accelerate application delivery.
+Automate infrastructure provisioning, deployment processes, and operational workflows.
+Implement monitoring, logging, alerting, and observability solutions.
+Establish DevSecOps practices across infrastructure and application delivery pipelines.
+Optimize cloud costs, system performance, and resource utilization.
+Troubleshoot complex production issues and drive reliability improvements.
+Design disaster recovery, business continuity, and high-availability architectures.
+Collaborate with application, security, and infrastructure teams to improve platform reliability and operational efficiency.
+Mentor engineering teams on DevOps best practices, automation, and cloud-native technologies.
+
+Required Experience
+Minimum 12+ years of experience in DevOps, Cloud Engineering, Infrastructure Engineering, Platform Engineering, or Site Reliability Engineering.
+Proven experience designing and supporting production-scale cloud environments.
+Strong background in cloud architecture, automation, and infrastructure modernization.
+Experience supporting both startup and enterprise-scale platforms.
+Demonstrated ability to lead complex cloud and DevOps initiatives independently.
+
+Technical Skills
+Cloud Platform: Google Cloud Platform (GCP); Multi-cloud and hybrid-cloud architecture; Cloud migration and modernization; Infrastructure scaling and optimization; Cost optimization and governance; High availability and disaster recovery planning
+Containerization & Kubernetes: Kubernetes (GKE); Docker and containerized workloads; Kubernetes security and policy management; Cluster auto-scaling and optimization; Service mesh and ingress management; Production-grade Kubernetes operations; Performance tuning and troubleshooting
+Infrastructure as Code & Automation: Terraform; Infrastructure provisioning and automation; Environment standardization; Configuration management; Infrastructure lifecycle management
+CI/CD & DevOps: GitHub Actions; GitLab CI/CD; Deployment automation; Release engineering; Pipeline optimization and governance; Continuous Integration and Continuous Delivery (CI/CD)
+Monitoring, Logging & Observability: Prometheus; Grafana; Google Cloud Operations Suite; Alerting and incident management; Centralized logging; Performance monitoring and troubleshooting; Observability platform implementation
+Security & DevSecOps: IAM and RBAC implementation; Secrets management; Security hardening; Vulnerability scanning and remediation; WAF and network security; Policy enforcement using Kyverno; Compliance-focused infrastructure design; Secure CI/CD pipeline implementation; Zero-downtime deployment strategies
+Automation & Scripting: Python scripting; Workflow automation; Cron jobs and task automation; Reliability engineering; Process optimization
+Networking & Infrastructure: VPC and network architecture; Load balancers and ingress controllers; DNS and CDN configuration; VPN and secure connectivity; Cloud networking and routing; Infrastructure optimization and scalability
+
+Preferred Qualifications
+Experience leading cloud transformation and modernization projects.
+Strong understanding of Site Reliability Engineering (SRE) principles.
+Experience building self-service platform engineering capabilities.
+Deep expertise in Kubernetes and cloud-native ecosystems.
+Strong communication and stakeholder management skills.
+Ability to mentor engineering teams and establish DevOps best practices.
+Experience working in regulated or compliance-driven environments.
+
+What Success Looks Like
+Secure, scalable, and resilient cloud infrastructure.
+Highly automated deployment and operational workflows.
+Reliable and optimized Kubernetes platforms.
+Improved application performance and platform availability.
+Reduced operational overhead through Infrastructure as Code and automation.
+Strong observability and incident response processes.
+Optimized cloud spend without compromising performance or reliability.
+Improved security posture and compliance readiness.
+
+Contract Details
+Position: Contract Senior DevOps & Cloud Architect (GCP & Kubernetes)
+Employment Type: Contract
+Location: Remote / Hybrid
+Experience Required: 12+ Years
+Domain: DevOps, Cloud Infrastructure, Kubernetes, Platform Engineering, SRE, DevSecOps
+
+Ideal Candidate
+A seasoned GCP-focused DevOps & Cloud Architect with extensive experience designing, automating, securing, and optimizing cloud-native platforms. The successful consultant will have a proven track record of delivering production-grade infrastructure, Kubernetes solutions, CI/CD automation, cloud cost optimization, observability, and reliability improvements across complex enterprise and startup environments.
+
+Budget: $80.00 Fixed-price
+Experience level: Expert
+Project Type: One-time project
+Skills and Expertise: Infrastructure Management, DevOps Engineering, MongoDB, DevOps, Google Cloud Platform, Kubernetes, CI/CD Platform, Python
+
+SCREENING QUESTIONS: none
+
+==================================================================================================
+JOB 16 / 20
+Title: Senior Infrastructure Operations Engineer
+URL: https://www.upwork.com/jobs/~022107409797163724628
+Proposal submitted: Oct 2026 (page 2 of submitted list)
+--------------------------------------------------------------------------------------------------
+The project is a complex software implementation for an international enterprise in the energy sector (power plants and electrical grids). The goal is to build a web application for a helicopter and drone-based sensor solution, where data from sensors is used to generate insights for power grid maintenance using artificial intelligence and advanced analytics tools.
+
+Job Description: Senior Infrastructure Operations Engineer
+
+We are looking for an experienced engineer to operate and improve infrastructure for an international enterprise in the energy sector. This is a full-time, long-term role, working primarily remotely with an international team.
+
+You will manage existing on-premises systems used to ingest and process sensor data and run AI workloads. The work includes daily administration, troubleshooting, and making the infrastructure easier to maintain. There is room to propose improvements, plan them with the team, and carry them through to implementation.
+
+You will work closely with a strong tech lead / architect from our side and a large team from the customer side.
+
+Project Duration: long-term, full-time
+Project Location: remote (occasional workshops in Berlin possible) Europe preferred.
+Project Setup: Agile software development with international stakeholders and implementation team (including USA, Germany, Spain, Poland)
+
+What you will do
+Manage Kubernetes clusters, Linux servers, virtual machines, and GPU nodes.
+Configure networking, firewalls, VPN access, and S3-compatible storage.
+Maintain software and drivers, including a Windows system used for specialist tools.
+Manage backups to Google Cloud and verify that data can be restored.
+Automate recurring tasks, improve user access management, and document operational procedures.
+You will work closely with the existing DevOps team, which handles application deployments.
+
+What we are looking for
+Strong hands-on experience with Linux administration, Kubernetes cluster operations, networking, and storage.
+Experience with infrastructure automation and backup and recovery.
+Ability to investigate unfamiliar systems, diagnose problems, and work independently.
+A practical approach to balancing daily support with longer-term improvements.
+Clear communication and fluency in written and spoken English.
+Experience with GPU drivers and Windows administration is useful. Occasional on-site support for larger hardware changes may be discussed.
+This role suits someone who enjoys hands-on operations and wants to help shape how the infrastructure develops.
+
+Important note: Skills and experience is not everything to us. It is equally important that you are enthusiastic about work (if the project is interesting) and are fun to work with. :-)
+
+We strongly prefer candidates in the European time zone as you need to align as well with the UK, United States, Europe and India. Your closest counterparts are located in UK, Sweden and India.
+
+Workload: More than 30 hrs/week | Hourly | Duration: More than 6 months
+Experience level: Intermediate
+Rate: $20.00 - $45.00 Hourly
+Project Type: Ongoing project
+Skills and Expertise: Linux, Deployment Automation, DevOps, Kubernetes, GPU, VPN
+
+SCREENING QUESTIONS: none
+
+==================================================================================================
+JOB 17 / 20
+Title: DevOps & Cloud Engineer: CI/CD and Infrastructure as Code on AWS
+URL: https://www.upwork.com/jobs/~022107409695074111920
+Proposal submitted: Oct 2026 (page 2 of submitted list)
+--------------------------------------------------------------------------------------------------
+Our SaaS runs on AWS (ECS, RDS, S3), and deploys are manual — only one person on the team knows how to do them. We need a DevOps engineer to move infrastructure to Terraform, build CI/CD in GitHub Actions with Docker, and make staging and production match. Target: any engineer can deploy to production in under 15 minutes. Includes documentation and a handover session with our team. About 6–8 weeks.
+
+Workload: More than 30 hrs/week | Hourly | Duration: 3 to 6 months
+Experience level: Expert
+Rate: $35.00 - $70.00 Hourly
+Contract-to-hire opportunity
+Project Type: Ongoing project
+Skills and Expertise: DevOps, Deployment Automation, Amazon Web Services, CI/CD, Docker, CI/CD Platform, Amazon EC2, Kubernetes, Application Release Automation, Jenkins
+
+SCREENING QUESTIONS: none
+
+==================================================================================================
+JOB 18 / 20
+Title: Deploy Xray Proxy on AWS
+URL: https://www.upwork.com/jobs/~022107176692664235261
+Proposal submitted: Oct 2026 (page 2 of submitted list)
+--------------------------------------------------------------------------------------------------
+I need a freelancer to deploy and configure an Xray proxy server on my AWS account. The work includes provisioning and setting up an Ubuntu EC2 instance, configuring AWS Security Groups for inbound and outbound traffic, installing the latest 3X-UI panel using Docker or a bash script, and creating a VLESS-Reality inbound configuration masked under a reliable, unblocked SNI. You should also test the final vless:// configuration to confirm traffic routes correctly through the server and provide the final setup details. Experience with V2Ray, Xray, 3X-UI, and AWS networking is important for this project.
+
+Workload: Less than 30 hrs/week | Hourly | Duration: Less than 1 month
+Experience level: Intermediate
+Rate: $20.00 - $45.00 Hourly
+Project Type: One-time project
+Skills and Expertise: Amazon Web Services, Amazon EC2, Amazon S3, Amazon RDS
+
+SCREENING QUESTIONS: none
+
+==================================================================================================
+JOB 19 / 20
+Title: AWS Cost Optimization
+URL: https://www.upwork.com/jobs/~022105330843463747591
+Proposal submitted: Oct 2026 (page 2 of submitted list)
+--------------------------------------------------------------------------------------------------
+::NO AGENCIES::
+::DO NOT MESSAGE US OUTSIDE OF UPWORK::
+
+We are a video-based iOS app running on AWS. Our costs have been rising, but our output and user base have not. We need someone to analyze our AWS cost centers, identify the cause of the increase, and implement a fix.
+
+The Problem
+AWS costs are increasing month over month
+User activity has not increased proportionally
+We need to understand where the money is going and stop the waste
+
+Scope of Work
+Review our AWS billing and usage reports
+Identify the top cost drivers
+Determine why costs are rising without corresponding growth
+Provide a clear recommendation for optimization
+Implement the fix (with our approval before changes are made)
+
+Budget Note
+The budget is fixed at $75. We have no flexibility on this. This is a straightforward task for an experienced AWS professional.
+
+What We're Looking For
+Experience with AWS cost optimization
+Familiarity with App Runner, ECS, S3, Lambda, RDS, CloudWatch
+Ability to explain findings in plain English
+Someone who can both analyze and implement
+
+Deliverables
+A summary of cost drivers and root cause of the increase
+Specific recommendations for reduction
+Implementation of approved changes
+A brief report on savings achieved
+
+Tech Stack
+AWS App Runner
+AWS ECS (Fargate)
+AWS Lambda
+Amazon S3
+Amazon RDS (MySQL)
+AWS CloudWatch
+
+To Apply
+Please share your experience with AWS cost optimization and any examples of savings you've delivered.
+
+Budget: $75.00 Fixed-price
+Experience level: Expert
+Project Type: One-time project
+Skills and Expertise: Amazon Web Services
+Preferred qualifications: Rising Talent: Yes; English level: Fluent
+
+=== SCREENING QUESTIONS ===
+You will be asked to answer the following questions when submitting a proposal:
+1. Describe your recent experience with similar projects
+2. Please list any certifications related to this project
+
+==================================================================================================
+JOB 20 / 20
+Title: DevOps / Infrastructure Engineer, part time, ongoing
+URL: https://www.upwork.com/jobs/~022099452171958403208
+Proposal submitted: Sep/Oct 2026 (oldest in submitted list)
+--------------------------------------------------------------------------------------------------
+We are a B2B SaaS company. Our platform runs as three services, application, algorithm and database, and part of our infrastructure runs on DigitalOcean.
+
+We are looking for an infrastructure partner to take ownership of that estate: running it day to day, and building the monitoring, environments and automation that keep it healthy without anyone having to remember to check.
+
+Engagement shape
+Part time and ongoing, not a fixed scope project.
+The work changes shape over time. The first months are mostly build: monitoring and metrics, test and staging environments, CI/CD, infrastructure as code and containerisation. After that it settles into a smaller, steadier load of operating and maintaining what you built.
+We are open to an agency or an individual.
+
+How we work
+We hold ISO 27001. In practice that means production changes are planned, scheduled and documented, with a rollback plan, and we approve them before they go ahead. You would implement changes, not approve them, and you would not push to production yourself.
+If you have worked in an audited environment before, none of this will be new. If you have not, it is probably not a good fit, and we would rather say so now than after two calls.
+
+What you would run
+- Patching and vulnerability management, including emergency patching, with the scan evidence retained
+- Configuration baselines and drift detection against a defined hardening standard
+- CI/CD pipelines, including automated rollback
+- Test and staging environments, and the separation between them and production
+- SSH and administrative access provisioning and revocation on our approval
+- Firewall and network rules, including administrative access paths
+- Log collection and retention, and triage of security alerts
+- Backups verified by test restore, which means the restore is actually performed, plus disaster recovery drills
+- Certificate inventory and renewal before expiry
+- Monitoring, alerting and a metrics stack covering utilisation, latency, throughput and error rates
+- Hosting cost, monitored against a baseline, with reductions proposed
+- Incident response, including the technical input to a root cause analysis
+
+What you would build in the first months
+- A monitoring and metrics stack across all three services
+- Test and staging environments, properly separated from production
+- Infrastructure as code covering provisioning and configuration, held in our repositories
+- Unattended security updates, and patching and hardening baked into the base image and the provisioning path
+- Containerisation, starting with the algorithm service
+- Written runbooks for every recurring task, and architecture decisions documented as they are taken
+
+What is not in scope
+- Promoting releases to production. You maintain the release timeline for infrastructure and environment readiness and tell us when a release can go, and we perform the promotion
+- Writing customer facing security documentation
+- Completing customer or prospect security questionnaires
+- Mapping controls to CIS, ISO 27001 or SOC 2 frameworks
+- Owning our risk register or accepting risk on our behalf
+- Application development and database administration beyond the operating system and platform layer
+
+Those stay with us. We mention it because the split is not always assumed, and we would rather be clear now than negotiate it later.
+
+What we are looking for
+- Strong Linux and public cloud experience on production systems
+- Experience working under formal change control
+- Infrastructure as code and containerisation
+- Clear written communication
+
+Please include in your proposal
+- References from comparable engagements
+- An explanation of your role and responsibilities on those engagements, so we can see what you owned rather than what the team delivered
+- Your availability
+- Your hourly rate
+
+Workload: More than 30 hrs/week | Hourly | Duration: More than 6 months
+Experience level: Expert
+Rate: $20.00 - $50.00 Hourly
+Contract-to-hire opportunity
+Project Type: Ongoing project
+Skills and Expertise: DevOps Engineering Skills, DevOps Engineering, DevOps
+
+SCREENING QUESTIONS: none
+
+==================================================================================================
+END OF DATASET — 20 jobs | formal screening-question sections: jobs 02, 07, 19 |
+questions embedded in the description text: jobs 03, 10, 12

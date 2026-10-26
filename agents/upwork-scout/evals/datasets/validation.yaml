@@ -1,0 +1,50 @@
+# REAL postings held OUT of tuning: run a candidate here before adopting it, and never feed this
+# split to `propose` (it refuses without --allow-validation). Same source as tuning.yaml.
+dataset:
+  id: validation
+  version: 1
+  split: validation
+  description: 5 of the 20 submitted-proposal postings, one per kind (GCP fixed, formal questions, advisory,
+    embedded questions, AWS DevOps).
+cases:
+- id: j05-gcp-fabric-fast-project
+  job_file: fixtures/upwork-submitted-2026-10-24/j05-gcp-fabric-fast-project.json
+  metadata:
+    title: GCP / Fabric Fast Project
+    questions: none
+    submitted: Oct 19, 2026
+    project_type: Ongoing project
+    preferred_qualifications: 'English level: Fluent; Location: Australia, New Zealand, United States'
+- id: j07-fractional-cto-using-ai-to-integrate-and
+  job_file: fixtures/upwork-submitted-2026-10-24/j07-fractional-cto-using-ai-to-integrate-and.json
+  operator_instructions: '1. What city are you in?
+
+    2. Would you be able to screenshare with camera on using discord when collaborating with us?'
+  metadata:
+    title: Fractional CTO using AI to integrate and build (Invite-Only)
+    questions: formal
+    submitted: Oct 18, 2026
+    project_type: Ongoing project
+- id: j11-ai-engineering-expert-advisory-role
+  job_file: fixtures/upwork-submitted-2026-10-24/j11-ai-engineering-expert-advisory-role.json
+  metadata:
+    title: AI Engineering Expert (Advisory Role)
+    questions: none
+    submitted: Oct 2026 (page 2 of submitted list)
+    project_type: Ongoing project
+- id: j12-kubernetes-devops-engineer-claude-code
+  job_file: fixtures/upwork-submitted-2026-10-24/j12-kubernetes-devops-engineer-claude-code.json
+  metadata:
+    title: Kubernetes DevOps Engineer (Claude Code) for Infrastructure Takeover
+    questions: in_description
+    submitted: Oct 2026 (page 2 of submitted list)
+    project_type: Ongoing project
+    contract_to_hire: true
+- id: j17-devops-cloud-engineer-ci-cd-and
+  job_file: fixtures/upwork-submitted-2026-10-24/j17-devops-cloud-engineer-ci-cd-and.json
+  metadata:
+    title: 'DevOps & Cloud Engineer: CI/CD and Infrastructure as Code on AWS'
+    questions: none
+    submitted: Oct 2026 (page 2 of submitted list)
+    project_type: Ongoing project
+    contract_to_hire: true

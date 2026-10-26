@@ -29,3 +29,5 @@ packages = ["agent"]
 # The agent loop is async throughout; auto mode saves marking every test.
 asyncio_mode = "auto"
 testpaths = ["tests"]
+# The evals package (evals/) is tooling, not part of the wheel; tests import it from the checkout.
+pythonpath = ["."]

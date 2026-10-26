@@ -66,6 +66,8 @@ class RoleConfig:
     name: str
     model: str
     system_prompt: str
+    # The prompt version's file as configured (prompts/<role>/v<N>.md); None for an inline prompt.
+    system_prompt_file: str | None = None
     fallback_model: str | None = None
     max_turns: int = 4
     max_budget_usd: float | None = None
@@ -78,6 +80,11 @@ class RoleConfig:
     def prompt_sha(self) -> str:
         """Ties every stored verdict or draft to the exact prompt that produced it."""
         return hashlib.sha256(self.system_prompt.encode("utf-8")).hexdigest()[:16]
+
+    @property
+    def prompt_ref(self) -> str:
+        """``<file>@<sha>``: which prompt version is live, as the startup log names it."""
+        return f"{self.system_prompt_file or 'inline'}@{self.prompt_sha}"
 
 
 @dataclass(frozen=True)
@@ -211,6 +218,7 @@ def _role(name: str, raw: dict[str, Any] | None, source: str, base_dir: Path | N
         name=name,
         model=model,
         system_prompt=prompt,
+        system_prompt_file=raw.get("system_prompt_file"),
         fallback_model=raw.get("fallback_model"),
         max_turns=int(raw.get("max_turns", 4)),
         max_budget_usd=raw.get("max_budget_usd"),

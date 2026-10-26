@@ -1,0 +1,26 @@
+{
+  "jobId": "2107409695074111920",
+  "title": "DevOps & Cloud Engineer: CI/CD and Infrastructure as Code on AWS",
+  "url": "https://www.upwork.com/jobs/~022107409695074111920",
+  "description": "Our SaaS runs on AWS (ECS, RDS, S3), and deploys are manual — only one person on the team knows how to do them. We need a DevOps engineer to move infrastructure to Terraform, build CI/CD in GitHub Actions with Docker, and make staging and production match. Target: any engineer can deploy to production in under 15 minutes. Includes documentation and a handover session with our team. About 6–8 weeks.",
+  "descriptionMarkdown": "Our SaaS runs on AWS (ECS, RDS, S3), and deploys are manual — only one person on the team knows how to do them. We need a DevOps engineer to move infrastructure to Terraform, build CI/CD in GitHub Actions with Docker, and make staging and production match. Target: any engineer can deploy to production in under 15 minutes. Includes documentation and a handover session with our team. About 6–8 weeks.",
+  "jobType": "HOURLY",
+  "experienceLevel": "ExpertLevel",
+  "skills": [
+    "DevOps",
+    "Deployment Automation",
+    "Amazon Web Services",
+    "CI/CD",
+    "Docker",
+    "CI/CD Platform",
+    "Amazon EC2",
+    "Kubernetes",
+    "Application Release Automation",
+    "Jenkins"
+  ],
+  "source": "upwork-text-import",
+  "engagementType": "FULL_TIME",
+  "engagementDuration": "3 to 6 months",
+  "hourlyBudgetMin": 35.0,
+  "hourlyBudgetMax": 70.0
+}

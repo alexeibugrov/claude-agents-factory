@@ -4,3 +4,7 @@ deploy/agent_config.local.yaml
 deploy/claude-config/
 deploy/telegram-session/
 deploy/backups/
+# Prompt evals: Promptfoo itself, its database (evals + the operator's ratings) and cache, run records.
+evals/node_modules/
+evals/.promptfoo/
+evals/runs/

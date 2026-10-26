@@ -1,0 +1,21 @@
+{
+  "jobId": "2110038136843185429",
+  "title": "Senior DevOps Engineer for AWS (Invite-Only)",
+  "url": "https://www.upwork.com/jobs/~022110038136843185429",
+  "description": "We need a senior DevOps engineer to support our AWS environment and help improve infrastructure reliability, security, and compliance. The role includes working with Terraform, CI/CD pipelines, and SOC2 readiness, with optional support for SQL Server and Snowflake. You will help design, implement, and maintain scalable cloud infrastructure, automate deployment workflows, and strengthen operational processes. Experience with production environments and security-focused infrastructure is important. This is a long-term engagement for someone who can contribute to ongoing infrastructure improvements and support stable, secure operations.",
+  "descriptionMarkdown": "We need a senior DevOps engineer to support our AWS environment and help improve infrastructure reliability, security, and compliance. The role includes working with Terraform, CI/CD pipelines, and SOC2 readiness, with optional support for SQL Server and Snowflake. You will help design, implement, and maintain scalable cloud infrastructure, automate deployment workflows, and strengthen operational processes. Experience with production environments and security-focused infrastructure is important. This is a long-term engagement for someone who can contribute to ongoing infrastructure improvements and support stable, secure operations.",
+  "jobType": "HOURLY",
+  "experienceLevel": "ExpertLevel",
+  "skills": [
+    "Amazon Web Services",
+    "Amazon ECS",
+    "DevOps",
+    "Amazon EC2",
+    "Amazon S3"
+  ],
+  "source": "upwork-text-import",
+  "engagementType": "FULL_TIME",
+  "engagementDuration": "More than 6 months",
+  "hourlyBudgetMin": 50.0,
+  "hourlyBudgetMax": 130.0
+}

@@ -11,6 +11,8 @@ on:
     # Path-filtered to this agent's own inputs, so an unrelated agent's change never rebuilds it.
     paths:
       - 'agents/upwork-scout/**'
+      # Prompt-eval tooling and records (evals/) never reach the image; a review commit must not redeploy.
+      - '!agents/upwork-scout/evals/**'
       - '.github/workflows/upwork-scout.yml'
       - '.github/workflows/agent-deploy.reusable.yml'
   # Redeploy without a commit, e.g. after the operator prepares the VM. Dispatchable only once

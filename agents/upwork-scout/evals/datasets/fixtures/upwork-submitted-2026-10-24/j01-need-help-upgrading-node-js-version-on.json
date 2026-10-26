@@ -1,0 +1,20 @@
+{
+  "jobId": "2113716324058689948",
+  "title": "Need Help Upgrading Node.js Version on AWS Elastic Beanstalk",
+  "url": "https://www.upwork.com/jobs/~022113716324058689948",
+  "description": "We have a production Node.js application running on AWS Elastic Beanstalk, and I need help upgrading to the latest version. I'm looking for a certified AWS expert to walk me through the process to ensure that there are no mistakes or unnecessary downtime. Given the known security vulnerabilities that are addressed by this latest version, I'd like to get this taken care of today if possible.\n\nI'm also looking to find a go-to sysadmin for tasks of this sort, so a successful engagement on this project could likely lead to additional work.",
+  "descriptionMarkdown": "We have a production Node.js application running on AWS Elastic Beanstalk, and I need help upgrading to the latest version. I'm looking for a certified AWS expert to walk me through the process to ensure that there are no mistakes or unnecessary downtime. Given the known security vulnerabilities that are addressed by this latest version, I'd like to get this taken care of today if possible.\n\nI'm also looking to find a go-to sysadmin for tasks of this sort, so a successful engagement on this project could likely lead to additional work.",
+  "jobType": "HOURLY",
+  "experienceLevel": "ExpertLevel",
+  "skills": [
+    "System Administration",
+    "Amazon Web Services",
+    "Node.js",
+    "Amazon EC2"
+  ],
+  "source": "upwork-text-import",
+  "engagementType": "PART_TIME",
+  "engagementDuration": "Less than 1 month",
+  "hourlyBudgetMin": 50.0,
+  "hourlyBudgetMax": 150.0
+}

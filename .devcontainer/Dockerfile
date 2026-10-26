@@ -1,4 +1,5 @@
-FROM node:20
+# Promptfoo (agent prompt evals) needs Node >= 22.22; -bookworm pins the Debian base the apt layers expect.
+FROM node:24-bookworm
 
 # bash + pipefail so any failing stage in a piped/chained RUN aborts the layer.
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]

@@ -1,0 +1,25 @@
+{
+  "jobId": "2107695428805951833",
+  "title": "Microsoft Azure Expert",
+  "url": "https://www.upwork.com/jobs/~022107695428805951833",
+  "description": "We're looking for a consultant with deep hands-on experience in Microsoft Azure, Azure Networking, Terraform, Cloudflare, Azure SQL, Infrastructure as Code, and Cloud Security. You should have built production environments across multiple Azure subscriptions, not just read about them. Experience securing and managing Azure networking, identity, databases, and application platforms is essential. You should also be comfortable working with Cloudflare in front of Azure origins and have enough .NET familiarity to understand how an App Service is configured. Clear spoken English is important, as this role involves conversation and collaboration, not written reports.\n*I prefer 1-2min loom video.",
+  "descriptionMarkdown": "We're looking for a consultant with deep hands-on experience in Microsoft Azure, Azure Networking, Terraform, Cloudflare, Azure SQL, Infrastructure as Code, and Cloud Security. You should have built production environments across multiple Azure subscriptions, not just read about them. Experience securing and managing Azure networking, identity, databases, and application platforms is essential. You should also be comfortable working with Cloudflare in front of Azure origins and have enough .NET familiarity to understand how an App Service is configured. Clear spoken English is important, as this role involves conversation and collaboration, not written reports.\n*I prefer 1-2min loom video.",
+  "jobType": "HOURLY",
+  "experienceLevel": "ExpertLevel",
+  "skills": [
+    "Microsoft Azure",
+    "Azure DevOps",
+    "Terraform",
+    "Deployment Automation",
+    "Microsoft Azure SQL Database",
+    "Azure App Service",
+    "CI/CD Platform",
+    "DevOps",
+    "Cloudfare"
+  ],
+  "source": "upwork-text-import",
+  "engagementType": "PART_TIME",
+  "engagementDuration": "Less than 1 month",
+  "hourlyBudgetMin": 20.0,
+  "hourlyBudgetMax": 40.0
+}

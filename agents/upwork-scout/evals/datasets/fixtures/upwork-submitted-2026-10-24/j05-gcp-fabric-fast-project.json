@@ -1,0 +1,20 @@
+{
+  "jobId": "2111987230666627663",
+  "title": "GCP / Fabric Fast Project",
+  "url": "https://www.upwork.com/jobs/~022111987230666627663",
+  "description": "The technical lead should hold a current Google Cloud Professional Cloud Architect certification, with Professional Cloud Security Engineer certification strongly preferred. The delivery team must demonstrate production experience with Fabric FAST, Terraform state imports, Shared VPC, GKE, Cloud Build, IAM remediation and service-account credential rotation\n\nFor this engagement, practical experience should be a firm requirement alongside certification.\n- Building GCP foundations using Cloud Foundation Fabric FAST and Terraform.\n- Relocating existing projects while managing inherited IAM and organisation policies.\n- Deploying VPC-native GKE in Shared VPC and redeploying existing workloads.\n- Rotating service-account keys and remediating GCP IAM for Domain-Wide Delegation integrations.\n- Importing existing GCS, Cloud SQL and BigQuery resources into Terraform without unintended changes.",
+  "descriptionMarkdown": "The technical lead should hold a current Google Cloud Professional Cloud Architect certification, with Professional Cloud Security Engineer certification strongly preferred. The delivery team must demonstrate production experience with Fabric FAST, Terraform state imports, Shared VPC, GKE, Cloud Build, IAM remediation and service-account credential rotation\n\nFor this engagement, practical experience should be a firm requirement alongside certification.\n- Building GCP foundations using Cloud Foundation Fabric FAST and Terraform.\n- Relocating existing projects while managing inherited IAM and organisation policies.\n- Deploying VPC-native GKE in Shared VPC and redeploying existing workloads.\n- Rotating service-account keys and remediating GCP IAM for Domain-Wide Delegation integrations.\n- Importing existing GCS, Cloud SQL and BigQuery resources into Terraform without unintended changes.",
+  "jobType": "FIXED",
+  "experienceLevel": "IntermediateLevel",
+  "skills": [
+    "Cloud Architecture",
+    "Google Cloud Platform",
+    "GCP",
+    "Terraform",
+    "cloud foundation",
+    "Fabric fast"
+  ],
+  "source": "upwork-text-import",
+  "budgetAmount": 10000.0,
+  "budgetCurrency": "USD"
+}
