@@ -223,3 +223,5 @@ for a writer told to output plain text. The uncommitted prompt-eval work (sessio
 - Operator request: "deploy (from PR)", confirmed directly after the review flagged it. Then ask the operator
   to check. Second sanctioned use of the TEMPORARY `feat/upwork-agent` push trigger; removed in
   the commit right after the deploy, as in `a6ce638`.
+- Deployed `3f932ce` from the branch: migration 005 applied, writer `prompts/writer/v4.md@439b7bab`
+  live, Telegram ready. Trigger removed in the next commit.
