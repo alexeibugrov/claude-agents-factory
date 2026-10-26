@@ -6,6 +6,8 @@ on:
   push:
     branches:
       - main
+      # TEMPORARY: deploy test of proposal revisions from the PR branch. Remove before merge.
+      - feat/upwork-agent
     tags:
       - 'v*'
     # Path-filtered to this agent's own inputs, so an unrelated agent's change never rebuilds it.

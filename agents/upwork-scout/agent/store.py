@@ -313,23 +313,26 @@ async def record_proposal(
     prompt_sha: str,
     run: dict[str, Any],
     draft: dict[str, Any],
+    request_text: str | None = None,
+    revises_id: int | None = None,
 ) -> None:
+    """Store a new version; an earlier one, delivered or revised, is kept."""
     async with conn.transaction():
         await conn.execute(
-            "INSERT INTO proposals (job_id, screening_id, prompt_sha, model, body, notes_for_operator,"
-            " cost_usd, num_turns, duration_s) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
-            " ON CONFLICT (job_id, prompt_sha) DO UPDATE SET body = EXCLUDED.body,"
-            " notes_for_operator = EXCLUDED.notes_for_operator, delivered_at = NULL",
+            "INSERT INTO proposals (job_id, screening_id, prompt_sha, model, body,"
+            " cost_usd, num_turns, duration_s, request_text, revises_id)"
+            " VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
             (
                 job_id,
                 screening_id,
                 prompt_sha,
                 run.get("model") or "",
                 draft["proposal"],
-                draft.get("notes_for_operator"),
                 run.get("cost_usd"),
                 run.get("num_turns"),
                 run.get("duration_s"),
+                request_text,
+                revises_id,
             ),
         )
         await set_status(conn, job_id, "drafted")
@@ -370,11 +373,20 @@ async def offer_for_job(conn: Conn, job_id: str) -> dict[str, Any] | None:
 
 
 async def request_proposal(
-    conn: Conn, job_id: str, requested_by: int | None, request_message_id: int, request_text: str | None = None
+    conn: Conn,
+    job_id: str,
+    requested_by: int | None,
+    request_message_id: int,
+    request_text: str | None = None,
+    revise_proposal_id: int | None = None,
 ) -> bool:
-    """Queue the writer for an offered job, or retry one that errored. A request with instructions
-    also rewrites a delivered proposal. False if the job is already in hand or done."""
-    statuses = ["offered", "error"] + (["delivered"] if request_text else [])
+    """Queue the writer for an offered job, or retry one that errored. A request with suggestions
+    also writes a new version of a delivered proposal; one with ``revise_proposal_id`` edits that
+    proposal instead. False if the job is already in hand or done."""
+    if revise_proposal_id is not None:
+        statuses = ["delivered", "error"]
+    else:
+        statuses = ["offered", "error"] + (["delivered"] if request_text else [])
     async with conn.transaction():
         cur = await conn.execute(
             "UPDATE pipeline SET status = 'requested', attempts = 0, reason = NULL, updated_at = now()"
@@ -384,17 +396,40 @@ async def request_proposal(
         if await cur.fetchone() is None:
             return False
         await conn.execute(
-            "UPDATE offers SET requested_by = %s, request_message_id = %s, request_text = %s, requested_at = now()"
-            " WHERE job_id = %s",
-            (requested_by, request_message_id, request_text, job_id),
+            "UPDATE offers SET requested_by = %s, request_message_id = %s, request_text = %s,"
+            " revise_proposal_id = %s, requested_at = now() WHERE job_id = %s",
+            (requested_by, request_message_id, request_text, revise_proposal_id, job_id),
         )
     return True
+
+
+async def proposal_by_message(conn: Conn, chat_id: str, message_id: int) -> dict[str, Any] | None:
+    """The delivered proposal a group message points at (any of its parts), with the job's status."""
+    cur = await conn.execute(
+        "SELECT p.id, p.job_id, pl.status FROM proposals p JOIN pipeline pl USING (job_id)"
+        " WHERE p.telegram_chat_id = %s AND %s = ANY(p.telegram_message_ids)",
+        (chat_id, message_id),
+    )
+    return await cur.fetchone()
+
+
+async def proposal_chain(conn: Conn, proposal_id: int) -> list[dict[str, Any]]:
+    """The proposal and every version it revises, oldest first: the new draft, then each revision."""
+    cur = await conn.execute(
+        "WITH RECURSIVE chain AS ("
+        " SELECT id, revises_id, body, request_text, 0 AS depth FROM proposals WHERE id = %s"
+        " UNION ALL SELECT p.id, p.revises_id, p.body, p.request_text, c.depth + 1"
+        " FROM proposals p JOIN chain c ON p.id = c.revises_id)"
+        " SELECT id, body, request_text FROM chain ORDER BY depth DESC",
+        (proposal_id,),
+    )
+    return list(await cur.fetchall())
 
 
 async def undelivered(conn: Conn, limit: int) -> list[dict[str, Any]]:
     """The outbox: drafted proposals not yet sent, oldest first, with their job and offer."""
     cur = await conn.execute(
-        "SELECT p.id AS proposal_id, p.body, p.notes_for_operator, p.job_id, o.message_id AS offer_message_id,"
+        "SELECT p.id AS proposal_id, p.body, p.job_id, o.message_id AS offer_message_id,"
         " o.request_message_id FROM proposals p JOIN pipeline pl ON pl.job_id = p.job_id"
         " JOIN offers o ON o.job_id = p.job_id"
         " WHERE p.delivered_at IS NULL AND pl.status = 'drafted' ORDER BY p.created_at LIMIT %s",

@@ -78,8 +78,8 @@ def test_offer_message_escapes_html_and_shows_score_only_when_screened():
 
 def test_proposal_reply_is_one_plain_text_message_with_the_link_first():
     job = _job()
-    msgs = render.proposal_messages(job, {"proposal": "Hi <b>there</b>", "notes_for_operator": "check rate"})
-    assert msgs == [f"{job['url']}\n\nHi <b>there</b>"]  # notes are stored, never delivered
+    msgs = render.proposal_messages(job, {"proposal": "Hi <b>there</b>"})
+    assert msgs == [f"{job['url']}\n\nHi <b>there</b>"]
 
 
 def test_long_proposal_is_split_under_the_limit():

@@ -46,7 +46,7 @@ attempts and last reason. Nothing re-queues a job automatically.
 | File | Role |
 | --- | --- |
 | [agent_config.yaml](agent_config.yaml) | **Committed, secret-free.** Models, prompt file pointers, searches, Apify caps, pipeline caps, prefilters, Telegram target. Bind-mounted at deploy. |
-| [prompts/](prompts/) | The role prompts, one directory per role with one Markdown file per version (`writer/v2.md`, live: wrapper + the operator's proposal metaprompt + About me; the sample proposals stay plain text in `text` fences, because the writer must output plain text). Shipped and bind-mounted like the config. |
+| [prompts/](prompts/) | The role prompts, one directory per role with one Markdown file per version (`writer/v4.md`, live: wrapper + the operator's proposal metaprompt + About me; the sample proposals stay plain text in `text` fences, because the writer must output plain text). Shipped and bind-mounted like the config. |
 | [agent/config.py](agent/config.py) | Typed load + fail-fast validation (`maxResults` ≤ 10, query ≤ 80 words, unique search slugs, `chat_id` when `allow_writes`). |
 | [agent/scrape.py](agent/scrape.py) | One actor run per search; cost from charged events; Upwork's total from the run log; failures returned, never raised. |
 | [agent/store.py](agent/store.py) | Ingest + dedup, the pipeline ledger, claims, the Telegram outbox. |
@@ -127,19 +127,26 @@ posts. Its API id and hash are in the env file, and its login is in a per-stack 
 - **Trigger:** a reply to an offer whose first word is one of `triggers`, case-insensitive (`+`,
   `go`; "google" and "+1" do not match, and a trigger word later in the text never fires). It can
   come from any member. The agent's own messages and messages that aren't replies are ignored.
-- **Instructions:** text after the trigger, typically the client's application questions pasted
-  from Upwork ("+ 1. Which clouds…"), is stored in `offers.request_text` and reaches the writer as
-  `<operator_instructions>`: the metaprompt's "Additional instructions", answered in order. The
+- **Operator suggestions:** text after the trigger, such as the client's name, context, or the
+  client's application questions pasted from Upwork ("+ 1. Which clouds…"), is stored in
+  `offers.request_text` and reaches the writer as `<operator_instructions>`: the metaprompt's
+  "Additional instructions", questions answered in order. The
   actor's default output has no questions field; only `enrichDetails`, which needs the operator's
   Upwork session token, returns them.
 - **Proposal:** one plain-text message, ready to send as is, as a reply to the trigger message:
-  the vacancy link, then the proposal. Writer notes are not delivered. `submit_proposal` still
-  accepts `notes_for_operator` and stores it, until the live prompt no longer asks for notes.
+  the vacancy link, then the proposal, and nothing else.
+- **Revision:** any reply to a delivered proposal (no trigger needed; a leading one is dropped) is
+  the operator's comments on it. The writer gets that proposal as `<current_proposal>` and every
+  round of comments on it, oldest first, as `<operator_feedback>`, plus the original suggestions,
+  and edits the draft instead of starting over. The result is a reply to the comment, and
+  replying to it starts the next round. Every version is a `proposals` row, linked by
+  `revises_id`, with its suggestions or comments in `request_text`.
 - **Repeats and failures:**
   - A second bare trigger gets "Already writing it." or "Already sent above." instead of a second
-    draft. A trigger with instructions on a delivered offer writes a new version.
-  - A writer failure that has used up `max_attempts` gets a short error reply. A new trigger
-    retries it.
+    draft. A trigger with suggestions on a delivered offer writes a new version from scratch.
+    Comments on a proposal while a draft is in hand get "Already writing it." and are not queued.
+  - A writer failure that has used up `max_attempts` gets a short error reply. A new trigger, or
+    new comments on the proposal, retries it.
 - **Event wake-up, cursor read:** a Telegram new-message event for a reply wakes the poll at once;
   without one, it runs every `poll_interval_s` (60) as a safety net. The event only signals: the
   poll always reads the messages after the last one it read, stored in `telegram_cursor`, so a
@@ -401,7 +408,3 @@ Restore: `docker compose exec -T db pg_restore -U upwork_scout -d <scratch_db> <
   ```
 
 - The poll handles one writer run at a time, so it pauses while a draft is being written.
-- Improvement (requested 2026-10-26): revise a delivered draft by replying to it with
-  corrections. Today, only a new trigger with instructions on the offer writes a new version.
-  A reply to the draft itself is ignored.
-- Once a writer prompt without notes is live, remove `notes_for_operator` from `submit_proposal`.

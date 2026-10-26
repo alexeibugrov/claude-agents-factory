@@ -62,7 +62,7 @@ def _submit_screening(
     return {"success": True, "job_id": ctx.job_id}
 
 
-def _submit_proposal(ctx: RunContext, *, proposal: str, notes_for_operator: str | None = None) -> dict:
+def _submit_proposal(ctx: RunContext, *, proposal: str) -> dict:
     """Record the writer's draft proposal for this run's job."""
     proposal = (proposal or "").strip()
     if not MIN_PROPOSAL_CHARS <= len(proposal) <= MAX_PROPOSAL_CHARS:
@@ -76,7 +76,7 @@ def _submit_proposal(ctx: RunContext, *, proposal: str, notes_for_operator: str 
             "success": False,
             "error": f"proposal must stay below {MAX_PROPOSAL_WORDS} words (got {words}); shorten it and resubmit",
         }
-    ctx.result.update(proposal=proposal, notes_for_operator=(notes_for_operator or "").strip() or None)
+    ctx.result.update(proposal=proposal)
     return {"success": True, "job_id": ctx.job_id}
 
 
@@ -121,13 +121,6 @@ TOOL_SPECS: dict[str, list[tuple[str, str, dict[str, Any], Callable[..., dict]]]
                         "minLength": MIN_PROPOSAL_CHARS,
                         "maxLength": MAX_PROPOSAL_CHARS,
                         "description": "the proposal text, ready to paste into Upwork",
-                    },
-                    "notes_for_operator": {
-                        "type": "string",
-                        "description": (
-                            "optional: what the operator must check before sending, as a few short points."
-                            " No heading: it is shown under 'Check before sending'."
-                        ),
                     },
                 },
                 "required": ["proposal"],

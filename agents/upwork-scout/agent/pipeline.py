@@ -5,7 +5,8 @@ one Telegram message per job. Screening is parked unless ``pipeline.screening_en
 
 ``poll`` (woken by a reply event, at least every ``telegram.poll_interval_s``): read the group
 after the stored cursor; a reply to an offer that opens with a trigger requests a proposal →
-writer run → plain-text reply with the vacancy link and the proposal.
+writer run → plain-text reply with the vacancy link and the proposal. A reply to a delivered
+proposal is the operator's comments on it: the writer edits that proposal, round after round.
 
 Dependencies are injected (:class:`Deps`) so tests drive a real Postgres with fake Apify, agent and
 Telegram stand-ins. Each stage is bounded by config caps; a backlog stays queued and nothing is
@@ -28,7 +29,7 @@ from agent.config import AgentConfig, RoleConfig
 from agent.context import RunContext
 from agent.guards import delivery_allowed
 from agent.scrape import ScrapeResult, build_run_input, run_search
-from agent.telegram import Chat, FloodWait
+from agent.telegram import Chat, FloodWait, Incoming
 
 logger = logging.getLogger(__name__)
 
@@ -183,34 +184,68 @@ async def _read_replies(conn: Conn, cfg: AgentConfig, chat: Chat, summary: PollS
         summary.read += 1
         if msg.own or msg.reply_to is None:
             continue
-        instructions = parse_trigger(msg.text, cfg.telegram.triggers)
-        if instructions is None:
-            continue
         offer = await store.offer_by_message(conn, chat.chat_id, msg.reply_to)
-        if offer is None:
+        if offer is not None:
+            await _request_draft(conn, cfg, chat, msg, offer, summary)
             continue
-        if await store.request_proposal(conn, offer["job_id"], msg.sender_id, msg.id, instructions or None):
-            logger.info(
-                "proposal requested job=%s by=%s message=%s instructions=%d chars",
-                offer["job_id"],
-                msg.sender_id,
-                msg.id,
-                len(instructions),
-            )
-            summary.requested += 1
-        elif offer["status"] in ("drafted", "delivered"):
-            trigger = cfg.telegram.triggers[0]
-            await chat.reply(
-                msg.id,
-                [
-                    f"Already sent above. For a new version, reply {trigger} followed by the questions to answer"
-                    " or what to change."
-                ],
-            )
-        else:
-            await chat.reply(msg.id, ["Already writing it."])
+        proposal = await store.proposal_by_message(conn, chat.chat_id, msg.reply_to)
+        if proposal is not None:
+            await _request_revision(conn, cfg, chat, msg, proposal, summary)
     if messages:
         await store.set_cursor(conn, chat.chat_id, messages[-1].id)
+
+
+async def _request_draft(
+    conn: Conn, cfg: AgentConfig, chat: Chat, msg: Incoming, offer: dict[str, Any], summary: PollSummary
+) -> None:
+    """A reply to an offer: a request when it opens with a trigger; the rest is the operator's suggestions."""
+    suggestions = parse_trigger(msg.text, cfg.telegram.triggers)
+    if suggestions is None:
+        return
+    if await store.request_proposal(conn, offer["job_id"], msg.sender_id, msg.id, suggestions or None):
+        logger.info(
+            "proposal requested job=%s by=%s message=%s suggestions=%d chars",
+            offer["job_id"],
+            msg.sender_id,
+            msg.id,
+            len(suggestions),
+        )
+        summary.requested += 1
+    elif offer["status"] in ("drafted", "delivered"):
+        trigger = cfg.telegram.triggers[0]
+        await chat.reply(
+            msg.id,
+            [
+                "Already sent above. To change it, reply to the proposal with your comments; for a new"
+                f" version from scratch, reply {trigger} here followed by your suggestions."
+            ],
+        )
+    else:
+        await chat.reply(msg.id, ["Already writing it."])
+
+
+async def _request_revision(
+    conn: Conn, cfg: AgentConfig, chat: Chat, msg: Incoming, proposal: dict[str, Any], summary: PollSummary
+) -> None:
+    """A reply to a delivered proposal: its whole text (a leading trigger dropped) is the comments."""
+    comments = parse_trigger(msg.text, cfg.telegram.triggers)
+    comments = (msg.text if comments is None else comments).strip()
+    if not comments:
+        return
+    if await store.request_proposal(
+        conn, proposal["job_id"], msg.sender_id, msg.id, comments, revise_proposal_id=proposal["id"]
+    ):
+        logger.info(
+            "revision requested job=%s proposal=%s by=%s message=%s comments=%d chars",
+            proposal["job_id"],
+            proposal["id"],
+            msg.sender_id,
+            msg.id,
+            len(comments),
+        )
+        summary.requested += 1
+    else:
+        await chat.reply(msg.id, ["Already writing it. Send your comments again once it arrives."])
 
 
 async def _draft_requested(conn: Conn, cfg: AgentConfig, deps: Deps, chat: Chat, summary: PollSummary) -> None:
@@ -218,8 +253,16 @@ async def _draft_requested(conn: Conn, cfg: AgentConfig, deps: Deps, chat: Chat,
     claimed = await store.claim(conn, "requested", "drafting", p.max_draft_per_cycle, p.max_attempts)
     for i, job in enumerate(claimed):
         screening = await store.latest_screening(conn, job["job_id"])
-        offer = await store.offer_for_job(conn, job["job_id"])
-        prompt = render.writer_prompt(job, screening, (offer or {}).get("request_text"))
+        offer = await store.offer_for_job(conn, job["job_id"]) or {}
+        request_text, revises_id = offer.get("request_text"), offer.get("revise_proposal_id")
+        if revises_id is None:
+            prompt = render.writer_prompt(job, screening, request_text)
+        else:
+            # Edit the replied-to version, not a fresh draft: the new draft's suggestions still hold,
+            # and every earlier round of comments travels with the latest one.
+            chain = await store.proposal_chain(conn, revises_id)
+            rounds = [p["request_text"] for p in chain[1:]] + [request_text]
+            prompt = render.writer_prompt(job, screening, chain[0]["request_text"], (chain[-1]["body"], rounds))
         ctx, run = await _agent_run(deps, cfg.writer, job, prompt, cfg.allow_writes)
         if run["status"] != "COMPLETED" or "proposal" not in ctx.result:
             error = run.get("error") or "writer finished without calling submit_proposal"
@@ -231,7 +274,12 @@ async def _draft_requested(conn: Conn, cfg: AgentConfig, deps: Deps, chat: Chat,
             if await store.release(conn, job["job_id"], "requested", error, p.max_attempts) == "error":
                 offer = await store.offer_for_job(conn, job["job_id"])
                 if offer:
-                    note = f"Could not write a proposal: {error[:300]}. Reply again with a trigger to retry."
+                    retry = (
+                        "Reply to the proposal with your comments again to retry."
+                        if revises_id
+                        else f"Reply {cfg.telegram.triggers[0]} to the offer again to retry."
+                    )
+                    note = f"Could not write a proposal: {error[:300]}. {retry}"
                     await chat.reply(offer["request_message_id"] or offer["message_id"], [note])
             continue
         await store.record_proposal(
@@ -241,6 +289,8 @@ async def _draft_requested(conn: Conn, cfg: AgentConfig, deps: Deps, chat: Chat,
             prompt_sha=cfg.writer.prompt_sha,
             run=run,
             draft=ctx.result,
+            request_text=request_text,
+            revises_id=revises_id,
         )
         summary.drafted += 1
 
@@ -249,10 +299,10 @@ async def _deliver(conn: Conn, cfg: AgentConfig, chat: Chat, summary: PollSummar
     for item in await store.undelivered(conn, limit=20):
         if not delivery_allowed(allow_writes=cfg.allow_writes, job_id=item["job_id"]):
             return
-        proposal = {"proposal": item["body"], "notes_for_operator": item["notes_for_operator"]}
         try:
             ids = await chat.reply(
-                item["request_message_id"] or item["offer_message_id"], render.proposal_messages(item["job"], proposal)
+                item["request_message_id"] or item["offer_message_id"],
+                render.proposal_messages(item["job"], {"proposal": item["body"]}),
             )
         except FloodWait as exc:
             logger.warning("telegram flood wait; delivery resumes next poll: %s", exc)

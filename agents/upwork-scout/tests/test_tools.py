@@ -30,8 +30,8 @@ def test_screening_rejects_empty_reasons():
 def test_proposal_length_bounds():
     ctx = _ctx("writer")
     assert _submit_proposal(ctx, proposal="too short")["success"] is False
-    assert _submit_proposal(ctx, proposal="x" * 400, notes_for_operator="check rate")["success"] is True
-    assert ctx.result["notes_for_operator"] == "check rate"
+    assert _submit_proposal(ctx, proposal="x" * 400)["success"] is True
+    assert ctx.result == {"proposal": "x" * 400}
 
 
 def test_proposal_must_stay_below_350_words():

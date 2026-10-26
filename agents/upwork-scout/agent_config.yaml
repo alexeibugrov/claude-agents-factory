@@ -26,7 +26,7 @@ writer:
   timeout_s: 1200       # a run past this fails and is retried (max_attempts)
   max_turns: 8          # each over-long submit is rejected with the word count and costs a turn
   max_budget_usd: null
-  system_prompt_file: prompts/writer/v3.md   # the live version: a change is a new vN file, rollback is this line
+  system_prompt_file: prompts/writer/v4.md   # the live version: a change is a new vN file, rollback is this line
 
 # Agent-specific knobs, available as typed config (agent/config.py). Anything secret belongs in .env.
 settings:

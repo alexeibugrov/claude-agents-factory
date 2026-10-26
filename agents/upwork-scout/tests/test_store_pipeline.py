@@ -189,7 +189,10 @@ def _deps(
             cost_usd=Decimal("0.011"),
         )
 
+    drafts = 0
+
     async def fake_run_once(prompt, ctx, role, *, allow_writes):
+        nonlocal drafts
         if prompts is not None:
             prompts.append(prompt)
         if rate_limited:
@@ -199,7 +202,8 @@ def _deps(
         elif writer_fails:
             return {"status": "ERROR", "error": "model refused", "model": role.model}
         else:
-            ctx.result.update(proposal="P" * 400, notes_for_operator=None)
+            drafts += 1
+            ctx.result.update(proposal=f"V{drafts} " + "P" * 400)
         return {"status": "COMPLETED", "error": None, "model": role.model, "cost_usd": 0.01, "num_turns": 1}
 
     return Deps(apify_client=None, run_once=fake_run_once, chat=chat, run_search=fake_search)
@@ -343,7 +347,48 @@ async def test_trigger_with_questions_rewrites_a_delivered_proposal(conn):
     summary = await poll(conn, cfg, deps)
     assert (summary.requested, summary.delivered) == (1, 1)
     assert chat.replies[-1][0] == again
-    assert await _count(conn, "SELECT count(*) FROM proposals") == 1  # one row per job, rewritten
+    assert await _count(conn, "SELECT count(*) FROM proposals") == 2  # every version is kept
+    assert await _count(conn, "SELECT revises_id FROM proposals ORDER BY id DESC LIMIT 1") is None
+
+
+async def test_comments_on_a_proposal_revise_it_round_after_round(conn):
+    chat = FakeChat()
+    cfg, _, offer_id = await _offered(conn, chat)
+    prompts: list[str] = []
+    deps = _deps({}, chat=chat, prompts=prompts)
+    chat.say("+ Client is Anna", reply_to=offer_id)
+    await poll(conn, cfg, deps)
+    first_ids = await _count(conn, "SELECT telegram_message_ids FROM proposals")
+
+    comment = chat.say("shorter, drop the plan", reply_to=first_ids[-1])  # no trigger needed
+    summary = await poll(conn, cfg, deps)
+    assert (summary.requested, summary.drafted, summary.delivered) == (1, 1, 1)
+    assert prompts[-1].startswith("Revise the draft in <current_proposal>")
+    assert "<operator_instructions>\nClient is Anna\n</operator_instructions>" in prompts[-1]
+    assert "<current_proposal>\nV1 " in prompts[-1]
+    assert "<operator_feedback>\nRound 1: shorter, drop the plan\n</operator_feedback>" in prompts[-1]
+    assert chat.replies[-1][0] == comment and chat.replies[-1][1][0].endswith("V2 " + "P" * 400)
+
+    second_ids = await _count(conn, "SELECT telegram_message_ids FROM proposals ORDER BY id DESC LIMIT 1")
+    chat.say("+ mention Kubernetes", reply_to=second_ids[0])  # a leading trigger is dropped
+    await poll(conn, cfg, deps)
+    assert "<current_proposal>\nV2 " in prompts[-1]
+    assert "Round 1: shorter, drop the plan\n\nRound 2: mention Kubernetes\n" in prompts[-1]
+    chain = await store.proposal_chain(conn, await _count(conn, "SELECT max(id) FROM proposals"))
+    assert [p["request_text"] for p in chain] == ["Client is Anna", "shorter, drop the plan", "mention Kubernetes"]
+
+
+async def test_comments_while_a_draft_is_in_hand_get_a_note(conn):
+    chat = FakeChat()
+    cfg, deps, offer_id = await _offered(conn, chat)
+    chat.say("+", reply_to=offer_id)
+    await poll(conn, cfg, deps)
+    ids = await _count(conn, "SELECT telegram_message_ids FROM proposals")
+    await conn.execute("UPDATE pipeline SET status = 'drafting'")
+    again = chat.say("shorter", reply_to=ids[0])
+    summary = await poll(conn, cfg, deps)
+    assert summary.requested == 0
+    assert chat.replies[-1][0] == again and chat.replies[-1][1][0].startswith("Already writing it.")
 
 
 async def test_writer_failure_reports_and_a_new_trigger_retries(conn):

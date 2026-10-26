@@ -213,3 +213,13 @@ unchanged: only headings, lists and bold labels were added (word-by-word diff ch
 reference proposals and the closing sit in `text` fences, so they stay byte-for-byte plain text
 for a writer told to output plain text. The uncommitted prompt-eval work (session 3a) still reads
 `prompts/writer.txt`; it was told to switch to `prompts/writer.md`.
+
+## Proposal revisions (2026-10-26)
+
+- Operator request: replies to a delivered proposal are comments; the writer edits that proposal
+  (not from scratch), as many rounds as wanted. v3's rule 13 ("You never see an earlier draft")
+  contradicted this, so writer v4 = v3 + revision mode, made live. `notes_for_operator` removed
+  from `submit_proposal`: the operator wants only the ready-to-send proposal in Telegram.
+- Operator request: "deploy (from PR)", confirmed directly after the review flagged it. Then ask the operator
+  to check. Second sanctioned use of the TEMPORARY `feat/upwork-agent` push trigger; removed in
+  the commit right after the deploy, as in `a6ce638`.
