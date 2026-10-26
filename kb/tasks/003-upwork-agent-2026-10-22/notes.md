@@ -207,3 +207,9 @@ operator choice. Operator asked for CET: the agent runs with `TZ=Europe/Berlin` 
 log lines and offer times; the DB and the VM clock stay UTC. The temporary branch trigger is
 removed; deploys happen only on merge to `main`. Manual `docker compose` on the VM needs
 `IMAGE_TAG=sha-<commit>` until a `main` build pushes `latest`.
+
+Prompts as Markdown (2026-10-26): operator asked for `.md` prompts, easier to read. Wording is
+unchanged: only headings, lists and bold labels were added (word-by-word diff checked). The
+reference proposals and the closing sit in `text` fences, so they stay byte-for-byte plain text
+for a writer told to output plain text. The uncommitted prompt-eval work (session 3a) still reads
+`prompts/writer.txt`; it was told to switch to `prompts/writer.md`.

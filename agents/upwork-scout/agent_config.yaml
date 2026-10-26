@@ -16,7 +16,7 @@ screener:
   fallback_model: null
   max_turns: 4          # one submit call; the slack absorbs a rejected argument and a retry
   max_budget_usd: null
-  system_prompt_file: prompts/screener.txt   # own file for a readable git history
+  system_prompt_file: prompts/screener.md   # own file for a readable git history
 
 # Agent 2: drafts the proposal for an offer someone replied to with a trigger word.
 writer:
@@ -26,7 +26,7 @@ writer:
   timeout_s: 1200       # a run past this fails and is retried (max_attempts)
   max_turns: 4
   max_budget_usd: null
-  system_prompt_file: prompts/writer.txt   # own file for a readable git history
+  system_prompt_file: prompts/writer.md   # own file for a readable git history
 
 # Agent-specific knobs, available as typed config (agent/config.py). Anything secret belongs in .env.
 settings:

@@ -46,7 +46,7 @@ attempts and last reason. Nothing re-queues a job automatically.
 | File | Role |
 | --- | --- |
 | [agent_config.yaml](agent_config.yaml) | **Committed, secret-free.** Models, prompt file pointers, searches, Apify caps, pipeline caps, prefilters, Telegram target. Bind-mounted at deploy. |
-| [prompts/](prompts/) | The role prompts, one plain-text file each (`writer.txt`: wrapper + the operator's proposal metaprompt + About me). Shipped and bind-mounted like the config. |
+| [prompts/](prompts/) | The role prompts, one Markdown file each (`writer.md`: wrapper + the operator's proposal metaprompt + About me; the sample proposals stay plain text in `text` fences, because the writer must output plain text). Shipped and bind-mounted like the config. |
 | [agent/config.py](agent/config.py) | Typed load + fail-fast validation (`maxResults` ≤ 10, query ≤ 80 words, unique search slugs, `chat_id` when `allow_writes`). |
 | [agent/scrape.py](agent/scrape.py) | One actor run per search; cost from charged events; Upwork's total from the run log; failures returned, never raised. |
 | [agent/store.py](agent/store.py) | Ingest + dedup, the pipeline ledger, claims, the Telegram outbox. |
@@ -98,9 +98,9 @@ attempts and last reason. Nothing re-queues a job automatically.
     Australia and New Zealand; ISO3) on the actor's `clientCountryCode`.
 
   Changing a threshold is a config-only redeploy.
-- **Prompts:** each role's prompt is its own file, `system_prompt_file: prompts/<role>.txt`
+- **Prompts:** each role's prompt is its own file, `system_prompt_file: prompts/<role>.md`
   (relative to the config; an inline `system_prompt` also works), so every prompt change is a
-  readable diff. The operator owns `## Criteria` in the screener prompt, and the metaprompt and
+  readable diff. The operator owns the screener prompt from `## Criteria` down, and the metaprompt and
   ABOUT ME in the writer prompt. ABOUT ME holds no contact details or employer and client names,
   and the writer is told never to put them in a proposal. Every verdict and draft records the
   `prompt_sha` of the prompt that produced it.
