@@ -290,7 +290,9 @@ uv run python -m evals run --dataset evals/datasets/validation.yaml --prompt …
   that cites reviewed case IDs, the behaviour it preserved, conflicting comments, and problems a
   prompt cannot fix. It writes `candidates/<id>/prompt.md`, `CHANGES.md` (with a diff) and
   `proposal.json`, and it never touches `prompts/`. It refuses feedback from the `validation`
-  split unless `--allow-validation` is passed.
+  split unless `--allow-validation` is passed. `--note "…"` adds your directions for the round:
+  decisions that apply to every proposal and that no single review comment carries (for example
+  "no notes, no placeholders"). The editor must carry them out and cites them as `operator`.
 - **Adopting** is a manual commit. Copy the candidate to the next version,
   `cp evals/candidates/<id>/prompt.md prompts/writer/v<N+1>.md` (the candidate's `CHANGES.md`
   names the file), point `writer.system_prompt_file` at it, then open a PR. Merging deploys it.
