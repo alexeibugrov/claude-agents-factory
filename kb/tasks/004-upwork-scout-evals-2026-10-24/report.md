@@ -28,8 +28,8 @@ agent changes that came out of the first reviews.
 - **Datasets:** a synthetic smoke set, plus the operator's 20 submitted-proposal postings split
   15 tuning / 5 validation, with the source text kept verbatim.
 - **Agent** ([agents/upwork-scout/](../../../agents/upwork-scout/)):
-  - The writer prompt moved to versioned files, `prompts/writer/v1–v3.md`. The config points at
-    **v3**, the eval-approved candidate.
+  - The writer prompt moved to versioned files, `prompts/writer/v1–v3.md`; v3 is the
+    eval-approved candidate.
   - `writer.max_turns` is 8 (was 4).
   - A proposal goes out as one Telegram message; operator notes are stored, not sent.
   - The README has a "Prompt evals" guide.
@@ -53,8 +53,10 @@ agent changes that came out of the first reviews.
   - Round 2: v3 had 3/3 approved on new jobs.
   - j09/j10/j13 (`eval-SFi-2026-10-26T20:53:44`) are not yet reviewed.
 - **Checks:** 101 tests pass; `/task-review` found no blockers.
-- **Deployment:** the VM still runs the original `writer.txt`. v3 deploys when the PR merges to
-  `main`.
+- **Deployment:** the task-003 session built writer v4 on top of v3 (v3 plus a revision mode, notes
+  removed from `submit_proposal`) and deployed it from this branch. The VM runs
+  `prompts/writer/v4.md` with `max_turns: 8` (image `sha-3f932ce`, checked 2026-10-27). `main`
+  gets it when the PR merges.
 
 ## Comment
 
@@ -66,9 +68,7 @@ agent changes that came out of the first reviews.
 
 ## Follow-ups
 
-- Remove `notes_for_operator` from `submit_proposal` together with its last mention in the next
-  writer prompt version.
 - Watch the word-limit retries: so far 3 of 9 drafts needed 3+ submits, all from question-heavy
   postings. If this becomes frequent, fix the prompt rather than raising `max_turns`.
-- Improvement: revise a delivered draft by replying to it (README, Known gaps).
-- Review j09/j10/j13, the remaining tuning jobs, then the 5 validation jobs on v3.
+- Continue the review loop on the live **v4**. `eval-SFi` (j09/j10/j13) ran on v3, so rerun it
+  on v4 before reviewing. Then the remaining tuning jobs, then the 5 validation jobs.
