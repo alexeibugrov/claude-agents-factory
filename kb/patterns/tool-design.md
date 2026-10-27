@@ -51,3 +51,11 @@ Use `enum` for closed sets and `required` honestly. Put the awkward parts of the
 the `description` — the parameter that is named differently on update than on create, the unit that
 is not what you would guess. The model reads descriptions, and a sentence there is cheaper than a
 retry loop.
+
+## A rejecting tool costs a turn per retry
+
+When a submit tool validates its input and returns the reason (word cap, schema), each rejected
+attempt uses one of the run's `max_turns`. Size `max_turns` for the retries you expect, not for the
+happy path: upwork-scout's writer failed question-heavy jobs at 4 turns while still shortening. Then
+watch the retry rate (turns per run). Frequent retries are a prompt problem, and a bigger retry
+budget is not a fix.

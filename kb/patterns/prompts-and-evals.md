@@ -28,8 +28,10 @@ logs to journald so they survive a redeploy is not a guardrail; it touches no pr
 
 ## Prompts belong in git
 
-The system prompt lives in the committed `agent_config.yaml`. A prompt change is then a reviewable
-diff, ships through the normal PR path, and can be reverted like any other change.
+Each role's prompt is a committed version file, `prompts/<role>/v<N>.md`, and `agent_config.yaml`
+names the live one ([conventions/agents.md](../conventions/agents.md)). A prompt change is then a new
+file plus a pointer change: a reviewable diff that ships through the normal PR path, and a rollback
+is the pointer.
 
 The failure this avoids is specific and was real: in `bb-trade-agent`, the live prompt for the
 original agent lived in a gitignored config file, so the `prompts/` directory in the repo was
@@ -52,3 +54,24 @@ An eval suite is what lets you change a prompt without guessing. The shape that 
 Cost is the honest constraint: every eval run is real model calls against the owner's subscription.
 Keep the suite small enough to run on a prompt change, and treat a model bake-off as an occasional
 exercise rather than a per-commit gate.
+
+## Human-reviewed prompt evals
+
+Some outputs have no checkable end state: a proposal is good when the operator would send it. Then
+the operator is the grader, and the loop is built around their review. The shape that worked
+([upwork-scout](../../agents/upwork-scout/README.md), on Promptfoo — see the
+[promptfoo skill](../../.claude/skills/promptfoo/SKILL.md)):
+
+- **A thin provider runs the real loop** with only the system prompt swapped for the version under
+  test. A fresh session per case, writes off.
+- **One prompt version per batch**, and every run records the prompt sha, the dataset sha, the model
+  settings and the commit, so a verdict is always tied to what produced it.
+- **Unreviewed never looks approved.** Each output carries a pending-review marker until the operator
+  rates it, and the export reads only the operator's verdict.
+- **A separate editor model proposes, the operator decides.** The editor gets the prompt, the exact
+  inputs, the outputs and every verdict and comment (approvals too, so good behaviour survives), and
+  returns one candidate with each change tied to the cases behind it, plus conflicts and problems a
+  prompt cannot fix. Nothing scores or adopts automatically.
+- **Tuning and validation stay disjoint**, and the editor refuses validation feedback.
+- **Make the eval fail the way production fails**, including retries. An eval that is stricter or
+  looser than production grades a different agent.

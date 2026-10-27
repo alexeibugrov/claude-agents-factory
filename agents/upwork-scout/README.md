@@ -272,7 +272,8 @@ uv run python -m evals compare <baseline eval id> <candidate eval id>
 uv run python -m evals run --dataset evals/datasets/validation.yaml --prompt …   # before adopting
 ```
 
-- **Reviewing:** open the eval in the viewer and, for every output, press 👍 or 👎 and write a
+- **Reviewing:** open the eval by its ID (`Ctrl+K` in the viewer; it stays on whichever eval it last
+  showed, and `run` prints the new ID) and, for every output, press 👍 or 👎 and write a
   comment (✏️). Say what to keep as well as what to fix. Comments on approved drafts are what stop
   the editor from losing good behaviour. Only 👍/👎 records a verdict: a comment or a score alone
   leaves the output unreviewed. Every output starts as a red **"Awaiting human review"** marker, so

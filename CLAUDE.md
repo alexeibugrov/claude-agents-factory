@@ -136,6 +136,14 @@ conclude "no logs" from silence; prefer the [gh-logs-analyst](.claude/agents/gh-
 subagent, and if egress is the problem, ask for an
 [init-firewall.sh](.devcontainer/init-firewall.sh) edit and a rebuild. **Silence is not success.**
 
+- A blocked vendor docs site is not a reason to stop: read the same docs from the project's GitHub
+  repository at the exact version you pin (`raw.githubusercontent.com/<org>/<repo>/<tag>/…`) before
+  asking for a firewall change. Source at the pinned tag beats the live site for behaviour
+  questions anyway.
+- A tool that needs a newer runtime than the devcontainer has is the same case as a missing tool:
+  bump the runtime in the [Dockerfile](.devcontainer/Dockerfile) (current LTS) rather than pinning an
+  outdated tool release, and ask for the rebuild.
+
 ### Permission gaps
 
 When a crucial step needs a permission you lack, **stop and ask for it by name** — what you need,

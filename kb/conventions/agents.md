@@ -25,8 +25,11 @@ factory's own. Rationale for most of them is in
   the harness deny rules can be blunt without blocking the template. Same reasoning for any
   committed config that a tool wants to see as `.env`: keep the repo-side name distinct and let the
   bind mount rename it (as `.devcontainer/ssh-manager/servers.conf` does).
-- **The prompt lives in `agent_config.yaml` and nowhere else.** If a prompt appears in two places,
-  say which is live — a prompt directory nobody reads at runtime is worse than none.
+- **Each role's prompt is a versioned file, `prompts/<role>/v<N>.md`, and the role's
+  `system_prompt_file` in `agent_config.yaml` names the live one.** A prompt change is a new
+  `v<N+1>.md` plus a one-line pointer change. A shipped version is never edited, so every stored
+  `prompt_sha` maps to a file and a rollback is moving the pointer. A short inline `system_prompt`
+  is fine until the prompt needs review history.
 
 ## Behaviour
 
