@@ -62,19 +62,34 @@ def _test(case: datasets.Case, ds: datasets.Dataset) -> dict[str, Any]:
     }
 
 
-def manifest(run_id: str, prompt_path: Path, prompt_text: str, ds: datasets.Dataset, cache: bool) -> dict[str, Any]:
+def manifest(
+    run_id: str,
+    prompt_path: Path,
+    prompt_text: str,
+    ds: datasets.Dataset,
+    cache: bool,
+    role: str = "writer",
+    about_me_path: Path | None = None,
+) -> dict[str, Any]:
+    """``prompt.sha`` covers the role prompt and ABOUT ME, as production's ``prompt_sha`` does."""
     cfg = AgentConfig.load(AGENT_CONFIG)
-    w = cfg.writer
+    w = getattr(cfg, role)
+    about_me = load_prompt(about_me_path) if about_me_path else None
     return {
         "run_id": run_id,
         "created_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-        "role": "writer",
-        "prompt": {"path": rel(prompt_path), "sha": prompt_sha(prompt_text), "sha256": file_sha256(prompt_path)},
+        "role": role,
+        "prompt": {
+            "path": rel(prompt_path),
+            "sha": prompt_sha(prompt_text, about_me),
+            "sha256": file_sha256(prompt_path),
+        },
+        "about_me": {"path": rel(about_me_path), "sha256": file_sha256(about_me_path)} if about_me_path else None,
         "dataset": ds.manifest(),
         "agent": {
             "config_path": rel(AGENT_CONFIG),
             "config_sha256": file_sha256(AGENT_CONFIG),
-            "writer": {
+            role: {
                 "model": w.model,
                 "fallback_model": w.fallback_model,
                 "effort": w.effort,
@@ -90,9 +105,10 @@ def manifest(run_id: str, prompt_path: Path, prompt_text: str, ds: datasets.Data
 
 def build_config(m: dict[str, Any], prompt_text: str, ds: datasets.Dataset, concurrency: int) -> dict[str, Any]:
     s = settings().get("provider") or {}
-    p, d = m["prompt"], m["dataset"]
+    p, d, role = m["prompt"], m["dataset"], m["role"]
+    about_me = m.get("about_me")
     return {
-        "description": f"writer {p['path']}@{p['sha']} on {d['id']}@{d['version']} ({d['split']}) {m['run_id']}",
+        "description": f"{role} {p['path']}@{p['sha']} on {d['id']}@{d['version']} ({d['split']}) {m['run_id']}",
         "tags": {
             "run_id": m["run_id"],
             "prompt": f"{p['path']}@{p['sha']}",
@@ -101,13 +117,16 @@ def build_config(m: dict[str, Any], prompt_text: str, ds: datasets.Dataset, conc
         },
         "metadata": {"experiment": m},
         # Inline, so the generated config is itself a full record of the prompt this batch ran.
+        # The role prompt only: the provider appends ABOUT ME, as production does.
         "prompts": [{"raw": prompt_text, "label": f"{p['path']}@{p['sha']}"}],
         "providers": [
             {
                 "id": f"file://{(EVALS_DIR / 'provider.py').resolve()}",
-                "label": "upwork-scout writer",
+                "label": f"upwork-scout {role}",
                 "config": {
                     "agent_config": str(AGENT_CONFIG.resolve()),
+                    "role": role,
+                    "about_me_file": str((EVALS_DIR.parent / about_me["path"]).resolve()) if about_me else None,
                     "prompt_sha": p["sha"],
                     "timeout": int(s.get("timeout_ms", 1_500_000)),
                     "workers": concurrency,
@@ -125,6 +144,8 @@ def run(
     prompt_path: Path,
     dataset_path: Path,
     *,
+    role: str = "writer",
+    about_me_path: Path | None = None,
     concurrency: int | None = None,
     cache: bool = False,
     cases: list[str] | None = None,
@@ -146,11 +167,12 @@ def run(
         name = f"{prompt_path.parent.name}-{prompt_path.stem}"  # prompts/writer/v2.md: writer-v2
     else:
         name = prompt_path.stem
-    run_id = f"{stamp}-{ds.id}-{name}-{prompt_sha(prompt_text)[:8]}"
+    about_me = load_prompt(about_me_path) if about_me_path else None
+    run_id = f"{stamp}-{ds.id}-{name}-{prompt_sha(prompt_text, about_me)[:8]}"
     run_dir = RUNS_DIR / run_id
     run_dir.mkdir(parents=True)
 
-    m = manifest(run_id, prompt_path, prompt_text, ds, cache)
+    m = manifest(run_id, prompt_path, prompt_text, ds, cache, role, about_me_path)
     m["filter_cases"] = cases or None
     m["repeat"] = repeat
     manifest_path = run_dir / "manifest.json"

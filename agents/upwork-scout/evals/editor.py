@@ -240,6 +240,8 @@ def propose(
     note: str | None = None,
 ) -> Path:
     package = json.loads(feedback_path.read_text())
+    if (package.get("experiment") or {}).get("role") == "screener":
+        raise EvalError("the editor only revises the writer prompt; edit the screener prompt by hand from the review")
     if package.get("format") != FORMAT:
         raise EvalError(f"{feedback_path} is not a feedback package ({FORMAT})")
     split = package["experiment"]["dataset"]["split"]

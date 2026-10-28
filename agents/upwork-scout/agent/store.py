@@ -246,12 +246,14 @@ async def claim(conn: Conn, from_status: str, to_status: str, limit: int, max_at
     return list(await cur.fetchall())
 
 
-async def release(conn: Conn, job_id: str, back_to: str, error: str, max_attempts: int) -> str:
-    """A failed agent run: requeue the job, or park it as error once attempts run out. Returns the status."""
+async def release(
+    conn: Conn, job_id: str, back_to: str, error: str, max_attempts: int, exhausted: str = "error"
+) -> str:
+    """A failed agent run: requeue the job, or move it to ``exhausted`` once attempts run out. Returns the status."""
     cur = await conn.execute(
-        "UPDATE pipeline SET status = CASE WHEN attempts >= %s THEN 'error' ELSE %s END,"
+        "UPDATE pipeline SET status = CASE WHEN attempts >= %s THEN %s ELSE %s END,"
         " reason = %s, updated_at = now() WHERE job_id = %s RETURNING status",
-        (max_attempts, back_to, error[:1000], job_id),
+        (max_attempts, exhausted, back_to, error[:1000], job_id),
     )
     row = await cur.fetchone()
     return row["status"] if row else back_to
@@ -277,18 +279,16 @@ async def record_screening(
 ) -> int:
     async with conn.transaction():
         cur = await conn.execute(
-            "INSERT INTO screenings (job_id, prompt_sha, model, suitable, score, reasons, matched_criteria,"
-            " cost_usd, num_turns, duration_s) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-            " ON CONFLICT (job_id, prompt_sha) DO UPDATE SET suitable = EXCLUDED.suitable"
+            "INSERT INTO screenings (job_id, prompt_sha, model, score, reasons,"
+            " cost_usd, num_turns, duration_s) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+            " ON CONFLICT (job_id, prompt_sha) DO UPDATE SET score = EXCLUDED.score, reasons = EXCLUDED.reasons"
             " RETURNING id",
             (
                 job_id,
                 prompt_sha,
                 run.get("model") or "",
-                verdict["suitable"],
                 verdict["score"],
-                verdict["reasons"],
-                verdict.get("matched_criteria") or [],
+                verdict["reason"],
                 run.get("cost_usd"),
                 run.get("num_turns"),
                 run.get("duration_s"),
@@ -296,7 +296,7 @@ async def record_screening(
         )
         row = await cur.fetchone()
         assert row is not None
-        await set_status(conn, job_id, "suitable" if verdict["suitable"] else "unsuitable")
+        await set_status(conn, job_id, "screened")
     return int(row["id"])
 
 

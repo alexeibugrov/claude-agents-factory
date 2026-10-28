@@ -1,0 +1,30 @@
+{
+  "jobId": "2039067583271262525",
+  "title": "Cloud migration from Azure to GCP",
+  "url": "https://www.upwork.com/jobs/~022039067583271262525",
+  "description": "We are seeking a senior cloud migration consultant to design a production-grade migration strategy from Azure to Google Cloud Platform. The engagement focuses on planning the migration of Kubernetes workloads from Azure Kubernetes Service to Google Kubernetes Engine and a ~1.1 TB PostgreSQL database from Azure Database for PostgreSQL to Cloud SQL or AlloyDB, with near-zero downtime and no data loss. The consultant will provide an end-to-end architecture, recommend a replication-based migration approach (e.g., logical replication or Google Database Migration Service), define a detailed cutover and rollback plan, and identify risks with mitigation strategies. Deliverables include a migration blueprint, step-by-step runbook, and validation approach. This is a short consultation engagement (2–5 hours) with potential follow-on implementation work.",
+  "descriptionMarkdown": "We are seeking a senior cloud migration consultant to design a production-grade migration strategy from Azure to Google Cloud Platform. The engagement focuses on planning the migration of Kubernetes workloads from Azure Kubernetes Service to Google Kubernetes Engine and a ~1.1 TB PostgreSQL database from Azure Database for PostgreSQL to Cloud SQL or AlloyDB, with near-zero downtime and no data loss. The consultant will provide an end-to-end architecture, recommend a replication-based migration approach (e.g., logical replication or Google Database Migration Service), define a detailed cutover and rollback plan, and identify risks with mitigation strategies. Deliverables include a migration blueprint, step-by-step runbook, and validation approach. This is a short consultation engagement (2–5 hours) with potential follow-on implementation work.",
+  "jobType": "FIXED",
+  "experienceLevel": "ExpertLevel",
+  "skills": [
+    "Kubernetes",
+    "Microsoft Azure",
+    "DevOps Engineering",
+    "Azure DevOps",
+    "PostgreSQL",
+    "Database Maintenance",
+    "Data Migration",
+    "DevOps",
+    "Cloud Migration",
+    "Cloud Engineering Consultation"
+  ],
+  "clientCountry": "Germany",
+  "engagementDuration": null,
+  "source": "upwork-text-import",
+  "budgetAmount": 100.0,
+  "budgetCurrency": "USD",
+  "clientPaymentVerified": true,
+  "clientRating": 4.48,
+  "clientReviewCount": 32,
+  "clientTotalSpent": 2300.0
+}

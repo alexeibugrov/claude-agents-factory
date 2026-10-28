@@ -1,0 +1,25 @@
+{
+  "jobId": "2108953956141277717",
+  "title": "AI Implementation Consultant",
+  "url": "https://www.upwork.com/jobs/~022108953956141277717",
+  "description": "Title: AI Implementation Specialist for UK Consumer Credit Firm (Hertfordshire / London, Hybrid)\n\nAbout us\nWe are a small UK consumer credit company. Our core operations run on a bespoke PHP system, and we want to use AI to cut manual admin, speed up customer communication and give our team more time for higher-value work.\n\nWhat we want to achieve\nWe want to introduce AI agents or bots that can learn how our PHP system works and help with day-to-day processes and communication, specifically:\n- Drafting emails to customers and handling routine responses\n- Sending emails automatically where appropriate, with human approval where needed\n- Taking actions in our system based on incoming messages (for example, updating records or triggering the next step in a process)\n- Learning from our existing templates, past correspondence and internal processes so the output matches our tone and rules\n\nWhat you’ll do\n- Review our PHP system and workflows and identify the best opportunities for AI\n- Recommend the right approach and tools (LLM APIs, agent frameworks, automation platforms, or a mix) and explain the trade-offs in plain English\n- Design and build an initial working solution, starting with a focused pilot, then expand it.\n- Integrate the AI securely with our PHP system, email and any other systems it needs.\n- Build in human-in-the-loop controls, audit logs and clear guardrails on what the AI can and cannot do\n- Document everything and train our team to use and maintain it",
+  "descriptionMarkdown": "Title: AI Implementation Specialist for UK Consumer Credit Firm (Hertfordshire / London, Hybrid)\n\nAbout us\nWe are a small UK consumer credit company. Our core operations run on a bespoke PHP system, and we want to use AI to cut manual admin, speed up customer communication and give our team more time for higher-value work.\n\nWhat we want to achieve\nWe want to introduce AI agents or bots that can learn how our PHP system works and help with day-to-day processes and communication, specifically:\n- Drafting emails to customers and handling routine responses\n- Sending emails automatically where appropriate, with human approval where needed\n- Taking actions in our system based on incoming messages (for example, updating records or triggering the next step in a process)\n- Learning from our existing templates, past correspondence and internal processes so the output matches our tone and rules\n\nWhat you’ll do\n- Review our PHP system and workflows and identify the best opportunities for AI\n- Recommend the right approach and tools (LLM APIs, agent frameworks, automation platforms, or a mix) and explain the trade-offs in plain English\n- Design and build an initial working solution, starting with a focused pilot, then expand it.\n- Integrate the AI securely with our PHP system, email and any other systems it needs.\n- Build in human-in-the-loop controls, audit logs and clear guardrails on what the AI can and cannot do\n- Document everything and train our team to use and maintain it",
+  "jobType": "HOURLY",
+  "experienceLevel": "ExpertLevel",
+  "skills": [
+    "AI Agent Development",
+    "AI Bot",
+    "AI Implementation",
+    "AI Instruction",
+    "PHP"
+  ],
+  "clientCountry": "United Kingdom",
+  "engagementDuration": "3 to 6 months (hours to be determined)",
+  "source": "upwork-text-import",
+  "hourlyBudgetMin": 30.0,
+  "hourlyBudgetMax": 100.0,
+  "clientPaymentVerified": true,
+  "clientRating": 5.0,
+  "clientReviewCount": 7,
+  "clientTotalSpent": 13000.0
+}

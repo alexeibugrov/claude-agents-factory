@@ -13,7 +13,7 @@ from typing import Any
 
 import yaml
 
-from agent.config import AgentConfig
+from agent.config import AgentConfig, compose_prompt
 
 EVALS_DIR = Path(__file__).resolve().parent
 AGENT_DIR = EVALS_DIR.parent
@@ -44,9 +44,13 @@ class EvalError(RuntimeError):
     """A refusal with a message for the operator; the CLI prints it and exits 2."""
 
 
-def prompt_sha(text: str) -> str:
-    """Same identity as ``RoleConfig.prompt_sha``, so eval runs and production drafts line up."""
-    return hashlib.sha256(text.strip().encode("utf-8")).hexdigest()[:16]
+ROLES = ("writer", "screener")
+
+
+def prompt_sha(text: str, about_me: str | None = None) -> str:
+    """Same identity as ``RoleConfig.prompt_sha`` (ABOUT ME included), so eval runs and production line up."""
+    full = compose_prompt(text.strip(), about_me.strip() if about_me else None)
+    return hashlib.sha256(full.encode("utf-8")).hexdigest()[:16]
 
 
 def file_sha256(path: Path) -> str:
@@ -83,12 +87,18 @@ def load_prompt(path: Path) -> str:
     return text
 
 
-def live_prompt() -> Path:
-    """The writer prompt version production runs: the file agent_config.yaml points the writer to."""
-    file = AgentConfig.load(AGENT_CONFIG).writer.system_prompt_file
+def live_prompt(role: str = "writer") -> Path:
+    """The prompt version production runs for ``role``: the file agent_config.yaml points it to."""
+    file = getattr(AgentConfig.load(AGENT_CONFIG), role).system_prompt_file
     if not file:
-        raise EvalError(f"the writer prompt is inline in {rel(AGENT_CONFIG)}; pass --prompt")
+        raise EvalError(f"the {role} prompt is inline in {rel(AGENT_CONFIG)}; pass --prompt")
     return AGENT_DIR / file
+
+
+def live_about_me() -> Path | None:
+    """The ABOUT ME version production appends to every role's prompt, if any."""
+    file = AgentConfig.load(AGENT_CONFIG).writer.about_me_file
+    return AGENT_DIR / file if file else None
 
 
 def next_version(role: str = "writer") -> Path:

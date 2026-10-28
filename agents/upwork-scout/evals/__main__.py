@@ -1,6 +1,6 @@
 """``uv run python -m evals <command>``, from agents/upwork-scout. The README's "Prompt evals" is the guide.
 
-run       one batch: a fixed prompt over a dataset, through the real writer
+run       one batch: a fixed prompt over a dataset, through the real writer or screener
 view      Promptfoo's viewer, where the operator rates (👍/👎) and comments
 status    what is reviewed, unreviewed and failed in one eval
 export    the reviewed batch as a feedback package (feedback/<run_id>.json)
@@ -17,17 +17,26 @@ import json
 import sys
 from pathlib import Path
 
-from evals.common import EvalError, live_prompt, promptfoo, rel
+from evals.common import ROLES, EvalError, live_about_me, live_prompt, promptfoo, rel
 
 
 def _cmd_run(a: argparse.Namespace) -> None:
     from evals.experiment import run
 
     m = run(
-        a.prompt or live_prompt(), a.dataset, concurrency=a.jobs, cache=a.reuse_cache, cases=a.case, repeat=a.repeat
+        a.prompt or live_prompt(a.role),
+        a.dataset,
+        role=a.role,
+        about_me_path=a.about_me or live_about_me(),
+        concurrency=a.jobs,
+        cache=a.reuse_cache,
+        cases=a.case,
+        repeat=a.repeat,
     )
     print(f"\nrun {m['run_id']}  eval {m['eval_id']}")
-    print(f"prompt {m['prompt']['path']}@{m['prompt']['sha']}  dataset {m['dataset']['id']}@{m['dataset']['version']}")
+    about = f" + {m['about_me']['path']}" if m["about_me"] else ""
+    print(f"{m['role']} prompt {m['prompt']['path']}{about}@{m['prompt']['sha']}")
+    print(f"dataset {m['dataset']['id']}@{m['dataset']['version']}")
     if m["git"]["dirty"]:
         print("note: this agent's directory had uncommitted changes (recorded in the manifest)")
     print("next: uv run python -m evals view   (rate each output 👍/👎, comment, then `status`)")
@@ -106,10 +115,12 @@ def main(argv: list[str] | None = None) -> int:
 
     p = sub.add_parser("run", help="run one batch")
     p.add_argument("--dataset", type=Path, required=True)
+    p.add_argument("--role", choices=ROLES, default="writer", help="the agent role to run (default: writer)")
     p.add_argument(
-        "--prompt", type=Path, help="default: the live version, the writer's system_prompt_file in agent_config.yaml"
+        "--prompt", type=Path, help="default: the live version, the role's system_prompt_file in agent_config.yaml"
     )
-    p.add_argument("--jobs", "-j", type=int, help="parallel writer runs (default: settings.yaml)")
+    p.add_argument("--about-me", type=Path, help="default: the live version, about_me_file in agent_config.yaml")
+    p.add_argument("--jobs", "-j", type=int, help="parallel agent runs (default: settings.yaml)")
     p.add_argument("--case", action="append", help="only this case id (repeatable)")
     p.add_argument("--repeat", type=int, default=1, help="runs per case, to see variance")
     p.add_argument("--reuse-cache", action="store_true", help="reuse cached outputs (see README: caching)")

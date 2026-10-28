@@ -1,0 +1,80 @@
+{
+  "url": "https://www.upwork.com/jobs/~022114220721459837945",
+  "jobId": "2114220721459837945",
+  "title": "Make me a full plug and play gohighlevel agency for reputation management!",
+  "skills": [
+    "CRM Automation",
+    "CRM Software",
+    "CRM Development",
+    "AI Automation"
+  ],
+  "source": "upwork.com",
+  "jobType": "HOURLY",
+  "premium": false,
+  "isRepost": false,
+  "portalUrl": "https://www.upwork.com/jobs/~022114220721459837945",
+  "salaryMax": null,
+  "salaryMin": null,
+  "scrapedAt": "2026-10-25T05:21:47.140Z",
+  "changeType": "NEW",
+  "createTime": "2026-10-25T05:01:15.375Z",
+  "lastSeenAt": "2026-10-25T05:21:47.140Z",
+  "repostOfId": null,
+  "salaryType": "HOURLY",
+  "contentHash": "6e0516e208d0562f19dce84b277c62f8f219f5b7da10ad11992748435ce15783",
+  "description": "GoHighLevel Expert Needed: Build a Complete Plug-and-Play Reputation Management Agency\n\nProject type: Fixed-price project\nPlatform: GoHighLevel (GHL)\nBusiness: Tapflow — UK reputation management and Google review services\n\nProject overview\n\nI’m building a UK-based reputation-management business for local businesses, including barbers, hair salons, nail salons, restaurants and takeaways.\n\nI want an experienced GoHighLevel specialist to build a complete, reusable, plug-and-play system that I can operate myself without needing technical knowledge.\n\nMy goal is simple: I want to create a new client sub-account, select the relevant industry template, enter the client’s business details, connect their Google Business Profile and activate the prebuilt system. I then want to move on to acquiring the next client.\n\nI do not want to build workflows manually for every new client.\n\n1. Reusable industry-specific templates\n\nBuild a core master system and reusable GoHighLevel Snapshots or an equivalent deployment structure for:\n\n* Barbers and hair salons\n* Nail and beauty salons\n* Restaurants\n* Takeaways\n* A generic local-business template to use for variety of niches \n\nEach industry configuration should include appropriately tailored messaging, workflows, templates and settings.\n\nI want to be able to select the appropriate industry configuration when setting up a new client sub-account. Explain the best architecture for deploying these configurations without duplicating assets unnecessarily or causing workflow conflicts.\n\n2. Review management automation\n\nBuild and test the following features:\n\n* Automated, neutral Google review invitations via SMS and/or email, where the necessary contact details and consent are in place.\n* Configurable review-request timing and follow-up messages.\n* Correct client-specific Google review links.\n* Google review monitoring and notifications, using supported integrations.\n* AI-assisted review responses, with approval controls and appropriate automation options.\n* Notifications for new reviews and a simple process for managing them.\n* Relevant reporting on review activity and workflow performance.\n\nAll workflows must comply with Google’s review policies and applicable UK data-protection and electronic-marketing rules. Do not implement review gating, incentives for positive reviews or fake reviews.\n\n3. Complete client onboarding system\n\nCreate a repeatable onboarding process so I can onboard clients quickly.\n\nInclude:\n\n* A client information form.\n* A checklist of the fields and credentials or permissions required.\n* Instructions for connecting each client’s Google Business Profile.\n* A simple way to configure business-specific information and review links.\n* Reusable custom values and workflow settings.\n* Clear instructions for selecting and deploying the correct industry template.\n* A final testing checklist before activating the account.\n\nWhere possible, automate the configuration. Clearly identify anything that must still be completed manually, including Google authorisation, messaging registration, phone numbers or third-party integrations.\n\n4. Client dashboard and branding\n\nConfigure a clean, professional client experience under the Tapflow brand.\n\nClients should only be able to access their own data and the features included in their subscription.\n\nInclude relevant review information, notifications, reporting and AI response functionality where supported by the chosen configuration.\n\n5. Subscriptions and recurring revenue\n\nPrepare the system for monthly subscriptions.\n\nI want the ability to charge clients recurring fees and manage their subscriptions without manually chasing every payment.\n\nPlease explain which features can be automated on my proposed GoHighLevel plan, which require additional software or configuration, and which would need a manual process.\n\nAutomated sub-account creation is desirable but not essential for the initial version.\n\n6. Testing and handover\n\nBefore the project is considered complete, I require:\n\n* A fully working test sub-account for each industry template.\n* Demonstration of the complete onboarding process using a new test client.\n* Evidence that the correct workflows are installed and activated only when intended.\n* Testing of review invitations, Google integrations, AI response handling and notifications.\n* Written instructions for creating and onboarding future client accounts.\n* A recorded video walkthrough.\n* Documentation of all third-party tools, subscriptions and usage charges.\n* Ownership and administrative access to all relevant accounts, assets and configurations.\n* A short post-handover period for fixing defects in the agreed deliverables.\n\n7. Important requirements\n\nI want a genuinely reusable system, not a collection of disconnected workflows.\n\nPlease distinguish between features that GoHighLevel supports natively and those requiring external integrations, paid add-ons or custom development.\n\nI will retain ownership of my agency account, domain, client data and business assets. Please do not build the system in an account that I cannot administer or transfer to myself.\n\nPlease do not assume that Google review functionality, AI features, messaging or automatic billing work without the necessary permissions, subscriptions and integrations.\n\n8. Please include in your proposal\n\n1. Examples of comparable GoHighLevel systems you have built.\n2. Your proposed technical architecture.\n3. How you will implement industry-specific templates.\n4. The exact deliverables included in your fixed price.\n5. Estimated delivery time.\n6. Any ongoing monthly software, messaging, AI or integration costs.\n7. What I will still need to do manually when onboarding each new client.\n8. Whether you can provide ongoing support at an agreed rate.\n\nMy priority: Build the system properly once, document it thoroughly and make future client onboarding as close to plug-and-play as reasonably possible.\n\nPlease provide a fixed-price quote and explain exactly what is included before starting work.",
+  "firstSeenAt": "2026-10-25T05:21:47.140Z",
+  "publishTime": "2026-10-25T05:03:52.211Z",
+  "budgetAmount": null,
+  "clientRating": 0,
+  "clientCountry": "United Kingdom",
+  "enterpriseJob": false,
+  "personsToHire": 1,
+  "budgetCurrency": null,
+  "customJobScore": 0,
+  "engagementType": "PART_TIME",
+  "salaryCurrency": "USD",
+  "skillsDetailed": [
+    {
+      "uid": "1549040408135077888",
+      "name": "CRM Automation",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "1110580534940520448",
+      "name": "CRM Software",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "1484275088561459200",
+      "name": "CRM Development",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "2098024691122032640",
+      "name": "AI Automation",
+      "highlighted": false,
+      "parentSkillUid": null
+    }
+  ],
+  "descriptionHtml": null,
+  "experienceLevel": "ExpertLevel",
+  "hourlyBudgetMax": null,
+  "hourlyBudgetMin": null,
+  "totalApplicants": 3,
+  "clientTotalSpent": 0,
+  "repostDetectedAt": null,
+  "clientCountryCode": "GBR",
+  "clientReviewCount": 0,
+  "sourcingTimestamp": null,
+  "engagementDuration": "1 to 3 months",
+  "clientSpentCurrency": "USD",
+  "descriptionMarkdown": "GoHighLevel Expert Needed: Build a Complete Plug-and-Play Reputation Management Agency\n\nProject type: Fixed-price project\nPlatform: GoHighLevel (GHL)\nBusiness: Tapflow — UK reputation management and Google review services\n\nProject overview\n\nI’m building a UK-based reputation-management business for local businesses, including barbers, hair salons, nail salons, restaurants and takeaways.\n\nI want an experienced GoHighLevel specialist to build a complete, reusable, plug-and-play system that I can operate myself without needing technical knowledge.\n\nMy goal is simple: I want to create a new client sub-account, select the relevant industry template, enter the client’s business details, connect their Google Business Profile and activate the prebuilt system. I then want to move on to acquiring the next client.\n\nI do not want to build workflows manually for every new client.\n\n1. Reusable industry-specific templates\n\nBuild a core master system and reusable GoHighLevel Snapshots or an equivalent deployment structure for:\n\n* Barbers and hair salons\n* Nail and beauty salons\n* Restaurants\n* Takeaways\n* A generic local-business template to use for variety of niches \n\nEach industry configuration should include appropriately tailored messaging, workflows, templates and settings.\n\nI want to be able to select the appropriate industry configuration when setting up a new client sub-account. Explain the best architecture for deploying these configurations without duplicating assets unnecessarily or causing workflow conflicts.\n\n2. Review management automation\n\nBuild and test the following features:\n\n* Automated, neutral Google review invitations via SMS and/or email, where the necessary contact details and consent are in place.\n* Configurable review-request timing and follow-up messages.\n* Correct client-specific Google review links.\n* Google review monitoring and notifications, using supported integrations.\n* AI-assisted review responses, with approval controls and appropriate automation options.\n* Notifications for new reviews and a simple process for managing them.\n* Relevant reporting on review activity and workflow performance.\n\nAll workflows must comply with Google’s review policies and applicable UK data-protection and electronic-marketing rules. Do not implement review gating, incentives for positive reviews or fake reviews.\n\n3. Complete client onboarding system\n\nCreate a repeatable onboarding process so I can onboard clients quickly.\n\nInclude:\n\n* A client information form.\n* A checklist of the fields and credentials or permissions required.\n* Instructions for connecting each client’s Google Business Profile.\n* A simple way to configure business-specific information and review links.\n* Reusable custom values and workflow settings.\n* Clear instructions for selecting and deploying the correct industry template.\n* A final testing checklist before activating the account.\n\nWhere possible, automate the configuration. Clearly identify anything that must still be completed manually, including Google authorisation, messaging registration, phone numbers or third-party integrations.\n\n4. Client dashboard and branding\n\nConfigure a clean, professional client experience under the Tapflow brand.\n\nClients should only be able to access their own data and the features included in their subscription.\n\nInclude relevant review information, notifications, reporting and AI response functionality where supported by the chosen configuration.\n\n5. Subscriptions and recurring revenue\n\nPrepare the system for monthly subscriptions.\n\nI want the ability to charge clients recurring fees and manage their subscriptions without manually chasing every payment.\n\nPlease explain which features can be automated on my proposed GoHighLevel plan, which require additional software or configuration, and which would need a manual process.\n\nAutomated sub-account creation is desirable but not essential for the initial version.\n\n6. Testing and handover\n\nBefore the project is considered complete, I require:\n\n* A fully working test sub-account for each industry template.\n* Demonstration of the complete onboarding process using a new test client.\n* Evidence that the correct workflows are installed and activated only when intended.\n* Testing of review invitations, Google integrations, AI response handling and notifications.\n* Written instructions for creating and onboarding future client accounts.\n* A recorded video walkthrough.\n* Documentation of all third-party tools, subscriptions and usage charges.\n* Ownership and administrative access to all relevant accounts, assets and configurations.\n* A short post-handover period for fixing defects in the agreed deliverables.\n\n7. Important requirements\n\nI want a genuinely reusable system, not a collection of disconnected workflows.\n\nPlease distinguish between features that GoHighLevel supports natively and those requiring external integrations, paid add-ons or custom development.\n\nI will retain ownership of my agency account, domain, client data and business assets. Please do not build the system in an account that I cannot administer or transfer to myself.\n\nPlease do not assume that Google review functionality, AI features, messaging or automatic billing work without the necessary permissions, subscriptions and integrations.\n\n8. Please include in your proposal\n\n1. Examples of comparable GoHighLevel systems you have built.\n2. Your proposed technical architecture.\n3. How you will implement industry-specific templates.\n4. The exact deliverables included in your fixed price.\n5. Estimated delivery time.\n6. Any ongoing monthly software, messaging, AI or integration costs.\n7. What I will still need to do manually when onboarding each new client.\n8. Whether you can provide ongoing support at an agreed rate.\n\nMy priority: Build the system properly once, document it thoroughly and make future client onboarding as close to plug-and-play as reasonably possible.\n\nPlease provide a fixed-price quote and explain exactly what is included before starting work.",
+  "weeklyRetainerBudget": null,
+  "clientPaymentVerified": null,
+  "engagementDurationWeeks": 9,
+  "clientHasFinancialPrivacy": false
+}

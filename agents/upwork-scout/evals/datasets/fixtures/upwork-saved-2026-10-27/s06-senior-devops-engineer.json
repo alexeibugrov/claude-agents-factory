@@ -1,0 +1,28 @@
+{
+  "jobId": "2114363562060299257",
+  "title": "Senior DevOps Engineer",
+  "url": "https://www.upwork.com/jobs/~022114363562060299257",
+  "description": "We are looking for an experienced Senior DevOps Engineer for a short-term engagement involving infrastructure administration, access management and security-related tasks across our cloud environment. Strong AWS, IAM and production infrastructure experience required. Remote, fixed-price project. Please provide your availability and hourly rate.",
+  "descriptionMarkdown": "We are looking for an experienced Senior DevOps Engineer for a short-term engagement involving infrastructure administration, access management and security-related tasks across our cloud environment. Strong AWS, IAM and production infrastructure experience required. Remote, fixed-price project. Please provide your availability and hourly rate.",
+  "jobType": "HOURLY",
+  "experienceLevel": "ExpertLevel",
+  "skills": [
+    "Linux",
+    "macOS",
+    "Amazon ECS",
+    "Health & Wellness",
+    "DevOps",
+    "Amazon Web Services",
+    "CI/CD Platform",
+    "Jenkins",
+    "Kubernetes"
+  ],
+  "clientCountry": "United Kingdom",
+  "engagementDuration": "Less than 1 month",
+  "source": "upwork-text-import",
+  "engagementType": "PART_TIME",
+  "clientPaymentVerified": true,
+  "clientRating": 5.0,
+  "clientReviewCount": 14,
+  "clientTotalSpent": 78000.0
+}

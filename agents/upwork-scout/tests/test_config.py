@@ -78,6 +78,27 @@ def test_committed_prompts_are_versioned_files():
     cfg = AgentConfig.load()
     for role in (cfg.screener, cfg.writer):
         assert re.fullmatch(rf"prompts/{role.name}/v\d+\.md", role.system_prompt_file or ""), role.prompt_ref
+        assert re.fullmatch(r"prompts/about-me/v\d+\.md", role.about_me_file or ""), role.prompt_ref
+
+
+def test_about_me_is_appended_to_every_role_and_in_its_sha(tmp_path):
+    (tmp_path / "prompts" / "about-me").mkdir(parents=True)
+    (tmp_path / "prompts" / "about-me" / "v1.md").write_text("## ABOUT ME\n\nKubernetes.\n")
+    data = {**_cfg(), "about_me_file": "prompts/about-me/v1.md"}
+    path = tmp_path / "agent_config.yaml"
+    path.write_text(yaml.safe_dump(data))
+    cfg = AgentConfig.load(path)
+    for role in (cfg.screener, cfg.writer):
+        assert role.full_prompt == f"{role.system_prompt}\n\n## ABOUT ME\n\nKubernetes."
+        assert role.prompt_ref == f"inline+prompts/about-me/v1.md@{role.prompt_sha}"
+    assert cfg.writer.prompt_sha != AgentConfig.from_dict(_cfg()).writer.prompt_sha
+    # Without about_me_file, nothing is appended.
+    assert AgentConfig.from_dict(_cfg()).writer.full_prompt == "write"
+
+
+def test_missing_about_me_file_fails_at_load(tmp_path):
+    with pytest.raises(AgentConfigError, match="about_me_file not found"):
+        AgentConfig.from_dict({**_cfg(), "about_me_file": "prompts/about-me/v9.md"}, base_dir=tmp_path)
 
 
 def test_missing_prompt_file_fails_at_load(tmp_path):

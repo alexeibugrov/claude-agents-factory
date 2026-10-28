@@ -27,7 +27,9 @@ from agent.context import RunContext
 
 SERVER_NAME = "agent"
 
-MAX_REASONS_CHARS = 600
+MAX_SCORE = 5
+# The reason is shown next to the score in the offer message, so one short sentence.
+MAX_REASON_CHARS = 300
 MIN_PROPOSAL_CHARS = 300
 MAX_PROPOSAL_CHARS = 5000
 # Operator rule: a proposal stays below 350 words. Enforced here, so an over-long draft goes back
@@ -35,30 +37,16 @@ MAX_PROPOSAL_CHARS = 5000
 MAX_PROPOSAL_WORDS = 350
 
 
-def _submit_screening(
-    ctx: RunContext,
-    *,
-    suitable: bool,
-    score: int,
-    reasons: str,
-    matched_criteria: list[str] | None = None,
-) -> dict:
-    """Record the screener's verdict for this run's job."""
-    if not isinstance(suitable, bool):
-        return {"success": False, "error": "suitable must be true or false"}
-    if not isinstance(score, int) or not 0 <= score <= 100:
-        return {"success": False, "error": "score must be an integer 0-100"}
-    reasons = (reasons or "").strip()
-    if not reasons:
-        return {"success": False, "error": "reasons must not be empty"}
-    if len(reasons) > MAX_REASONS_CHARS:
-        return {"success": False, "error": f"reasons must be at most {MAX_REASONS_CHARS} characters"}
-    ctx.result.update(
-        suitable=suitable,
-        score=score,
-        reasons=reasons,
-        matched_criteria=[str(c) for c in (matched_criteria or [])],
-    )
+def _submit_screening(ctx: RunContext, *, score: int, reason: str) -> dict:
+    """Record the screener's match rating for this run's job."""
+    if isinstance(score, bool) or not isinstance(score, int) or not 0 <= score <= MAX_SCORE:
+        return {"success": False, "error": f"score must be an integer 0-{MAX_SCORE}"}
+    reason = (reason or "").strip()
+    if not reason:
+        return {"success": False, "error": "reason must not be empty"}
+    if len(reason) > MAX_REASON_CHARS:
+        return {"success": False, "error": f"reason must be at most {MAX_REASON_CHARS} characters; shorten it"}
+    ctx.result.update(score=score, reason=reason)
     return {"success": True, "job_id": ctx.job_id}
 
 
@@ -86,24 +74,23 @@ TOOL_SPECS: dict[str, list[tuple[str, str, dict[str, Any], Callable[..., dict]]]
     "screener": [
         (
             "submit_screening",
-            "Submit your verdict on the job. Call exactly once, after deciding.",
+            "Submit how well the job matches the operator's experience. Call exactly once, after deciding.",
             {
                 "type": "object",
                 "properties": {
-                    "suitable": {"type": "boolean", "description": "true if the operator should apply"},
-                    "score": {"type": "integer", "minimum": 0, "maximum": 100, "description": "fit, 0-100"},
-                    "reasons": {
-                        "type": "string",
-                        "maxLength": MAX_REASONS_CHARS,
-                        "description": "why, in one or two sentences, citing the criteria",
+                    "score": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": MAX_SCORE,
+                        "description": f"match to ABOUT ME, 0-{MAX_SCORE}",
                     },
-                    "matched_criteria": {
-                        "type": "array",
-                        "items": {"type": "string"},
-                        "description": "short names of the criteria the job meets",
+                    "reason": {
+                        "type": "string",
+                        "maxLength": MAX_REASON_CHARS,
+                        "description": "one short sentence: the matching experience, or the gap",
                     },
                 },
-                "required": ["suitable", "score", "reasons"],
+                "required": ["score", "reason"],
             },
             _submit_screening,
         )

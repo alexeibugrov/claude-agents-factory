@@ -1,0 +1,23 @@
+{
+  "jobId": "2109727331935625749",
+  "title": "Create an AI Harness/Company Brain",
+  "url": "https://www.upwork.com/jobs/~022109727331935625749",
+  "description": "Problem: Right now we don't have any of our organization wide context in a structured way that we can connect via MCP to any LLM that we use. People currently have to put in context within a prompt or set up individual Claude projects.\n\nWhat we need: Create an AI Brain/Harness that holds all our company context and is updated on a daily and weekly basis so it doesn't become stale across all the people/departments. Its purpose is to keep an up-to-date map of how the company works so we can run closed loops, and works with any AI tool (Claude, ChatGPT, Gemini, or whatever we use next) so our knowledgebase travels with us and we aren't vendor locked. Surfaces to cover: Google Workspace, Meeting recordings/transcripts, Asana, Google Chats, Gmail, Google Drive - new docs, updates to existing docs\n\nAbout you: You've built this in the past in a robust and scalable fashion. You understand compliance and security and access controls.\n\nNext steps: Please share your background, what type of projects specifically like this you have done and accomplished in the past, and any questions that you have, which is important for you to be able to scope this out as well as your recommendations for your process, timeline, and cost to get this done. What platforms/programs would you need to set this up.",
+  "descriptionMarkdown": "Problem: Right now we don't have any of our organization wide context in a structured way that we can connect via MCP to any LLM that we use. People currently have to put in context within a prompt or set up individual Claude projects.\n\nWhat we need: Create an AI Brain/Harness that holds all our company context and is updated on a daily and weekly basis so it doesn't become stale across all the people/departments. Its purpose is to keep an up-to-date map of how the company works so we can run closed loops, and works with any AI tool (Claude, ChatGPT, Gemini, or whatever we use next) so our knowledgebase travels with us and we aren't vendor locked. Surfaces to cover: Google Workspace, Meeting recordings/transcripts, Asana, Google Chats, Gmail, Google Drive - new docs, updates to existing docs\n\nAbout you: You've built this in the past in a robust and scalable fashion. You understand compliance and security and access controls.\n\nNext steps: Please share your background, what type of projects specifically like this you have done and accomplished in the past, and any questions that you have, which is important for you to be able to scope this out as well as your recommendations for your process, timeline, and cost to get this done. What platforms/programs would you need to set this up.",
+  "jobType": "FIXED",
+  "experienceLevel": "IntermediateLevel",
+  "skills": [
+    "Artificial Intelligence",
+    "AI Agent Development",
+    "AI Agents"
+  ],
+  "clientCountry": "United States",
+  "engagementDuration": "not specified (ongoing project)",
+  "source": "upwork-text-import",
+  "budgetAmount": 350.0,
+  "budgetCurrency": "USD",
+  "clientPaymentVerified": true,
+  "clientRating": 4.86,
+  "clientReviewCount": 9,
+  "clientTotalSpent": 25000.0
+}

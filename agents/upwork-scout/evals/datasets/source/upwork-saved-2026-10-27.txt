@@ -1,0 +1,1389 @@
+UPWORK SAVED JOBS DATASET
+Exported: 2026-10-27
+Total saved jobs: 30
+Format: one block per job; where Upwork shows "You will be asked to answer the following questions when submitting a proposal", that block follows the description.
+
+================================================================================
+JOB 1 of 30
+================================================================================
+Title: AI Interior Design SaaS MVP Developer | Python, React & AI
+URL: https://www.upwork.com/jobs/~022114765757191491892
+Status: Open
+Posted: yesterday
+Client location: Spain (Lleida)
+Budget: Fixed-price $10.00
+Experience level: Expert
+Est. duration: 1 to 3 months
+Project type: Ongoing project (contract-to-hire opportunity)
+Connects required: 14
+Skills: Python; AI Development; AI SaaS knowledge; Django Stack; React; FastAPI; PostgreSQL
+Proposals: 20 to 50 (Interviewing: 1; bid range high $12,000 / avg $1,392.61 / low $10)
+Client: Payment verified; phone verified; 5.0 (1 review); 3 jobs posted, 34% hire rate, 1 open job; $200 total spent; member since Apr 6, 2026
+
+--- DESCRIPTION ---
+We’re looking for an experienced Full-Stack AI Developer to help us build an MVP for an AI-powered interior design product.
+
+The idea is to create a platform where users can upload a photo of their room, provide details about their preferred style, colors, room type, and requirements, and receive AI-powered interior design concepts and recommendations.
+
+We already have the core product idea and are looking for someone who can help us turn it into a clean, functional MVP that we can test with real users.
+
+The MVP will include user authentication, a dashboard for managing design projects, room and image uploads, design preferences, AI-generated room concepts, multiple design variations, furniture and decor recommendations, project history, saved designs, backend APIs, database integration, and basic cloud deployment.
+
+On the AI side, we expect to use image understanding, image generation, LLM APIs, prompt engineering, image processing, and AI-powered recommendations. We’re open to your suggestions on which models and approach would work best for the MVP. The goal is to keep the initial version practical and cost-effective while making sure the architecture can scale as the product grows.
+
+For the frontend, we’re considering React or Next.js with TypeScript and Tailwind CSS. The backend can be built with Python using FastAPI or Django, with PostgreSQL or Supabase for the database. For AI, experience with OpenAI, Claude, Gemini, image generation APIs, computer vision, and frameworks such as LangChain or LangGraph would be valuable. AWS, Docker, and CI/CD experience is also preferred.
+
+We’re looking for someone with strong experience building SaaS MVPs and AI-powered applications, particularly someone who can work across the frontend, backend, AI integrations, and deployment. Experience with image generation or computer vision would be a strong plus.
+
+We’d like the developer to help us define the MVP scope, recommend the right architecture and AI approach, and then build the first working version.
+
+When applying, please share a brief introduction, relevant AI or SaaS projects you’ve worked on, your experience with image generation or AI applications, your preferred approach and tech stack for this MVP, your estimated timeline and availability, and any relevant work or GitHub links.
+
+Please also provide your estimated fixed price for building the complete MVP, along with an approximate timeline. If you believe the scope should be adjusted to stay within a specific budget, feel free to suggest a more suitable MVP approach.
+
+If the MVP goes well, there is potential for a longer-term engagement as we continue developing the product.
+
+(No Upwork screening-questions section on this posting.)
+
+
+================================================================================
+JOB 2 of 30
+================================================================================
+Title: AI Automation Engineer for Support, Knowledge Base and Workflow Automation
+URL: https://www.upwork.com/jobs/~022114796252721848157
+Status: Open
+Posted: yesterday
+Client location: United Arab Emirates (Dubai) [list card showed: Canada]
+Budget: Hourly $30-$60
+Experience level: Expert
+Est. duration: More than 6 months, Full Time
+Connects required: 26
+Skills: Retrieval Augmented Generation; Generative AI Prompt Engineering; LangChain; AI Agent Development; OpenAI API
+Proposals: 50+
+Client: Payment verified; 4.89 (8 reviews); 82 jobs posted, 13% hire rate, 3 open jobs; $934 total spent; 10 hires, 1 active; $12.14/hr avg paid; Sales & Marketing, small company (2-9); member since Jul 1, 2022
+
+--- DESCRIPTION ---
+About Us
+We are an online brand selling technical products that customers can configure in many ways. This creates a lot of detailed questions for our team, so we want to bring in an AI Automation Engineer to help us organise and automate our main workflows.
+
+What We Want to Achieve
+- Support: Cut down the time our team spends on emails and help them answer detailed product questions faster. We use a helpdesk tool today, but we are open to changing the setup if there is a better option.
+- Knowledge base and training: Collect our product knowledge and company policies in one AI-powered knowledge base, and use it to create training material for new virtual assistants.
+- Ongoing improvements: Later on, automate other slow areas of the business, such as inventory planning, and improve our website so fewer customers need to contact support.
+
+Requirements
+- Experience building and launching AI agents, RAG knowledge bases and workflow automations for real businesses.
+- Able to review how we work today and suggest a simple, reliable setup that our team can use every day without much upkeep.
+- Hands-on experience with LLM APIs such as OpenAI and Claude, and with connecting AI to business tools and CRMs.
+
+--- YOU WILL BE ASKED TO ANSWER THE FOLLOWING QUESTIONS WHEN SUBMITTING A PROPOSAL ---
+1. Describe your recent experience with similar projects
+2. Please list any certifications related to this project
+
+
+================================================================================
+JOB 3 of 30
+================================================================================
+Title: CTO role
+URL: https://www.upwork.com/jobs/~022114721219332847736
+Status: Open — you have already submitted a proposal
+Posted: yesterday
+Client location: USA (Palm Beach Shores)
+Budget: Hourly $75-$200
+Experience level: Expert
+Est. duration: More than 6 months, Full Time
+Connects required: 27
+Skills: Amazon Web Services; JavaScript; Java; Python; Product Management; SQL; MySQL
+Proposals: 50+ (Interviewing: 26; invites sent: 30)
+Client: Payment verified; 5.0 (8 reviews); 11 jobs posted, 100% hire rate, 1 open job; $21K total spent; 13 hires, 3 active; $189.91/hr avg paid; member since Apr 1, 2023
+
+--- DESCRIPTION ---
+Looking to bring on a fractional CTO for a two sided market place/app with 4 revenue streams to start, in order to have the full team in place for our expected launch approaching soon.
+
+(No Upwork screening-questions section on this posting.)
+
+
+================================================================================
+JOB 4 of 30
+================================================================================
+Title: Security Engineer for Agentic AI
+URL: https://www.upwork.com/jobs/~022114710206507794730
+Status: Open
+Posted: yesterday
+Client location: Slovakia (Moldava Nad Bodvou)
+Budget: Hourly $40-$70
+Experience level: Expert
+Est. duration: More than 6 months, Full Time
+Connects required: 22
+Skills: AI Security; OAuth; OIDC; Python. Preferred location: Europe
+Proposals: 50+
+Client: Payment verified; 5.0 (3 reviews); 55 jobs posted, 2% hire rate, 3 open jobs; $103K total spent; 3 hires; $27.48/hr avg paid; 3,515 hours; Tech & IT, mid-sized company (10-99); member since Nov 5, 2021
+
+--- DESCRIPTION ---
+The client operates at the intersection of enterprise Media Asset Management (MAM) and cutting-edge generative media. We build and scale industry-leading generative AI models, including hyper-realistic digital humans (ATMAN) and multilingual voice synthesis (VAANI), for world-class enterprise clients in entertainment, sports, healthcare, and retail. We are looking for a Security Engineer for Agentic AI to make the agents, tools, and models the Client's teams rely on safe by default. You will own the security of Construct, our sovereign agent gateway for model routing, MCP tool hosting, and multi-agent orchestration: how agents authenticate, what they can reach, how they handle untrusted input, and how every action is logged. This is an application and AI security role, not a cloud security role. Our Cloud Security Engineer owns GCP , Kubernetes, network, and infrastructure-as-code posture. You own the controls above it, in agents, tools, models, and their data flows, and you share secrets, sandbox runtimes, and security telemetry with them. You work as part of a team led by the Lead Engineer for Agentic AI, together with the AI Architect , Senior Engineers, ML Engineers and Product Management. You also work closely with Security and compliance. You own and build the security controls; the Architect designs security into the architecture, and Senior Engineers build to your standards and fix findings in their components. This is an individual contributor role: building controls, tooling, and tests, and reviewing code and designs. You also share security knowledge within the team and with other Client's teams, so safe practices spread beyond the people who build the controls. You follow emerging agent and AI threats, test new attack classes in bounded experiments, and bring proven defences into production. Once they are live, you own them: monitoring, detection, and response in an enterprise environment. We assemble our setup from open protocols, open-source components, and our own services, so you build what is missing and maintain what you run. There is no formal on-call rotation yet, but one may be introduced.
+
+Key Responsibilities:
+1. Threat Modelling & Secure Design
+• Agentic Threat Modelling: Threat model agents, tools, MCP servers, and multi-agent workflows using the OWASP Top 10 for LLM Applications, OWASP Agentic AI threats, and MITRE ATLAS, and run a lightweight pre-launch review gate.
+• Secure-by-Default Reviews: Review agentic code and designs, publish secure defaults, and make risk trade-offs explicit and owned.
+• Security Knowledge Sharing: Teach secure agent practices within the team and to other Brahma teams through guides, threat-model walkthroughs, demos and office hours.
+2. Identity, Isolation & Guardrails
+• Agent & Tool Identity: Design authentication and authorisation for agents and tools with OAuth 2.0/OIDC, token exchange, and scoped, short-lived credentials, with per-tool least privilege, fail-closed MCP authorisation, and secrets kept out of agent runtimes.
+• Sandboxed Execution: Harden the containers and sandboxes where coding agents and tool calls run, with filesystem isolation, egress control, and human approval for irreversible actions.
+• Guardrails & Policy Enforcement: Build gateway defences against direct and indirect prompt injection, tool abuse, excessive agency, and data exfiltration: input and output filtering, PII/DLP , and policy-as-code, tuned so they do not stall developers.
+3. Adversarial Testing & Supply Chain
+• AI Red-Teaming: Build an automated adversarial test suite (injection, tool misuse, exfiltration, goal drift) that runs in CI and on a schedule, so we can show controls work, not only that they exist.
+• Supply-Chain Security: Govern which MCP servers, skills, plugins, models, and dependencies we adopt, through review, allow-listing, signing, SBOMs, and scanning.
+4. Detection, Response & Compliance
+• Audit Logging & Detection: Make every model, tool, and agent call traceable to a person and an agent, and feed guardrail events and anomalies into security monitoring and alerting.
+• Production Security Ownership: Own the security controls once they are live: monitor their effectiveness, tune guardrails from production data, and keep them patched and current as models, tools and standards change.
+• Incident Response & Compliance: Own the playbook for agent-related incidents and lead the technical response. Map controls to ISO 27001, ISO/IEC 42001, SOC 2, GDPR, and TPN, and keep evidence audit-ready.
+
+Job Requirements / Must Haves
+• Security Engineering Background: 5+ years in security engineering with a strong application or product security component, and fluent Python.
+• Build, Not Only Audit: Track record of shipping security tooling, controls, and automated tests as production code.
+• LLM & Agent Security: Hands-on experience securing LLM applications or agents against prompt injection and unsafe tool use.
+• Identity & Authorisation: Deep knowledge of OAuth 2.0, OIDC, token exchange, workload identity, and least-privilege design.
+• Threat Modelling: Experience leading structured threat modelling and turning findings into prioritised engineering work.
+• Secure SDLC & DevSecOps: Experience embedding security scanning and checks into CI/CD, and securing containerised workloads.
+• Risk Communication: Ability to explain risk and trade-offs clearly to engineers and leadership, and to document decisions.
+• Knowledge Sharing: Track record of teaching and documenting security practices for colleagues and other teams.
+
+Nice to Have:
+• AI Red-Teaming Tools: Experience with garak, PyRIT, promptfoo, or similar.
+• Policy Engines: Practical use of OPA/Rego, Cedar, or similar.
+• Sandboxing Technology: Familiarity with gVisor, Firecracker, seccomp, or Landlock.
+• Agent Infrastructure: Experience building or securing MCP servers, LLM gateways, or guardrail services.
+• GCP: Working knowledge of IAM, Workload Identity, Secret Manager, and Cloud Logging.
+• AI Governance & Media Security: Exposure to ISO/IEC 42001, NIST AI RMF, or MPA/TPN content security.
+• Certifications: OSCP , GIAC, CSSLP , or equivalent.
+
+(No Upwork screening-questions section on this posting.)
+
+
+================================================================================
+JOB 5 of 30
+================================================================================
+Title: DevOps Expert with AI/LLM/RAG/Agentic experience
+URL: https://www.upwork.com/jobs/~022114636434438666360
+Status: Open
+Posted: yesterday
+Client location: Spain (Valencia)
+Budget: Hourly $25-$45
+Experience level: Expert
+Est. duration: More than 6 months, Full Time
+Connects required: 20
+Skills: DevOps Engineering; Moodle; D3.js; PHP; HTML5; Machine Learning; DevOps; React; LLM Agent Development; rag implementation; Docker; Artificial Intelligence; Agentic Workflows; Supabase; GitHub; Data Privacy. Preferred: Rising Talent, English fluent, Europe
+Proposals: 50+ (Interviewing: 2; invites sent: 6)
+Client: Payment verified; phone verified; 5.0 (1 review); 7 jobs posted, 72% hire rate, 3 open jobs; $3K total spent; 6 hires, 4 active; $25.01/hr avg paid; Tech & IT, small company (2-9); member since Feb 10, 2026
+
+--- DESCRIPTION ---
+We’re seeking a DevOps expert with strong AI, RAG, LLM, and agentic experience and a focus on data privacy to support consulting work and potentially join our team as a fractional CTO. This role will help shape our technical direction, improve infrastructure, and guide AI-driven initiatives. We’d love to schedule a short chat to discuss the opportunity and see if it aligns with your expertise and interests. Please note this is a HANDS-ON job not just a strategy position. Along with a junior team you will scope, plan, develop and ship.
+
+--- YOU WILL BE ASKED TO ANSWER THE FOLLOWING QUESTIONS WHEN SUBMITTING A PROPOSAL ---
+1. What kind of AI agents / LLMs have you shipped? What is the most important part of user data ownership? Are you someone who has a vision of what is possible with AI, if so share an idea?
+
+
+================================================================================
+JOB 6 of 30
+================================================================================
+Title: Senior DevOps Engineer
+URL: https://www.upwork.com/jobs/~022114363562060299257
+Status: Open — you have already submitted a proposal
+Posted: 2 days ago
+Client location: United Kingdom (Norwich)
+Budget: Hourly (no range shown)
+Experience level: Expert
+Est. duration: Less than 1 month, Part Time
+Connects required: 14
+Skills: Linux; macOS; Amazon ECS; Health & Wellness; DevOps; Amazon Web Services; CI/CD Platform; Jenkins; Kubernetes. Preferred location: United Kingdom, United States
+Proposals: 20 to 50 (Interviewing: 4)
+Client: Payment verified; 5.0 (14 reviews); 68 jobs posted, 28% hire rate, 1 open job; $78K total spent; 19 hires; $23.58/hr avg paid; 490 hours; Health & Fitness, small company (2-9); member since Sep 10, 2016
+
+--- DESCRIPTION ---
+We are looking for an experienced Senior DevOps Engineer for a short-term engagement involving infrastructure administration, access management and security-related tasks across our cloud environment. Strong AWS, IAM and production infrastructure experience required. Remote, fixed-price project. Please provide your availability and hourly rate.
+
+(No Upwork screening-questions section on this posting.)
+
+
+================================================================================
+JOB 7 of 30
+================================================================================
+Title: Senior AI Technical Advisor
+URL: https://www.upwork.com/jobs/~022112376836174240039
+Status: NO LONGER AVAILABLE — you had applied
+Posted: last week
+Client location: United States (Saint Paul)
+Budget: Hourly $30-$55
+Experience level: Expert
+Est. duration: 1 to 3 months, Part Time
+Connects required: n/a (job closed)
+Skills: C#; JavaScript; Artificial Intelligence
+Proposals: 50+ (Interviewing: 12; invites sent: 15; hired: 1)
+Client: Payment verified; 4.89 (31 reviews); 47 jobs posted, 96% hire rate; $57K total spent; 51 hires, 6 active; $51.48/hr avg paid; 911 hours; mid-sized company (10-99); member since Mar 26, 2018
+
+--- DESCRIPTION ---
+We need an experienced engineer to guide the direction, design the approach, and review key milestones for our AI agent project. The work includes planning the program, improving data extraction, and helping build a knowledge base to support the system. You will help ensure the solution is well-structured, efficient, and aligned with our goals from the start. We are two consultancies building a free AI agent that helps nonprofits plan their programs and how they will measure them. It walks users through a three-step planning framework: a theory of change, a logic model, and a logframe (the results table that lists goals, outputs, outcomes, indicators, and assumptions). The pilot focuses on family planning, a field with well-established global indicators and strong professional networks for sourcing and testing.
+
+The questions we need help with
+1. Extraction from PDFs. What is the best way to use AI to pull usable content out of messy PDFs? Logframes are usually multi-page tables, theories of change are often diagrams, some files are scanned, and terminology varies a lot between organizations. We want a process our analysts can run and repeat.
+2. Whole documents vs. extracted pieces. Our current leaning is to keep whole documents with rich tags, because breaking them apart can lose the logic linking one level to the next. We also need structured data, such as each outcome and the indicators that measure it. How should we balance the two?
+3. Data structure. How should we represent the results chain (impact → outcome → output → activity → indicator) and our tags so the data works for the agent? What should our metadata and rules files look like?
+4. Vector database. We plan to use a vector database (one that lets the agent search by meaning, not just exact words). We need advice on which one, how to structure it, and hands-on help setting it up.
+5. Models, hosting, and cost. Our preference is to build on an existing commercial AI model rather than train our own, likely hosted in Microsoft Azure. We want a sanity check on that and a rough estimate of running costs.
+
+(No Upwork screening-questions section on this posting; the numbered questions above are part of the description.)
+
+
+================================================================================
+JOB 8 of 30
+================================================================================
+Title: RAG / Retrieval Architecture Consultant for Multi-Agent AI System (Advisory Only)
+URL: https://www.upwork.com/jobs/~022112106895528326137
+Status: Open
+Posted: last week
+Client location: United Kingdom (Balhelvie)
+Budget: Fixed-price $10.00 (client says the budget is only a starting price)
+Experience level: Intermediate
+Est. duration: 1 to 3 months
+Connects required: 10
+Skills: Machine Learning
+Proposals: 20 to 50 (hires: 1; bid range high $3,000 / avg $304.20 / low $10)
+Client: Payment verified; 4.97 (21 reviews); 19 jobs posted, 100% hire rate, 2 open jobs; $1.8K total spent; 24 hires, 2 active; $15.00/hr avg paid; member since Nov 17, 2021
+
+--- DESCRIPTION ---
+We are building a multi-agent AI system that needs to pull knowledge from a large database. We have hit a retrieval bottleneck: our agents can only hold and process a limited number of rows at a time, and they are not consistently getting the most relevant data for the task they are solving. The wrong rows reach the agents, or too many rows get passed in, and output quality suffers.
+
+We are looking for an experienced AI/RAG engineer who understands retrieval design, context limits, and multi-agent orchestration. This is an advisory and guidance role. You do not need to build anything. We need you to review our setup, explain what is going wrong, and give us a clear, practical roadmap to fix it properly.
+
+What we need from you:
+
+1. Review our current data structure and agent workflow, and identify why the wrong or excessive data is reaching the agents.
+2. Recommend the right retrieval architecture for our case, for example hybrid search (keyword + vector), metadata filtering, re-ranking, query rewriting or decomposition, chunking strategy, and per-agent retrieval scopes.
+3. Explain how to fit the most relevant knowledge into each agent’s limited context, including top-k tuning, summarization or compression, and task-aware retrieval.
+4. Deliver a clear step-by-step implementation guide (a call plus short written notes or a diagram) that our team can follow ourselves, including how to evaluate whether retrieval quality is improving.
+
+This is a strict “Explain & Guide” mandate. No development is required.
+
+Budget:
+The budget listed on this post is only a starting price. Please apply with a budget that you consider reasonable for the scope of work described.
+
+TO APPLY:
+Please start your proposal with the word “RETRIEVAL”. Briefly answer these 3 questions:
+
+1. How many years of experience do you have with RAG systems and LLM-based applications?
+2. Have you designed retrieval for multi-agent systems (LangGraph, CrewAI, AutoGen, or custom) or large databases before? Please share a brief example.
+3. How would you approach diagnosing why agents are receiving irrelevant or too much data from a large database?
+
+(No Upwork screening-questions section on this posting; the questions above are part of the description.)
+
+
+================================================================================
+JOB 9 of 30
+================================================================================
+Title: Senior DevOps Engineer
+URL: https://www.upwork.com/jobs/~022112063204376983883
+Status: Open — you have already submitted a proposal
+Posted: last week
+Client location: Belgium (Brussels)
+Budget: Fixed-price $2,100
+Experience level: Expert
+Est. duration: 1 to 3 months
+Connects required: not captured
+Skills: AI Infrastructure; CentOS; Linux; Deployment Automation; DevOps; Kubernetes; Amazon Web Services; CI/CD Platform; Jenkins; Docker
+Proposals: 50+ (Interviewing: 15)
+Client: Payment verified; 5.0 (1 review); 20 jobs posted, 10% hire rate, 1 open job; $1.8K total spent; 2 hires, 1 active; $39.99/hr avg paid; 11 hours; large company (100-1,000)
+--- DESCRIPTION ---
+Job Description: We are seeking a highly skilled and proactive Senior DevOps Engineer to join our team. You will be responsible for designing, implementing, and maintaining robust CI/CD pipelines, managing cloud infrastructure across multiple providers, and ensuring high availability and security. The ideal candidate is a automation-first mindset engineer who is comfortable working with containerized microservices and has experience deploying AI models in serverless environments.
+
+Key Responsibilities:
+1. CI/CD Management: Design, build, and maintain efficient CI/CD pipelines using Jenkins, GitLab CI, CircleCI, or GitHub Actions.
+2. Containerization & Orchestration: Manage containerized applications using Docker and orchestrate them using Kubernetes (EKS, AKS, GKE) .
+3. Infrastructure as Code (IaC): Implement and manage infrastructure using Terraform, AWS CloudFormation, and Ansible.
+4. Cloud Operations: Architect and maintain solutions across AWS, Azure, and Google Cloud Platform.
+5. Monitoring & Observability: Set up comprehensive monitoring and logging using Prometheus, Grafana, ELK Stack, or Datadog.
+6. Monitoring & Observability: Set up comprehensive monitoring and logging using Prometheus, Grafana, ELK Stack, or Datadog.
+7. Security (DevSecOps): Integrate security into the DevOps lifecycle, including vulnerability scanning and secrets management.
+8. Scripting & Automation: Develop automation scripts using Bash, Python, and PowerShell to eliminate repetitive tasks.
+9. Deployment Strategies: Implement Blue/Green and Canary deployments to ensure zero-downtime releases.
+10. AI/ML Deployment: Deploy AI models and utilize cloud-provided models within serverless cloud infrastructure.
+11. Collaboration: Work closely with Development and QA teams within Agile/Scrum frameworks to ensure smooth releases.
+
+Required Skills & Qualifications:
+1. Experience: 5+ years of experience in DevOps, SRE, or Cloud Engineering roles.
+2. Cloud Mastery: Deep hands-on experience with at least two of the major cloud providers (AWS, Azure, GCP).
+3. Orchestration: Strong expertise in Kubernetes cluster management and service mesh technologies like Istio or Linkerd.
+4. Configuration Management: Proficiency in Ansible, Puppet, or Chef.
+5. Version Control: Expert knowledge of Git, GitHub, GitLab, and Bitbucket.
+6. Architecture: Experience in Disaster Recovery planning and designing High Availability architectures.
+7. Soft Skills: Excellent communication skills and the ability to work independently in a fast-paced environment.
+
+(No Upwork screening-questions section on this posting.)
+
+
+================================================================================
+JOB 10 of 30
+================================================================================
+Title: Fractional CTO using AI to integrate and build
+URL: https://www.upwork.com/jobs/~022111864668796197455
+Status: Open — you have already submitted a proposal
+Posted: last week
+Client location: United States (Miami Beach)
+Budget: Hourly $35-$100
+Experience level: Intermediate
+Est. duration: 3 to 6 months, Part Time
+Connects required: not captured
+Skills: AI Consulting; AI Agent Development; AI Strategy; AI Implementation; AI Integration Deliverables; AI SaaS knowledge
+Proposals: 20 to 50 (hires: 1; interviewing: 6; invites sent: 7)
+Client: Payment verified; 4.92 (168 reviews); 947 jobs posted, 24% hire rate, 70 open jobs; $108K total spent; 313 hires, 19 active; $13.62/hr avg paid; 5,438 hours
+
+--- DESCRIPTION ---
+We are a regulated B2B SaaS platform for service-based businesses. It covers staff onboarding, e-signatures, training, client intake, scheduling and time verification, billing, and compliance tracking. We're in production on AWS with customers onboarding now. Much of our development is done by AI coding agents under a defined process. We need an experienced technical leader to oversee architecture, security and releases, and to be our accountable human engineering lead.
+
+**What you'll do** (about 5–10 hours a week to start, flexible)
+- Review and approve architecture, pull requests and releases, and set engineering standards and guardrails for AI-assisted development.
+- Own security and data-protection safeguards: access control, encryption, audit logging, incident response, backup and restore testing, and vendor security and data processing agreements.
+- Lead SOC 2 readiness: choose a compliance platform and auditor, and coordinate a third-party penetration test.
+- Oversee AWS infrastructure in Terraform (ECS Fargate, CloudFront and WAF, DocumentDB, S3, Secrets Manager, KMS, Bedrock) and approve infrastructure changes.
+- Guide third-party integrations: billing and payment processors, government or industry data exchanges, external reporting systems, and partner onboarding.
+- Own monitoring, on-call escalation and uptime. Join a monthly roadmap review with the founder.
+
+**Must have**
+- 8+ years in software engineering, including 3+ in a CTO, VP Engineering or principal role.
+- Hands-on experience running a production system that handles sensitive or regulated data (privacy compliance, data processing agreements, audits).
+- AWS production experience; Terraform.
+- Python (FastAPI or similar) and React; MongoDB or DocumentDB.
+- Experience leading a SOC 2 Type II, ISO 27001 or similar certification effort.
+
+**Strong plus**
+- Experience with EDI or other standardized B2B data exchange formats and clearinghouse-style integrations.
+- Experience integrating with government or state-run systems.
+- Overseeing AI-assisted or agent-based development workflows.
+- Mobile (React Native / Expo).
+
+**How we work**
+- Remote based. You'll sign an NDA and a data protection agreement before access.
+- Least-privilege access; no customer data outside our systems.
+- Start with a paid 2-week assessment: an architecture and security review with a prioritized plan. Then ongoing monthly.
+
+--- YOU WILL BE ASKED TO ANSWER THE FOLLOWING QUESTIONS WHEN SUBMITTING A PROPOSAL ---
+1. What city are you in?
+2. Would you be able to screenshare with camera on using discord when collaborating with us?
+
+
+================================================================================
+JOB 11 of 30
+================================================================================
+Title: Freelance GPU Infrastructure / MLOps Engineer (Remote, Contract)
+URL: https://www.upwork.com/jobs/~022111405855228646123
+Status: Open
+Posted: 2 weeks ago
+Client location: Australia
+Budget: Hourly (no range shown)
+Experience level: Expert
+Est. duration: More than 6 months (hours: not sure)
+Connects required: not captured
+Skills: Linux System Administration; Docker; DevOps; Kubernetes; Ansible; Machine Learning; CUDA
+Proposals: 20 to 50
+Client: Payment NOT verified; phone verified; 1 job posted, 0% hire rate, 1 open job; member since Oct 17, 2026
+
+--- DESCRIPTION ---
+We are an Australian GPU cloud provider building a small bench of freelance engineers to deploy and support customer GPU environments. Work includes project-based setups and ongoing support with capped hours. We are seeking long-term partners.
+
+Our infrastructure includes on-demand GPU instances, dedicated 8-GPU nodes and enterprise clusters with H100, H200, B200 and B300 GPUs. Customer workloads include AI training and inference. Infrastructure is in Australia, with partner capacity in the UK, Europe and the US.
+
+Responsibilities
+- Set up Ubuntu GPU servers with NVIDIA drivers, CUDA, Docker and NVIDIA Container Toolkit.
+- Deploy model inference services such as vLLM, TGI or Triton behind HTTPS.
+- Configure Prometheus, Grafana and DCGM Exporter monitoring and downtime alerts.
+- Resolve customer access issues, GPU errors, service restarts and patching tickets.
+- Turn working deployments into reusable Ansible, Terraform or script templates.
+- On larger projects, support multi-node training with Slurm or Kubernetes, NCCL and InfiniBand.
+
+Required experience
+- Strong Ubuntu/Linux administration and production NVIDIA GPU troubleshooting, including driver/CUDA compatibility, nvidia-smi, DCGM and Xid errors.
+- Docker GPU workloads, ML inference deployments, monitoring and alerting.
+- Clear written English for direct customer communication.
+
+Experience with PyTorch DDP/FSDP, DeepSpeed, Slurm, Kubernetes GPU Operator, InfiniBand/RoCE, or GPU cloud/HPC operations is useful.
+
+Remote contract, hourly or per project. European and Asia-Pacific time zones are especially welcome. NDA, non-solicitation and IP assignment will be required.
+
+Shortlisted candidates will be offered a paid 2–3 hour test through Upwork: deploy a vLLM inference service with Grafana monitoring and downtime alerts on a GPU instance we provide.
+
+Please apply through Upwork with: (1) specific GPU/ML infrastructure projects, GPU types and scale; (2) time zone and weekly availability; (3) hourly rate in USD; and (4) brief examples of relevant work. Keep all pre-contract communication and payment on Upwork.
+
+(No Upwork screening-questions section on this posting.)
+
+
+================================================================================
+JOB 12 of 30
+================================================================================
+Title: Senior AI Full-Stack Developer to Build Legal Document SaaS (Claude API, Fixed-Price)
+URL: https://www.upwork.com/jobs/~022111360614303829601
+Status: Open
+Posted: 2 weeks ago
+Client location: Hungary
+Budget: Fixed-price $10,000
+Experience level: Expert
+Est. duration: 3 to 6 months
+Connects required: not captured
+Skills: Python; React; API Integration; API Development; Generative AI; Retrieval Augmented Generation
+Proposals: 50+
+Client: Payment verified; phone verified; 1 job posted, 0% hire rate, 1 open job; member since Oct 17, 2026
+
+--- DESCRIPTION ---
+We are looking for an experienced full-stack AI developer or small senior team to build the first commercial version of Verdictum, a legal document analysis and drafting platform for Hungarian lawyers. We already have practical legal workflows, document templates, and access to lawyers who can test the product. We will provide domain expertise, anonymized sample documents, and feedback. Your role is to turn these workflows into a reliable, usable web application.
+
+CORE WORKFLOW
+Create a case → upload documents → extract and organize information → run guided AI analysis → generate a template-based draft → review and revise → export to Word.
+
+INITIAL RELEASE REQUIREMENTS
+• Secure user accounts and separate workspaces for law firms, with case-level access controls.
+• PDF and DOCX upload, OCR for scanned documents, and preservation of document/page references.
+• Claude API integration for structured, multi-step analysis and drafting.
+• Answers and drafts linked to supporting source passages, with missing evidence and unsupported claims flagged for review.
+• Configurable templates organized by case type, procedural stage, and drafting objective.
+• Iterative drafting with user feedback, saved versions, and editable DOCX export.
+• Basic administration, usage/cost monitoring, error handling, and reliable deployment.
+• Hungarian-language interface and document processing.
+We provide the Hungarian wording and legal validation. All generated legal work will remain subject to human review.
+
+SCOPE AND DELIVERY
+The first release will cover a limited, agreed set of legal workflows and templates. Before development, we will agree on the exact deliverables, document-volume limits, acceptance tests, and exclusions. Please identify what you can deliver within the budget and clearly state any proposed exclusions. Do not quote for a basic prototype if the working application described above would require a substantially larger follow-up budget. Target delivery: approximately 12 weeks from scope approval. Please propose a realistic schedule.
+
+BUDGET AND PAYMENT
+Indicative development budget: USD 10,000, fixed price for the agreed release. Payment will be tied to agreed deliverables and acceptance milestones. The initial technical validation and scope-definition milestone must be included in the total project price. Please disclose third-party services, licenses, hosting, AI API costs, and optional ongoing maintenance separately. Additional paid work requires prior written approval.
+
+HANDOVER
+• Source code committed to our repository throughout development.
+• Deployment in accounts controlled by us.
+• Documentation covering setup, architecture, prompts, workflows, and maintenance.
+• Ownership of project-specific code and deliverables, with all third-party dependencies and license restrictions disclosed.
+• An agreed post-delivery bug-fix period.
+
+WHO WE ARE LOOKING FOR
+You should have experience shipping complete AI web applications, including document ingestion, retrieval, source citations, background processing, and secure access controls. Using Claude Code or similar development tools is welcome, but you must personally take responsibility for architecture, testing, security, and maintainability. Python and React are preferred, but we are open to a well-supported alternative stack. Hungarian communication is a strong advantage; applicants who can work effectively with Hungarian documents and our domain team are also welcome.
+
+PLEASE INCLUDE IN YOUR PROPOSAL
+1. One or two relevant applications you have delivered, your exact role, and a demo or walkthrough where possible.
+2. Your proposed architecture and approach to document references and citation verification.
+3. Your fixed total price, milestone breakdown, timeline, and exclusions.
+4. How you would handle large case files and prevent data from one client appearing in another client's results.
+5. Estimated recurring costs and the usage assumptions behind them.
+6. Your availability and who will personally perform the work.
+
+Shortlisted candidates will receive a more detailed workflow brief and anonymized examples. Confidentiality is required before access to proprietary materials.
+
+(No Upwork screening-questions section on this posting; the items above are part of the description.)
+
+
+================================================================================
+JOB 13 of 30
+================================================================================
+Title: Microsoft Azure Cloud Architect for AI
+URL: https://www.upwork.com/jobs/~022111194741084712277
+Status: Open
+Posted: 2 weeks ago
+Client location: United States (Somers Point)
+Budget: Hourly $40-$70
+Experience level: Expert
+Est. duration: More than 6 months, Full Time
+Connects required: not captured
+Skills: Microsoft Azure; C#; .NET Framework; Microsoft Visual Studio
+Proposals: 50+
+Client: Payment verified; 5.0 (13 reviews); 21 jobs posted, 100% hire rate, 1 open job; $125K total spent; 25 hires, 3 active; $9.83/hr avg paid; 11,094 hours
+
+--- DESCRIPTION ---
+We are seeking an experienced Microsoft Azure Cloud Architect to design and implement a secure, cloud-based working environment for remote contractors and autonomous AI agents. The goal is to centralize company operations in the cloud, reduce reliance on personal devices, and enable AI agents to operate independently 24/7. The ideal freelancer will help build a scalable, secure infrastructure that supports remote collaboration, automated workflows, and reliable long-term system performance.
+
+Scope of Work
+Windows 365 Cloud PCs: Configure dedicated virtual desktops for approximately 4 remote contractors, with secure logins, restricted file transfers, and centrally managed applications.
+Microsoft Azure: Set up secure cloud infrastructure to host autonomous AI agents using Azure Container Apps, Functions, and virtual machines only where necessary.
+AI Agent Infrastructure: Enable 24/7 AI workflows using Claude, OpenAI, and other agent platforms, with persistent job tracking and automatic recovery.
+MCP & API Integrations: Establish secure connectivity to applications including Google Ads, Meta, GoHighLevel (GHL), Slack, WordPress, and other business platforms.
+SharePoint: Configure centralized company file storage, SOPs, knowledge bases, and controlled access for employees and AI agents.
+Security: Implement Microsoft Entra ID, Intune, MFA, Conditional Access, access restrictions, monitoring, and data protection.
+Automation: Establish the infrastructure for AI agents to execute scheduled tasks, share information, and request human approval when necessary.
+
+Required Experience
+Microsoft Azure architecture and deployment
+Windows 365 Enterprise, Intune, and Entra ID
+Azure Container Apps, Functions, and virtual machines
+AI agent hosting, MCP servers, and API integrations
+SharePoint and Microsoft Graph API
+Enterprise cloud security and remote workforce management
+
+Expected Deliverables
+A fully configured, secure, documented cloud environment with working contractor desktops, operational AI agent infrastructure, and a scalable architecture.
+
+Important: Contractors must perform company work within their assigned Windows 365 Cloud PCs, with technical restrictions on direct access from personal devices wherever supported.
+
+(No Upwork screening-questions section on this posting.)
+
+
+================================================================================
+JOB 14 of 30
+================================================================================
+Title: AI Product Engineer
+URL: https://www.upwork.com/jobs/~022111104827294442043
+Status: Full job page not accessible ("This job is private" / access denied); data taken from the saved-jobs list card
+Posted: 2 weeks ago
+Client location: Poland
+Budget: Hourly $35-$60
+Experience level: Expert
+Est. duration: More than 6 months, Full Time
+Skills / proposals / client stats: not available (page not accessible). Client: payment verified, rating 5.0
+
+--- DESCRIPTION ---
+Looking for an AI Product Engineer (Please send your CV and apply only if you have the relevant skills. Candidates who share their CV will be prioritized.)
+
+Workload: full-time
+
+ABOUT THE COMPANY
+A legal tech company that uses AI agents to recover small claims of up to EUR 25k. It has handled over 5,000 cases for more than 500 Danish customers, raised EUR 2M from Vendep Capital, and is now growing across Europe. Tech stack: Python/FastAPI, Laravel/PHP, Next.js, PostgreSQL, AWS, Google.
+
+REQUIREMENTS
+- At least 3 years of experience building and running software in production
+- Solid backend skills: background jobs, authentication and authorization models, API design
+- Postgres/SQL expertise: schema design, migrations, query performance
+- Hands-on experience with LLMs in production: orchestration, structured outputs, tool calling, evals, tracing, prompt design, and protection against prompt injection
+- Uses AI coding agents (Claude Code, Codex, opencode, or similar) every day
+- Treats testing as standard practice: feature and end-to-end tests, CI, a staging-to-production release flow
+- Cloud and deployment experience: AWS or a similar provider, Docker, CI/CD
+
+BONUS POINTS
+- Specific experience with Python/FastAPI, Laravel/PHP or Next.js
+- Has run production migrations, data backfills, or major-version upgrades
+- Practical AWS skills (EC2, RDS, S3, IAM, CloudWatch) and Linux
+- Experience with eval and observability tools for agentic workflows
+- Has built integrations with systems that lack documented APIs (webhooks, scraping, browser extensions)
+- Background in legal tech, fintech, or another regulated industry
+
+PERSONAL QUALITIES
+Thinks like a product owner, takes ownership of work from start to finish, communicates directly, is comfortable working with end users (lawyers, case managers), and is interested in the legal field.
+
+HIRING PROCESS
+Introduction with CV, GitHub, and links to shipped work -> skills self-assessment and written questions -> interviews with the team -> offer.
+
+(Upwork screening-questions section: not accessible.)
+
+
+================================================================================
+JOB 15 of 30
+================================================================================
+Title: Senior AI Product Engineer: 24/7 Production Launch Support for Legal Operations AI Platform
+URL: https://www.upwork.com/jobs/~022111009342000440724
+Status: NO LONGER AVAILABLE / full job page not accessible; data taken from the saved-jobs list card
+Posted: 2 weeks ago
+Client location: United Kingdom
+Budget: Hourly $10-$47
+Experience level: Expert
+Est. duration: Less than 1 month, Part Time
+Skills / proposals / client stats: not available (page not accessible). Client: payment verified, rating 5.0
+
+--- DESCRIPTION ---
+We’re a law firm, and we’re taking our Legal Operations AI MVP into production. It replaces a fair amount of our legacy legal system. We’d like a senior AI product engineer on call around the clock for the first week, so that when something breaks (and something always does), someone who understands both the AI and the full stack can jump in quickly.
+
+What we built
+It isn’t a ChatGPT wrapper. It’s an internal AI operations platform that works with our documents, emails and existing systems to cut down on repetitive admin work. Day to day, the team uses it for:
+Client and matter intake
+Document and email summarisation
+Pulling out dates, parties, obligations and action items
+Building matter timelines
+Searching our internal knowledge base
+Drafting first-pass emails and notes
+Routing tasks to the right people
+
+Every answer is grounded in RAG over our own documents (embeddings, vector search and semantic search) and comes with source citations, so people can see where it came from. Retrieval respects matter-level permissions.
+
+Under the hood:
+AI layer: model-agnostic. Different tasks go to different models, including OpenAI GPT models, Anthropic Claude, Gemini, Grok, Groq and Llama, partly through OpenRouter and the Vercel AI SDK, with fallback when a provider goes down.
+Agents: AI agents use tool calling and MCP to take actions. Structured JSON outputs get validated before anything happens.
+Business rules: deterministic rules sit apart from the AI. Anything sensitive or uncertain waits for human review.
+Stack: Next.js, React, TypeScript, Node.js, PostgreSQL and AWS, with private S3 storage, background jobs, queues and webhooks. A few older PHP/WordPress pieces are still connected, along with integrations into email, our matter-management software, billing and Stripe.
+
+What we need from you
+For seven days from go-live, be reachable at any hour. In practice that means:
+Monitoring: keep an eye on errors and logs, LLM usage and costs, and any AI actions that failed or came back uncertain.
+Fixing: when something goes wrong, work out why and fix it. That might be: a model API outage or rate limit; a document that won’t ingest or OCR properly; retrieval pulling the wrong sources; an agent workflow getting stuck; a webhook or queue backing up; someone who can’t access a matter they should be able to (or can access one they shouldn’t)
+Escalating: some things we need to hear about straight away: possible data leakage; prompt injection, including instructions hidden inside documents; hallucinations or answers stated more confidently than the sources support; confidential data heading to an AI provider it shouldn’t
+Legal work has very little tolerance for confidently wrong output. The system is meant to say “I don’t know” rather than guess, and we want to confirm it actually does.
+Incident log: keep a short note of each incident: what happened, why, and what you did.
+End-of-week summary: what held up, what didn’t, and what you’d prioritise next.
+
+Response times
+Critical (system down, or anything touching security or confidentiality): acknowledge within 30 minutes, day or night.
+Everything else: within 4 hours.
+
+Terms
+$10/hr, billed only for time you actually spend on alerts, investigating and fixing. One week from go-live, with the date agreed together. Our usual rules still apply: no confidential data to unapproved AI providers; least-privilege access; audit logging; human sign-off on sensitive actions. If it goes well, we’d like to keep working together on the next phases.
+
+Who this suits
+Ideally you’ve built and run production AI or SaaS products yourself, not just prototypes. Technical founders, founding engineers, forward deployed engineers and full-stack AI engineers would all fit well. A few things are a bonus but not required: Trust & safety, abuse detection or prompt injection testing; Voice, transcription or other multimodal AI work (ElevenLabs, Runway and so on); Experimenting with local models, fine-tuning or Unsloth
+
+(Upwork screening-questions section: not accessible.)
+
+
+================================================================================
+JOB 16 of 30
+================================================================================
+Title: Infrastructure Cloud Cost Optimization
+URL: https://www.upwork.com/jobs/~022111008462693390709
+Status: Open — you have already submitted a proposal
+Posted: 2 weeks ago
+Client location: France (Paris)
+Budget: Hourly $20-$60
+Experience level: Intermediate
+Est. duration: Less than 1 month, Part Time
+Connects required: not captured
+Skills: Node.js; Google Cloud Platform; Linux; Cloud Computing; System Administration; Python; DevOps; Software Architecture
+Proposals: 50+
+Client: Payment verified; phone verified; 4.96 (10 reviews); 18 jobs posted, 100% hire rate, 1 open job; $14K total spent; 39 hires, 17 active; $25.08/hr avg paid
+
+--- DESCRIPTION ---
+We’re looking for a GCP cost optimization expert for a one-off sprint to reduce cloud spend across our SaaS infrastructure. The work centers on Cloud Run, Cloud Logging, Cloud SQL, and ClickHouse, including a Cloud Run cost regression and longer-term cost governance. The objective of the mission is to define the actions to take in order to globally reduce GCP costs, both acting on infrastructure and code logic if necessary; and to apply those changes, while keeping/improving the current quality of service.
+
+Technical stack:
+Core product: a REST API platform (Node.js/TypeScript) serving real-time traffic for e-commerce websites, plus Python ML/recommendation services — all deployed as containerized autoscaling services on Cloud Run, behind a global HTTPS load balancer with CDN
+Data & ingestion pipeline: 30+ containerized batch jobs (Cloud Run jobs) handling product catalog imports, image processing, ML embeddings, and analytics aggregation — some scheduled, some event-driven
+- Databases: PostgreSQL (Cloud SQL, HA) as the main transactional store; a self-hosted ClickHouse cluster on 2× n2-highmem-16 VMs powering analytics dashboards and observability
+- Supporting infra: Elasticsearch-backed search, BigQuery for analytics/exports, GCS for catalog files and assets, a small fleet of utility VMs (outbound IP-whitelisted proxy, observability stack), VPC connectors for private networking
+- Traffic profile: steady daytime API load (B2C end-users via retailer websites) + heavy nightly batch processing
+
+(No Upwork screening-questions section on this posting.)
+
+
+================================================================================
+JOB 17 of 30
+================================================================================
+Title: AI Workflow Automation Specialist: Multi-Jurisdiction Document Parsing
+URL: https://www.upwork.com/jobs/~022110794191110079829
+Status: NO LONGER AVAILABLE (a freelancer was hired)
+Posted: 2 weeks ago
+Client location: USA (Reston)
+Budget: Fixed-price $600
+Experience level: Intermediate
+Est. duration: Less than 1 month
+Connects required: n/a (job closed)
+Skills: Artificial Intelligence; Automated Workflow; LLM Prompt Engineering; Intelligent Document Processing (IDP)
+Proposals: 50+ (hired: 1)
+Client: Payment verified; phone verified; no reviews yet; 1 job posted, 100% hire rate; $450 total spent; 1 hire, 1 active; member since Oct 15, 2026
+
+--- DESCRIPTION ---
+We are a small business looking to automate a tedious document-processing task. Currently, our team manually extracts review comments from various jurisdiction documents and copies them into our company’s standardized Word (.docx) response template. We process approximately 5–10 forms per month. However, because we work across multiple jurisdictions, the incoming files arrive in varying formats: some are PDFs, some are Word documents, and others are Excel spreadsheets. The layout is highly consistent within each specific jurisdiction, but varies between different jurisdictions.
+
+We want an expert to build a low-code/no-code AI automation pipeline (using Gumloop, Make.com, or Zapier Central) to handle this workflow seamlessly.
+
+Scope of Work:
+1. File Ingestion: Detect when a new review document is uploaded to our cloud storage [Insert your storage, e.g., Google Drive / OneDrive].
+2. Jurisdiction Identification & Routing: The system must read the document header, identify which jurisdiction it came from, and apply the correct parsing rules.
+3. AI Text Extraction: Utilize an LLM (via OpenAI/Anthropic API) paired with robust document-parsing to cleanly isolate the reviewer comments—filtering out legal boilerplate, headers, and irrelevant text. This must handle PDFs (OCR), Word files, and Excel tables.
+4. Template Mapping: Inject the extracted comments accurately into our company's standardized .docx template using specific placeholder tags.
+5. Output Delivery: Save the newly populated Word template into a designated "Completed" folder and alert the team.
+
+What We Will Provide to Shortlisted Candidates:
+• Clean sample files of incoming documents from 3 different jurisdictions (PDF, Word, and Excel formats).
+• Our blank company Word template showing exactly where text needs to go.
+• An example of a finalized, correctly formatted document so you can see the expected end result.
+
+Requirements:
+• Proven experience building document-parsing workflows using Gumloop, Make.com, or Zapier.
+• Strong understanding of leveraging LLM APIs (OpenAI GPT-4o / Anthropic Claude) for structured data extraction from unstructured text.
+• Ability to build clean, conditional logic branches based on document content.
+• Excellent communication skills and a willingness to provide a brief 10-minute video walkthrough of how the system works upon completion.
+
+(No Upwork screening-questions section on this posting.)
+
+
+================================================================================
+JOB 18 of 30
+================================================================================
+Title: AI & Automation for a manufacturing client
+URL: https://www.upwork.com/jobs/~022110437464648549642
+Status: Open
+Posted: 2 weeks ago
+Client location: United States (Sheridan)
+Budget: Hourly $20-$40
+Experience level: Expert
+Est. duration: More than 6 months, Full Time
+Connects required: 27
+Skills: Artificial Intelligence; AI Automation; Software Development; Automation Framework
+Proposals: 50+
+Client: Payment verified; phone verified; 4.98 (5 reviews); 20 jobs posted, 40% hire rate, 2 open jobs; $7.1K total spent; 11 hires, 3 active; $24.89/hr avg paid
+
+--- DESCRIPTION ---
+We are an established AI and automation company that has successfully worked with over 80 clients across multiple industries, delivering custom AI solutions, workflow automation, CRM integrations, and business process optimization. We currently have a strong, warm referral to a big manufacturing company with a potential opportunity for a substantial AI and automation engagement. While we have extensive experience delivering AI and automation solutions, we do not currently have manufacturing-specific case studies in our portfolio. We are looking to partner with an agency or experienced freelancer who has successfully delivered automation or AI projects for manufacturing companies.
+
+What We're Looking For:
+- Proven experience delivering AI, automation, or digital transformation solutions within the manufacturing industry.
+- At least 1–2 relevant manufacturing client case studies or successful implementations.
+- Existing client relationships where the client would be willing to participate in a brief reference call with our prospective customer.
+- Interest in establishing a white-label partnership with a mutually agreed referral fee or revenue-sharing arrangement.
+
+How the Partnership Would Work:
+1. We connect and review your relevant manufacturing experience, past projects, and case studies.
+2. With appropriate consent, we arrange a reference call between our prospective manufacturing client and one of your previous manufacturing clients to validate the quality and results of your work.
+3. Once there is mutual alignment and the opportunity progresses, we agree on a fair referral fee, revenue-sharing model, or white-label delivery arrangement.
+4. Depending on the engagement, there may be opportunities for ongoing collaboration and additional projects.
+
+We are not looking for someone to simply provide generic case studies. We want a credible, experienced partner with actual manufacturing implementations and clients who can validate their work. We bring an established delivery team, extensive AI and automation expertise, and an active business opportunity. We're looking for a partner who brings the relevant industry track record.
+
+To Apply, Please Share:
+1. A brief overview of your manufacturing industry experience.
+2. Examples of manufacturing automation or AI projects you've completed.
+3. Whether any previous manufacturing clients would be open to a reference conversation.
+4. Your preferred partnership structure (referral fee, revenue share, or white-label collaboration).
+
+This is a partnership opportunity, not a traditional hourly freelancing engagement. We're interested in building a mutually beneficial relationship that could extend well beyond this initial project.
+
+(No Upwork screening-questions section on this posting; the items above are part of the description.)
+
+
+================================================================================
+JOB 19 of 30
+================================================================================
+Title: Technical Consultant, AI Integration (Part-Time Contract)
+URL: https://www.upwork.com/jobs/~022110342503576294945
+Status: Open
+Posted: 2 weeks ago
+Client location: United States (Austin)
+Budget: Hourly $45-$100
+Experience level: Expert
+Est. duration: 1 to 3 months, Part Time
+Connects required: 26
+Skills: Model Context Protocol (MCP); Azure DevOps. Preferred: Job Success Score at least 91%
+Proposals: 50+
+Client: Payment verified; 4.99 (14 reviews); 94 jobs posted, 25% hire rate, 1 open job; $16K total spent; 31 hires, 11 active; $18.90/hr avg paid; 486 hours
+
+--- DESCRIPTION ---
+*****Please apply and contact me only through Upwork. Do not contact me on LinkedIn or send cold emails about this role. All hiring and contracting for this position will take place exclusively through Upwork.***** Technical Consultant, AI Integration (Part-Time Contract)
+
+We're looking for an experienced technical consultant with strong AI integration experience and deep knowledge of Model Context Protocol (MCP) within Claude Enterprise. Our engineers will handle implementation. We need someone to review the architecture, help resolve technical questions, and assess security and reliability as the project develops. The expected commitment is approximately 4–6 hours per week, at $45–$100 USD/hour. Any additional time for the initial review or launch will be agreed in advance. Applicants worldwide are welcome. Minimum Job Success Score: 91%.
+
+The project
+We're connecting Claude Enterprise to operational systems covering service tickets, device management and internal documentation through MCP connectors. The initial pilot is read-only, with potential to add further integrations and actions requiring human approval. The proposed architecture includes a cloud-hosted integration gateway, user authentication, access controls, sensitive-data filtering, audit logging, secrets management and controls to pause access.
+
+What you'll do
+- Review the proposed architecture and identify gaps, dependencies and technical decisions.
+- Advise engineers on MCP server and tool design, custom connectors within Claude Enterprise, authentication and deployment.
+- Review how AI retrieves information and requests actions, including tool permissions, sensitive-data exposure and human approval.
+- Review critical designs and code involving access controls, logging and approval workflows.
+- Help resolve complex integration issues during scheduled sessions.
+- Join selected client discussions to explain technical tradeoffs.
+- Assess pilot readiness and document risks and recommended next steps.
+
+Our engineering team owns coding, testing, deployment and daily delivery. We'll agree review milestones and response expectations around the available hours.
+
+What we're looking for
+- Deep practical knowledge of MCP, including remote server architecture, tool definitions, authentication, authorization and troubleshooting.
+- Hands-on experience building and deploying custom MCP integrations within Claude Enterprise.
+- Strong experience with production AI applications, including tool use, context management, evaluation and failure handling.
+- Understanding of AI-specific security risks, including prompt injection, sensitive-data disclosure and unauthorized tool execution.
+- Senior engineering or architecture experience with production APIs and integrations.
+- Strong understanding of cloud infrastructure, identity management and secrets management.
+- Experience enforcing individual user permissions when integrations use shared service accounts.
+- Ability to review code, give engineers practical guidance, and discuss architecture and security with client technical teams.
+
+Experience with IT service management systems or device management platforms would be useful.
+
+Engagement
+Part-time contract, initially covering architecture review and pilot support, with potential to continue into later phases. Please share your availability, hourly rate and relevant experience. Include a Claude Enterprise MCP integration you personally worked on, your role, and how you handled authentication, permissions and testing.
+
+(No Upwork screening-questions section on this posting; the request at the end of the description is part of the description.)
+
+
+================================================================================
+JOB 20 of 30
+================================================================================
+Title: Senior Full-Stack Engineer — Kubernetes / Cloud-Native / Go (Contract)
+URL: https://www.upwork.com/jobs/~022110032434387499650
+Status: NO LONGER AVAILABLE
+Posted: 2 weeks ago
+Client location: United States (Herndon)
+Budget: Hourly $50-$75
+Experience level: Expert
+Est. duration: 1 to 3 months, less than 30 hrs/week (contract-to-hire opportunity)
+Connects required: n/a (job closed)
+Skills: Kubernetes; DevOps; CI/CD Platform; JavaScript; API; SRE
+Proposals: 50+ (hired: 6)
+Client: Payment verified; phone verified; 4.70 (6 reviews); 3 jobs posted, 100% hire rate; $5K total spent; 15 hires, 5 active; $54.28/hr avg paid; 90 hours; member since Aug 11, 2026
+
+--- DESCRIPTION ---
+Job Description:
+
+We're Thoras AI, an early-stage AI startup building the future of autonomous Kubernetes infrastructure management. We're looking for a senior full-stack engineer to jump in, move fast, and own real product — not just tickets.
+
+What you'll do:
+
+Design and build core product features end-to-end — from data models and APIs to production-facing surfaces customers depend on
+Work across our Kubernetes/cloud-native stack (AWS EKS, VPC, IAM, ECS, containers)
+Identify failure modes before they become incidents — you've seen what tutorials don't cover
+Sit with customers, develop product judgment, and translate conversations into filed issues and shipped fixes
+Own your work from design through production
+
+What we're looking for:
+
+Strong backend fundamentals — you're at home designing data models, building APIs, and living in a database
+Hands-on experience shipping software that production environments depend on across Kubernetes, ECS, EKS, and the broader cloud-native stack
+Proficiency in Go, modern frontend frameworks, AWS (EKS, VPC, IAM), and Linux as daily tools
+Product judgment — you don't just build what you're told, you can decide what's worth building
+You've seen real failure modes in production, not just in tutorials
+
+Nice to have:
+
+Experience at an early-stage startup
+Familiarity with infrastructure observability tools (Prometheus, Datadog, Grafana)
+Experience with ML or AI infrastructure workloads
+
+Engagement details:
+
+Type: Contract / Freelance
+Rate: $50–$75/hour
+Hours: Part-time or full-time depending on fit
+Timeline: Immediate start preferred
+
+About Thoras AI:
+Thoras is an AI-powered Kubernetes optimization platform that predicts infrastructure demand before it happens — so engineering teams scale before the spike, not after. We're a lean, fast-moving team building something that matters. You'll work directly with our founders and have real ownership over what you ship.
+
+🌐 thoras.ai
+
+Upwork Job Category: Engineering & Architecture → Full Stack Development
+
+Skills tags to add:
+Go · Kubernetes · AWS · Docker · EKS · PostgreSQL · REST APIs · Cloud Infrastructure · React · Linux
+
+(No Upwork screening-questions section on this posting.)
+
+
+================================================================================
+JOB 21 of 30
+================================================================================
+Title: AI Developer Needed for AI-Powered Candidate Matching Platform
+URL: https://www.upwork.com/jobs/~022109947024754192878
+Status: Open — you have already submitted a proposal
+Posted: 2 weeks ago
+Client location: Netherlands (Tilburg)
+Budget: Hourly (no range shown)
+Experience level: Expert
+Est. duration: 1 to 3 months, less than 30 hrs/week
+Project type: Complex project
+Connects required: not captured
+Skills: Artificial Intelligence; Python; Natural Language Processing; Machine Learning; Vector Database
+Attachment on posting: Project AI-Powered Candidate Matching Platform for IT Recruitment.pdf (96 KB)
+Proposals: 20 to 50 (hires: 1; interviewing: 2; invites sent: 30; bid range high $85 / avg $32.85 / low $3)
+Client: Payment verified; phone verified; no reviews yet; 1 job posted, 100% hire rate, 1 open job; $450 total spent; 1 hire, 1 active; member since Oct 13, 2026
+
+--- DESCRIPTION ---
+Project: AI-Powered Candidate Matching Platform for IT Recruitment
+
+Background
+I am an IT Recruitment Consultant with approximately four years of experience and a personal database of around 1,500 IT candidates I have interviewed.
+For each candidate, I have a CV and an interview report containing information about their technical skills, professional experience, career preferences, motivations, salary expectations, and other relevant details.
+I want to build a private AI-powered application that allows me to find the best candidates from my existing network whenever I receive a new vacancy from a client.
+Instead of manually searching through folders and documents, I want to upload a vacancy and automatically receive a ranked shortlist of the most relevant candidates from my database.
+
+What I Want to Build
+1. Candidate Database and Document Processing
+• Upload CVs in PDF and Word formats.
+• Upload interview reports and link them to the correct candidate.
+• Automatically extract relevant information from both documents.
+• Identify technical skills, work experience, seniority, certifications, salary expectations, location, availability, and career preferences.
+• Store the extracted information in a structured and searchable database.
+• Support adding new candidates and updating existing profiles.
+
+2. AI-Powered Vacancy Analysis
+I want to upload a vacancy as a PDF, Word document, or text.
+The AI should understand the vacancy and identify mandatory requirements, preferred qualifications, technical skills, experience requirements, seniority, location, and other relevant criteria.
+
+3. Intelligent Candidate Matching
+This is the most important part of the project.
+After uploading a vacancy, the application should search my entire candidate database and generate a ranked shortlist of the top 5, 10, or 20 candidates.
+The matching process should consider:
+• Technical skills and relevant experience.
+• Similar roles and transferable skills.
+• Mandatory requirements versus preferred qualifications.
+• Seniority and industry experience.
+• Salary expectations, availability, and location, where relevant.
+I do not want simple keyword matching. The system should understand the context of the vacancy and the information in the candidates' CVs and interview reports.
+For every recommended candidate, I want to see:
+• A match score.
+• Relevant experience and skills.
+• The reasons why the candidate matches the vacancy.
+• Missing requirements or potential concerns.
+• Supporting information from the original documents.
+The results should be based on actual candidate information, not assumptions generated by the AI.
+
+4. Natural-Language Search
+I would also like to search my database using natural language.
+For example:
+• Find experienced Azure engineers who have worked for IT service providers.
+• Find IT Support Engineers with Microsoft 365 and Active Directory experience.
+• Find ERP consultants with implementation experience.
+The system should identify relevant candidates even when the exact words used in the search do not appear in their documents.
+
+5. User Interface and Export
+I want a clean, intuitive web application that I can use independently.
+The basic workflow should be:
+1. Upload candidate documents.
+2. Upload a new vacancy.
+3. Generate a ranked shortlist.
+4. Review candidate profiles and match explanations.
+5. Export the shortlist to Excel or CSV.
+The application should be easy to maintain and allow me to add new candidates without requiring a developer for routine tasks.
+
+Technical Skills Required
+I am looking for a developer with demonstrable experience in:
+• Artificial Intelligence and Large Language Models (LLMs).
+• Semantic Search and Information Retrieval.
+• Natural Language Processing (NLP).
+• Document Parsing and Data Extraction.
+• Vector Databases and Embeddings.
+• Retrieval-Augmented Generation (RAG), where appropriate.
+• Hybrid Search and Ranking Systems.
+• Backend and Web Application Development.
+• Database Design and Data Security.
+I am open to your recommendations regarding the technology stack. Possible technologies include Python, FastAPI, PostgreSQL, pgvector, and suitable LLM services.
+Please explain your proposed architecture and why you believe it is appropriate for this project.
+
+Privacy and Data Security
+The application will eventually process real candidate information, so privacy and security are essential.
+I want to start with fictitious candidate data for development and testing.
+Before introducing real candidate data, the data processing arrangements, security measures, and applicable legal requirements must be reviewed.
+Please explain how you would protect candidate data, manage external AI services, and support GDPR compliance.
+
+How I Prefer to Work
+I value clear communication, realistic expectations, and transparent pricing.
+I would prefer to develop this project in stages rather than commit to a large implementation immediately.
+The first step should be a working prototype using fictitious candidate profiles and vacancies. This will allow us to evaluate the matching quality before proceeding with the complete application.
+Please distinguish between the cost of the prototype and the estimated cost of the full application.
+I would also like regular progress updates and demonstrations of working functionality throughout development.
+
+Expected Deliverables
+• A working web application.
+• Candidate database and document processing.
+• AI-powered vacancy analysis.
+• Ranked candidate matching with supporting explanations.
+• Natural-language search and filtering.
+• Excel or CSV export.
+• Secure authentication and appropriate access controls.
+• Complete source code and technical documentation.
+• Deployment instructions and a handover session.
+I expect to own the custom-developed application and receive the source code, subject to the applicable terms of any third-party software and services.
+
+Questions for Applicants
+Please answer the following questions in your proposal:
+1. Have you built a semantic search, document intelligence, or AI-powered matching application before? Please share relevant examples.
+2. How would you approach matching approximately 1,500 candidates, each with a CV and an interview report, against new vacancies?
+3. How would you ensure that mandatory requirements and actual qualifications influence the ranking, rather than relying solely on semantic similarity?
+4. What technology stack would you recommend, and why?
+5. How would you test the quality of the matching results?
+6. How would you protect candidate information when using external AI services?
+7. What would your proposed timeline and estimated cost be for the prototype and the complete application?
+
+I am looking for a developer who can help turn this idea into a practical, reliable tool that improves how I use my existing candidate network.
+
+(No Upwork screening-questions section on this posting; the "Questions for Applicants" above are part of the description.)
+
+
+================================================================================
+JOB 22 of 30
+================================================================================
+Title: Create an AI Harness/Company Brain
+URL: https://www.upwork.com/jobs/~022109727331935625749
+Status: Open
+Posted: 2 weeks ago
+Client location: United States (St Petersberg)
+Budget: Fixed-price $350.00
+Experience level: Intermediate
+Est. duration: not specified (ongoing project)
+Connects required: 14
+Skills: Artificial Intelligence; AI Agent Development; AI Agents
+Proposals: 50+ (interviewing: 32; bid range high $22,000 / avg $951.53 / low $105)
+Client: Payment verified; 4.86 (9 reviews); 38 jobs posted, 61% hire rate, 1 open job; $25K total spent; 26 hires, 11 active; $22.08/hr avg paid; 970 hours; Health & Fitness, small company (2-9); member since May 15, 2022
+
+--- DESCRIPTION ---
+Problem: Right now we don't have any of our organization wide context in a structured way that we can connect via MCP to any LLM that we use. People currently have to put in context within a prompt or set up individual Claude projects.
+
+What we need: Create an AI Brain/Harness that holds all our company context and is updated on a daily and weekly basis so it doesn't become stale across all the people/departments. Its purpose is to keep an up-to-date map of how the company works so we can run closed loops, and works with any AI tool (Claude, ChatGPT, Gemini, or whatever we use next) so our knowledgebase travels with us and we aren't vendor locked. Surfaces to cover: Google Workspace, Meeting recordings/transcripts, Asana, Google Chats, Gmail, Google Drive - new docs, updates to existing docs
+
+About you: You've built this in the past in a robust and scalable fashion. You understand compliance and security and access controls.
+
+Next steps: Please share your background, what type of projects specifically like this you have done and accomplished in the past, and any questions that you have, which is important for you to be able to scope this out as well as your recommendations for your process, timeline, and cost to get this done. What platforms/programs would you need to set this up.
+
+(No Upwork screening-questions section on this posting.)
+
+
+================================================================================
+JOB 23 of 30
+================================================================================
+Title: AI Consultant (vLLM deployment + browser-fingerprint scoring service)
+URL: https://www.upwork.com/jobs/~022109648402817481840
+Status: Open
+Posted: 2 weeks ago
+Client location: United States (Corona)
+Budget: Fixed-price $200.00
+Experience level: Expert
+Project type: One-time project
+Connects required: 18
+Skills: AI Agent Development; vLLM; Artificial Intelligence; FastAPI; Retrieval-Augmented Generation; Generative AI. Preferred location: India
+Proposals: 20 to 50 (hires: 1; invites sent: 1; bid range high $220 / avg $200.83 / low $199)
+Client: Payment verified; 4.70 (11 reviews); 64 jobs posted, 61% hire rate, 2 open jobs; $21K total spent; 43 hires, 3 active; $19.79/hr avg paid; 609 hours; Tech & IT, mid-sized company (10-99); member since Dec 26, 2013
+
+--- DESCRIPTION ---
+We are running a two-milestone proof of concept and are looking for a hands-on consultant who can stand up self-hosted LLM infrastructure and build a scoring service on top of it. This is scoped, deliverable-driven work with a clear end point — not an open-ended role. The right person has done both of these things before and can move quickly with minimal supervision.
+
+The goal of the POC is to identify the resource with the right skill set.
+
+Cloud accounts, GPU budget, and sample data will be provided by us.
+
+Milestone 1 — vLLM deployment on cloud infrastructure
+Stand up a working, self-hosted inference environment.
+
+Scope
+Provision and configure vLLM on cloud-hosted GPU servers ([VastAI])
+Deploy and serve multiple LLM models of varying sizes and architectures; advise on GPU sizing, quantization, and memory/context configuration for each
+Expose an OpenAI-compatible API endpoint and demonstrate querying the models from a remote client machine outside the host network, with appropriate auth and network controls
+Support model switching / multi-model serving and document the tradeoffs of the chosen approach
+
+Deliverables
+Running vLLM environment with the agreed models deployed
+Basic documentation
+
+Milestone 2 — Browser fingerprint comparison and scoring service
+Build a service that compares a browser fingerprint against a history of prior fingerprints and returns a score.
+
+Scope
+Accept a JSON payload containing a current browser fingerprint plus an array of 0–20 historical fingerprints
+Perform element-by-element comparison across fingerprint attributes, handling variable array length (including an empty history), missing or partial attributes, and differing schema versions gracefully
+Produce a single score reflecting how consistent the current fingerprint is with the history, plus a per-attribute breakdown showing what drove the result
+Make attribute weighting configurable rather than hard-coded, so scoring logic can be tuned without a code change
+Build a wrapper API service (FastAPI) exposing the scoring endpoint, with request validation, error handling, and OpenAPI documentation
+Where useful, incorporate an LLM or agent-based component — running against the Milestone 1 infrastructure — to reason over ambiguous or partial attribute differences
+
+Deliverables
+FastAPI service with documented endpoints and a published OpenAPI spec
+Scoring implementation with a configurable weighting scheme and a written explanation of the methodology
+Test suite covering edge cases: empty history, maximum array size, malformed input, contradictory attributes
+Sample requests and responses, and a short guide on interpreting and tuning scores
+
+Required skills and experience
+Deep, hands-on LLM deployment experience — serving open-weight models in production or production-like environments, including GPU sizing, quantization, batching, and context/memory configuration
+Use AI tools like Claude or ChatGPT (paid veersion) to generate code
+Direct hands-on experience with vLLM — not just familiarity; you have deployed, configured, and tuned it
+Strong Python and FastAPI — designing and shipping clean, documented API services
+Experience developing agents — agentic workflows, tool use, and orchestration against LLM backends
+Cloud and infrastructure fundamentals — GPU instance provisioning, containerization, CUDA/driver setup, networking, and securing remote access to inference endpoints
+Independence — able to scope, execute, and hand off documented work with light oversight and clear written communication
+
+Nice to have
+Background in browser fingerprinting, device intelligence, bot detection, or fraud/risk scoring
+Experience with similarity scoring, fuzzy matching, or weighted heuristic models
+Familiarity with model gateways and serving layers (LiteLLM, Ray Serve, Kubernetes), plus inference observability
+Track record of taking a POC through to a production hand-off
+
+Acceptance criteria
+Each milestone is considered complete when the deliverables above are handed over, the environment or service runs from a clean setup following the provided documentation, and a walkthrough session has been completed with our team.
+
+(No Upwork screening-questions section on this posting.)
+
+
+================================================================================
+JOB 24 of 30
+================================================================================
+Title: AI Implementation Consultant
+URL: https://www.upwork.com/jobs/~022108953956141277717
+Status: Open
+Posted: 3 weeks ago
+Client location: United Kingdom (Welwyn Garden City)
+Budget: Hourly $30.00-$100.00
+Experience level: Expert
+Est. duration: 3 to 6 months (hours to be determined)
+Project type: Ongoing project
+Connects required: 26
+Skills: AI Agent Development; AI Bot; AI Implementation; AI Instruction; PHP. Preferred: English native/bilingual; location United Kingdom
+Proposals: 50+ (interviewing: 2; invites sent: 2; bid range high $225 / avg $94.17 / low $23.48)
+Client: Payment verified; phone verified; 5.0 (7 reviews); 6 jobs posted, 84% hire rate, 1 open job; $13K total spent; 9 hires, 1 active; $6.55/hr avg paid; 1,774 hours; Finance & Accounting, small company (2-9); member since Nov 3, 2024
+
+--- DESCRIPTION ---
+Title: AI Implementation Specialist for UK Consumer Credit Firm (Hertfordshire / London, Hybrid)
+
+About us
+We are a small UK consumer credit company. Our core operations run on a bespoke PHP system, and we want to use AI to cut manual admin, speed up customer communication and give our team more time for higher-value work.
+
+What we want to achieve
+We want to introduce AI agents or bots that can learn how our PHP system works and help with day-to-day processes and communication, specifically:
+- Drafting emails to customers and handling routine responses
+- Sending emails automatically where appropriate, with human approval where needed
+- Taking actions in our system based on incoming messages (for example, updating records or triggering the next step in a process)
+- Learning from our existing templates, past correspondence and internal processes so the output matches our tone and rules
+
+What you’ll do
+- Review our PHP system and workflows and identify the best opportunities for AI
+- Recommend the right approach and tools (LLM APIs, agent frameworks, automation platforms, or a mix) and explain the trade-offs in plain English
+- Design and build an initial working solution, starting with a focused pilot, then expand it.
+- Integrate the AI securely with our PHP system, email and any other systems it needs.
+- Build in human-in-the-loop controls, audit logs and clear guardrails on what the AI can and cannot do
+- Document everything and train our team to use and maintain it
+
+--- YOU WILL BE ASKED TO ANSWER THE FOLLOWING QUESTIONS WHEN SUBMITTING A PROPOSAL ---
+1. Describe your recent experience with similar projects
+
+
+================================================================================
+JOB 25 of 30
+================================================================================
+Title: AI Transformation Expert
+URL: https://www.upwork.com/jobs/~022108865190661222232
+Status: Open
+Posted: 3 weeks ago
+Client location: France (Paris)
+Budget: Hourly $30.00-$60.00
+Experience level: Expert
+Est. duration: More than 6 months, more than 30 hrs/week
+Project type: Complex project
+Connects required: 27
+Skills: AI Agent Development; Artificial Intelligence; OpenAI Codex; OpenAI Codex Prompt; AI Automation
+Proposals: 50+ (hires: 4; interviewing: 5; invites sent: 5; bid range high $225 / avg $53.05 / low $3)
+Client: Payment verified; 4.60 (59 reviews); 73 jobs posted, 77% hire rate, 1 open job; $68K total spent; 108 hires, 7 active; $36.49/hr avg paid; 950 hours; member since Sep 4, 2021
+
+--- DESCRIPTION ---
+We need an expert to lead a company-wide AI transformation using OpenAI Codex and AI automation. The role includes assessing current workflows, identifying automation opportunities, designing implementation plans, and supporting execution across departments. You will collaborate with leadership to align AI initiatives with business goals, improve efficiency, and drive measurable results. Experience with large-scale AI adoption and cross-functional coordination is essential.
+
+--- YOU WILL BE ASKED TO ANSWER THE FOLLOWING QUESTIONS WHEN SUBMITTING A PROPOSAL ---
+1. Describe your recent experience with similar projects
+2. Please list any certifications related to this project
+3. What tools do you use for data mining and visualization?
+
+
+================================================================================
+JOB 26 of 30
+================================================================================
+Title: Senior ML Inference & Performance Engineer - Model Optimization, High Throughput & Production Serving
+URL: https://www.upwork.com/jobs/~022108461099127410044
+Status: Open
+Posted: 3 weeks ago
+Client location: India (Hyderabad)
+Budget: Hourly $30.00-$200.00
+Experience level: Expert
+Est. duration: Less than 1 month (hours: not sure)
+Project type: One-time project
+Connects required: 18
+Skills: Machine Learning Deliverables; AI Model Development; Deep Learning Deliverables; Machine Learning Model; Theoretical Machine Learning; Large Language Model Fine-Tuning; AI-Enhanced Classification
+Proposals: 50+ (interviewing: 15; invites sent: 22; bid range high $199.94 / avg $54.37 / low $10)
+Client: Payment verified; 4.48 (59 reviews); 148 jobs posted, 65% hire rate, 5 open jobs; $46K total spent; 99 hires, 15 active; $83.30/hr avg paid; 68 hours; member since Aug 24, 2022
+
+--- DESCRIPTION ---
+We have several ML/AI models that are already trained and need to be deployed in a highly optimized, production-grade inference environment.
+
+We are looking for an experienced ML Inference / Performance Engineer who can take models from the current state to a reliable production serving stack with:
+Very low inference latency
+High throughput
+Efficient GPU/CPU utilization
+Horizontal scaling
+Robust observability and logging
+Production-grade reliability
+Efficient infrastructure and GPU cost
+
+This is not a simple model-serving or DevOps deployment task. We are looking for someone who understands inference performance at the model, runtime, kernel, serving, and infrastructure levels.
+
+What You Will Work On
+
+1. Model Inference Optimization
+Profile and optimize our existing models for production inference. Depending on the model, this may include:
+FP32 → FP16/BF16/FP8/INT8/INT4 optimization where appropriate
+Quantization and accuracy/performance trade-offs
+Torch compilation / graph optimization
+ONNX / TensorRT / TensorRT-LLM / ONNX Runtime optimization where applicable
+Operator fusion
+Kernel optimization
+Memory optimization
+GPU memory management
+CPU optimization where applicable
+Reducing unnecessary data movement and host-device transfers
+Optimizing preprocessing and postprocessing
+Optimizing tokenization, decoding, feature extraction, etc.
+Dynamic/static batching
+Continuous/in-flight batching where applicable
+Concurrency optimization
+Efficient model loading and warm-up
+Model parallelism / pipeline strategies where required
+We expect you to identify bottlenecks using profiling and benchmarking, rather than relying on assumptions.
+
+Expected Deliverables
+By the end of the engagement, we expect:
+Optimized inference implementation for our models.
+Production-ready inference APIs/services.
+Benchmarking and load-testing framework.
+Before/after performance report.
+Recommended GPU/runtime configuration.
+Batching/concurrency configuration.
+Logging and observability implementation.
+Grafana/monitoring dashboards or equivalent.
+Autoscaling configuration.
+Production deployment configuration.
+Failure handling and reliability improvements.
+Infrastructure/cost optimization recommendations.
+Clear technical documentation for operating and maintaining the system.
+
+Required Experience
+We are looking for someone with strong practical experience in:
+ML inference optimization; GPU performance engineering; PyTorch; CUDA; Model serving; High-throughput inference; Distributed systems; Performance profiling; Load testing; Production monitoring; Autoscaling; Linux; Docker
+
+Strong experience with several of the following is preferred:
+NVIDIA Triton; vLLM; TensorRT; TensorRT-LLM; ONNX Runtime; CUDA profiling; Nsight Systems / Nsight Compute; Kubernetes; Prometheus; Grafana; OpenTelemetry; NVIDIA DCGM; AWS / GCP GPU infrastructure
+
+(No Upwork screening-questions section on this posting.)
+
+
+================================================================================
+JOB 27 of 30
+================================================================================
+Title: AI Consultant (German-speaking, advising mid-sized companies)
+URL: https://www.upwork.com/jobs/~022041102808800310638
+Status: NO LONGER AVAILABLE
+Posted: 2 quarters ago
+Client location: Germany (Bensheim)
+Budget: Hourly $30.00-$65.00
+Experience level: Expert
+Est. duration: More than 6 months, more than 30 hrs/week (contract-to-hire opportunity)
+Project type: Ongoing project
+Connects required: n/a (job closed)
+Skills: Artificial Intelligence; Machine Learning; Python; Software Architecture; Software Development; Large Language Model; Automation
+Proposals: interviewing: 14; invites sent: 15
+Client: Payment verified; phone verified; 5.0 (1 review); 4 jobs posted, 50% hire rate; $800 total spent; 2 hires; member since Jan 6, 2026
+
+--- DESCRIPTION ---
+Native level German is a must!
+
+I’m currently looking for someone to support me in advising mid-sized companies in Germany on AI, automation, and digital transformation.
+
+The role mainly involves joining consulting calls, identifying potential opportunities within client businesses, discussing suitable approaches, and ideally also helping move deals toward closing.
+
+I’m looking for someone who communicates confidently, understands business processes, and can explain complex topics in a clear and practical way. Experience in AI, automation, consulting, or sales is a strong plus.
+
+This is not a purely theoretical consulting role, I’m looking for someone who can lead conversations well, build trust with clients, and help turn opportunities into actual projects. The implementation of the project will then also be overseen by you if you want.
+
+(No Upwork screening-questions section on this posting.)
+
+
+================================================================================
+JOB 28 of 30
+================================================================================
+Title: Anthropic Company Rollout - Claude Code CEO Coaching - Ongoing AI Mentoring
+URL: https://www.upwork.com/jobs/~022039287158332771514
+Status: NO LONGER AVAILABLE
+Posted: 2 quarters ago
+Client location: Germany (Bebra)
+Budget: Hourly $30.00-$100.00
+Experience level: Expert
+Est. duration: More than 6 months, more than 30 hrs/week
+Project type: Ongoing project
+Connects required: n/a (job closed)
+Skills: Claude; LLM Prompt Engineering; CTO; Solution Architecture; AI Agent Development; Coaching; MCP
+Proposals: interviewing: 5; invites sent: 10
+Client: Payment verified; 4.97 (31 reviews); 65 jobs posted, 67% hire rate; $22K total spent; 60 hires, 24 active; $13.96/hr avg paid; 1,273 hours; Sales & Marketing, mid-sized company (10-99); member since May 31, 2017
+
+--- DESCRIPTION ---
+About the Project:
+
+We are a global, fully remote e-commerce company. We are looking for an experienced freelance AI Consultant to lead our company-wide Anthropic Claude integration and act as a long-term sparring partner for our CEO. This is a strategic, hands-on project planned for the next 12 to 24 months.
+
+Key Responsibilities:
+
+- Company-Wide Rollout: Lead the global implementation of Anthropic Claude across our teams.
+- AI Architecture: Design and develop a scalable company architecture for AI integration.
+- Corporate LLM / Knowledge Base: Digitalize our entire company know-how and build an internal, AI-searchable knowledge base.
+- CEO Coaching: Conduct weekly 1-on-1 sessions to coach the CEO (non-technical background) on using "Claude Code" and working in the terminal.
+- Ongoing Mentorship: Serve as a strategic AI sparring partner and mentor over the next 1-2 years.
+
+Ideal Candidate Profile:
+
+- Deep technical expertise with Anthropic Claude, LLMs, and enterprise AI architecture.
+- Experience building corporate knowledge bases (RAG, vector databases).
+- Strong teaching and mentoring skills. You must be patient and able to explain technical concepts to a non-techy CEO.
+- Forward-thinking, highly organized, and able to work independently.
+- Language: German-speaking candidates are highly preferred (fluency in English is also required).
+
+Project Details:
+
+- Duration: 12 - 24 months
+- Work Model: Fully Remote
+- Engagement: Weekly coaching + ongoing project-based consulting
+
+--- YOU WILL BE ASKED TO ANSWER THE FOLLOWING QUESTIONS WHEN SUBMITTING A PROPOSAL ---
+1. Please list any certifications related to this project
+
+
+================================================================================
+JOB 29 of 30
+================================================================================
+Title: in need of DevOps Engineer
+URL: https://www.upwork.com/jobs/~022039285840343191337
+Status: NO LONGER AVAILABLE
+Posted: 2 quarters ago
+Client location: Germany (Munich)
+Budget: Hourly $10.00-$15.00
+Experience level: Intermediate
+Est. duration: More than 6 months, less than 30 hrs/week
+Project type: Ongoing project
+Connects required: n/a (job closed)
+Skills: Kubernetes; Terraform; DevOps; Azure DevOps; MySQL; PostgreSQL; NGINX; SSH; Prometheus; Grafana. Preferred: English fluent; location Oceania, Americas, Africa, Europe, Asia
+Proposals: interviewing: 18
+Client: Payment verified; 4.95 (764 reviews); 840 jobs posted, 100% hire rate, 1 open job; 1,222 hires, 71 active; 218,116 hours; large company (100-1,000); member since Sep 5, 2017
+
+--- DESCRIPTION ---
+Looking for DevOps Engineer (m/f/d)
+
+We are seeking a skilled DevOps Freelancer to maintain and enhance our production systems and software.
+
+Responsibilities:
+-Manage and optimize our cloud and platform infrastructure using Azure and Kubernetes
+-Automate deployments and infrastructure using CI/CD pipelines (GitLab, GitHub, Terraform, Helm)
+-Monitor and maintain databases (MySQL, PostgreSQL, Weaviate)
+-Ensure system stability through monitoring & observability with Prometheus, Grafana, and Loki
+-Manage authentication and access control using KeyCloak
+Work with NginX and Traefik for routing and load balancing
+-Debug and resolve issues, while also developing minor features to enhance system functionality
+
+Must-Have Skills:
+-Cloud & Platform: Experience with Azure, Kubernetes, and container orchestration
+-CI/CD: Proficiency in GitLab Pipelines (preferably with NX integration), GitHub, and Azure Pipelines
+Infrastructure as Code (IaC): Hands-on experience with Terraform and Helm
+-Security & Access: Strong knowledge of VPN and SSH for connecting to customer systems
+-Docker: Solid experience with containerization and service management
+-Monitoring & Observability: Familiarity with Prometheus, Grafana, Loki for system monitoring
+-Databases: Strong expertise in MySQL, PostgreSQL
+
+Nice-to-Have Skills:
+-Experience with Weaviate as a vector database
+-Familiarity with Azure Pipelines for CI/CD
+
+--- YOU WILL BE ASKED TO ANSWER THE FOLLOWING QUESTIONS WHEN SUBMITTING A PROPOSAL ---
+1. We need during CET timezone, please state the specific hours you are available to work (e.g., 9 AM - 5 PM CET, Monday-Friday)
+2. Do you agree to take part in a short assessment so we can get to know your skills?
+3. Do you have knowledge of Terraform and Helm? What about Docker?
+4. Are you familiar with Prometheus, Grafana, Loki, Azure and Kubernetes?
+5. Do you have strong expertise with MySQL and PostgreSQL?
+
+
+================================================================================
+JOB 30 of 30
+================================================================================
+Title: Cloud migration from Azure to GCP
+URL: https://www.upwork.com/jobs/~022039067583271262525
+Status: NO LONGER AVAILABLE
+Posted: 3 quarters ago
+Client location: Germany (Heilbronn)
+Budget: Fixed-price $100.00 (delivery by May 2, 2026)
+Experience level: Expert
+Project type: One-time project
+Connects required: n/a (job closed)
+Skills: Kubernetes; Microsoft Azure; DevOps Engineering; Azure DevOps; PostgreSQL; Database Maintenance; Data Migration; DevOps; Cloud Migration; Cloud Engineering Consultation
+Proposals: interviewing: 16; invites sent: 30
+Client: Payment verified; 4.48 (32 reviews); 167 jobs posted, 21% hire rate; $2.3K total spent; 40 hires, 2 active; Energy & Utilities, small company (2-9); member since Apr 16, 2021
+
+--- DESCRIPTION ---
+We are seeking a senior cloud migration consultant to design a production-grade migration strategy from Azure to Google Cloud Platform. The engagement focuses on planning the migration of Kubernetes workloads from Azure Kubernetes Service to Google Kubernetes Engine and a ~1.1 TB PostgreSQL database from Azure Database for PostgreSQL to Cloud SQL or AlloyDB, with near-zero downtime and no data loss. The consultant will provide an end-to-end architecture, recommend a replication-based migration approach (e.g., logical replication or Google Database Migration Service), define a detailed cutover and rollback plan, and identify risks with mitigation strategies. Deliverables include a migration blueprint, step-by-step runbook, and validation approach. This is a short consultation engagement (2–5 hours) with potential follow-on implementation work.
+
+(No Upwork screening-questions section on this posting.)

@@ -8,8 +8,11 @@ Loading fails fast. A missing model or an unparseable file should stop the conta
 where it is obvious, rather than surface as a confusing failure on the first real request.
 
 This agent has two roles (``screener`` and ``writer``), each with its own model, limits and prompt,
-so the template's single top-level ``system_prompt`` is replaced by one per role. The screener is
-parked while ``settings.pipeline.screening_enabled`` is false; its section is still required.
+so the template's single top-level ``system_prompt`` is replaced by one per role. The screener runs
+only while ``settings.pipeline.screening_enabled`` is true; its section is always required.
+
+``about_me_file`` names one document about the operator, written for no particular role, that is
+appended to every role's prompt.
 """
 
 from __future__ import annotations
@@ -68,6 +71,9 @@ class RoleConfig:
     system_prompt: str
     # The prompt version's file as configured (prompts/<role>/v<N>.md); None for an inline prompt.
     system_prompt_file: str | None = None
+    # The shared ABOUT ME document, appended to system_prompt (prompts/about-me/v<N>.md).
+    about_me: str | None = None
+    about_me_file: str | None = None
     fallback_model: str | None = None
     max_turns: int = 4
     max_budget_usd: float | None = None
@@ -77,14 +83,26 @@ class RoleConfig:
     timeout_s: float = 600.0
 
     @property
+    def full_prompt(self) -> str:
+        """What the model gets: the role prompt, then ABOUT ME."""
+        return compose_prompt(self.system_prompt, self.about_me)
+
+    @property
     def prompt_sha(self) -> str:
-        """Ties every stored verdict or draft to the exact prompt that produced it."""
-        return hashlib.sha256(self.system_prompt.encode("utf-8")).hexdigest()[:16]
+        """Ties every stored verdict or draft to the exact prompt, ABOUT ME included, that produced it."""
+        return hashlib.sha256(self.full_prompt.encode("utf-8")).hexdigest()[:16]
 
     @property
     def prompt_ref(self) -> str:
-        """``<file>@<sha>``: which prompt version is live, as the startup log names it."""
-        return f"{self.system_prompt_file or 'inline'}@{self.prompt_sha}"
+        """``<file>[+<about me file>]@<sha>``: which versions are live, as the startup log names them."""
+        files = self.system_prompt_file or "inline"
+        if self.about_me_file:
+            files += f"+{self.about_me_file}"
+        return f"{files}@{self.prompt_sha}"
+
+
+def compose_prompt(prompt: str, about_me: str | None) -> str:
+    return f"{prompt}\n\n{about_me}" if about_me else prompt
 
 
 @dataclass(frozen=True)
@@ -115,7 +133,7 @@ class ApifyConfig:
 
 @dataclass(frozen=True)
 class PipelineConfig:
-    # Off: every job past the prefilters is offered. On: only the jobs the screener marks suitable.
+    # On: every job past the prefilters is rated 0-5, then offered whatever its match. Off: offered unrated.
     screening_enabled: bool = False
     max_screen_per_cycle: int = 10
     max_offers_per_cycle: int = 50
@@ -189,9 +207,11 @@ class AgentConfig:
         if allow_writes and telegram.chat_id is None:
             raise AgentConfigError(f"settings.telegram.chat_id is required when allow_writes is true ({source})")
 
+        about_me_file = raw.get("about_me_file")
+        about_me = _read_prompt_file("about_me_file", about_me_file, source, base_dir) if about_me_file else None
         return cls(
-            screener=_role("screener", raw.get("screener"), source, base_dir),
-            writer=_role("writer", raw.get("writer"), source, base_dir),
+            screener=_role("screener", raw.get("screener"), source, base_dir, about_me, about_me_file),
+            writer=_role("writer", raw.get("writer"), source, base_dir, about_me, about_me_file),
             apify=_apify(settings.get("apify") or {}, source),
             interval_minutes=interval,
             allow_writes=allow_writes,
@@ -202,7 +222,14 @@ class AgentConfig:
         )
 
 
-def _role(name: str, raw: dict[str, Any] | None, source: str, base_dir: Path | None) -> RoleConfig:
+def _role(
+    name: str,
+    raw: dict[str, Any] | None,
+    source: str,
+    base_dir: Path | None,
+    about_me: str | None = None,
+    about_me_file: str | None = None,
+) -> RoleConfig:
     if not raw:
         raise AgentConfigError(f"'{name}' role section is required in {source}")
     model = raw.get("model")
@@ -219,6 +246,8 @@ def _role(name: str, raw: dict[str, Any] | None, source: str, base_dir: Path | N
         model=model,
         system_prompt=prompt,
         system_prompt_file=raw.get("system_prompt_file"),
+        about_me=about_me,
+        about_me_file=about_me_file,
         fallback_model=raw.get("fallback_model"),
         max_turns=int(raw.get("max_turns", 4)),
         max_budget_usd=raw.get("max_budget_usd"),
@@ -237,11 +266,15 @@ def _prompt_text(name: str, raw: dict[str, Any], source: str, base_dir: Path | N
         raise AgentConfigError(f"{name}: set system_prompt or system_prompt_file, not both, in {source}")
     if not raw.get("system_prompt_file"):
         return (raw.get("system_prompt") or "").strip()
-    path = Path(raw["system_prompt_file"])
+    return _read_prompt_file(f"{name}.system_prompt_file", raw["system_prompt_file"], source, base_dir)
+
+
+def _read_prompt_file(key: str, file: str, source: str, base_dir: Path | None) -> str:
+    path = Path(file)
     if not path.is_absolute():
         path = (base_dir or Path.cwd()) / path
     if not path.is_file():
-        raise AgentConfigError(f"{name}.system_prompt_file not found: {path} ({source})")
+        raise AgentConfigError(f"{key} not found: {path} ({source})")
     return path.read_text(encoding="utf-8").strip()
 
 

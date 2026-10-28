@@ -63,7 +63,7 @@ async def run_once(prompt: str, ctx: RunContext, role: RoleConfig, *, allow_writ
     caller is a long-lived loop that must survive one bad request.
     """
     options_kwargs: dict[str, Any] = dict(
-        system_prompt=role.system_prompt,
+        system_prompt=role.full_prompt,
         tools=[],
         mcp_servers={SERVER_NAME: build_server(ctx)},
         allowed_tools=[f"mcp__{SERVER_NAME}__*"],

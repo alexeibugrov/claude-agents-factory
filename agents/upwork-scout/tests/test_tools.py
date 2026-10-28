@@ -12,19 +12,22 @@ def _ctx(role="screener"):
 
 def test_screening_recorded_on_context():
     ctx = _ctx()
-    out = _submit_screening(ctx, suitable=True, score=80, reasons="fits", matched_criteria=["python"])
+    out = _submit_screening(ctx, score=4, reason=" EKS work, like the exchange migration. ")
     assert out == {"success": True, "job_id": "j1"}
-    assert ctx.result == {"suitable": True, "score": 80, "reasons": "fits", "matched_criteria": ["python"]}
+    assert ctx.result == {"score": 4, "reason": "EKS work, like the exchange migration."}
 
 
-def test_screening_rejects_out_of_range_score():
+def test_screening_score_is_0_to_5():
     ctx = _ctx()
-    assert _submit_screening(ctx, suitable=True, score=101, reasons="x")["success"] is False
+    for bad in (6, -1, 80, True, 3.5):
+        assert _submit_screening(ctx, score=bad, reason="x")["success"] is False
     assert ctx.result == {}
+    assert _submit_screening(ctx, score=0, reason="sales role")["success"] is True
 
 
-def test_screening_rejects_empty_reasons():
-    assert _submit_screening(_ctx(), suitable=False, score=10, reasons="  ")["success"] is False
+def test_screening_reason_is_one_short_sentence():
+    assert _submit_screening(_ctx(), score=3, reason="  ")["success"] is False
+    assert _submit_screening(_ctx(), score=3, reason="x" * 301)["success"] is False
 
 
 def test_proposal_length_bounds():

@@ -1,0 +1,101 @@
+{
+  "url": "https://www.upwork.com/jobs/~022114702551907849106",
+  "jobId": "2114702551907849106",
+  "title": "No-Code Automation Specialist – Airtable + Make + Email Automation",
+  "skills": [
+    "Make.com",
+    "Automation",
+    "API Integration",
+    "Airtable",
+    "Email Automation",
+    "Database Design",
+    "Data Integration"
+  ],
+  "source": "upwork.com",
+  "jobType": "FIXED",
+  "premium": false,
+  "isRepost": false,
+  "portalUrl": "https://www.upwork.com/jobs/~022114702551907849106",
+  "salaryMax": 2000,
+  "salaryMin": 2000,
+  "scrapedAt": "2026-10-26T13:51:46.494Z",
+  "changeType": "UPDATED",
+  "createTime": "2026-10-26T12:55:52.802Z",
+  "lastSeenAt": "2026-10-26T13:51:46.494Z",
+  "repostOfId": null,
+  "salaryType": "FIXED",
+  "contentHash": "00a0e0d06d3424467a2753b4495b2c09fb2a0af4bd478840fb418c879ff22ddf",
+  "description": "Blue Oak Building Corporation is looking for an experienced no-code automation specialist to build an automated sales opportunity management system using Airtable, Make.com, and email automation.\n\nBudget: Please submit a fixed-price quote for the complete project, including development, testing, documentation, and 30 days of post-launch support.\n\nIn your proposal, please outline your proposed approach, estimated timeline, and total cost. If you recommend breaking the work into milestones, please include the proposed milestone breakdown and associated costs.\n\nTimeline: Working prototype within 2 weeks, plus 30 days of post-launch support.\n\nWhat we need\n\nWe want to automate how we handle incoming sales and project inquiries:\n\nEmail intake: Any Blue Oak employee can forward a new project inquiry to a central email address. The system automatically extracts relevant information and creates an opportunity record in Airtable.\n\nNotifications and opportunity claiming: The system should notify all currently authorized account managers simultaneously.  Only authorized account managers should be able to claim opportunities on a first-come, first-served basis. The system must prevent duplicate claims, including simultaneous attempts.\n\nThe system should allow Blue Oak to add or remove authorized account managers without requiring the workflow to be rebuilt.\n\nExisting customers: Inquiries from existing customers must remain with their appropriate account manager.\n\nAutomatic allocation: Unclaimed opportunities trigger a reminder after 4 business hours and are automatically assigned using a predetermined rotation after 1 business day. The rotation should include all eligible account managers and be easy for Blue Oak to update as the team changes.\n\nFollow-up tracking: Account managers must contact prospects within 1 business day. The system sends reminders for overdue follow-ups and escalates them to an administrator.\n\nQuickBooks: QuickBooks remains our estimating platform. The system only needs to record the relevant estimate number and quotation status.\n\nReporting: Every Friday, automatically distribute a shared dashboard/report showing new opportunities, claimed versus automatically assigned opportunities, quotations sent, and projects won. All account managers should be able to see one another's results.\n\nRequired experience\n\nDemonstrated experience with Airtable, Make.com, email automation, workflow logic, scheduled triggers, and reliable data handling is required. Experience with first-come, first-served claiming, duplicate prevention, and automatic assignment workflows is strongly preferred.\n\nPlease explain how you would prevent two account managers from claiming the same opportunity simultaneously.\n\nOwnership and deliverables\n\nAll production accounts, data, automations, and related assets must remain under Blue Oak's ownership. The system must be built within Blue Oak-controlled accounts.\n\nThe project includes a working system, testing and demonstration of the complete workflow, basic administrator documentation, and 30 days of post-launch support for issues related to the delivered system.\n\nTo apply\n\nPlease provide two examples of similar automation projects you have completed, confirm your experience with Airtable and Make.com, and explain your proposed approach to this project. Please also confirm your fixed-price quote, two-week prototype timeline, and availability for 30 days of post-launch support.\n\nApply through Upwork ONLY - all other methods of application will be disregarded.",
+  "firstSeenAt": "2026-10-26T13:21:46.324Z",
+  "publishTime": "2026-10-26T12:55:59.436Z",
+  "budgetAmount": 2000,
+  "clientRating": 0,
+  "clientCountry": "Canada",
+  "enterpriseJob": false,
+  "personsToHire": 1,
+  "budgetCurrency": "USD",
+  "customJobScore": 0,
+  "engagementType": null,
+  "salaryCurrency": "USD",
+  "skillsDetailed": [
+    {
+      "uid": "1225465944849223680",
+      "name": "Make.com",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "1031626717876699136",
+      "name": "Automation",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "1110580482566246400",
+      "name": "API Integration",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "1110580474769035264",
+      "name": "Airtable",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "1484275374491357184",
+      "name": "Email Automation",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "1031626729578807296",
+      "name": "Database Design",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "1253342873194737664",
+      "name": "Data Integration",
+      "highlighted": false,
+      "parentSkillUid": null
+    }
+  ],
+  "descriptionHtml": null,
+  "experienceLevel": "ExpertLevel",
+  "hourlyBudgetMax": null,
+  "hourlyBudgetMin": null,
+  "totalApplicants": 62,
+  "clientTotalSpent": 0,
+  "repostDetectedAt": null,
+  "clientCountryCode": "CAN",
+  "clientReviewCount": 0,
+  "sourcingTimestamp": null,
+  "engagementDuration": "1 to 3 months",
+  "clientSpentCurrency": "USD",
+  "descriptionMarkdown": "Blue Oak Building Corporation is looking for an experienced no-code automation specialist to build an automated sales opportunity management system using Airtable, Make.com, and email automation.\n\nBudget: Please submit a fixed-price quote for the complete project, including development, testing, documentation, and 30 days of post-launch support.\n\nIn your proposal, please outline your proposed approach, estimated timeline, and total cost. If you recommend breaking the work into milestones, please include the proposed milestone breakdown and associated costs.\n\nTimeline: Working prototype within 2 weeks, plus 30 days of post-launch support.\n\nWhat we need\n\nWe want to automate how we handle incoming sales and project inquiries:\n\nEmail intake: Any Blue Oak employee can forward a new project inquiry to a central email address. The system automatically extracts relevant information and creates an opportunity record in Airtable.\n\nNotifications and opportunity claiming: The system should notify all currently authorized account managers simultaneously.  Only authorized account managers should be able to claim opportunities on a first-come, first-served basis. The system must prevent duplicate claims, including simultaneous attempts.\n\nThe system should allow Blue Oak to add or remove authorized account managers without requiring the workflow to be rebuilt.\n\nExisting customers: Inquiries from existing customers must remain with their appropriate account manager.\n\nAutomatic allocation: Unclaimed opportunities trigger a reminder after 4 business hours and are automatically assigned using a predetermined rotation after 1 business day. The rotation should include all eligible account managers and be easy for Blue Oak to update as the team changes.\n\nFollow-up tracking: Account managers must contact prospects within 1 business day. The system sends reminders for overdue follow-ups and escalates them to an administrator.\n\nQuickBooks: QuickBooks remains our estimating platform. The system only needs to record the relevant estimate number and quotation status.\n\nReporting: Every Friday, automatically distribute a shared dashboard/report showing new opportunities, claimed versus automatically assigned opportunities, quotations sent, and projects won. All account managers should be able to see one another's results.\n\nRequired experience\n\nDemonstrated experience with Airtable, Make.com, email automation, workflow logic, scheduled triggers, and reliable data handling is required. Experience with first-come, first-served claiming, duplicate prevention, and automatic assignment workflows is strongly preferred.\n\nPlease explain how you would prevent two account managers from claiming the same opportunity simultaneously.\n\nOwnership and deliverables\n\nAll production accounts, data, automations, and related assets must remain under Blue Oak's ownership. The system must be built within Blue Oak-controlled accounts.\n\nThe project includes a working system, testing and demonstration of the complete workflow, basic administrator documentation, and 30 days of post-launch support for issues related to the delivered system.\n\nTo apply\n\nPlease provide two examples of similar automation projects you have completed, confirm your experience with Airtable and Make.com, and explain your proposed approach to this project. Please also confirm your fixed-price quote, two-week prototype timeline, and availability for 30 days of post-launch support.\n\nApply through Upwork ONLY - all other methods of application will be disregarded.",
+  "weeklyRetainerBudget": null,
+  "clientPaymentVerified": null,
+  "engagementDurationWeeks": 9,
+  "clientHasFinancialPrivacy": false
+}

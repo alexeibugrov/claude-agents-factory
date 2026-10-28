@@ -176,7 +176,14 @@ class FakeChat:
 
 
 def _deps(
-    items_by_search, *, suitable=True, chat=None, rate_limited=False, failing=(), writer_fails=False, prompts=None
+    items_by_search,
+    *,
+    screener_fails=False,
+    chat=None,
+    rate_limited=False,
+    failing=(),
+    writer_fails=False,
+    prompts=None,
 ):
     async def fake_search(client, cfg, search):
         if search.name in failing:
@@ -198,7 +205,9 @@ def _deps(
         if rate_limited:
             return {"status": "ERROR", "error": "rate limit exceeded", "model": role.model}
         if ctx.role == "screener":
-            ctx.result.update(suitable=suitable, score=77, reasons="fits", matched_criteria=[])
+            if screener_fails:
+                return {"status": "ERROR", "error": "model refused", "model": role.model}
+            ctx.result.update(score=4, reason="fits")
         elif writer_fails:
             return {"status": "ERROR", "error": "model refused", "model": role.model}
         else:
@@ -233,16 +242,24 @@ async def test_offer_cap_leaves_the_rest_queued(conn):
     assert await _count(conn, "SELECT count(*) FROM pipeline WHERE status = 'pending'") == 1
 
 
-async def test_with_screening_on_only_suitable_jobs_are_offered(conn):
+async def test_with_screening_on_every_job_is_offered_with_its_match(conn):
     cfg = _config(allow_writes=True, pipeline={"screening_enabled": True})
-    summary = await cycle(conn, cfg, _deps({"one": SAMPLES}, suitable=False, chat=FakeChat()))
-    assert (summary.screened, summary.suitable, summary.offered) == (3, 0, 0)
-
     chat = FakeChat()
-    await conn.execute("TRUNCATE pipeline, screenings, job_searches, job_versions, jobs, scrape_runs CASCADE")
-    summary = await cycle(conn, cfg, _deps({"one": SAMPLES}, suitable=True, chat=chat))
+    summary = await cycle(conn, cfg, _deps({"one": SAMPLES}, chat=chat))
     assert (summary.screened, summary.offered) == (3, 3)
-    assert "Score 77/100" in chat.posts[0][1]
+    assert chat.posts[0][1].splitlines()[1] == "<b>Match 4/5</b> — fits"
+    cur = await conn.execute("SELECT score, reasons, suitable FROM screenings")
+    assert all(dict(r) == {"score": 4, "reasons": "fits", "suitable": None} for r in await cur.fetchall())
+
+
+async def test_a_job_the_screener_keeps_failing_on_is_offered_unrated(conn):
+    cfg = _config(allow_writes=True, pipeline={"screening_enabled": True, "max_attempts": 2})
+    deps = _deps({"one": SAMPLES[:1]}, screener_fails=True, chat=FakeChat())
+    first = await cycle(conn, cfg, deps)
+    assert (first.screened, first.offered) == (0, 0)  # attempt 1 failed: back to pending
+    second = await cycle(conn, cfg, deps)
+    assert second.offered == 1
+    assert "<b>Match ?/5</b> — not rated" in deps.chat.posts[0][1]
 
 
 async def test_rate_limit_requeues_without_spending_attempts(conn):

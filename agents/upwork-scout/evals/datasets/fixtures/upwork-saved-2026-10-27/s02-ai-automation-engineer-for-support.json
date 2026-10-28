@@ -1,0 +1,26 @@
+{
+  "jobId": "2114796252721848157",
+  "title": "AI Automation Engineer for Support, Knowledge Base and Workflow Automation",
+  "url": "https://www.upwork.com/jobs/~022114796252721848157",
+  "description": "About Us\nWe are an online brand selling technical products that customers can configure in many ways. This creates a lot of detailed questions for our team, so we want to bring in an AI Automation Engineer to help us organise and automate our main workflows.\n\nWhat We Want to Achieve\n- Support: Cut down the time our team spends on emails and help them answer detailed product questions faster. We use a helpdesk tool today, but we are open to changing the setup if there is a better option.\n- Knowledge base and training: Collect our product knowledge and company policies in one AI-powered knowledge base, and use it to create training material for new virtual assistants.\n- Ongoing improvements: Later on, automate other slow areas of the business, such as inventory planning, and improve our website so fewer customers need to contact support.\n\nRequirements\n- Experience building and launching AI agents, RAG knowledge bases and workflow automations for real businesses.\n- Able to review how we work today and suggest a simple, reliable setup that our team can use every day without much upkeep.\n- Hands-on experience with LLM APIs such as OpenAI and Claude, and with connecting AI to business tools and CRMs.",
+  "descriptionMarkdown": "About Us\nWe are an online brand selling technical products that customers can configure in many ways. This creates a lot of detailed questions for our team, so we want to bring in an AI Automation Engineer to help us organise and automate our main workflows.\n\nWhat We Want to Achieve\n- Support: Cut down the time our team spends on emails and help them answer detailed product questions faster. We use a helpdesk tool today, but we are open to changing the setup if there is a better option.\n- Knowledge base and training: Collect our product knowledge and company policies in one AI-powered knowledge base, and use it to create training material for new virtual assistants.\n- Ongoing improvements: Later on, automate other slow areas of the business, such as inventory planning, and improve our website so fewer customers need to contact support.\n\nRequirements\n- Experience building and launching AI agents, RAG knowledge bases and workflow automations for real businesses.\n- Able to review how we work today and suggest a simple, reliable setup that our team can use every day without much upkeep.\n- Hands-on experience with LLM APIs such as OpenAI and Claude, and with connecting AI to business tools and CRMs.",
+  "jobType": "HOURLY",
+  "experienceLevel": "ExpertLevel",
+  "skills": [
+    "Retrieval Augmented Generation",
+    "Generative AI Prompt Engineering",
+    "LangChain",
+    "AI Agent Development",
+    "OpenAI API"
+  ],
+  "clientCountry": "United Arab Emirates",
+  "engagementDuration": "More than 6 months",
+  "source": "upwork-text-import",
+  "engagementType": "FULL_TIME",
+  "hourlyBudgetMin": 30.0,
+  "hourlyBudgetMax": 60.0,
+  "clientPaymentVerified": true,
+  "clientRating": 4.89,
+  "clientReviewCount": 8,
+  "clientTotalSpent": 934.0
+}

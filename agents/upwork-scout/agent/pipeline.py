@@ -1,7 +1,7 @@
 """The cycle and the poll.
 
 ``cycle`` (every interval): scrape every search → ingest (dedup) → prefilter → [screen] → offer:
-one Telegram message per job. Screening is parked unless ``pipeline.screening_enabled``.
+one Telegram message per job, with the screener's 0-5 match when ``pipeline.screening_enabled``.
 
 ``poll`` (woken by a reply event, at least every ``telegram.poll_interval_s``): read the group
 after the stored cursor; a reply to an offer that opens with a trigger requests a proposal →
@@ -54,7 +54,6 @@ class CycleSummary:
     failed_searches: int = 0
     prefiltered: int = 0
     screened: int = 0
-    suitable: int = 0
     offered: int = 0
     suppressed: int = 0
     errors: list[str] = field(default_factory=list)
@@ -63,7 +62,7 @@ class CycleSummary:
         return (
             f"cycle summary: fetched={self.fetched} new={self.new} known={self.known} invalid={self.invalid}"
             f" failed_searches={self.failed_searches} prefiltered={self.prefiltered} screened={self.screened}"
-            f" suitable={self.suitable} offered={self.offered} suppressed={self.suppressed}"
+            f" offered={self.offered} suppressed={self.suppressed}"
         )
 
 
@@ -112,7 +111,7 @@ async def _screen(conn: Conn, cfg: AgentConfig, deps: Deps, summary: CycleSummar
     claimed = await store.claim(conn, "pending", "screening", p.max_screen_per_cycle, p.max_attempts)
     for i, job in enumerate(claimed):
         ctx, run = await _agent_run(deps, cfg.screener, job, render.screener_prompt(job), cfg.allow_writes)
-        if run["status"] != "COMPLETED" or "suitable" not in ctx.result:
+        if run["status"] != "COMPLETED" or "score" not in ctx.result:
             error = run.get("error") or "screener finished without calling submit_screening"
             logger.warning("AGENT ALERT screening failed job=%s error=%s", job["job_id"], error)
             summary.errors.append(error)
@@ -121,25 +120,19 @@ async def _screen(conn: Conn, cfg: AgentConfig, deps: Deps, summary: CycleSummar
                 for rest in claimed[i:]:
                     await store.requeue(conn, rest["job_id"], "pending", error)
                 return False
-            await store.release(conn, job["job_id"], "pending", error, p.max_attempts)
+            # Out of attempts, the job is still offered, unrated: a screener failure never loses a job.
+            await store.release(conn, job["job_id"], "pending", error, p.max_attempts, exhausted="screened")
             continue
         await store.record_screening(
             conn, job["job_id"], prompt_sha=cfg.screener.prompt_sha, run=run, verdict=ctx.result
         )
         summary.screened += 1
-        summary.suitable += int(ctx.result["suitable"])
-        logger.info(
-            "screened job=%s suitable=%s score=%s reasons=%s",
-            job["job_id"],
-            ctx.result["suitable"],
-            ctx.result["score"],
-            ctx.result["reasons"],
-        )
+        logger.info("screened job=%s score=%s reason=%s", job["job_id"], ctx.result["score"], ctx.result["reason"])
     return True
 
 
 async def _offer(conn: Conn, cfg: AgentConfig, deps: Deps, summary: CycleSummary) -> None:
-    from_status = "suitable" if cfg.pipeline.screening_enabled else "pending"
+    from_status = "screened" if cfg.pipeline.screening_enabled else "pending"
     queue = await store.offer_queue(conn, from_status, cfg.pipeline.max_offers_per_cycle)
     if not queue:
         return
@@ -150,7 +143,7 @@ async def _offer(conn: Conn, cfg: AgentConfig, deps: Deps, summary: CycleSummary
         return
     for job in queue:
         try:
-            message_id = await deps.chat.post(render.offer_message(job))
+            message_id = await deps.chat.post(render.offer_message(job, cfg.pipeline.screening_enabled))
         except FloodWait as exc:
             logger.warning("telegram flood wait; offers resume next cycle: %s", exc)
             return
@@ -256,13 +249,13 @@ async def _draft_requested(conn: Conn, cfg: AgentConfig, deps: Deps, chat: Chat,
         offer = await store.offer_for_job(conn, job["job_id"]) or {}
         request_text, revises_id = offer.get("request_text"), offer.get("revise_proposal_id")
         if revises_id is None:
-            prompt = render.writer_prompt(job, screening, request_text)
+            prompt = render.writer_prompt(job, request_text)
         else:
             # Edit the replied-to version, not a fresh draft: the new draft's suggestions still hold,
             # and every earlier round of comments travels with the latest one.
             chain = await store.proposal_chain(conn, revises_id)
             rounds = [p["request_text"] for p in chain[1:]] + [request_text]
-            prompt = render.writer_prompt(job, screening, chain[0]["request_text"], (chain[-1]["body"], rounds))
+            prompt = render.writer_prompt(job, chain[0]["request_text"], (chain[-1]["body"], rounds))
         ctx, run = await _agent_run(deps, cfg.writer, job, prompt, cfg.allow_writes)
         if run["status"] != "COMPLETED" or "proposal" not in ctx.result:
             error = run.get("error") or "writer finished without calling submit_proposal"

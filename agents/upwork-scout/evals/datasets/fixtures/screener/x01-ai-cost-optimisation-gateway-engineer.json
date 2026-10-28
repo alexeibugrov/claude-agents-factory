@@ -1,0 +1,157 @@
+{
+  "url": "https://www.upwork.com/jobs/~022114130005076497298",
+  "jobId": "2114130005076497298",
+  "title": "AI Cost-Optimisation Gateway Engineer",
+  "skills": [
+    "API Development",
+    "Docker",
+    "TypeScript",
+    "PostgreSQL",
+    "Redis",
+    "OpenAI API",
+    "Microservice",
+    "Python",
+    "Amazon Web Services",
+    "litellm",
+    "Amazon ECS",
+    "NestJS",
+    "Next.js",
+    "Data Privacy",
+    "GDPR"
+  ],
+  "source": "upwork.com",
+  "jobType": "FIXED",
+  "premium": false,
+  "isRepost": false,
+  "portalUrl": "https://www.upwork.com/jobs/~022114130005076497298",
+  "salaryMax": 7000,
+  "salaryMin": 7000,
+  "scrapedAt": "2026-10-24T23:52:18.050Z",
+  "changeType": "NEW",
+  "createTime": "2026-10-24T23:00:46.912Z",
+  "lastSeenAt": "2026-10-24T23:52:18.050Z",
+  "repostOfId": null,
+  "salaryType": "FIXED",
+  "contentHash": "079a83653def7cad41e679269892138a3cf87239343d47b9a286c4797e6d48f5",
+  "description": "We need an experienced backend engineer to build a pilot-ready MVP of an AI cost-optimisation gateway for UK companies. The system sits between client apps and OpenAI, Anthropic, and Google, reducing costs, protecting personal data, and proving savings. The fixed stack includes LiteLLM, Microsoft Presidio with custom UK detectors, TypeScript/NestJS services, Next.js dashboards, PostgreSQL with pgvector, Redis, Docker, and AWS London across two availability zones. Scope includes multi-tenant keys and budgets, PII masking, tenant-isolated caching, versioned pricing, savings tracking, fail-closed defaults, monthly statements, and dashboards. Please propose two options: pilot core and full scope, with weekly hours, start date, and a relevant project example.",
+  "firstSeenAt": "2026-10-24T23:52:18.050Z",
+  "publishTime": "2026-10-24T23:40:02.693Z",
+  "budgetAmount": 7000,
+  "clientRating": 0,
+  "clientCountry": "United Kingdom",
+  "enterpriseJob": false,
+  "personsToHire": 1,
+  "budgetCurrency": "USD",
+  "customJobScore": 0,
+  "engagementType": null,
+  "salaryCurrency": "USD",
+  "skillsDetailed": [
+    {
+      "uid": "1031626714051493888",
+      "name": "API Development",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "1031626732393185280",
+      "name": "Docker",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "996364628025274389",
+      "name": "TypeScript",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "996364628000108546",
+      "name": "PostgreSQL",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "1031626774218784768",
+      "name": "Redis",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "1733104400580624384",
+      "name": "OpenAI API",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "1031626758192349184",
+      "name": "Microservice",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "996364628025274386",
+      "name": "Python",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "996364628012691471",
+      "name": "Amazon Web Services",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "2098024637720154112",
+      "name": "litellm",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "1192876961873543168",
+      "name": "Amazon ECS",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "1031626762122412032",
+      "name": "NestJS",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "1031626762688643072",
+      "name": "Next.js",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "1031626730325393408",
+      "name": "Data Privacy",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "1031626740785987584",
+      "name": "GDPR",
+      "highlighted": false,
+      "parentSkillUid": null
+    }
+  ],
+  "descriptionHtml": null,
+  "experienceLevel": "ExpertLevel",
+  "hourlyBudgetMax": null,
+  "hourlyBudgetMin": null,
+  "totalApplicants": 8,
+  "clientTotalSpent": 0,
+  "repostDetectedAt": null,
+  "clientCountryCode": "GBR",
+  "clientReviewCount": 0,
+  "sourcingTimestamp": null,
+  "engagementDuration": "1 to 3 months",
+  "clientSpentCurrency": "USD",
+  "descriptionMarkdown": "We need an experienced backend engineer to build a pilot-ready MVP of an AI cost-optimisation gateway for UK companies. The system sits between client apps and OpenAI, Anthropic, and Google, reducing costs, protecting personal data, and proving savings. The fixed stack includes LiteLLM, Microsoft Presidio with custom UK detectors, TypeScript/NestJS services, Next.js dashboards, PostgreSQL with pgvector, Redis, Docker, and AWS London across two availability zones. Scope includes multi-tenant keys and budgets, PII masking, tenant-isolated caching, versioned pricing, savings tracking, fail-closed defaults, monthly statements, and dashboards. Please propose two options: pilot core and full scope, with weekly hours, start date, and a relevant project example.",
+  "weeklyRetainerBudget": null,
+  "clientPaymentVerified": null,
+  "engagementDurationWeeks": 9,
+  "clientHasFinancialPrivacy": false
+}

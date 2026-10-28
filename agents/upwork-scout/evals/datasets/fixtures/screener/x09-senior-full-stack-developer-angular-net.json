@@ -1,0 +1,87 @@
+{
+  "url": "https://www.upwork.com/jobs/~022113730863252795804",
+  "jobId": "2113730863252795804",
+  "title": "Senior Full-Stack Developer (Angular / .NET Core)",
+  "skills": [
+    "AI Development",
+    "Web Development",
+    "SQL",
+    "C#",
+    "Angular"
+  ],
+  "source": "upwork.com",
+  "jobType": "HOURLY",
+  "premium": true,
+  "isRepost": false,
+  "portalUrl": "https://www.upwork.com/jobs/~022113730863252795804",
+  "salaryMax": null,
+  "salaryMin": null,
+  "scrapedAt": "2026-10-23T22:03:43.564Z",
+  "changeType": "NEW",
+  "createTime": "2026-10-23T20:34:44.083Z",
+  "lastSeenAt": "2026-10-23T22:03:43.564Z",
+  "repostOfId": null,
+  "salaryType": "HOURLY",
+  "contentHash": "be189781a1111bc77e5973f77a8c3e7e0a52275622711f635c7563c473ebdffc",
+  "description": "We are looking for a Senior Full-Stack Developer with strong Angular and .NET expertise who knows how to leverage AI to build and ship features faster. Join a growing engineering team developing a healthcare revenue cycle management platform that streamlines insurance claims, billing, and financial workflows for radiology and outpatient imaging services. You'll help expand a web application, deliver high-impact features, and contribute to its future AI-powered automation capabilities.  \n\nResponsibilities:\n- Design, develop, and enhance a web application using Angular 12, ASP.NET Core 8 (C#), and SQL Server.\n- Build and deliver new features, including internal messaging, task management, and collaborative workflows for healthcare billing operations.\n- Develop, maintain, and optimize REST APIs, backend services, and database functionality to support application performance and scalability.\n- Implement and maintain integrations with internal and external systems, including NCS and Microsoft Fabric.\n- Leverage AI-powered coding tools to accelerate development, streamline debugging, and improve overall engineering productivity.\n- Collaborate with a six-person development team, including senior engineers, QA, and the VP of Development, to deliver reliable, high-quality features.  \n\nRequirements:\n- Strong senior-level full-stack development experience, with hands-on expertise in Angular 12, ASP.NET Core 8, and C#.\n- Solid experience with SQL Server, including database development, optimization, and integration with backend applications.\n- Proven ability to develop and maintain REST APIs and web applications hosted on IIS/Windows.\n- Practical experience using AI-assisted development tools to accelerate coding, troubleshooting, and feature delivery.\n- Experience integrating enterprise applications with external systems; familiarity with NCS and Microsoft Fabric is highly preferred.\n- Strong problem-solving, communication, and collaboration skills, with the ability to independently own feature development and work effectively during U.S. Eastern Time hours.",
+  "firstSeenAt": "2026-10-23T22:03:43.564Z",
+  "publishTime": "2026-10-23T20:38:43.221Z",
+  "budgetAmount": null,
+  "clientRating": 4.92,
+  "clientCountry": "United States",
+  "enterpriseJob": false,
+  "personsToHire": 1,
+  "budgetCurrency": null,
+  "customJobScore": 4.73,
+  "engagementType": "FULL_TIME",
+  "salaryCurrency": "USD",
+  "skillsDetailed": [
+    {
+      "uid": "1691099314254262272",
+      "name": "AI Development",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "1031626795211276288",
+      "name": "Web Development",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "1031626782364123136",
+      "name": "SQL",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "996364628025274380",
+      "name": "C#",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "996364628012691468",
+      "name": "Angular",
+      "highlighted": false,
+      "parentSkillUid": null
+    }
+  ],
+  "descriptionHtml": null,
+  "experienceLevel": "ExpertLevel",
+  "hourlyBudgetMax": null,
+  "hourlyBudgetMin": null,
+  "totalApplicants": 74,
+  "clientTotalSpent": 77082.01,
+  "repostDetectedAt": null,
+  "clientCountryCode": "USA",
+  "clientReviewCount": 57,
+  "sourcingTimestamp": "2026-10-23T20:42:53.442Z",
+  "engagementDuration": "More than 6 months",
+  "clientSpentCurrency": "USD",
+  "descriptionMarkdown": "We are looking for a Senior Full-Stack Developer with strong Angular and .NET expertise who knows how to leverage AI to build and ship features faster. Join a growing engineering team developing a healthcare revenue cycle management platform that streamlines insurance claims, billing, and financial workflows for radiology and outpatient imaging services. You'll help expand a web application, deliver high-impact features, and contribute to its future AI-powered automation capabilities.  \n\nResponsibilities:\n- Design, develop, and enhance a web application using Angular 12, ASP.NET Core 8 (C#), and SQL Server.\n- Build and deliver new features, including internal messaging, task management, and collaborative workflows for healthcare billing operations.\n- Develop, maintain, and optimize REST APIs, backend services, and database functionality to support application performance and scalability.\n- Implement and maintain integrations with internal and external systems, including NCS and Microsoft Fabric.\n- Leverage AI-powered coding tools to accelerate development, streamline debugging, and improve overall engineering productivity.\n- Collaborate with a six-person development team, including senior engineers, QA, and the VP of Development, to deliver reliable, high-quality features.  \n\nRequirements:\n- Strong senior-level full-stack development experience, with hands-on expertise in Angular 12, ASP.NET Core 8, and C#.\n- Solid experience with SQL Server, including database development, optimization, and integration with backend applications.\n- Proven ability to develop and maintain REST APIs and web applications hosted on IIS/Windows.\n- Practical experience using AI-assisted development tools to accelerate coding, troubleshooting, and feature delivery.\n- Experience integrating enterprise applications with external systems; familiarity with NCS and Microsoft Fabric is highly preferred.\n- Strong problem-solving, communication, and collaboration skills, with the ability to independently own feature development and work effectively during U.S. Eastern Time hours.",
+  "weeklyRetainerBudget": null,
+  "clientPaymentVerified": true,
+  "engagementDurationWeeks": 52,
+  "clientHasFinancialPrivacy": false
+}

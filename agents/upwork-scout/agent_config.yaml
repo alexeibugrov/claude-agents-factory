@@ -9,14 +9,18 @@
 agent:
   allow_writes: true    # gates every Telegram post and reply (agent/guards.py)
 
-# Agent 1: decides whether a new job is worth applying to. PARKED while
-# settings.pipeline.screening_enabled is false: every prefiltered job is offered instead.
+# The shared document about the operator, appended to every role's prompt. A change is a new vN file.
+about_me_file: prompts/about-me/v1.md
+
+# Agent 1: rates how well each new job matches the operator's experience, 0-5. Every job is still
+# offered, with its rating; runs only while settings.pipeline.screening_enabled is true.
 screener:
-  model: claude-sonnet-5
+  model: claude-sonnet-5-5
   fallback_model: null
+  effort: medium
   max_turns: 4          # one submit call; the slack absorbs a rejected argument and a retry
   max_budget_usd: null
-  system_prompt_file: prompts/screener/v1.md   # the live version: a change is a new vN file, rollback is this line
+  system_prompt_file: prompts/screener/v2.md   # the live version: a change is a new vN file, rollback is this line
 
 # Agent 2: drafts the proposal for an offer someone replied to with a trigger word.
 writer:
@@ -26,7 +30,7 @@ writer:
   timeout_s: 1200       # a run past this fails and is retried (max_attempts)
   max_turns: 8          # each over-long submit is rejected with the word count and costs a turn
   max_budget_usd: null
-  system_prompt_file: prompts/writer/v4.md   # the live version: a change is a new vN file, rollback is this line
+  system_prompt_file: prompts/writer/v5.md   # the live version: a change is a new vN file, rollback is this line
 
 # Agent-specific knobs, available as typed config (agent/config.py). Anything secret belongs in .env.
 settings:
@@ -71,8 +75,8 @@ settings:
             https://www.upwork.com/nx/search/jobs/?q=%22devops%22%20OR%20%22site%20reliability%22%20OR%20%22platform%20engineer%22%20OR%20%22platform%20engineering%22%20OR%20%22kubernetes%22%20OR%20%22terraform%22%20OR%20%22infrastructure%20as%20code%22%20OR%20%22pulumi%22%20OR%20%22github%20actions%22%20OR%20%22gitlab%20ci%22%20OR%20%22cloud%20architect%22%20OR%20%22cloud%20engineer%22%20OR%20%22solutions%20architect%22%20OR%20%22cloud%20infrastructure%22%20OR%20%22devsecops%22%20OR%20%22mlops%22%20OR%20%22llmops%22%20OR%20%22ai%20infrastructure%22%20OR%20%22finops%22%20OR%20%22cloud%20migration%22%20OR%20%22aws%22%20OR%20%22azure%22%20OR%20%22gcp%22%20OR%20%22google%20cloud%22%20OR%20%22docker%22&t=0,1&amount=1000-&sort=recency
 
   pipeline:
-    screening_enabled: false           # off: offer every job past the prefilters; on: only suitable ones
-    max_screen_per_cycle: 10
+    screening_enabled: true            # on: rate every job past the prefilters before offering it; off: offer unrated
+    max_screen_per_cycle: 20
     max_offers_per_cycle: 50           # one Telegram message each; the rest wait for the next cycle
     max_draft_per_cycle: 5             # per poll: proposals written on request
     max_attempts: 3

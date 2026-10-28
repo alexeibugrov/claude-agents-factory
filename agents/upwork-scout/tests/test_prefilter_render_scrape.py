@@ -68,12 +68,15 @@ def test_prompt_wraps_job_as_data_and_omits_personal_data():
     assert "secret@example.com" not in prompt and "+1 555" not in prompt
 
 
-def test_offer_message_escapes_html_and_shows_score_only_when_screened():
+def test_offer_message_escapes_html_and_shows_the_match_only_when_screened():
     job = _job(title="<script>alert(1)</script> & co")
     msg = render.offer_message(job)
     assert "<script>" not in msg and "&lt;script&gt;" in msg
-    assert "Score" not in msg
-    assert "a &lt; b" in render.offer_message({**job, "score": 80, "reasons": "a < b"})
+    assert "Match" not in msg
+    lines = render.offer_message({**job, "score": 4, "reasons": "a < b"}, screened=True).splitlines()
+    assert "&lt;script&gt;" in lines[0] and lines[1] == "<b>Match 4/5</b> — a &lt; b"
+    # A job the screener failed on is still offered, visibly unrated.
+    assert render.offer_message(job, screened=True).splitlines()[1] == "<b>Match ?/5</b> — not rated"
 
 
 def test_proposal_reply_is_one_plain_text_message_with_the_link_first():
@@ -91,8 +94,7 @@ def test_long_proposal_is_split_under_the_limit():
 
 def test_writer_prompt_without_a_screening():
     prompt = render.writer_prompt(_job())
-    assert "<job>" in prompt and "Screening verdict" not in prompt
-    assert "score 70/100" in render.writer_prompt(_job(), {"score": 70, "reasons": "ok"})
+    assert "<job>" in prompt and "Screening verdict" not in prompt and "<operator_instructions>" not in prompt
 
 
 def test_times_render_in_the_container_zone_across_dst(monkeypatch):

@@ -1,0 +1,27 @@
+{
+  "jobId": "2110032434387499650",
+  "title": "Senior Full-Stack Engineer — Kubernetes / Cloud-Native / Go (Contract)",
+  "url": "https://www.upwork.com/jobs/~022110032434387499650",
+  "description": "Job Description:\n\nWe're Thoras AI, an early-stage AI startup building the future of autonomous Kubernetes infrastructure management. We're looking for a senior full-stack engineer to jump in, move fast, and own real product — not just tickets.\n\nWhat you'll do:\n\nDesign and build core product features end-to-end — from data models and APIs to production-facing surfaces customers depend on\nWork across our Kubernetes/cloud-native stack (AWS EKS, VPC, IAM, ECS, containers)\nIdentify failure modes before they become incidents — you've seen what tutorials don't cover\nSit with customers, develop product judgment, and translate conversations into filed issues and shipped fixes\nOwn your work from design through production\n\nWhat we're looking for:\n\nStrong backend fundamentals — you're at home designing data models, building APIs, and living in a database\nHands-on experience shipping software that production environments depend on across Kubernetes, ECS, EKS, and the broader cloud-native stack\nProficiency in Go, modern frontend frameworks, AWS (EKS, VPC, IAM), and Linux as daily tools\nProduct judgment — you don't just build what you're told, you can decide what's worth building\nYou've seen real failure modes in production, not just in tutorials\n\nNice to have:\n\nExperience at an early-stage startup\nFamiliarity with infrastructure observability tools (Prometheus, Datadog, Grafana)\nExperience with ML or AI infrastructure workloads\n\nEngagement details:\n\nType: Contract / Freelance\nRate: $50–$75/hour\nHours: Part-time or full-time depending on fit\nTimeline: Immediate start preferred\n\nAbout Thoras AI:\nThoras is an AI-powered Kubernetes optimization platform that predicts infrastructure demand before it happens — so engineering teams scale before the spike, not after. We're a lean, fast-moving team building something that matters. You'll work directly with our founders and have real ownership over what you ship.\n\n🌐 thoras.ai\n\nUpwork Job Category: Engineering & Architecture → Full Stack Development\n\nSkills tags to add:\nGo · Kubernetes · AWS · Docker · EKS · PostgreSQL · REST APIs · Cloud Infrastructure · React · Linux",
+  "descriptionMarkdown": "Job Description:\n\nWe're Thoras AI, an early-stage AI startup building the future of autonomous Kubernetes infrastructure management. We're looking for a senior full-stack engineer to jump in, move fast, and own real product — not just tickets.\n\nWhat you'll do:\n\nDesign and build core product features end-to-end — from data models and APIs to production-facing surfaces customers depend on\nWork across our Kubernetes/cloud-native stack (AWS EKS, VPC, IAM, ECS, containers)\nIdentify failure modes before they become incidents — you've seen what tutorials don't cover\nSit with customers, develop product judgment, and translate conversations into filed issues and shipped fixes\nOwn your work from design through production\n\nWhat we're looking for:\n\nStrong backend fundamentals — you're at home designing data models, building APIs, and living in a database\nHands-on experience shipping software that production environments depend on across Kubernetes, ECS, EKS, and the broader cloud-native stack\nProficiency in Go, modern frontend frameworks, AWS (EKS, VPC, IAM), and Linux as daily tools\nProduct judgment — you don't just build what you're told, you can decide what's worth building\nYou've seen real failure modes in production, not just in tutorials\n\nNice to have:\n\nExperience at an early-stage startup\nFamiliarity with infrastructure observability tools (Prometheus, Datadog, Grafana)\nExperience with ML or AI infrastructure workloads\n\nEngagement details:\n\nType: Contract / Freelance\nRate: $50–$75/hour\nHours: Part-time or full-time depending on fit\nTimeline: Immediate start preferred\n\nAbout Thoras AI:\nThoras is an AI-powered Kubernetes optimization platform that predicts infrastructure demand before it happens — so engineering teams scale before the spike, not after. We're a lean, fast-moving team building something that matters. You'll work directly with our founders and have real ownership over what you ship.\n\n🌐 thoras.ai\n\nUpwork Job Category: Engineering & Architecture → Full Stack Development\n\nSkills tags to add:\nGo · Kubernetes · AWS · Docker · EKS · PostgreSQL · REST APIs · Cloud Infrastructure · React · Linux",
+  "jobType": "HOURLY",
+  "experienceLevel": "ExpertLevel",
+  "skills": [
+    "Kubernetes",
+    "DevOps",
+    "CI/CD Platform",
+    "JavaScript",
+    "API",
+    "SRE"
+  ],
+  "clientCountry": "United States",
+  "engagementDuration": "1 to 3 months",
+  "source": "upwork-text-import",
+  "engagementType": "PART_TIME",
+  "hourlyBudgetMin": 50.0,
+  "hourlyBudgetMax": 75.0,
+  "clientPaymentVerified": true,
+  "clientRating": 4.7,
+  "clientReviewCount": 6,
+  "clientTotalSpent": 5000.0
+}

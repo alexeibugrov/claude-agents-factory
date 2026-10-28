@@ -1,0 +1,410 @@
+# Screener dataset: postings the operator applied to, ignored and saved, rated against the 0-5 match.
+# metadata.source (applied | ignored | saved) tells them apart.
+dataset:
+  id: screener
+  version: 2
+  split: tuning
+  description: 20 applied-to postings, 10 ignored production offers and 25 saved jobs, for the screener's 0-5 match.
+cases:
+- id: j01-need-help-upgrading-node-js-version-on
+  job_file: fixtures/upwork-submitted-2026-10-24/j01-need-help-upgrading-node-js-version-on.json
+  metadata:
+    title: Need Help Upgrading Node.js Version on AWS Elastic Beanstalk
+    source: applied
+    from_dataset: tuning
+- id: j02-fractional-cto
+  job_file: fixtures/upwork-submitted-2026-10-24/j02-fractional-cto.json
+  metadata:
+    title: Fractional CTO
+    source: applied
+    from_dataset: tuning
+- id: j03-claude-code-coach-for-a-5-person-dev
+  job_file: fixtures/upwork-submitted-2026-10-24/j03-claude-code-coach-for-a-5-person-dev.json
+  metadata:
+    title: Claude Code coach for a 5-person dev team (hands-on, about 8 hrs/week, 3 months)
+    source: applied
+    from_dataset: tuning
+- id: j04-senior-ai-technical-advisor
+  job_file: fixtures/upwork-submitted-2026-10-24/j04-senior-ai-technical-advisor.json
+  metadata:
+    title: Senior AI Technical Advisor
+    source: applied
+    from_dataset: tuning
+- id: j05-gcp-fabric-fast-project
+  job_file: fixtures/upwork-submitted-2026-10-24/j05-gcp-fabric-fast-project.json
+  metadata:
+    title: GCP / Fabric Fast Project
+    source: applied
+    from_dataset: validation
+- id: j06-senior-devops-engineer
+  job_file: fixtures/upwork-submitted-2026-10-24/j06-senior-devops-engineer.json
+  metadata:
+    title: Senior DevOps Engineer
+    source: applied
+    from_dataset: tuning
+- id: j07-fractional-cto-using-ai-to-integrate-and
+  job_file: fixtures/upwork-submitted-2026-10-24/j07-fractional-cto-using-ai-to-integrate-and.json
+  metadata:
+    title: Fractional CTO using AI to integrate and build (Invite-Only)
+    source: applied
+    from_dataset: validation
+- id: j08-infrastructure-cloud-cost-optimization
+  job_file: fixtures/upwork-submitted-2026-10-24/j08-infrastructure-cloud-cost-optimization.json
+  metadata:
+    title: Infrastructure Cloud Cost Optimization
+    source: applied
+    from_dataset: tuning
+- id: j09-senior-devops-engineer-for-aws-invite
+  job_file: fixtures/upwork-submitted-2026-10-24/j09-senior-devops-engineer-for-aws-invite.json
+  metadata:
+    title: Senior DevOps Engineer for AWS (Invite-Only)
+    source: applied
+    from_dataset: tuning
+- id: j10-ai-developer-needed-for-ai-powered
+  job_file: fixtures/upwork-submitted-2026-10-24/j10-ai-developer-needed-for-ai-powered.json
+  metadata:
+    title: AI Developer Needed for AI-Powered Candidate Matching Platform
+    source: applied
+    from_dataset: tuning
+- id: j11-ai-engineering-expert-advisory-role
+  job_file: fixtures/upwork-submitted-2026-10-24/j11-ai-engineering-expert-advisory-role.json
+  metadata:
+    title: AI Engineering Expert (Advisory Role)
+    source: applied
+    from_dataset: validation
+- id: j12-kubernetes-devops-engineer-claude-code
+  job_file: fixtures/upwork-submitted-2026-10-24/j12-kubernetes-devops-engineer-claude-code.json
+  metadata:
+    title: Kubernetes DevOps Engineer (Claude Code) for Infrastructure Takeover
+    source: applied
+    from_dataset: validation
+- id: j13-looking-for-senior-devops-engineer-linux
+  job_file: fixtures/upwork-submitted-2026-10-24/j13-looking-for-senior-devops-engineer-linux.json
+  metadata:
+    title: Looking for Senior DevOps Engineer (Linux / On-Premises Infrastructure)
+    source: applied
+    from_dataset: tuning
+- id: j14-microsoft-azure-expert
+  job_file: fixtures/upwork-submitted-2026-10-24/j14-microsoft-azure-expert.json
+  metadata:
+    title: Microsoft Azure Expert
+    source: applied
+    from_dataset: tuning
+- id: j15-contract-senior-devops-gcp-cloud
+  job_file: fixtures/upwork-submitted-2026-10-24/j15-contract-senior-devops-gcp-cloud.json
+  metadata:
+    title: Contract Senior DevOps & GCP Cloud Architect
+    source: applied
+    from_dataset: tuning
+- id: j16-senior-infrastructure-operations
+  job_file: fixtures/upwork-submitted-2026-10-24/j16-senior-infrastructure-operations.json
+  metadata:
+    title: Senior Infrastructure Operations Engineer
+    source: applied
+    from_dataset: tuning
+- id: j17-devops-cloud-engineer-ci-cd-and
+  job_file: fixtures/upwork-submitted-2026-10-24/j17-devops-cloud-engineer-ci-cd-and.json
+  metadata:
+    title: 'DevOps & Cloud Engineer: CI/CD and Infrastructure as Code on AWS'
+    source: applied
+    from_dataset: validation
+- id: j18-deploy-xray-proxy-on-aws
+  job_file: fixtures/upwork-submitted-2026-10-24/j18-deploy-xray-proxy-on-aws.json
+  metadata:
+    title: Deploy Xray Proxy on AWS
+    source: applied
+    from_dataset: tuning
+- id: j19-aws-cost-optimization
+  job_file: fixtures/upwork-submitted-2026-10-24/j19-aws-cost-optimization.json
+  metadata:
+    title: AWS Cost Optimization
+    source: applied
+    from_dataset: tuning
+- id: j20-devops-infrastructure-engineer-part-time
+  job_file: fixtures/upwork-submitted-2026-10-24/j20-devops-infrastructure-engineer-part-time.json
+  metadata:
+    title: DevOps / Infrastructure Engineer, part time, ongoing
+    source: applied
+    from_dataset: tuning
+- id: x09-senior-full-stack-developer-angular-net
+  job_file: fixtures/screener/x09-senior-full-stack-developer-angular-net.json
+  metadata:
+    title: Senior Full-Stack Developer (Angular / .NET Core)
+    source: ignored
+- id: x03-elite-high-ticket-b2b-sales-closer
+  job_file: fixtures/screener/x03-elite-high-ticket-b2b-sales-closer.json
+  metadata:
+    title: Elite High-Ticket B2B Sales Closer | AI & Marketing Agency | Commission Only
+    source: ignored
+- id: x08-senior-database-migration-engineer
+  job_file: fixtures/screener/x08-senior-database-migration-engineer.json
+  metadata:
+    title: Senior Database Migration Engineer
+    source: ignored
+- id: x10-tech-lead-aws-infrastructure-and-python
+  job_file: fixtures/screener/x10-tech-lead-aws-infrastructure-and-python.json
+  metadata:
+    title: Tech Lead, AWS Infrastructure and Python (North America or South America Only)
+    source: ignored
+- id: x01-ai-cost-optimisation-gateway-engineer
+  job_file: fixtures/screener/x01-ai-cost-optimisation-gateway-engineer.json
+  metadata:
+    title: AI Cost-Optimisation Gateway Engineer
+    source: ignored
+- id: x04-make-me-a-full-plug-and
+  job_file: fixtures/screener/x04-make-me-a-full-plug-and.json
+  metadata:
+    title: Make me a full plug and play gohighlevel agency for reputation management!
+    source: ignored
+- id: x07-senior-b2b-saas-website-designer-conversion
+  job_file: fixtures/screener/x07-senior-b2b-saas-website-designer-conversion.json
+  metadata:
+    title: Senior B2B SaaS Website Designer | Conversion-Focused UX & Figma Design System
+    source: ignored
+- id: x05-manual-qa-engineer
+  job_file: fixtures/screener/x05-manual-qa-engineer.json
+  metadata:
+    title: Manual QA Engineer
+    source: ignored
+- id: x06-no-code-automation-specialist-airtable-make
+  job_file: fixtures/screener/x06-no-code-automation-specialist-airtable-make.json
+  metadata:
+    title: No-Code Automation Specialist – Airtable + Make + Email Automation
+    source: ignored
+- id: x02-content-researcher-social-media-strategist-for
+  job_file: fixtures/screener/x02-content-researcher-social-media-strategist-for.json
+  metadata:
+    title: Content Researcher & Social Media Strategist for an Early-Stage Tech Startup
+    source: ignored
+- id: s01-ai-interior-design-saas-mvp-developer
+  job_file: fixtures/upwork-saved-2026-10-27/s01-ai-interior-design-saas-mvp-developer.json
+  metadata:
+    title: AI Interior Design SaaS MVP Developer | Python, React & AI
+    source: saved
+    status: Open
+    questions: none
+    budget: Fixed-price $10.00
+- id: s02-ai-automation-engineer-for-support
+  job_file: fixtures/upwork-saved-2026-10-27/s02-ai-automation-engineer-for-support.json
+  operator_instructions: '1. Describe your recent experience with similar projects
+
+    2. Please list any certifications related to this project'
+  metadata:
+    title: AI Automation Engineer for Support, Knowledge Base and Workflow Automation
+    source: saved
+    status: Open
+    questions: formal
+    budget: Hourly $30-$60
+- id: s03-cto-role
+  job_file: fixtures/upwork-saved-2026-10-27/s03-cto-role.json
+  metadata:
+    title: CTO role
+    source: saved
+    status: Open — you have already submitted a proposal
+    questions: none
+    budget: Hourly $75-$200
+- id: s04-security-engineer-for-agentic-ai
+  job_file: fixtures/upwork-saved-2026-10-27/s04-security-engineer-for-agentic-ai.json
+  metadata:
+    title: Security Engineer for Agentic AI
+    source: saved
+    status: Open
+    questions: none
+    budget: Hourly $40-$70
+    preferred_qualifications: 'location: Europe'
+- id: s05-devops-expert-with-ai-llm-rag-agentic
+  job_file: fixtures/upwork-saved-2026-10-27/s05-devops-expert-with-ai-llm-rag-agentic.json
+  operator_instructions: 1. What kind of AI agents / LLMs have you shipped? What is the most important
+    part of user data ownership? Are you someone who has a vision of what is possible with AI, if so share
+    an idea?
+  metadata:
+    title: DevOps Expert with AI/LLM/RAG/Agentic experience
+    source: saved
+    status: Open
+    questions: formal
+    budget: Hourly $25-$45
+    preferred_qualifications: Rising Talent, English fluent, Europe
+- id: s06-senior-devops-engineer
+  job_file: fixtures/upwork-saved-2026-10-27/s06-senior-devops-engineer.json
+  metadata:
+    title: Senior DevOps Engineer
+    source: saved
+    status: Open — you have already submitted a proposal
+    questions: none
+    budget: Hourly (no range shown)
+    preferred_qualifications: 'location: United Kingdom, United States'
+- id: s08-rag-retrieval-architecture-consultant
+  job_file: fixtures/upwork-saved-2026-10-27/s08-rag-retrieval-architecture-consultant.json
+  metadata:
+    title: RAG / Retrieval Architecture Consultant for Multi-Agent AI System (Advisory Only)
+    source: saved
+    status: Open
+    questions: none
+    budget: Fixed-price $10.00 (client says the budget is only a starting price)
+- id: s11-freelance-gpu-infrastructure-mlops
+  job_file: fixtures/upwork-saved-2026-10-27/s11-freelance-gpu-infrastructure-mlops.json
+  metadata:
+    title: Freelance GPU Infrastructure / MLOps Engineer (Remote, Contract)
+    source: saved
+    status: Open
+    questions: none
+    budget: Hourly (no range shown)
+- id: s12-senior-ai-full-stack-developer-to-build
+  job_file: fixtures/upwork-saved-2026-10-27/s12-senior-ai-full-stack-developer-to-build.json
+  metadata:
+    title: Senior AI Full-Stack Developer to Build Legal Document SaaS (Claude API, Fixed-Price)
+    source: saved
+    status: Open
+    questions: none
+    budget: Fixed-price $10,000
+- id: s13-microsoft-azure-cloud-architect-for-ai
+  job_file: fixtures/upwork-saved-2026-10-27/s13-microsoft-azure-cloud-architect-for-ai.json
+  metadata:
+    title: Microsoft Azure Cloud Architect for AI
+    source: saved
+    status: Open
+    questions: none
+    budget: Hourly $40-$70
+- id: s14-ai-product-engineer
+  job_file: fixtures/upwork-saved-2026-10-27/s14-ai-product-engineer.json
+  metadata:
+    title: AI Product Engineer
+    source: saved
+    status: Full job page not accessible ("This job is private" / access denied); data taken from the
+      saved-jobs list card
+    questions: none
+    budget: Hourly $35-$60
+- id: s15-senior-ai-product-engineer-24-7
+  job_file: fixtures/upwork-saved-2026-10-27/s15-senior-ai-product-engineer-24-7.json
+  metadata:
+    title: 'Senior AI Product Engineer: 24/7 Production Launch Support for Legal Operations AI Platform'
+    source: saved
+    status: NO LONGER AVAILABLE / full job page not accessible; data taken from the saved-jobs list card
+    questions: none
+    budget: Hourly $10-$47
+- id: s17-ai-workflow-automation-specialist-multi
+  job_file: fixtures/upwork-saved-2026-10-27/s17-ai-workflow-automation-specialist-multi.json
+  metadata:
+    title: 'AI Workflow Automation Specialist: Multi-Jurisdiction Document Parsing'
+    source: saved
+    status: NO LONGER AVAILABLE (a freelancer was hired)
+    questions: none
+    budget: Fixed-price $600
+- id: s18-ai-automation-for-a-manufacturing-client
+  job_file: fixtures/upwork-saved-2026-10-27/s18-ai-automation-for-a-manufacturing-client.json
+  metadata:
+    title: AI & Automation for a manufacturing client
+    source: saved
+    status: Open
+    questions: none
+    budget: Hourly $20-$40
+- id: s19-technical-consultant-ai-integration-part
+  job_file: fixtures/upwork-saved-2026-10-27/s19-technical-consultant-ai-integration-part.json
+  metadata:
+    title: Technical Consultant, AI Integration (Part-Time Contract)
+    source: saved
+    status: Open
+    questions: none
+    budget: Hourly $45-$100
+    preferred_qualifications: Job Success Score at least 91%
+- id: s20-senior-full-stack-engineer-kubernetes
+  job_file: fixtures/upwork-saved-2026-10-27/s20-senior-full-stack-engineer-kubernetes.json
+  metadata:
+    title: Senior Full-Stack Engineer — Kubernetes / Cloud-Native / Go (Contract)
+    source: saved
+    status: NO LONGER AVAILABLE
+    questions: none
+    budget: Hourly $50-$75
+- id: s22-create-an-ai-harness-company-brain
+  job_file: fixtures/upwork-saved-2026-10-27/s22-create-an-ai-harness-company-brain.json
+  metadata:
+    title: Create an AI Harness/Company Brain
+    source: saved
+    status: Open
+    questions: none
+    budget: Fixed-price $350.00
+- id: s23-ai-consultant-vllm-deployment-browser
+  job_file: fixtures/upwork-saved-2026-10-27/s23-ai-consultant-vllm-deployment-browser.json
+  metadata:
+    title: AI Consultant (vLLM deployment + browser-fingerprint scoring service)
+    source: saved
+    status: Open
+    questions: none
+    budget: Fixed-price $200.00
+    preferred_qualifications: 'location: India'
+- id: s24-ai-implementation-consultant
+  job_file: fixtures/upwork-saved-2026-10-27/s24-ai-implementation-consultant.json
+  operator_instructions: 1. Describe your recent experience with similar projects
+  metadata:
+    title: AI Implementation Consultant
+    source: saved
+    status: Open
+    questions: formal
+    budget: Hourly $30.00-$100.00
+    preferred_qualifications: English native/bilingual; location United Kingdom
+- id: s25-ai-transformation-expert
+  job_file: fixtures/upwork-saved-2026-10-27/s25-ai-transformation-expert.json
+  operator_instructions: '1. Describe your recent experience with similar projects
+
+    2. Please list any certifications related to this project
+
+    3. What tools do you use for data mining and visualization?'
+  metadata:
+    title: AI Transformation Expert
+    source: saved
+    status: Open
+    questions: formal
+    budget: Hourly $30.00-$60.00
+- id: s26-senior-ml-inference-performance-engineer
+  job_file: fixtures/upwork-saved-2026-10-27/s26-senior-ml-inference-performance-engineer.json
+  metadata:
+    title: Senior ML Inference & Performance Engineer - Model Optimization, High Throughput & Production
+      Serving
+    source: saved
+    status: Open
+    questions: none
+    budget: Hourly $30.00-$200.00
+- id: s27-ai-consultant-german-speaking-advising
+  job_file: fixtures/upwork-saved-2026-10-27/s27-ai-consultant-german-speaking-advising.json
+  metadata:
+    title: AI Consultant (German-speaking, advising mid-sized companies)
+    source: saved
+    status: NO LONGER AVAILABLE
+    questions: none
+    budget: Hourly $30.00-$65.00
+- id: s28-anthropic-company-rollout-claude-code
+  job_file: fixtures/upwork-saved-2026-10-27/s28-anthropic-company-rollout-claude-code.json
+  operator_instructions: 1. Please list any certifications related to this project
+  metadata:
+    title: Anthropic Company Rollout - Claude Code CEO Coaching - Ongoing AI Mentoring
+    source: saved
+    status: NO LONGER AVAILABLE
+    questions: formal
+    budget: Hourly $30.00-$100.00
+- id: s29-in-need-of-devops-engineer
+  job_file: fixtures/upwork-saved-2026-10-27/s29-in-need-of-devops-engineer.json
+  operator_instructions: '1. We need during CET timezone, please state the specific hours you are available
+    to work (e.g., 9 AM - 5 PM CET, Monday-Friday)
+
+    2. Do you agree to take part in a short assessment so we can get to know your skills?
+
+    3. Do you have knowledge of Terraform and Helm? What about Docker?
+
+    4. Are you familiar with Prometheus, Grafana, Loki, Azure and Kubernetes?
+
+    5. Do you have strong expertise with MySQL and PostgreSQL?'
+  metadata:
+    title: in need of DevOps Engineer
+    source: saved
+    status: NO LONGER AVAILABLE
+    questions: formal
+    budget: Hourly $10.00-$15.00
+    preferred_qualifications: English fluent; location Oceania, Americas, Africa, Europe, Asia
+- id: s30-cloud-migration-from-azure-to-gcp
+  job_file: fixtures/upwork-saved-2026-10-27/s30-cloud-migration-from-azure-to-gcp.json
+  metadata:
+    title: Cloud migration from Azure to GCP
+    source: saved
+    status: NO LONGER AVAILABLE
+    questions: none
+    budget: Fixed-price $100.00 (delivery by May 2, 2026)

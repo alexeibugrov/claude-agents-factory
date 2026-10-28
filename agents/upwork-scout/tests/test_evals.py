@@ -9,7 +9,17 @@ import pytest
 
 from agent.config import AgentConfig
 from evals import dataset as datasets
-from evals.common import AGENT_CONFIG, AGENT_DIR, EVALS_DIR, EvalError, live_prompt, prompt_problems, prompt_sha, rel
+from evals.common import (
+    AGENT_CONFIG,
+    AGENT_DIR,
+    EVALS_DIR,
+    EvalError,
+    live_about_me,
+    live_prompt,
+    prompt_problems,
+    prompt_sha,
+    rel,
+)
 from evals.editor import check_submission, user_message
 from evals.experiment import build_config, manifest
 from evals.review import APPROVED, ERROR, REJECTED, UNREVIEWED, case_record, review_of
@@ -69,10 +79,12 @@ def test_add_records_drops_personal_data(tmp_path):
     assert "contactEmail" not in ds.cases[0].job and "extractedPhones" not in ds.cases[0].job
 
 
-def test_prompt_identity_matches_production():
-    text = live_prompt().read_text()
-    assert prompt_sha(text) == AgentConfig.load(AGENT_CONFIG).writer.prompt_sha
-    assert prompt_problems(text) == []
+@pytest.mark.parametrize("role", ["writer", "screener"])
+def test_prompt_identity_matches_production(role):
+    """ABOUT ME is part of the identity: the eval's sha is the one production stores."""
+    text, about_me = live_prompt(role).read_text(), live_about_me().read_text()
+    assert prompt_sha(text, about_me) == getattr(AgentConfig.load(AGENT_CONFIG), role).prompt_sha
+    assert prompt_problems(text) == [] and prompt_problems(about_me) == []
 
 
 def test_every_writer_version_can_be_rerun():
@@ -126,6 +138,21 @@ def test_verdict_comes_only_from_the_human_component():
     assert review_of(_result([MARKER], comment="nice"))["verdict"] == UNREVIEWED
     assert review_of(_result([]))["verdict"] == UNREVIEWED
     assert review_of(_result([], failure=2))["verdict"] == ERROR
+
+
+def test_screener_review_reads_the_operator_mark():
+    """👍 keeps the agent's score; 👎 takes the comment's leading digit as the operator's own mark."""
+
+    def screened(human, comment):
+        r = _result([MARKER, {"pass": human, "assertion": {"type": "human"}}], comment=comment)
+        r["response"]["metadata"].update(role="screener", score=4, reason="EKS")
+        return case_record(r)
+
+    approved = screened(True, None)
+    assert approved["output"]["score"] == 4 and approved["review"]["operator_score"] == 4
+    assert screened(False, "2 — mostly frontend")["review"]["operator_score"] == 2
+    assert screened(False, "too high")["review"]["operator_score"] is None
+    assert screened(False, "10 is the max")["review"]["operator_score"] is None
 
 
 def test_highlight_prefix_is_stripped_from_comments():
@@ -189,6 +216,31 @@ def test_text_import_parses_the_submitted_proposals_source():
     assert (record["hourlyBudgetMin"], record["hourlyBudgetMax"]) == (80.0, 130.0)
     assert case["metadata"]["questions"] == "in_description"
     assert record["description"].rstrip().endswith("one working session?")
+
+
+def test_text_import_parses_the_saved_jobs_source():
+    from evals.textimport import parse
+
+    jobs = parse(EVALS_DIR / "datasets" / "source" / "upwork-saved-2026-10-27.txt")
+    assert sorted(jobs) == list(range(1, 31))
+    record, case = jobs[2]
+    assert case["id"] == "s02-ai-automation-engineer-for-support" and case["metadata"]["source"] == "saved"
+    assert (record["jobType"], record["hourlyBudgetMin"], record["hourlyBudgetMax"]) == ("HOURLY", 30.0, 60.0)
+    assert (record["clientCountry"], record["clientRating"], record["clientTotalSpent"]) == (
+        "United Arab Emirates",
+        4.89,
+        934.0,
+    )
+    assert case["operator_instructions"].splitlines() == [
+        "1. Describe your recent experience with similar projects",
+        "2. Please list any certifications related to this project",
+    ]
+    assert record["description"].endswith("connecting AI to business tools and CRMs.")
+    record, case = jobs[9]  # no blank line before the description marker
+    assert (record["jobType"], record["budgetAmount"]) == ("FIXED", 2100.0)
+    assert "screening-questions" not in record["description"] and case["operator_instructions"] is None
+    assert jobs[11][0]["clientPaymentVerified"] is False
+    assert jobs[4][1]["metadata"]["preferred_qualifications"] == "location: Europe"
 
 
 def test_real_datasets_are_disjoint_and_keep_their_headers():

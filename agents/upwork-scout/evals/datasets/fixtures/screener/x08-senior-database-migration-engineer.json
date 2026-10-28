@@ -1,0 +1,80 @@
+{
+  "url": "https://www.upwork.com/jobs/~022113969582184334135",
+  "jobId": "2113969582184334135",
+  "title": "Senior Database Migration Engineer",
+  "skills": [
+    "SQL",
+    "Amazon Web Services",
+    "Data Migration",
+    "Database"
+  ],
+  "source": "upwork.com",
+  "jobType": "HOURLY",
+  "premium": false,
+  "isRepost": false,
+  "portalUrl": "https://www.upwork.com/jobs/~022113969582184334135",
+  "salaryMax": null,
+  "salaryMin": null,
+  "scrapedAt": "2026-10-24T12:52:19.511Z",
+  "changeType": "NEW",
+  "createTime": "2026-10-24T12:23:19.113Z",
+  "lastSeenAt": "2026-10-24T12:52:19.511Z",
+  "repostOfId": null,
+  "salaryType": "HOURLY",
+  "contentHash": "956a54560386f388dfa818ac0012083bc1336bcf6f9c671c77361222e00cab77",
+  "description": "Cloudworkz is seeking an experienced Database Migration Consultant to support a large enterprise migration to AWS.\n\nYou will assess a diverse database estate, recommend appropriate AWS targets, design reusable migration patterns and deliver pilot migrations. You will then support migration waves, working closely with customer DBAs, application teams, cloud architects and delivery partners.\n\nThis is a senior, hands-on technical role requiring practical experience across commercial and open-source database engines.\n\nWHAT YOU WILL DO\n• Assess database workloads, dependencies, compatibility, performance requirements and migration readiness.\n• Recommend rehosting or replatforming approaches and suitable AWS database targets.\n• Design and execute migrations using AWS Database Migration Service (DMS), AWS Schema Conversion Tool (SCT) and appropriate native database tools.\n• Plan full loads, ongoing replication, schema conversion, data validation, cutover and rollback.\n• Resolve challenges involving large tables, large objects, replication lag, throughput and limited downtime windows.\n• Create reusable migration patterns, automation, operational runbooks and acceptance criteria.\n• Deliver pilot migrations and support subsequent migration waves.\n• Define backup, recovery and availability requirements with customer teams.\n• Identify licensing implications and coordinate validation with the relevant specialists.\n• Provide technical guidance, migration estimates and clear documentation.\n\nWHAT YOU WILL BRING\n• Demonstrable delivery of production database migrations to AWS.\n• Strong hands-on AWS DMS experience, including full load, change data capture (CDC), monitoring and troubleshooting.\n• Practical AWS SCT experience, including conversion assessments and remediation of unsupported database objects.\n• Strong SQL Server and Oracle knowledge, plus practical experience with PostgreSQL and/or MySQL/MariaDB.\n• Experience selecting between database hosting and managed-service options on AWS, including EC2, RDS, RDS Custom and Aurora.\n• Proven ability to plan and execute migrations with controlled downtime, validated data integrity and a tested rollback approach.\n• Experience building migration automation and reusable runbooks.\n• Clear communication skills and confidence working directly with enterprise customers.\n\nUSEFUL ADDITIONAL EXPERIENCE\n• Azure database sources, including SQL Server Managed Instance and Azure SQL Database.\n• Assessment or migration of Cosmos DB, Synapse and Redis workloads to suitable AWS services.\n• SQL Server and Oracle licensing considerations.\n• Manufacturing or operational technology environments.\n• AWS multi-account environments, landing zones and infrastructure automation.\n• Relevant AWS or database certifications.\n\nWORKING ARRANGEMENTS\nGermany (Remote). Occasional travel may be required. Travel expectations, engagement terms, allocation, start date and duration will be confirmed.\n\nWHEN APPLYING\nPlease include two examples of database migrations you personally delivered. For each, describe the source and target engines, database or largest-table size, tools used, your responsibilities, downtime achieved and how you validated the result.",
+  "firstSeenAt": "2026-10-24T12:52:19.511Z",
+  "publishTime": "2026-10-24T12:24:01.524Z",
+  "budgetAmount": null,
+  "clientRating": 5,
+  "clientCountry": "Hungary",
+  "enterpriseJob": false,
+  "personsToHire": 1,
+  "budgetCurrency": null,
+  "customJobScore": 4.25,
+  "engagementType": "FULL_TIME",
+  "salaryCurrency": "USD",
+  "skillsDetailed": [
+    {
+      "uid": "1031626782364123136",
+      "name": "SQL",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "996364628012691471",
+      "name": "Amazon Web Services",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "1031626730275061760",
+      "name": "Data Migration",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "1110580541227782144",
+      "name": "Database",
+      "highlighted": false,
+      "parentSkillUid": null
+    }
+  ],
+  "descriptionHtml": null,
+  "experienceLevel": "ExpertLevel",
+  "hourlyBudgetMax": null,
+  "hourlyBudgetMin": null,
+  "totalApplicants": 12,
+  "clientTotalSpent": 70820.28,
+  "repostDetectedAt": null,
+  "clientCountryCode": "HUN",
+  "clientReviewCount": 5,
+  "sourcingTimestamp": null,
+  "engagementDuration": "3 to 6 months",
+  "clientSpentCurrency": "USD",
+  "descriptionMarkdown": "Cloudworkz is seeking an experienced Database Migration Consultant to support a large enterprise migration to AWS.\n\nYou will assess a diverse database estate, recommend appropriate AWS targets, design reusable migration patterns and deliver pilot migrations. You will then support migration waves, working closely with customer DBAs, application teams, cloud architects and delivery partners.\n\nThis is a senior, hands-on technical role requiring practical experience across commercial and open-source database engines.\n\nWHAT YOU WILL DO\n• Assess database workloads, dependencies, compatibility, performance requirements and migration readiness.\n• Recommend rehosting or replatforming approaches and suitable AWS database targets.\n• Design and execute migrations using AWS Database Migration Service (DMS), AWS Schema Conversion Tool (SCT) and appropriate native database tools.\n• Plan full loads, ongoing replication, schema conversion, data validation, cutover and rollback.\n• Resolve challenges involving large tables, large objects, replication lag, throughput and limited downtime windows.\n• Create reusable migration patterns, automation, operational runbooks and acceptance criteria.\n• Deliver pilot migrations and support subsequent migration waves.\n• Define backup, recovery and availability requirements with customer teams.\n• Identify licensing implications and coordinate validation with the relevant specialists.\n• Provide technical guidance, migration estimates and clear documentation.\n\nWHAT YOU WILL BRING\n• Demonstrable delivery of production database migrations to AWS.\n• Strong hands-on AWS DMS experience, including full load, change data capture (CDC), monitoring and troubleshooting.\n• Practical AWS SCT experience, including conversion assessments and remediation of unsupported database objects.\n• Strong SQL Server and Oracle knowledge, plus practical experience with PostgreSQL and/or MySQL/MariaDB.\n• Experience selecting between database hosting and managed-service options on AWS, including EC2, RDS, RDS Custom and Aurora.\n• Proven ability to plan and execute migrations with controlled downtime, validated data integrity and a tested rollback approach.\n• Experience building migration automation and reusable runbooks.\n• Clear communication skills and confidence working directly with enterprise customers.\n\nUSEFUL ADDITIONAL EXPERIENCE\n• Azure database sources, including SQL Server Managed Instance and Azure SQL Database.\n• Assessment or migration of Cosmos DB, Synapse and Redis workloads to suitable AWS services.\n• SQL Server and Oracle licensing considerations.\n• Manufacturing or operational technology environments.\n• AWS multi-account environments, landing zones and infrastructure automation.\n• Relevant AWS or database certifications.\n\nWORKING ARRANGEMENTS\nGermany (Remote). Occasional travel may be required. Travel expectations, engagement terms, allocation, start date and duration will be confirmed.\n\nWHEN APPLYING\nPlease include two examples of database migrations you personally delivered. For each, describe the source and target engines, database or largest-table size, tools used, your responsibilities, downtime achieved and how you validated the result.",
+  "weeklyRetainerBudget": null,
+  "clientPaymentVerified": true,
+  "engagementDurationWeeks": 18,
+  "clientHasFinancialPrivacy": false
+}

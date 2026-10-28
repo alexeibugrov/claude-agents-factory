@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -10,11 +11,14 @@ from typing import Any
 from evals.common import FEEDBACK_DIR, HUMAN, RUNS_DIR, EvalError, export_eval
 
 FORMAT = "upwork-scout-writer-feedback/v1"
+SCREENER_FORMAT = "upwork-scout-screener-feedback/v1"
 APPROVED, REJECTED, UNREVIEWED, ERROR = "approved", "rejected", "unreviewed", "error"
 _HIGHLIGHT = "!highlight"
 _ERROR_REASON = 2  # Promptfoo ResultFailureReason.ERROR: the provider failed, nothing to review
 # Submits per draft at or above this, or any failed run, is flagged: each retry is a paid generation.
 HEAVY_SUBMITS = 3
+# A screener review comment starts with the operator's own mark: "2 — mostly frontend".
+_MARK = re.compile(r"^\s*([0-5])(?![\d.])")
 
 
 def _results(export: dict[str, Any]) -> list[dict[str, Any]]:
@@ -53,11 +57,19 @@ def review_of(result: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def operator_score(review: dict[str, Any], agent_score: int | None) -> int | None:
+    """The screener mark the operator stands by: the agent's on a 👍, the comment's leading digit on a 👎."""
+    if review["verdict"] == APPROVED:
+        return agent_score
+    match = _MARK.match(review["comment"] or "")
+    return int(match.group(1)) if review["verdict"] == REJECTED and match else None
+
+
 def case_record(result: dict[str, Any]) -> dict[str, Any]:
     meta = (result.get("response") or {}).get("metadata") or {}
     test_meta = (result.get("testCase") or {}).get("metadata") or {}
     case_vars = result.get("vars") or {}
-    return {
+    record = {
         "case_id": case_vars.get("case_id") or test_meta.get("case_id"),
         "result_id": result.get("id"),
         "repeat_index": (result.get("metadata") or {}).get("repeatIndex"),
@@ -81,6 +93,10 @@ def case_record(result: dict[str, Any]) -> dict[str, Any]:
         },
         "review": review_of(result),
     }
+    if meta.get("role") == "screener":
+        record["output"].update(score=meta.get("score"), reason=meta.get("reason"))
+        record["review"]["operator_score"] = operator_score(record["review"], meta.get("score"))
+    return record
 
 
 def summarize(cases: list[dict[str, Any]]) -> dict[str, int]:
@@ -138,7 +154,19 @@ def status_lines(eval_id: str) -> list[str]:
         if r["verdict"] in (UNREVIEWED, ERROR):
             note = " (has a comment, but no 👍/👎)" if r["comment"] else ""
             lines.append(f"  {r['verdict']:<10} {c['case_id']}{note}")
+    if exp.get("role") == "screener":
+        lines.append("")
+        lines.append(f"{'case':<44} {'agent':<6} {'yours':<6} verdict")
+        for c in cases:
+            agent, yours = c["output"].get("score"), c["review"].get("operator_score")
+            unmarked = c["review"]["verdict"] == REJECTED and yours is None
+            flag = "  (👎 without a leading mark in the comment)" if unmarked else ""
+            lines.append(f"{c['case_id']:<44} {_dash(agent):<6} {_dash(yours):<6} {c['review']['verdict']}{flag}")
     return lines
+
+
+def _dash(value: Any) -> str:
+    return "-" if value is None else str(value)
 
 
 def feedback_package(eval_id: str, *, partial: bool = False, out: Path | None = None) -> tuple[Path, dict[str, Any]]:
@@ -156,7 +184,7 @@ def feedback_package(eval_id: str, *, partial: bool = False, out: Path | None = 
         raise EvalError(f"results carry prompt versions {wrong}, not the run's {exp['prompt']['sha']}")
     prompts = export["results"].get("prompts") or []
     package = {
-        "format": FORMAT,
+        "format": SCREENER_FORMAT if exp.get("role") == "screener" else FORMAT,
         "exported_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "eval_id": export["evalId"],
         "experiment": exp,
@@ -196,11 +224,13 @@ def compare_lines(base_id: str, cand_id: str) -> list[str]:
     if only:
         lines.append(f"Not in both runs (skipped): {', '.join(only)}")
     lines.append("")
-    lines.append(f"{'case':<44} {'A':<11} {'B':<11} {'words A/B':<10} submits A/B")
+    # The screener's comparable number is its score; the writer's is the draft's length.
+    size = "score" if exps[0].get("role") == "screener" else "words"
+    lines.append(f"{'case':<44} {'A':<11} {'B':<11} {size + ' A/B':<10} submits A/B")
     for case_id in shared:
         a, b = by_case[0][case_id], by_case[1][case_id]
         mark = "  <- changed" if a["review"]["verdict"] != b["review"]["verdict"] else ""
-        words = f"{a['output']['words'] or '-'}/{b['output']['words'] or '-'}"
+        words = f"{_dash(a['output'].get(size))}/{_dash(b['output'].get(size))}"
         submits = f"{a['output']['submits'] or '-'}/{b['output']['submits'] or '-'}"
         verdicts = f"{a['review']['verdict']:<11} {b['review']['verdict']:<11}"
         lines.append(f"{case_id:<44} {verdicts} {words:<10} {submits}{mark}")

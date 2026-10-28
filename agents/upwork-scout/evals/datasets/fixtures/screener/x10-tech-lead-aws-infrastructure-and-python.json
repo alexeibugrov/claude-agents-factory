@@ -1,0 +1,80 @@
+{
+  "url": "https://www.upwork.com/jobs/~022114001358957984761",
+  "jobId": "2114001358957984761",
+  "title": "Tech Lead, AWS Infrastructure and Python (North America or South America Only)",
+  "skills": [
+    "Python",
+    "Infrastructure as Code",
+    "Cloud Architecture",
+    "AWS Development"
+  ],
+  "source": "upwork.com",
+  "jobType": "HOURLY",
+  "premium": false,
+  "isRepost": false,
+  "portalUrl": "https://www.upwork.com/jobs/~022114001358957984761",
+  "salaryMax": 90,
+  "salaryMin": 40,
+  "scrapedAt": "2026-10-24T14:52:47.822Z",
+  "changeType": "NEW",
+  "createTime": "2026-10-24T14:29:35.333Z",
+  "lastSeenAt": "2026-10-24T14:52:47.822Z",
+  "repostOfId": null,
+  "salaryType": "HOURLY",
+  "contentHash": "9ed9e9fe8d7761fa5cd5a907f8229e540f266ecbe5c3e553d0ab179db07b316e",
+  "description": "REQUIRED TO APPLY: Record yourself reading the English script at the bottom of this post and attach the audio file to your proposal. Applications without the audio recording will not be reviewed.\n\nINDIVIDUAL FREELANCERS ONLY. No agencies. Agency proposals will not be reviewed.\n\nHiring a tech lead to own cloud architecture and guide a small team. Design and build AWS infrastructure, set technical direction, break down work for teammates.\n\nStack: Python and common Python frameworks, infrastructure as code, networking, security, cost-aware design. Comfortable scoping projects end to end, writing specs, reviewing work. Not a pure coding role.\n\nLocation: Candidates must be based in North America or South America. Applicants outside those regions will not be reviewed.\n\nFive plus years software or infrastructure engineering, deep hands-on AWS, solid Python, track record leading or mentoring.\n\nTo apply:\n1. Attach an audio recording of you reading the script below (mandatory, English fluency required).\n2. Share one AWS architecture you designed, how you scoped it for a team, and your Python service design approach.\n\nBudget and timeline to be discussed.\n\nMandatory English script to record and attach:\nLast Sunday, my sister called early because her car would not start. I drove across town with jumper cables, but the battery was already replaced by a neighbor. We spent the afternoon at a small bakery she had never noticed, two blocks from her apartment. The owner baked the same walnut bread for forty years; the recipe came from his mother, who learned it from hers. My sister bought a loaf and we sat outside on a bench eating it while it rained. It began with a problem and turned into something you remember for no particular reason.",
+  "firstSeenAt": "2026-10-24T14:52:47.822Z",
+  "publishTime": "2026-10-24T14:30:43.625Z",
+  "budgetAmount": null,
+  "clientRating": 4.84,
+  "clientCountry": "United States",
+  "enterpriseJob": false,
+  "personsToHire": 1,
+  "budgetCurrency": null,
+  "customJobScore": 4.7,
+  "engagementType": "FULL_TIME",
+  "salaryCurrency": "USD",
+  "skillsDetailed": [
+    {
+      "uid": "996364628025274386",
+      "name": "Python",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "1192876976884957184",
+      "name": "Infrastructure as Code",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "1270387306804789248",
+      "name": "Cloud Architecture",
+      "highlighted": false,
+      "parentSkillUid": null
+    },
+    {
+      "uid": "1623716864006164480",
+      "name": "AWS Development",
+      "highlighted": false,
+      "parentSkillUid": null
+    }
+  ],
+  "descriptionHtml": null,
+  "experienceLevel": "ExpertLevel",
+  "hourlyBudgetMax": 90,
+  "hourlyBudgetMin": 40,
+  "totalApplicants": 0,
+  "clientTotalSpent": 42064.69,
+  "repostDetectedAt": null,
+  "clientCountryCode": "USA",
+  "clientReviewCount": 75,
+  "sourcingTimestamp": null,
+  "engagementDuration": "3 to 6 months",
+  "clientSpentCurrency": "USD",
+  "descriptionMarkdown": "REQUIRED TO APPLY: Record yourself reading the English script at the bottom of this post and attach the audio file to your proposal. Applications without the audio recording will not be reviewed.\n\nINDIVIDUAL FREELANCERS ONLY. No agencies. Agency proposals will not be reviewed.\n\nHiring a tech lead to own cloud architecture and guide a small team. Design and build AWS infrastructure, set technical direction, break down work for teammates.\n\nStack: Python and common Python frameworks, infrastructure as code, networking, security, cost-aware design. Comfortable scoping projects end to end, writing specs, reviewing work. Not a pure coding role.\n\nLocation: Candidates must be based in North America or South America. Applicants outside those regions will not be reviewed.\n\nFive plus years software or infrastructure engineering, deep hands-on AWS, solid Python, track record leading or mentoring.\n\nTo apply:\n1. Attach an audio recording of you reading the script below (mandatory, English fluency required).\n2. Share one AWS architecture you designed, how you scoped it for a team, and your Python service design approach.\n\nBudget and timeline to be discussed.\n\nMandatory English script to record and attach:\nLast Sunday, my sister called early because her car would not start. I drove across town with jumper cables, but the battery was already replaced by a neighbor. We spent the afternoon at a small bakery she had never noticed, two blocks from her apartment. The owner baked the same walnut bread for forty years; the recipe came from his mother, who learned it from hers. My sister bought a loaf and we sat outside on a bench eating it while it rained. It began with a problem and turned into something you remember for no particular reason.",
+  "weeklyRetainerBudget": null,
+  "clientPaymentVerified": true,
+  "engagementDurationWeeks": 18,
+  "clientHasFinancialPrivacy": false
+}

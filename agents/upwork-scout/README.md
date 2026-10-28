@@ -1,15 +1,18 @@
 # upwork-scout
 
 Every 30 minutes upwork-scout scrapes recent Upwork job postings through Apify and stores every
-posting in Postgres. Each job it has never seen before that passes the code prefilters is posted
-to a private Telegram group as **one message per offer**, from a separate agent account. When a
+posting in Postgres. Each job it has never seen before that passes the code prefilters is rated by
+a **screener** agent, from 0 to 5, for how well it matches the operator's experience, and is posted
+to a private Telegram group as **one message per offer**, with that rating, from a separate agent
+account. When a
 member replies to an offer with a trigger word or sign (`+` or `go` by default), a **writer**
 agent drafts a proposal, and the agent replies in the same chat with plain text: the vacancy link
 and the proposal. It never applies on Upwork: the human reads the draft and sends it. The stored
 postings are also a market-data corpus for later analysis of demand trends (not built yet).
 
-A **screener** agent that triages jobs before they are offered is built but parked
-(`settings.pipeline.screening_enabled: false`).
+Both agents read one shared document about the operator,
+[prompts/about-me/](prompts/about-me/) (ABOUT ME), which the operator keeps current with case studies
+and projects.
 
 Design and decisions: [plan.md](../../kb/tasks/003-upwork-agent-2026-10-22/plan.md), and for the
 offer and reply flow, [plan-reply-flow-and-dind.md](../../kb/tasks/003-upwork-agent-2026-10-22/plan-reply-flow-and-dind.md).
@@ -24,8 +27,9 @@ agent container (python -m agent.main; one long-lived process, two loops)
                 first sighting → pipeline row (pending | skipped_repost | skipped_stale)
                 known          → refresh jobs, add job_versions, never re-queued
   3 PREFILTER pending → config thresholds → prefiltered (reason logged)
-  4 SCREEN    parked; when enabled: pending → screener → suitable | unsuitable
-  5 OFFER     ≤ N pending (or suitable) → one group message each      → offers row, offered
+  4 SCREEN    pending → screener → 0-5 match + reason                 → screenings row, screened
+                (out of attempts: screened, unrated; off: skipped)
+  5 OFFER     ≤ N screened (or pending, screening off) → one group message each → offers row, offered
  poll, on a reply event or every poll_interval_s (only with allow_writes):
   6 READ      group messages after the stored cursor; a reply to an offer with a trigger
                 token, not from the agent itself                      → requested
@@ -46,14 +50,14 @@ attempts and last reason. Nothing re-queues a job automatically.
 | File | Role |
 | --- | --- |
 | [agent_config.yaml](agent_config.yaml) | **Committed, secret-free.** Models, prompt file pointers, searches, Apify caps, pipeline caps, prefilters, Telegram target. Bind-mounted at deploy. |
-| [prompts/](prompts/) | The role prompts, one directory per role with one Markdown file per version (`writer/v4.md`, live: wrapper + the operator's proposal metaprompt + About me; the sample proposals stay plain text in `text` fences, because the writer must output plain text). Shipped and bind-mounted like the config. |
+| [prompts/](prompts/) | One directory per role with one Markdown file per version (`writer/v5.md`: wrapper + the operator's proposal metaprompt, with the sample proposals plain text in `text` fences because the writer must output plain text; `screener/v2.md`: the 0-5 match scale), plus `about-me/v1.md`, the shared ABOUT ME appended to both. Shipped and bind-mounted like the config. |
 | [agent/config.py](agent/config.py) | Typed load + fail-fast validation (`maxResults` ≤ 10, query ≤ 80 words, unique search slugs, `chat_id` when `allow_writes`). |
 | [agent/scrape.py](agent/scrape.py) | One actor run per search; cost from charged events; Upwork's total from the run log; failures returned, never raised. |
 | [agent/store.py](agent/store.py) | Ingest + dedup, the pipeline ledger, claims, the Telegram outbox. |
-| [agent/migrations/](agent/migrations/) | Forward-only SQL, applied at startup under an advisory lock (004 adds `offers.request_text`). |
+| [agent/migrations/](agent/migrations/) | Forward-only SQL, applied at startup under an advisory lock (006 makes `screenings.suitable` optional: the screener only rates). |
 | [agent/prefilter.py](agent/prefilter.py) | Config-driven rules on structured fields; null = off. |
 | [agent/render.py](agent/render.py) | Job → prompts (job text delimited as untrusted data) and → Telegram HTML. |
-| [agent/tools.py](agent/tools.py) | `submit_screening` / `submit_proposal`: pure, record on `RunContext`. |
+| [agent/tools.py](agent/tools.py) | `submit_screening` (score 0-5, one-sentence reason) / `submit_proposal`: pure, record on `RunContext`. |
 | [agent/guards.py](agent/guards.py) | Write gate (empty `WRITE_TOOLS`) and `delivery_allowed()`, the Telegram veto. |
 | [agent/loop.py](agent/loop.py) | `run_once()`: one job through one role. |
 | [agent/pipeline.py](agent/pipeline.py) | `cycle()` (stages 1-5) and `poll()` (stages 6-8), with injectable dependencies. |
@@ -102,13 +106,18 @@ attempts and last reason. Nothing re-queues a job automatically.
   is the role's `system_prompt_file` in `agent_config.yaml` (relative to the config). A change is
   a new `v<N+1>.md` plus a one-line pointer change, and a rollback moves the pointer back. Old
   versions stay for comparison and evals. The startup log names each live version as
-  `<file>@<prompt_sha>`. The operator owns the screener prompt from `## Criteria` down, and the metaprompt and
-  ABOUT ME in the writer prompt. ABOUT ME holds no contact details or employer and client names,
-  and the writer is told never to put them in a proposal. Every verdict and draft records the
-  `prompt_sha` of the prompt that produced it.
-- **Pipeline:** `screening_enabled` (off: every prefiltered job is offered; on: only suitable ones,
-  with their score), `max_offers_per_cycle` (default 50), `max_draft_per_cycle` (proposals per
-  poll), `max_attempts` per writer request.
+  `<file>+<about me file>@<prompt_sha>`. The operator owns the screener prompt from `## Scale` down,
+  the metaprompt in the writer prompt, and ABOUT ME.
+- **ABOUT ME** (`about_me_file`, `prompts/about-me/v<N>.md`) is the one document about the
+  operator: positioning, expertise, projects, credentials, rate. It is written for no particular
+  agent, and the config appends it to every role's prompt, so the writer and the screener always
+  see the same facts. Versioned like the prompts: an edit is a new `v<N+1>.md` plus the pointer.
+  It holds no contact details or employer and client names, and the writer is told never to put
+  them in a proposal. Every verdict and draft records the `prompt_sha` of the role prompt **and**
+  ABOUT ME together, so a new ABOUT ME version shows in the data like a prompt change.
+- **Pipeline:** `screening_enabled` (on: every prefiltered job is rated, then offered with its
+  match whatever the score; off: offered unrated), `max_offers_per_cycle` (default 50), `max_draft_per_cycle` (proposals per
+  poll), `max_attempts` per screener or writer run (a job the screener exhausts is offered unrated).
 - **Secrets** (`.env.upwork-scout`, see [upwork-scout.env.template](upwork-scout.env.template)):
   `CLAUDE_CODE_OAUTH_TOKEN`, `APIFY_TOKEN`, `TELEGRAM_API_ID`, `TELEGRAM_API_HASH`,
   `POSTGRES_PASSWORD`. The db and backup containers get only `POSTGRES_PASSWORD`, from
@@ -122,8 +131,9 @@ Everything happens in one private group (`settings.telegram.chat_id`, optionally
 posts. Its API id and hash are in the env file, and its login is in a per-stack Telethon
 **session file**.
 
-- **Offer:** one HTML message per job: linked title, budget, client, applicants, skills, and the
-  score when screening is on.
+- **Offer:** one HTML message per job: the linked title, then `Match 4/5 — <the screener's
+  reason>`, then budget, client, applicants and skills. A job the screener failed on
+  `max_attempts` times is still offered, as `Match ?/5 — not rated`.
 - **Trigger:** a reply to an offer whose first word is one of `triggers`, case-insensitive (`+`,
   `go`; "google" and "+1" do not match, and a trigger word later in the text never fires). It can
   come from any member. The agent's own messages and messages that aren't replies are ignored.
@@ -241,7 +251,7 @@ run (prompt P, dataset D) → view: 👍/👎 + comment per draft → export →
 
 | Piece | Role |
 | --- | --- |
-| [evals/provider.py](evals/provider.py) | Promptfoo Python provider: actor record → `map_record` → `writer_prompt` → `run_once`, with the writer role from `agent_config.yaml` and only `system_prompt` swapped in. A fresh SDK session per case, `allow_writes=False`. |
+| [evals/provider.py](evals/provider.py) | Promptfoo Python provider: actor record → `map_record` → `writer_prompt` or `screener_prompt` → `run_once`, with the role from `agent_config.yaml` and only its prompt (and, with `--about-me`, ABOUT ME) swapped in. A fresh SDK session per case, `allow_writes=False`. |
 | [evals/datasets/](evals/datasets/) | Datasets (format in [evals/dataset.py](evals/dataset.py)): `dataset: {id, version, split}`, then `cases` with a stable `id`, `job_file` (an Apify actor record, as in `jobs.raw`) or inline `job`, optional `operator_instructions`, `reference` and `metadata`. `split` is `smoke`, `tuning` or `validation`. |
 | [evals/datasets/smoke.yaml](evals/datasets/smoke.yaml) | Three **synthetic** postings, for checking the plumbing only. Never tune on them. |
 | [evals/settings.yaml](evals/settings.yaml) | Concurrency, per-case timeout, and the editor's model and effort. |
@@ -309,7 +319,8 @@ uv run python -m evals run --dataset evals/datasets/validation.yaml --prompt …
   [validation.yaml](evals/datasets/validation.yaml) (5) hold the 20 postings from Submitted
   proposals, 2026-10-24, kept verbatim in `evals/datasets/source/`. Keep the two sets disjoint, and
   bump `dataset.version` on every edit. To add a batch copied from Upwork in the same text format
-  (`JOB NN / M`, `Title:`, `URL:`, posting, Upwork's fields, `SCREENING QUESTIONS`), save it under
+  (`JOB NN / M`, `Title:`, `URL:`, posting, Upwork's fields, `SCREENING QUESTIONS`), or in the
+  saved-jobs format (`JOB N of M`, header fields, `--- DESCRIPTION ---`, case ids `sNN-…`), save it under
   `source/` and run
   `uv run python -m evals import-text evals/datasets/source/<file>.txt --dataset evals/datasets/tuning.yaml --jobs 1,2,3`.
   Formal screening questions become `operator_instructions`, the way you paste them after `+`.
@@ -339,6 +350,34 @@ uv run python -m evals run --dataset evals/datasets/validation.yaml --prompt …
   `--case ID` (repeatable) reruns selected cases.
 - **Cost:** each case is one full writer run on the subscription, about 40 s at `effort: medium`.
   The `cost` Promptfoo shows is the SDK's notional API price, not a charge.
+
+### Screener evals
+
+The same loop with `--role screener`, over [screener.yaml](evals/datasets/screener.yaml): the 20
+postings the operator applied to (`metadata.source: applied`, the same fixtures as tuning and
+validation), offered production jobs the operator ignored (`source: ignored`,
+`fixtures/screener/`), and jobs the operator saved on Upwork (`source: saved`, imported from
+`source/upwork-saved-2026-10-27.txt`). Each output is the line the offer shows, `Match N/5 — reason`.
+
+```bash
+uv run python -m evals run --role screener --dataset evals/datasets/screener.yaml   # live screener + live ABOUT ME
+uv run python -m evals view                                                         # 👍 / 👎 + your mark
+uv run python -m evals status                                                       # agent's mark next to yours
+uv run python -m evals run --role screener --dataset evals/datasets/screener.yaml --prompt prompts/screener/v3.md
+uv run python -m evals run --role screener --dataset evals/datasets/screener.yaml --about-me prompts/about-me/v2.md
+uv run python -m evals compare <eval A> <eval B>                                    # scores and verdicts side by side
+```
+
+- **Reviewing:** 👍 when the mark is right. Otherwise 👎, with a comment that **starts with your
+  own mark**, then why: `2 — mostly frontend; the k8s part is minor`. `status`, `compare` and
+  `export` read the leading digit as your mark (`operator_score`; on a 👍 it is the agent's), and
+  `status` flags a 👎 without one.
+- **Changing it:** `propose` refuses screener feedback; the screener prompt is edited by hand from
+  the review, as a new `prompts/screener/v<N+1>.md`, then rerun and compared.
+- **ABOUT ME** affects both roles: before adopting a new version, rerun both the screener and the
+  writer datasets with `--about-me`.
+- **Adding jobs:** `add-jobs <records.json> --dataset evals/datasets/screener.yaml` (actor records,
+  for example `jobs.raw` from production), then set `metadata.source` and bump `dataset.version`.
 
 ## Deploy
 
@@ -384,18 +423,19 @@ Restore: `docker compose exec -T db pg_restore -U upwork_scout -d <scratch_db> <
 - An outage longer than `maxAgeMinutes` permanently misses the jobs published during it.
 - Offers accumulate while `allow_writes` is false. Turning it on posts the backlog, up to
   `max_offers_per_cycle` per cycle. To start clean, mark old `pending` rows `skipped_stale` first.
-- At about 140 offers a day, the group is busy. Turning screening back on, or tightening the
-  prefilters, is the lever.
+- At about 140 offers a day, the group is busy. Every offer is posted whatever its match; a
+  minimum match to post would be a new config-gated rule, decided from the screener evals.
 - Unknown until the 24 h observation: whether `contentHash` changes on applicant-count updates,
   which would keep each run near 10 results.
 - Personal-data columns (`contact_*`, `extracted_*`, `social_profiles`) are stored without a
   retention policy. They are never sent to Telegram or into prompts.
 - US-only posts reach the screener: the logged-out actor returns 4–9% more jobs than the
   operator's feed, mostly posts restricted to US freelancers, and its record has no field for the
-  restriction. The screener drops them only when the description says so.
+  restriction. They are still offered; the screener rates them 0 only when the description states
+  the restriction.
 - Search volumes were measured on one day; re-check them in `scrape_runs` after 1–2 weeks.
-- The writer has human-reviewed prompt evals (see Prompt evals). Its real tuning and validation
-  datasets are still being collected. The screener has no evals.
+- Both roles have human-reviewed prompt evals (see Prompt evals). The screener's dataset is still
+  growing (more ignored jobs from the operator), and `propose` only edits the writer prompt.
 - The writer often lands near the 350-word cap and resubmits. Each rejected submit costs a turn,
   so `writer.max_turns` is 8 (it was 4, which failed postings with several required questions). A
   run that still fails is retried as a fresh run, up to `max_attempts`, in production and in the

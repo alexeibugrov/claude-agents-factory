@@ -1,0 +1,30 @@
+{
+  "jobId": "2039285840343191337",
+  "title": "in need of DevOps Engineer",
+  "url": "https://www.upwork.com/jobs/~022039285840343191337",
+  "description": "Looking for DevOps Engineer (m/f/d)\n\nWe are seeking a skilled DevOps Freelancer to maintain and enhance our production systems and software.\n\nResponsibilities:\n-Manage and optimize our cloud and platform infrastructure using Azure and Kubernetes\n-Automate deployments and infrastructure using CI/CD pipelines (GitLab, GitHub, Terraform, Helm)\n-Monitor and maintain databases (MySQL, PostgreSQL, Weaviate)\n-Ensure system stability through monitoring & observability with Prometheus, Grafana, and Loki\n-Manage authentication and access control using KeyCloak\nWork with NginX and Traefik for routing and load balancing\n-Debug and resolve issues, while also developing minor features to enhance system functionality\n\nMust-Have Skills:\n-Cloud & Platform: Experience with Azure, Kubernetes, and container orchestration\n-CI/CD: Proficiency in GitLab Pipelines (preferably with NX integration), GitHub, and Azure Pipelines\nInfrastructure as Code (IaC): Hands-on experience with Terraform and Helm\n-Security & Access: Strong knowledge of VPN and SSH for connecting to customer systems\n-Docker: Solid experience with containerization and service management\n-Monitoring & Observability: Familiarity with Prometheus, Grafana, Loki for system monitoring\n-Databases: Strong expertise in MySQL, PostgreSQL\n\nNice-to-Have Skills:\n-Experience with Weaviate as a vector database\n-Familiarity with Azure Pipelines for CI/CD",
+  "descriptionMarkdown": "Looking for DevOps Engineer (m/f/d)\n\nWe are seeking a skilled DevOps Freelancer to maintain and enhance our production systems and software.\n\nResponsibilities:\n-Manage and optimize our cloud and platform infrastructure using Azure and Kubernetes\n-Automate deployments and infrastructure using CI/CD pipelines (GitLab, GitHub, Terraform, Helm)\n-Monitor and maintain databases (MySQL, PostgreSQL, Weaviate)\n-Ensure system stability through monitoring & observability with Prometheus, Grafana, and Loki\n-Manage authentication and access control using KeyCloak\nWork with NginX and Traefik for routing and load balancing\n-Debug and resolve issues, while also developing minor features to enhance system functionality\n\nMust-Have Skills:\n-Cloud & Platform: Experience with Azure, Kubernetes, and container orchestration\n-CI/CD: Proficiency in GitLab Pipelines (preferably with NX integration), GitHub, and Azure Pipelines\nInfrastructure as Code (IaC): Hands-on experience with Terraform and Helm\n-Security & Access: Strong knowledge of VPN and SSH for connecting to customer systems\n-Docker: Solid experience with containerization and service management\n-Monitoring & Observability: Familiarity with Prometheus, Grafana, Loki for system monitoring\n-Databases: Strong expertise in MySQL, PostgreSQL\n\nNice-to-Have Skills:\n-Experience with Weaviate as a vector database\n-Familiarity with Azure Pipelines for CI/CD",
+  "jobType": "HOURLY",
+  "experienceLevel": "IntermediateLevel",
+  "skills": [
+    "Kubernetes",
+    "Terraform",
+    "DevOps",
+    "Azure DevOps",
+    "MySQL",
+    "PostgreSQL",
+    "NGINX",
+    "SSH",
+    "Prometheus",
+    "Grafana"
+  ],
+  "clientCountry": "Germany",
+  "engagementDuration": "More than 6 months",
+  "source": "upwork-text-import",
+  "engagementType": "PART_TIME",
+  "hourlyBudgetMin": 10.0,
+  "hourlyBudgetMax": 15.0,
+  "clientPaymentVerified": true,
+  "clientRating": 4.95,
+  "clientReviewCount": 764
+}
