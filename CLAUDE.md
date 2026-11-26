@@ -18,6 +18,7 @@ Start with [kb/architecture/overview.md](kb/architecture/overview.md).
 kb/                                   how agents get built (this is the docs root)
 agents/_template/                     the canonical agent; /new-agent copies it
 agents/<name>/                        one self-contained agent + its README (its only docs)
+side-projects/<name>/                 standalone non-agent tools (no SDK, no CI), deployed by hand over SSH
 .github/workflows/                    agent-deploy.reusable.yml + one caller per agent
 ```
 
@@ -169,7 +170,8 @@ Open the repo in VS Code → **Dev Containers: Reopen in Container**. The contai
 checkout at `/workspaces/claude-agents-factory`, persists Claude state to
 `~/.claude-agents-factory-devcontainer` on the host, and locks egress via
 [init-firewall.sh](.devcontainer/init-firewall.sh) (allowlist: Anthropic, GitHub, npm, PyPI, GHCR,
-VS Code, semgrep, the runtime VM, and Telegram's data-centre ranges).
+VS Code, semgrep, the VHS course search for the vhs-sprachtest-watcher side project, the runtime
+VM, and Telegram's data-centre ranges).
 
 **Firewall, Dockerfile and mount changes need a container rebuild** — `sudo` re-runs the *baked*
 `/usr/local/bin/init-firewall.sh`, not the working-tree copy. MCP config changes need a Claude Code

@@ -68,6 +68,7 @@ done < <(echo "$gh_ranges" | jq -r '(.web + .api + .git)[]' | aggregate -q)
 #   pypi.org / files.pythonhosted.org  — uv resolving each agent's dependencies (claude-agent-sdk & co).
 #   ghcr.io / *.githubusercontent.com  — GHCR image pulls and the trivy vulnerability DB.
 #   semgrep.dev                        — the semgrep rule registry.
+#   www.vhsit.berlin.de                — the VHS course search the vhs-sprachtest-watcher side project scrapes.
 #
 # Every entry here is REQUIRED: an unresolvable name aborts container startup by design, so a typo
 # or a dead host fails loudly instead of silently losing egress. That also means a host must not be
@@ -86,7 +87,8 @@ for domain in \
     "files.pythonhosted.org" \
     "ghcr.io" \
     "pkg-containers.githubusercontent.com" \
-    "semgrep.dev"; do
+    "semgrep.dev" \
+    "www.vhsit.berlin.de"; do
     echo "Resolving $domain..."
     ips=$(dig +noall +answer A "$domain" | awk '$4 == "A" {print $5}')
     if [ -z "$ips" ]; then

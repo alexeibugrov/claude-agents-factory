@@ -1,0 +1,30 @@
+[project]
+name = "vhs-sprachtest-watcher"
+version = "0.1.0"
+description = "Watches the Berlin VHS course search for Einbürgerung language-test dates and alerts Telegram."
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "beautifulsoup4>=4.12",
+    "requests>=2.32",
+    "telethon>=1.36",
+    "tzdata>=2024.1",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "ruff>=0.6",
+]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
