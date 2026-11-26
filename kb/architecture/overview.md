@@ -16,6 +16,8 @@ claude-agents-factory/
       README.md                         ← THE documentation for that agent
       agent/  tests/  deploy/
       Dockerfile  pyproject.toml  uv.lock  agent_config.yaml
+  side-projects/<name>/                 ← standalone non-agent tools: no SDK, no CI, deployed by hand
+                                          over SSH (see side-projects/README.md)
   .github/workflows/
     agent-deploy.reusable.yml           ← the one pipeline
     <name>.yml                          ← one path-filtered caller per agent

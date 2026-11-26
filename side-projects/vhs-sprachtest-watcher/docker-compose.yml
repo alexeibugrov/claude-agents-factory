@@ -1,0 +1,21 @@
+---
+# Deployed by hand to /app/vhs-sprachtest-watcher on the VM — no CI. See README.md.
+services:
+  watcher:
+    build: .
+    image: vhs-sprachtest-watcher:local
+    container_name: vhs-sprachtest-watcher
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      WINDOW_START_HOUR: "7"
+      WINDOW_END_HOUR: "20"
+      INTERVAL_MIN_MINUTES: "20"
+      INTERVAL_MAX_MINUTES: "40"
+    volumes:
+      # watcher.session (Telegram login) + state.json; must be owned by uid 10001.
+      - ./data:/data
+    logging:
+      driver: journald
+      options:
+        tag: vhs-sprachtest-watcher
